@@ -6,6 +6,7 @@ Production API with frontend for predicting property prices in Tunisia
 from __future__ import annotations
 
 import base64
+import html
 import json
 import os
 from pathlib import Path
@@ -23,8 +24,9 @@ import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
+import markdown as markdown_lib
 from pydantic import BaseModel, Field
 
 
@@ -91,10 +93,16 @@ NOTEBOOK_GLOBALS: dict[str, object] = {}
 
 
 def _init_notebook_globals() -> dict[str, object]:
+    frontend_summary_path = PROJECT_ROOT / "frontend" / "model_summary.json"
+    manifest_path = PROJECT_ROOT / "frontend" / "assets" / "data" / "pipeline_assets_manifest.json"
+    frontend_summary_data = json.loads(frontend_summary_path.read_text(encoding="utf-8")) if frontend_summary_path.exists() else {}
+    manifest_data = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     return {
         "__name__": "__notebook__",
         "PROJECT_ROOT": PROJECT_ROOT,
         "project_root": PROJECT_ROOT,
+        "frontend_summary": frontend_summary_data,
+        "manifest": manifest_data,
     }
 
 
@@ -368,6 +376,89 @@ async def source(path: str = Query(..., min_length=1)):
 async def source_raw(path: str = Query(..., min_length=1)):
     file_path = _resolve_source_path(path)
     return no_cache_file_response(file_path)
+
+
+def _render_notebook_html(file_path: Path) -> str:
+    notebook = json.loads(file_path.read_text(encoding="utf-8"))
+    cells_html: list[str] = []
+
+    for index, cell in enumerate(notebook.get("cells", []), start=1):
+        source = "".join(cell.get("source", []))
+        cell_type = cell.get("cell_type", "code")
+
+        if cell_type == "markdown":
+            rendered = markdown_lib.markdown(source, extensions=["fenced_code", "tables"])
+            cells_html.append(
+                f'<section class="nb-cell nb-markdown"><div class="nb-body">{rendered}</div></section>'
+            )
+            continue
+
+        escaped_source = html.escape(source)
+        outputs_html: list[str] = []
+        for output in cell.get("outputs", []):
+            if "text" in output:
+                outputs_html.append(f'<pre class="nb-output">{html.escape("".join(output.get("text", [])))}</pre>')
+            elif output.get("data", {}).get("text/plain"):
+                outputs_html.append(f'<pre class="nb-output">{html.escape("".join(output["data"]["text/plain"]))}</pre>')
+
+        outputs_block = "".join(outputs_html)
+        cells_html.append(
+            f'''<section class="nb-cell nb-code">
+<div class="nb-label">Cell {index}</div>
+<pre class="nb-code-block"><code>{escaped_source}</code></pre>
+{outputs_block}
+</section>'''
+        )
+
+    title = file_path.stem.replace("_", " ")
+    body = "\n".join(cells_html)
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html.escape(title)}</title>
+  <style>
+    :root {{ color-scheme: dark; }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; font-family: Inter, Arial, sans-serif; background: #07090f; color: #e5e7eb; }}
+    .wrap {{ max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }}
+    .hero {{ margin-bottom: 32px; padding: 28px 30px; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; background: linear-gradient(180deg, rgba(20,24,35,0.95), rgba(10,12,18,0.95)); box-shadow: 0 20px 80px rgba(0,0,0,0.35); }}
+    .eyebrow {{ display: inline-block; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #f87171; margin-bottom: 12px; }}
+    h1 {{ margin: 0 0 10px; font-size: clamp(30px, 4vw, 48px); }}
+    .sub {{ margin: 0; color: #a1a1aa; font-size: 16px; }}
+    .nb-cell {{ margin: 0 0 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; background: rgba(14,18,27,0.92); overflow: hidden; }}
+    .nb-markdown .nb-body {{ padding: 28px 30px; line-height: 1.75; }}
+    .nb-markdown h1, .nb-markdown h2, .nb-markdown h3 {{ color: #fff; margin-top: 0; }}
+    .nb-markdown p, .nb-markdown li {{ color: #d4d4d8; }}
+    .nb-markdown code {{ background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 6px; }}
+    .nb-markdown pre {{ background: #0a0d14; padding: 18px; border-radius: 14px; overflow: auto; }}
+    .nb-label {{ padding: 14px 18px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #fca5a5; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }}
+    .nb-code-block, .nb-output {{ margin: 0; padding: 20px 22px; overflow: auto; font-family: Consolas, monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }}
+    .nb-code-block {{ background: #0b1020; color: #e2e8f0; }}
+    .nb-output {{ border-top: 1px solid rgba(255,255,255,0.06); background: #121826; color: #cbd5e1; }}
+    a {{ color: #f87171; }}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Notebook Render</div>
+      <h1>{html.escape(title)}</h1>
+      <p class="sub">Rendered notebook view for the raw project notebook file.</p>
+    </header>
+    {body}
+  </main>
+</body>
+</html>'''
+
+
+@app.get("/api/source/rendered", response_class=HTMLResponse)
+async def source_rendered(path: str = Query(..., min_length=1)):
+    file_path = _resolve_source_path(path)
+    if file_path.suffix.lower() != ".ipynb":
+        raise HTTPException(status_code=400, detail="Rendered view is only available for notebook files")
+    return HTMLResponse(_render_notebook_html(file_path), headers=NO_CACHE_HEADERS)
 
 
 @app.post("/run-cell")

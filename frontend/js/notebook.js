@@ -570,7 +570,7 @@ async function runAllCells() {
 }
 
 function openRawNotebook() {
-    window.open('/api/source/raw?path=RealEstate_Complete_Pipeline.ipynb', '_blank', 'noopener');
+    window.open('/api/source/rendered?path=RealEstate_Complete_Pipeline.ipynb', '_blank', 'noopener');
 }
 
 window.resetKernel = resetKernel;
