@@ -294,8 +294,3 @@ Key Python packages:
 
 See `requirements.txt` or environment-specific dependency files for complete lists.
 
-## Limitations and Considerations
-- **Temporal Scope**: Training data reflects market conditions at collection time
-- **Coverage Quality**: Direct support delegations have better prediction accuracy than fallback areas
-- **Surface Range**: Model trained on properties 20-1000 m2
-
