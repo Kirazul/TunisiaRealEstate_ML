@@ -475,6 +475,7 @@ async function loadDashboard() {
             merge,
             geo,
             training,
+            trainingReport,
             model,
         ] = await Promise.all([
             loadProjectJson('data/processed/01_discovery/01_merge_overview.json'),
@@ -482,6 +483,7 @@ async function loadDashboard() {
             loadProjectJson('data/processed/03_merge/03_merge_report.json'),
             loadProjectJson('data/processed/04_geo_alignment/04_geo_alignment_report.json'),
             loadProjectJson('data/processed/05_training_dataset/05_training_dataset_report.json'),
+            loadProjectJson('data/processed/08_model_training/08_model_training_report.json'),
             loadJson('/model_summary'),
         ]);
 
@@ -489,13 +491,11 @@ async function loadDashboard() {
         const cleanRows = (cleaning.datasets || []).reduce((sum, dataset) => sum + Number(dataset.rows || 0), 0);
         const geoMatched = Number(geo.matched_rows || 0);
         const modelingRows = Number(model.modeling_rows || 0);
-        const retention = rawRows ? (modelingRows / rawRows) * 100 : 0;
-
         setNodeText('dash-raw-rows', formatCompactNumber(rawRows));
         setNodeText('dash-clean-rows', formatCompactNumber(cleanRows));
         setNodeText('dash-geo-matched', formatCompactNumber(geoMatched));
         setNodeText('dash-modeling-rows', formatCompactNumber(modelingRows));
-        setNodeText('dash-retention-rate', formatPercent(retention));
+        setNodeText('dash-cv-score', `${(Number(trainingReport.cv_r2_mean || 0) * 100).toFixed(2)}% ± ${(Number(trainingReport.cv_r2_std || 0) * 100).toFixed(2)}%`);
         setNodeText('dash-atlas-reach', formatPercent(model.atlas_reach_pct || 0));
         setNodeText('dash-validation-score', formatPercent(model.accuracy_pct || 0));
 
@@ -603,11 +603,11 @@ async function loadDashboard() {
         buildDashboardChart('dashboard-model-chart', {
             type: 'bar',
             data: {
-                labels: (model.model_results || []).map((item) => item.model),
+                labels: (trainingReport.model_results || []).map((item) => item.model),
                 datasets: [{
                     label: 'Validation R²',
-                    data: (model.model_results || []).map((item) => Number(item.r2 || 0)),
-                    backgroundColor: ['#ef4444', '#475569'],
+                    data: (trainingReport.model_results || []).map((item) => Number(item.r2 || 0)),
+                    backgroundColor: (trainingReport.model_results || []).map((item) => item.model === trainingReport.best_model ? '#ef4444' : '#475569'),
                     borderRadius: 10,
                 }],
             },
