@@ -2,14 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY api/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
 
-COPY api api/
-COPY artifacts artifacts/
-COPY frontend frontend/
-COPY data data/
-COPY geo geo/
+RUN pip install --no-cache-dir -r api/requirements.txt
 
 ENV PYTHONUNBUFFERED=1
 

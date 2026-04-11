@@ -62,8 +62,8 @@
     "geo_delegation"
   ],
   "reports": {
-    "model_comparison": "data\\processed\\08_model_training\\08_model_comparison.png",
-    "holdout_scatter": "data\\processed\\08_model_training\\08_holdout_scatter.png"
+    "model_comparison": "data/processed/08_model_training/08_model_comparison.png",
+    "holdout_scatter": "data/processed/08_model_training/08_holdout_scatter.png"
   },
   "frontend_exports": {
     "atlas_geojson": "frontend\\assets\\data\\atlas.geojson",
