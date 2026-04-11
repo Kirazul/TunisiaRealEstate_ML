@@ -8,13 +8,13 @@ A complete end-to-end machine learning pipeline for predicting property prices a
 
 ---
 
-## Problem Statement
+## Problem Statement 🎯
 
 Real estate pricing in Tunisia varies dramatically by location. A 100 m2 apartment in Tunis costs fundamentally differently than the same property in Sfax or Kebili. This system addresses the challenge of predicting property prices across 264 delegations, where many regions lack sufficient training data, by combining direct modeling with hierarchical fallback benchmarks.
 
 ---
 
-## Architecture Overview
+## Architecture Overview 🏗️
 
 The system consists of three interconnected layers:
 
@@ -28,53 +28,53 @@ All components share common data artifacts, ensuring consistency between trainin
 
 ---
 
-## Pipeline Stages
+## Pipeline Stages 🔄
 
 The pipeline transforms raw property listings through eight sequential stages:
 
-### Stage 1: Dataset Discovery
+### Stage 1: Dataset Discovery 🔍
 
 Location: `pipeline/01_dataset_discovery.py`
 
 > Loads and profiles raw data sources. Identifies column mappings for price, surface, location, and property type across three source datasets. Produces discovery profiles documenting data quality, value distributions, and schema assessments.
 
-### Stage 2: Dataset Cleaning
+### Stage 2: Dataset Cleaning 🧹
 
 Location: `pipeline/02_dataset_cleaning.py`
 
 > Applies standardization rules across datasets. Handles encoding issues, trims whitespace, normalizes text fields, and filters obvious bad data. Removes duplicates based on key attribute combinations. Produces cleaned datasets ready for merging.
 
-### Stage 3: Merge Preparation
+### Stage 3: Merge Preparation 🔗
 
 Location: `pipeline/03_merge_preparation.py`
 
 > Unifies multiple source datasets into a single training corpus. Resolves schema differences between sources, maps property types to consistent categories, and prepares join keys for geographic alignment. Produces a merged dataset with unified schema.
 
-### Stage 4: Geographic Name Alignment
+### Stage 4: Geographic Name Alignment 🗺️
 
 Location: `pipeline/04_geo_name_alignment.py`
 
 > Maps textual location names to official Tunisia geography. Uses fuzzy matching against delegation and governorate names, with alias mappings for common variations (e.g., "Ariana Ville" -> "Ariana", "La Soukra" -> "La Soukra"). Produces geo-aligned dataset with standardized delegation keys.
 
-### Stage 5: Training Dataset Preparation
+### Stage 5: Training Dataset Preparation 📋
 
 Location: `pipeline/05_training_dataset_preparation.py`
 
 > Prepares the final training dataset. Creates binary property family indicators (apartment, house, land), filters invalid rows, and structures data for modeling. Produces training-ready CSV with all required columns.
 
-### Stage 6: Feature Engineering
+### Stage 6: Feature Engineering ⚙️
 
 Location: `pipeline/06_feature_engineering.py`
 
 > Transforms raw features into model-ready representations. Creates log-transformed price and surface, generates target-encoded geographic features (delegation and governorate mean prices), computes price-vs-local-median ratios, and prepares final feature matrices.
 
-### Stage 7: Visual Check
+### Stage 7: Visual Check 👁️
 
 Location: `pipeline/07_training_dataset_visual_check.py`
 
 > Performs quality assurance on the training dataset. Samples records across regions, validates geographic distributions, and generates diagnostic visualizations. Ensures data quality before model training.
 
-### Stage 8: Model Training
+### Stage 8: Model Training 🧠
 
 Location: `pipeline/08_model_training.py`
 
@@ -82,7 +82,7 @@ Location: `pipeline/08_model_training.py`
 
 ---
 
-## Fallback System
+## Fallback System 🔄
 
 The geographic fallback system ensures predictions for all 264 delegations, even those without direct training data:
 
@@ -98,7 +98,7 @@ Each delegation receives a coverage level and benchmark prediction based on the 
 
 ---
 
-## Model Performance
+## Model Performance 📊
 
 Current production model metrics:
 
@@ -112,11 +112,11 @@ Current production model metrics:
 
 **Features used**: surface_m2, rooms, lon, lat, geo_delegation_target_enc, geo_governorate_target_enc, price_vs_local_median, property_family, geo_governorate, geo_delegation
 
-## AI Narrator
+## AI Narrator 🤖
 
 The system includes AI narrator that generates real-time market insights for selected delegations. Powered by Groq's LLaMA model, it provides streaming, data-driven narratives about property markets across Tunisia.
 
-### Features
+### Features ✨
 
 - **Live Streaming Mode**: Real-time AI-generated narration appears character-by-character
 - **Static Mode**: Fallback to pre-computed template narratives
@@ -125,14 +125,14 @@ The system includes AI narrator that generates real-time market insights for sel
   - Property family (apartment/house/land)
   - Surface area slider
 
-### API Endpoints
+### API Endpoints 🌐
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/narrate` | POST | Streaming AI narrator (Server-Sent Events) |
 | `/api/narrate/sync` | POST | Synchronous AI narrator response |
 
-### Configuration
+### Configuration ⚙️
 
 Set the Groq API key in your environment:
 
@@ -142,7 +142,7 @@ export GROQ_API_KEY="your-groq-api-key"
 
 On Render, add `GROQ_API_KEY` in the Environment Variables section.
 
-## API Endpoints
+## API Endpoints 🌐
 
 The FastAPI application provides:
 
@@ -155,9 +155,9 @@ The FastAPI application provides:
 | `/search?q={query}` | GET | Search delegations by name |
 | `/execute` | POST | Run notebook cells via API |
 
-## Frontend Components
+## Frontend Components 🖥️
 
-### Geographic Atlas
+### Geographic Atlas 🗺️
 
 Location: `frontend/index.html`
 
@@ -168,13 +168,13 @@ Interactive map displaying all 264 Tunisia delegations. Supports two view modes:
 
 Features delegation search, selection detail panels, surface adjustment slider, and hover tooltips.
 
-### Pipeline Notebook
+### Pipeline Notebook 📓
 
 Location: `frontend/notebook.html`
 
 Static notebook artifact displaying the complete pipeline with explanations. Eight chapters corresponding to pipeline stages, with code cells, markdown documentation, and execution status.
 
-## Data Sources
+## Data Sources 📁
 
 Input datasets located in `data/raw/`:
 
@@ -188,7 +188,7 @@ Geography data in `geo/`:
 - Governorate mappings
 - Region codes
 
-## Output Artifacts
+## Output Artifacts 📦
 
 The pipeline generates artifacts in several locations:
 
@@ -225,7 +225,7 @@ frontend/model_summary.json  # Model metrics for UI
 - `data/processed/08_model_training/08_model_comparison.png` - Model performance comparison
 - `data/processed/08_model_training/08_holdout_scatter.png` - Predicted vs actual scatter plot
 
-## Quick Start
+## Quick Start 🚀
 
 ### Running the Pipeline
 
@@ -293,7 +293,7 @@ RealEstate/
 └── QUICK_START.md       # Quick start guide
 ```
 
-## Key Design Decisions
+## Key Design Decisions 💡
 
 ### Why Gradient Boosting
 
@@ -311,7 +311,7 @@ Some delegations have zero listings. Rather than refusing predictions, the fallb
 
 Real estate prices follow approximately log-normal distributions. Log-transforming price during training makes the target more Gaussian, improving model stability and performance.
 
-## Dependencies
+## Dependencies 📦
 
 Key Python packages:
 
