@@ -279,24 +279,7 @@ Key Python packages:
 See `requirements.txt` or environment-specific dependency files for complete lists.
 
 ## Limitations and Considerations
-
-- **Price Currency**: Predictions are in Tunisian Dinar (TND)
-- **Property Types**: Model supports apartments, houses, and land
 - **Temporal Scope**: Training data reflects market conditions at collection time
 - **Coverage Quality**: Direct support delegations have better prediction accuracy than fallback areas
 - **Surface Range**: Model trained on properties 20-1000 m2
 
-## Future Improvements
-
-Potential enhancements include:
-
-- Time-series modeling for price trends
-- Additional property features (condition, amenities)
-- External data integration (economic indicators)
-- Automatic retraining pipelines
-- Mobile-responsive frontend
-- Multi-language support
-
----
-
-For questions or contributions, refer to the pipeline documentation or examine the stage-by-stage code for implementation details.
