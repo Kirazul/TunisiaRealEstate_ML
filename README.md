@@ -1,4 +1,4 @@
-![Tunisia Real Estate AI](./assets/github.png)
+![Tunisia Real Estate AI](./assets/github_header.png)
 
 # Tunisia Real Estate Price Prediction System
 
