@@ -368,6 +368,7 @@ function isPointerInsideFeature(feature, clientX, clientY) {
 
 function updateTooltip(feature, clientX, clientY) {
     if (!feature) {
+        tooltip.classList.add("hidden");
         tooltip.style.display = "none";
         return;
     }
@@ -388,6 +389,7 @@ function updateTooltip(feature, clientX, clientY) {
     tooltip.innerHTML = `<div class="tooltip-kicker">Atlas Zone</div>${body}`;
     tooltip.style.left = `${clientX + 16}px`;
     tooltip.style.top = `${clientY - 12}px`;
+    tooltip.classList.remove("hidden");
     tooltip.style.display = "block";
 }
 
@@ -546,6 +548,7 @@ function backToAtlas() {
     if (cineOverlay) cineOverlay.classList.remove("active");
     setTimeout(() => landing.classList.add("active"), 200);
     d3.select(canvas).transition().duration(800).ease(d3.easeCubicInOut).call(zoom.transform, d3.zoomIdentity);
+    tooltip.classList.add("hidden");
     tooltip.style.display = "none";
     draw();
 }
@@ -641,6 +644,7 @@ canvas.addEventListener("mousemove", (event) => {
 
 canvas.addEventListener("mouseleave", () => {
     hovered = null;
+    tooltip.classList.add("hidden");
     tooltip.style.display = "none";
     draw();
 });
