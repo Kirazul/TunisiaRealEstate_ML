@@ -6,19 +6,27 @@ A complete end-to-end machine learning pipeline for predicting property prices a
 
 **Live Demo**: https://tunisiarealestate-ml.onrender.com/
 
+---
+
 ## Problem Statement
 
 Real estate pricing in Tunisia varies dramatically by location. A 100 m2 apartment in Tunis costs fundamentally differently than the same property in Sfax or Kebili. This system addresses the challenge of predicting property prices across 264 delegations, where many regions lack sufficient training data, by combining direct modeling with hierarchical fallback benchmarks.
+
+---
 
 ## Architecture Overview
 
 The system consists of three interconnected layers:
 
-1. **Data Pipeline** - Eight-stage transformation from raw listings to trained model
-2. **Prediction API** - FastAPI serving real-time predictions and model diagnostics
-3. **Geographic Atlas** - Interactive frontend displaying coverage, predictions, and fallback tiers
+| Layer | Description |
+|-------|------------|
+| **Data Pipeline** | Eight-stage transformation from raw listings to trained model |
+| **Prediction API** | FastAPI serving real-time predictions and model diagnostics |
+| **Geographic Atlas** | Interactive frontend displaying coverage, predictions, and fallback tiers |
 
 All components share common data artifacts, ensuring consistency between training and serving.
+
+---
 
 ## Pipeline Stages
 
@@ -28,61 +36,67 @@ The pipeline transforms raw property listings through eight sequential stages:
 
 Location: `pipeline/01_dataset_discovery.py`
 
-Loads and profiles raw data sources. Identifies column mappings for price, surface, location, and property type across three source datasets. Produces discovery profiles documenting data quality, value distributions, and schema assessments.
+> Loads and profiles raw data sources. Identifies column mappings for price, surface, location, and property type across three source datasets. Produces discovery profiles documenting data quality, value distributions, and schema assessments.
 
 ### Stage 2: Dataset Cleaning
 
 Location: `pipeline/02_dataset_cleaning.py`
 
-Applies standardization rules across datasets. Handles encoding issues, trims whitespace, normalizes text fields, and filters obvious bad data. Removes duplicates based on key attribute combinations. Produces cleaned datasets ready for merging.
+> Applies standardization rules across datasets. Handles encoding issues, trims whitespace, normalizes text fields, and filters obvious bad data. Removes duplicates based on key attribute combinations. Produces cleaned datasets ready for merging.
 
 ### Stage 3: Merge Preparation
 
 Location: `pipeline/03_merge_preparation.py`
 
-Unifies multiple source datasets into a single training corpus. Resolves schema differences between sources, maps property types to consistent categories, and prepares join keys for geographic alignment. Produces a merged dataset with unified schema.
+> Unifies multiple source datasets into a single training corpus. Resolves schema differences between sources, maps property types to consistent categories, and prepares join keys for geographic alignment. Produces a merged dataset with unified schema.
 
 ### Stage 4: Geographic Name Alignment
 
 Location: `pipeline/04_geo_name_alignment.py`
 
-Maps textual location names to official Tunisia geography. Uses fuzzy matching against delegation and governorate names, with alias mappings for common variations (e.g., "Ariana Ville" -> "Ariana", "La Soukra" -> "La Soukra"). Produces geo-aligned dataset with standardized delegation keys.
+> Maps textual location names to official Tunisia geography. Uses fuzzy matching against delegation and governorate names, with alias mappings for common variations (e.g., "Ariana Ville" -> "Ariana", "La Soukra" -> "La Soukra"). Produces geo-aligned dataset with standardized delegation keys.
 
 ### Stage 5: Training Dataset Preparation
 
 Location: `pipeline/05_training_dataset_preparation.py`
 
-Prepares the final training dataset. Creates binary property family indicators (apartment, house, land), filters invalid rows, and structures data for modeling. Produces training-ready CSV with all required columns.
+> Prepares the final training dataset. Creates binary property family indicators (apartment, house, land), filters invalid rows, and structures data for modeling. Produces training-ready CSV with all required columns.
 
 ### Stage 6: Feature Engineering
 
 Location: `pipeline/06_feature_engineering.py`
 
-Transforms raw features into model-ready representations. Creates log-transformed price and surface, generates target-encoded geographic features (delegation and governorate mean prices), computes price-vs-local-median ratios, and prepares final feature matrices.
+> Transforms raw features into model-ready representations. Creates log-transformed price and surface, generates target-encoded geographic features (delegation and governorate mean prices), computes price-vs-local-median ratios, and prepares final feature matrices.
 
 ### Stage 7: Visual Check
 
 Location: `pipeline/07_training_dataset_visual_check.py`
 
-Performs quality assurance on the training dataset. Samples records across regions, validates geographic distributions, and generates diagnostic visualizations. Ensures data quality before model training.
+> Performs quality assurance on the training dataset. Samples records across regions, validates geographic distributions, and generates diagnostic visualizations. Ensures data quality before model training.
 
 ### Stage 8: Model Training
 
 Location: `pipeline/08_model_training.py`
 
-Trains and evaluates prediction models. Compares GradientBoosting and RandomForest regressors, performs cross-validation, selects the best model, and generates performance reports. Exports the trained model artifact and frontend-ready coverage data.
+> Trains and evaluates prediction models. Compares GradientBoosting and RandomForest regressors, performs cross-validation, selects the best model, and generates performance reports. Exports the trained model artifact and frontend-ready coverage data.
+
+---
 
 ## Fallback System
 
 The geographic fallback system ensures predictions for all 264 delegations, even those without direct training data:
 
-1. **Exact Delegation** - Sufficient data in the delegation (direct support)
-2. **Locality Fallback** - Data from broader locality
-3. **Delegation Fallback** - Delegation-level aggregated data
-4. **Governorate Fallback** - Governorate-wide aggregated data
-5. **National Fallback** - Country-wide average
+| Tier | Description |
+|------|-------------|
+| **Exact Delegation** | Sufficient data in the delegation (direct support) |
+| **Locality Fallback** | Data from broader locality |
+| **Delegation Fallback** | Delegation-level aggregated data |
+| **Governorate Fallback** | Governorate-wide aggregated data |
+| **National Fallback** | Country-wide average |
 
 Each delegation receives a coverage level and benchmark prediction based on the best available data in its hierarchy. This approach guarantees 100% national coverage while distinguishing areas with direct evidence from those using borrowed benchmarks.
+
+---
 
 ## Model Performance
 
@@ -96,7 +110,7 @@ Current production model metrics:
 - **Fallback Coverage**: 161 delegations (60.98%)
 - **Atlas Reach**: 100% of Tunisia delegations
 
-Features used: surface_m2, rooms, lon, lat, geo_delegation_target_enc, geo_governorate_target_enc, price_vs_local_median, property_family, geo_governorate, geo_delegation
+**Features used**: surface_m2, rooms, lon, lat, geo_delegation_target_enc, geo_governorate_target_enc, price_vs_local_median, property_family, geo_governorate, geo_delegation
 
 ## API Endpoints
 
