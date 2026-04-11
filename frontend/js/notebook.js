@@ -475,7 +475,6 @@ async function loadDashboard() {
             merge,
             geo,
             training,
-            features,
             model,
         ] = await Promise.all([
             loadProjectJson('data/processed/01_discovery/01_merge_overview.json'),
@@ -483,7 +482,6 @@ async function loadDashboard() {
             loadProjectJson('data/processed/03_merge/03_merge_report.json'),
             loadProjectJson('data/processed/04_geo_alignment/04_geo_alignment_report.json'),
             loadProjectJson('data/processed/05_training_dataset/05_training_dataset_report.json'),
-            loadProjectJson('data/processed/06_feature_engineering/06_feature_engineering_report.json'),
             loadJson('/model_summary'),
         ]);
 
@@ -502,7 +500,7 @@ async function loadDashboard() {
         setNodeText('dash-validation-score', formatPercent(model.accuracy_pct || 0));
 
         setNodeText('dash-canonical-delegations', formatCompactNumber(geo.geo_canonical_delegations || 0));
-        setNodeText('dash-covered-delegations', formatCompactNumber(geo.unique_geo_delegations_covered || 0));
+        setNodeText('dash-geo-matched-compact', formatCompactNumber(geoMatched));
         setNodeText('dash-direct-delegations', formatCompactNumber(model.delegations_with_direct_support || 0));
         setNodeText('dash-unmatched-rows', formatCompactNumber(geo.unmatched_rows || 0));
 
@@ -510,14 +508,14 @@ async function loadDashboard() {
         setNodeText('dash-price-median', formatPrice(training.price_range?.median || 0));
         setNodeText('dash-price-max', formatPrice(training.price_range?.max || 0));
 
-        buildDashboardChart('dashboard-discovery-chart', {
+        buildDashboardChart('dashboard-funnel-chart', {
             type: 'bar',
             data: {
-                labels: (discovery.datasets || []).map((item) => item.dataset_name.replaceAll('_', ' ')),
+                labels: ['Raw', 'Clean', 'Merged', 'Geo matched', 'Modeling'],
                 datasets: [{
-                    label: 'Raw rows',
-                    data: (discovery.datasets || []).map((item) => Number(item.rows || 0)),
-                    backgroundColor: ['#7f1d1d', '#b91c1c', '#ef4444'],
+                    label: 'Rows',
+                    data: [rawRows, cleanRows, Number(merge.final_rows || 0), geoMatched, modelingRows],
+                    backgroundColor: ['#475569', '#7f1d1d', '#b91c1c', '#ef4444', '#fb7185'],
                     borderRadius: 10,
                 }],
             },
@@ -527,28 +525,6 @@ async function loadDashboard() {
                 scales: {
                     x: { ticks: { color: '#e2e8f0' }, grid: { color: 'rgba(255,255,255,0.04)' } },
                     y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                },
-            },
-        });
-
-        buildDashboardChart('dashboard-cleaning-chart', {
-            type: 'bar',
-            data: {
-                labels: (cleaning.datasets || []).map((item) => item.dataset_name.replaceAll('_', ' ')),
-                datasets: [{
-                    label: 'Clean rows',
-                    data: (cleaning.datasets || []).map((item) => Number(item.rows || 0)),
-                    backgroundColor: ['rgba(248,113,113,0.92)', 'rgba(251,146,60,0.92)', 'rgba(244,63,94,0.92)'],
-                    borderRadius: 999,
-                }],
-            },
-            options: {
-                indexAxis: 'y',
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                    y: { ticks: { color: '#e2e8f0' }, grid: { display: false } },
                 },
             },
         });
@@ -586,28 +562,6 @@ async function loadDashboard() {
                 maintainAspectRatio: false,
                 plugins: { legend: { position: 'bottom', labels: { color: '#e2e8f0', boxWidth: 12 } } },
                 cutout: '62%',
-            },
-        });
-
-        const governorateEntries = Object.entries(geo.geo_counts_by_governorate || {}).sort((a, b) => Number(b[1]) - Number(a[1]));
-        buildDashboardChart('dashboard-governorate-chart', {
-            type: 'bar',
-            data: {
-                labels: governorateEntries.map(([name]) => name),
-                datasets: [{
-                    label: 'Delegations',
-                    data: governorateEntries.map(([, count]) => Number(count || 0)),
-                    backgroundColor: 'rgba(248,113,113,0.86)',
-                    borderRadius: 8,
-                }],
-            },
-            options: {
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { ticks: { color: '#cbd5e1', maxRotation: 55, minRotation: 55 }, grid: { display: false } },
-                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-                },
             },
         });
 
@@ -667,13 +621,7 @@ async function loadDashboard() {
             },
         });
 
-        buildDashboardList('dashboard-unmatched-list', (geo.top_unmatched_pairs || []).slice(0, 5), (item) => `
-            <span>${item.governorate}</span>
-            <strong>${item.city}</strong>
-            <p>${Number(item.count || 0).toLocaleString()} unresolved row(s)</p>
-        `);
-
-        buildFeatureChips(model.feature_columns || features.feature_columns || []);
+        buildFeatureChips(model.feature_columns || []);
         setSceneStatus('Dashboard analytics loaded');
     } catch (error) {
         console.error('Failed to load dashboard analytics', error);

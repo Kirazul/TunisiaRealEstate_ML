@@ -44,8 +44,8 @@
                     <span class="tag">DASHBOARD LAYERS</span>
                     <nav class="chapter-nav">
                         <a href="#dashboard-overview">Mission Control</a>
-                        <a href="#dashboard-intake">Data Intake</a>
-                        <a href="#dashboard-geography">Geo Intelligence</a>
+                        <a href="#dashboard-pipeline">Pipeline Signal</a>
+                        <a href="#dashboard-geography">Geo Coverage</a>
                         <a href="#dashboard-model">Model Control</a>
                     </nav>
                 </aside>
@@ -80,73 +80,59 @@
                         </div>
                     </section>
 
-                    <section id="dashboard-intake" class="chapter-card glass dashboard-stage-card">
-                        <span class="tag">Data Intake</span>
-                        <h2>Source Funnel</h2>
-                        <p>How the three source datasets evolve from discovery to cleaned merge-ready records, then into the post-merge training foundation.</p>
-                        <div class="dashboard-chart-grid">
+                    <section id="dashboard-pipeline" class="chapter-card glass dashboard-stage-card">
+                        <span class="tag">Pipeline Signal</span>
+                        <h2>Funnel & Source Balance</h2>
+                        <p>The essentials only: one clean funnel for stage progression and one composition view for source balance inside the merged base.</p>
+                        <div class="dashboard-chart-grid dashboard-chart-grid-compact">
                             <article class="dashboard-chart-card dashboard-chart-card-wide">
-                                <div class="dashboard-card-head"><h3>Discovery Volume by Source</h3><p>Raw row counts detected before stage-specific cleaning.</p></div>
-                                <canvas id="dashboard-discovery-chart"></canvas>
+                                <div class="dashboard-card-head"><h3>Pipeline Funnel</h3><p>Raw discovery to final modeling rows.</p></div>
+                                <canvas id="dashboard-funnel-chart"></canvas>
                             </article>
                             <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Cleaning Yield</h3><p>Rows remaining after dataset-specific cleaning.</p></div>
-                                <canvas id="dashboard-cleaning-chart"></canvas>
-                            </article>
-                            <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Merge Composition</h3><p>Source balance inside the merged training base.</p></div>
+                                <div class="dashboard-card-head"><h3>Merge Composition</h3><p>Source contribution inside the training foundation.</p></div>
                                 <canvas id="dashboard-merge-chart"></canvas>
+                            </article>
+                            <article class="dashboard-chart-card">
+                                <div class="dashboard-card-head"><h3>Family Balance</h3><p>Training distribution by property family.</p></div>
+                                <canvas id="dashboard-family-chart"></canvas>
                             </article>
                         </div>
                     </section>
 
                     <section id="dashboard-geography" class="chapter-card glass dashboard-stage-card">
-                        <span class="tag">Geo Intelligence</span>
-                        <h2>Spatial Alignment & Coverage</h2>
-                        <p>Stage 4 converts free-text locations into canonical Tunisia geography, then the pipeline expands atlas reach with benchmark fallback logic.</p>
+                        <span class="tag">Geo Coverage</span>
+                        <h2>Alignment & Atlas Reach</h2>
+                        <p>Stage 4 quality and final atlas support are condensed into two focused diagnostics and four geography KPIs.</p>
                         <div class="dashboard-kpi-grid dashboard-kpi-grid-geo">
-                            <div class="dashboard-kpi-tile"><span>Canonical Delegations</span><strong id="dash-canonical-delegations">--</strong><small>official delegation geography loaded</small></div>
-                            <div class="dashboard-kpi-tile"><span>Covered Delegations</span><strong id="dash-covered-delegations">--</strong><small>delegations represented in training geography</small></div>
+                            <div class="dashboard-kpi-tile"><span>Canonical Delegations</span><strong id="dash-canonical-delegations">--</strong><small>official delegation reference loaded</small></div>
+                            <div class="dashboard-kpi-tile"><span>Matched Rows</span><strong id="dash-geo-matched-compact">--</strong><small>rows aligned to canonical geography</small></div>
                             <div class="dashboard-kpi-tile"><span>Direct Support</span><strong id="dash-direct-delegations">--</strong><small>delegations with direct evidence</small></div>
-                            <div class="dashboard-kpi-tile"><span>Unmatched Rows</span><strong id="dash-unmatched-rows">--</strong><small>rows still unresolved after alignment logic</small></div>
+                            <div class="dashboard-kpi-tile"><span>Unmatched Rows</span><strong id="dash-unmatched-rows">--</strong><small>residual locality mapping misses</small></div>
                         </div>
-                        <div class="dashboard-chart-grid">
+                        <div class="dashboard-chart-grid dashboard-chart-grid-compact">
                             <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Match Strategy Mix</h3><p>Exact, override, fuzzy, locality, and unmatched outcomes from stage 4.</p></div>
+                                <div class="dashboard-card-head"><h3>Match Strategy Mix</h3><p>How location rows were resolved in stage 4.</p></div>
                                 <canvas id="dashboard-geo-match-chart"></canvas>
                             </article>
-                            <article class="dashboard-chart-card dashboard-chart-card-wide">
-                                <div class="dashboard-card-head"><h3>Delegations by Governorate</h3><p>Canonical geography distribution used by the atlas and geo alignment step.</p></div>
-                                <canvas id="dashboard-governorate-chart"></canvas>
-                            </article>
-                        </div>
-                        <div class="dashboard-inline-grid">
-                            <article class="dashboard-list-card">
-                                <div class="dashboard-card-head"><h3>Top Unmatched Pairs</h3><p>Remaining locality strings that still need alias or mapping refinement.</p></div>
-                                <div id="dashboard-unmatched-list" class="dashboard-list"></div>
-                            </article>
-                            <article class="dashboard-list-card">
-                                <div class="dashboard-card-head"><h3>Coverage Tiers</h3><p>Current delegation support composition exported to the production atlas.</p></div>
+                            <article class="dashboard-chart-card">
+                                <div class="dashboard-card-head"><h3>Atlas Support Split</h3><p>Direct support versus fallback-backed delegation coverage.</p></div>
                                 <canvas id="dashboard-coverage-chart"></canvas>
                             </article>
                         </div>
                     </section>
 
-                    <section id="dashboard-model" class="chapter-card glass dashboard-stage-card">
+                    <section id="dashboard-model" class="chapter-card glass dashboard-stage-card dashboard-stage-card-last">
                         <span class="tag">Model Control</span>
-                        <h2>Feature Space & Model Output</h2>
-                        <p>The active Gradient Boosting model is monitored here through family balance, feature footprint, and comparison against the alternative baseline.</p>
-                        <div class="dashboard-chart-grid">
+                        <h2>Model Output</h2>
+                        <p>A minimal final view: one comparison panel and one compact artifact board for price range and the active feature stack.</p>
+                        <div class="dashboard-chart-grid dashboard-chart-grid-compact">
                             <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Training Family Balance</h3><p>Property family composition in the stage 5 training dataset.</p></div>
-                                <canvas id="dashboard-family-chart"></canvas>
-                            </article>
-                            <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Model Comparison</h3><p>R² score comparison between the shortlisted regressors.</p></div>
+                                <div class="dashboard-card-head"><h3>Model Comparison</h3><p>Validation R² for the shortlisted regressors.</p></div>
                                 <canvas id="dashboard-model-chart"></canvas>
                             </article>
                             <article class="dashboard-chart-card">
-                                <div class="dashboard-card-head"><h3>Price Range</h3><p>Observed target range preserved in the training dataset.</p></div>
+                                <div class="dashboard-card-head"><h3>Price Range</h3><p>Observed target range preserved in the final training frame.</p></div>
                                 <div class="dashboard-range-card">
                                     <div><span>Min</span><strong id="dash-price-min">--</strong></div>
                                     <div><span>Median</span><strong id="dash-price-median">--</strong></div>
@@ -154,7 +140,7 @@
                                 </div>
                             </article>
                         </div>
-                        <div class="dashboard-feature-board">
+                        <div class="dashboard-feature-board dashboard-feature-board-tight">
                             <div class="dashboard-card-head"><h3>Active Feature Stack</h3><p>Columns carried into the final production model from engineered geography and core property signals.</p></div>
                             <div id="dashboard-feature-chips" class="dashboard-chip-grid"></div>
                         </div>
