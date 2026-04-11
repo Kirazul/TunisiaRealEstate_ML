@@ -497,7 +497,6 @@ async function loadDashboard() {
         setNodeText('dash-modeling-rows', formatCompactNumber(modelingRows));
         setNodeText('dash-cv-score', `${(Number(trainingReport.cv_r2_mean || 0) * 100).toFixed(2)}% ± ${(Number(trainingReport.cv_r2_std || 0) * 100).toFixed(2)}%`);
         setNodeText('dash-atlas-reach', formatPercent(model.atlas_reach_pct || 0));
-        setNodeText('dash-validation-score', formatPercent(model.accuracy_pct || 0));
 
         setNodeText('dash-canonical-delegations', formatCompactNumber(geo.geo_canonical_delegations || 0));
         setNodeText('dash-geo-matched-compact', formatCompactNumber(geoMatched));
