@@ -4,6 +4,9 @@ const SUMMARY_PATH = "/model_summary";
 const canvas = document.getElementById("atlas-canvas");
 const ctx = canvas.getContext("2d");
 const tooltip = document.getElementById("tooltip");
+const focusLabel = document.getElementById("atlas-focus-label");
+const focusLabelName = document.getElementById("atlas-focus-name");
+const focusLabelGov = document.getElementById("atlas-focus-gov");
 const landing = document.getElementById("hud-landing");
 const detail = document.getElementById("hud-detail");
 const aiPanel = document.getElementById("hud-ai-info");
@@ -391,6 +394,22 @@ function updateTooltip(feature, clientX, clientY) {
     tooltip.style.display = "block";
 }
 
+function updateFocusLabel(feature) {
+    if (!focusLabel || !focusLabelName || !focusLabelGov) return;
+    if (!feature) {
+        focusLabel.classList.remove("active");
+        focusLabel.classList.add("hidden");
+        return;
+    }
+    const coverage = getCoverage(feature);
+    const delegation = getFeatureDelegation(feature);
+    const governorate = coverage?.governorate || feature.properties.governorate || "Tunisia";
+    focusLabelName.textContent = delegation;
+    focusLabelGov.textContent = `${governorate} Governorate`;
+    focusLabel.classList.remove("hidden");
+    requestAnimationFrame(() => focusLabel.classList.add("active"));
+}
+
 function applySummaryStats() {
     if (!summary) return;
     const { totalDelegations, atlasCovered, directCovered, fallbackCovered } = getCoverageCounts();
@@ -547,6 +566,7 @@ function backToAtlas() {
     setTimeout(() => landing.classList.add("active"), 200);
     d3.select(canvas).transition().duration(800).ease(d3.easeCubicInOut).call(zoom.transform, d3.zoomIdentity);
     tooltip.style.display = "none";
+    updateFocusLabel(null);
     draw();
 }
 
@@ -571,6 +591,7 @@ function selectFeature(feature, clientX, clientY) {
     syncInteractiveControls(getCoverage(feature), false);
     refreshDetailView(feature);
     loadPredictionForFeature(feature);
+    updateFocusLabel(feature);
     draw();
 }
 
@@ -636,12 +657,14 @@ canvas.addEventListener("mousemove", (event) => {
     hovered = hit;
     canvas.style.cursor = hit ? "pointer" : "crosshair";
     updateTooltip(hit, event.clientX, event.clientY);
+    updateFocusLabel(hit || selected);
     draw();
 });
 
 canvas.addEventListener("mouseleave", () => {
     hovered = null;
     tooltip.style.display = "none";
+    updateFocusLabel(selected);
     draw();
 });
 
