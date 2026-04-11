@@ -1,0 +1,12 @@
+services:
+  - name: tunisia-real-estate
+    github:
+      repo: Kirazul/TunisiaRealEstate_ML
+    branch: master
+    buildCommand: pip install -r api/requirements.txt
+    startCommand: uvicorn api.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    plan: free
+    region: frankfurt
