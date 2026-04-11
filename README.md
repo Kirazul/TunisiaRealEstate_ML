@@ -112,6 +112,36 @@ Current production model metrics:
 
 **Features used**: surface_m2, rooms, lon, lat, geo_delegation_target_enc, geo_governorate_target_enc, price_vs_local_median, property_family, geo_governorate, geo_delegation
 
+## AI Narrator
+
+The system includes a world-class AI narrator that generates real-time market insights for selected delegations. Powered by Groq's LLaMA model, it provides streaming, data-driven narratives about property markets across Tunisia.
+
+### Features
+
+- **Live Streaming Mode**: Real-time AI-generated narration appears character-by-character
+- **Static Mode**: Fallback to pre-computed template narratives
+- **Automatic Updates**: Narrator regenerates when changing:
+  - Selected delegation
+  - Property family (apartment/house/land)
+  - Surface area slider
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/narrate` | POST | Streaming AI narrator (Server-Sent Events) |
+| `/api/narrate/sync` | POST | Synchronous AI narrator response |
+
+### Configuration
+
+Set the Groq API key in your environment:
+
+```bash
+export GROQ_API_KEY="your-groq-api-key"
+```
+
+On Render, add `GROQ_API_KEY` in the Environment Variables section.
+
 ## API Endpoints
 
 The FastAPI application provides:
@@ -290,6 +320,7 @@ Key Python packages:
 - joblib - Model serialization
 - matplotlib - Visualization
 - fastapi, uvicorn - API server
+- httpx - Async HTTP client for AI narrator
 - d3 - Frontend visualizations
 
 See `requirements.txt` or environment-specific dependency files for complete lists.
