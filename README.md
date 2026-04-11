@@ -114,7 +114,7 @@ Current production model metrics:
 
 ## AI Narrator
 
-The system includes a world-class AI narrator that generates real-time market insights for selected delegations. Powered by Groq's LLaMA model, it provides streaming, data-driven narratives about property markets across Tunisia.
+The system includes AI narrator that generates real-time market insights for selected delegations. Powered by Groq's LLaMA model, it provides streaming, data-driven narratives about property markets across Tunisia.
 
 ### Features
 
