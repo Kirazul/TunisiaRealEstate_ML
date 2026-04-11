@@ -500,7 +500,6 @@ async function loadDashboard() {
         setNodeText('dash-canonical-delegations', formatCompactNumber(geo.geo_canonical_delegations || 0));
         setNodeText('dash-geo-matched-compact', formatCompactNumber(geoMatched));
         setNodeText('dash-direct-delegations', formatCompactNumber(model.delegations_with_direct_support || 0));
-        setNodeText('dash-unmatched-rows', formatCompactNumber(geo.unmatched_rows || 0));
 
         setNodeText('dash-price-min', formatPrice(training.price_range?.min || 0));
         setNodeText('dash-price-median', formatPrice(training.price_range?.median || 0));
@@ -619,7 +618,6 @@ async function loadDashboard() {
             },
         });
 
-        buildFeatureChips(model.feature_columns || []);
         setSceneStatus('Dashboard analytics loaded');
     } catch (error) {
         console.error('Failed to load dashboard analytics', error);
