@@ -364,6 +364,12 @@ async def source(path: str = Query(..., min_length=1)):
     return {"path": path, "content": file_path.read_text(encoding="utf-8")}
 
 
+@app.get("/api/source/raw")
+async def source_raw(path: str = Query(..., min_length=1)):
+    file_path = _resolve_source_path(path)
+    return no_cache_file_response(file_path)
+
+
 @app.post("/run-cell")
 async def run_cell(payload: dict[str, object]):
     code = str(payload.get("code", ""))

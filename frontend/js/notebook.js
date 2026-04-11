@@ -569,9 +569,14 @@ async function runAllCells() {
     setSceneStatus('Full lab completed');
 }
 
+function openRawNotebook() {
+    window.open('/api/source/raw?path=RealEstate_Complete_Pipeline.ipynb', '_blank', 'noopener');
+}
+
 window.resetKernel = resetKernel;
 window.runAllCells = runAllCells;
 window.runCell = runCell;
+window.openRawNotebook = openRawNotebook;
 
 initEditors();
 loadStoryAndDashboard();
