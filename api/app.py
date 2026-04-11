@@ -396,10 +396,30 @@ def _render_notebook_html(file_path: Path) -> str:
         escaped_source = html.escape(source)
         outputs_html: list[str] = []
         for output in cell.get("outputs", []):
+            data = output.get("data", {})
+            if data.get("image/png"):
+                image_data = data["image/png"]
+                if isinstance(image_data, list):
+                    image_data = "".join(image_data)
+                outputs_html.append(
+                    f'<div class="nb-output nb-output-image"><img src="data:image/png;base64,{image_data}" alt="Notebook figure"></div>'
+                )
+                continue
+            if data.get("text/html"):
+                html_data = data["text/html"]
+                if isinstance(html_data, list):
+                    html_data = "".join(html_data)
+                outputs_html.append(f'<div class="nb-output nb-output-html">{html_data}</div>')
+                continue
             if "text" in output:
-                outputs_html.append(f'<pre class="nb-output">{html.escape("".join(output.get("text", [])))}</pre>')
-            elif output.get("data", {}).get("text/plain"):
-                outputs_html.append(f'<pre class="nb-output">{html.escape("".join(output["data"]["text/plain"]))}</pre>')
+                text_value = "".join(output.get("text", []))
+                outputs_html.append(f'<pre class="nb-output">{html.escape(text_value)}</pre>')
+                continue
+            if data.get("text/plain"):
+                text_value = data["text/plain"]
+                if isinstance(text_value, list):
+                    text_value = "".join(text_value)
+                outputs_html.append(f'<pre class="nb-output">{html.escape(text_value)}</pre>')
 
         outputs_block = "".join(outputs_html)
         cells_html.append(
@@ -437,6 +457,9 @@ def _render_notebook_html(file_path: Path) -> str:
     .nb-code-block, .nb-output {{ margin: 0; padding: 20px 22px; overflow: auto; font-family: Consolas, monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }}
     .nb-code-block {{ background: #0b1020; color: #e2e8f0; }}
     .nb-output {{ border-top: 1px solid rgba(255,255,255,0.06); background: #121826; color: #cbd5e1; }}
+    .nb-output-image {{ padding: 18px; text-align: center; }}
+    .nb-output-image img {{ max-width: 100%; height: auto; border-radius: 14px; display: inline-block; background: #fff; }}
+    .nb-output-html {{ white-space: normal; font-family: Inter, Arial, sans-serif; }}
     a {{ color: #f87171; }}
   </style>
 </head>
