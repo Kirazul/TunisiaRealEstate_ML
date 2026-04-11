@@ -6,9 +6,13 @@ A complete end-to-end machine learning pipeline for predicting property prices a
 
 **Live Demo**: https://tunisiarealestate-ml.onrender.com/
 
-## Problem Statement
+---
+
+![Pipeline](./assets/icon_pipeline.svg) ## Problem Statement
 
 Real estate pricing in Tunisia varies dramatically by location. A 100 m2 apartment in Tunis costs fundamentally differently than the same property in Sfax or Kebili. This system addresses the challenge of predicting property prices across 264 delegations, where many regions lack sufficient training data, by combining direct modeling with hierarchical fallback benchmarks.
+
+---
 
 ## Architecture Overview
 
@@ -19,6 +23,8 @@ The system consists of three interconnected layers:
 3. **Geographic Atlas** - Interactive frontend displaying coverage, predictions, and fallback tiers
 
 All components share common data artifacts, ensuring consistency between training and serving.
+
+---
 
 ## Pipeline Stages
 
@@ -72,7 +78,11 @@ Location: `pipeline/08_model_training.py`
 
 Trains and evaluates prediction models. Compares GradientBoosting and RandomForest regressors, performs cross-validation, selects the best model, and generates performance reports. Exports the trained model artifact and frontend-ready coverage data.
 
+---
+
 ## Fallback System
+
+![Fallback](./assets/icon_fallback.svg)
 
 The geographic fallback system ensures predictions for all 264 delegations, even those without direct training data:
 
@@ -83,6 +93,8 @@ The geographic fallback system ensures predictions for all 264 delegations, even
 5. **National Fallback** - Country-wide average
 
 Each delegation receives a coverage level and benchmark prediction based on the best available data in its hierarchy. This approach guarantees 100% national coverage while distinguishing areas with direct evidence from those using borrowed benchmarks.
+
+---
 
 ## Model Performance
 
@@ -98,7 +110,11 @@ Current production model metrics:
 
 Features used: surface_m2, rooms, lon, lat, geo_delegation_target_enc, geo_governorate_target_enc, price_vs_local_median, property_family, geo_governorate, geo_delegation
 
+---
+
 ## API Endpoints
+
+![API](./assets/icon_api.svg)
 
 The FastAPI application provides:
 
@@ -111,7 +127,11 @@ The FastAPI application provides:
 | `/search?q={query}` | GET | Search delegations by name |
 | `/execute` | POST | Run notebook cells via API |
 
+---
+
 ## Frontend Components
+
+![Map](./assets/icon_map.svg)
 
 ### Geographic Atlas
 
@@ -130,6 +150,8 @@ Location: `frontend/notebook.html`
 
 Static notebook artifact displaying the complete pipeline with explanations. Eight chapters corresponding to pipeline stages, with code cells, markdown documentation, and execution status.
 
+---
+
 ## Data Sources
 
 Input datasets located in `data/raw/`:
@@ -143,6 +165,8 @@ Geography data in `geo/`:
 - Delegation boundaries and centroids
 - Governorate mappings
 - Region codes
+
+---
 
 ## Output Artifacts
 
@@ -163,7 +187,7 @@ data/processed/
 ├── 05_training_dataset/       # Training-ready CSV
 ├── 06_feature_engineering/  # Feature matrices
 ├── 07_visual_check/         # Diagnostic samples
-└── 08_model_training/       # Model report + plots
+└── 08_model_training/      # Model report + plots
 ```
 
 ### Frontend Exports
@@ -181,6 +205,8 @@ frontend/model_summary.json  # Model metrics for UI
 - `data/processed/08_model_training/08_model_comparison.png` - Model performance comparison
 - `data/processed/08_model_training/08_holdout_scatter.png` - Predicted vs actual scatter plot
 
+---
+
 ## Quick Start
 
 ### Running the Pipeline
@@ -188,7 +214,7 @@ frontend/model_summary.json  # Model metrics for UI
 Execute all pipeline stages:
 
 ```bash
-cd RealEstate/pipeline
+cd RealEstate_V2/pipeline
 python 09_run_pipeline.py
 ```
 
@@ -203,7 +229,7 @@ python 02_dataset_cleaning.py
 ### Running the API
 
 ```bash
-cd RealEstate_/api
+cd RealEstate_V2/api
 uvicorn app:app --reload --port 8000
 ```
 
@@ -214,7 +240,7 @@ Access API documentation at `http://localhost:8000/docs`
 Serve the frontend:
 
 ```bash
-cd RealEstate/frontend
+cd RealEstate_V2/frontend
 python -m http.server 8080
 ```
 
@@ -225,14 +251,17 @@ Open `http://localhost:8080` in browser
 Open and execute the complete pipeline in notebook:
 
 ```bash
-jupyter notebook RealEstate_Complete_Pipeline.ipynb
+jupyter notebook RealEstate_V2_Complete_Pipeline.ipynb
 ```
+
+---
 
 ## Project Structure
 
 ```
-RealEstate/
+RealEstate_V2/
 ├── api/                      # FastAPI application
+├── assets/                   # Icons and images
 ├── artifacts/               # Trained model files
 ├── data/
 │   ├── raw/                 # Source datasets
@@ -248,6 +277,8 @@ RealEstate/
 ├── README.md              # This file
 └── QUICK_START.md       # Quick start guide
 ```
+
+---
 
 ## Key Design Decisions
 
@@ -267,6 +298,8 @@ Some delegations have zero listings. Rather than refusing predictions, the fallb
 
 Real estate prices follow approximately log-normal distributions. Log-transforming price during training makes the target more Gaussian, improving model stability and performance.
 
+---
+
 ## Dependencies
 
 Key Python packages:
@@ -278,10 +311,31 @@ Key Python packages:
 - fastapi, uvicorn - API server
 - d3 - Frontend visualizations
 
-See `requirements.txt` or environment-specific dependency files for complete lists.
+See `api/requirements.txt` for the complete list.
+
+---
 
 ## Limitations and Considerations
+
+- **Price Currency**: Predictions are in Tunisian Dinar (TND)
+- **Property Types**: Model supports apartments, houses, and land
 - **Temporal Scope**: Training data reflects market conditions at collection time
 - **Coverage Quality**: Direct support delegations have better prediction accuracy than fallback areas
 - **Surface Range**: Model trained on properties 20-1000 m2
 
+---
+
+## Future Improvements
+
+Potential enhancements include:
+
+- Time-series modeling for price trends
+- Additional property features (condition, amenities)
+- External data integration (economic indicators)
+- Automatic retraining pipelines
+- Mobile-responsive frontend
+- Multi-language support
+
+---
+
+For questions or contributions, refer to the pipeline documentation or examine the stage-by-stage code for implementation details.
