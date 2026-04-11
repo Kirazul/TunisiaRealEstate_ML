@@ -399,7 +399,12 @@ html { scroll-behavior: smooth; }
 #hud-ai-info {
     top: 18%; left: 4%;
     width: min(340px, 26vw);
-    max-height: 38vh;
+    max-height: none;
+    overflow: visible;
+}
+#hud-ai-info.glass {
+    overflow: visible;
+    max-height: none;
 }
 #hud-detail{
     top: 50%; right: 4%;
@@ -417,12 +422,11 @@ html { scroll-behavior: smooth; }
     border-radius:0.6rem;
     padding: 1rem 1.2rem;
     box-shadow: 0 40px 100px -20px rgba(0,0,0,0.95);
-    overflow-y: auto;
 }
 
-#hud-detail.glass,
-#hud-ai-info.glass {
+#hud-detail.glass {
     overflow-y: auto;
+    max-height: 90vh;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) transparent;
 }
@@ -494,16 +498,17 @@ html { scroll-behavior: smooth; }
     margin-bottom: 0.9rem; letter-spacing: 2px;
 }
 #ai-content {
-    min-height: 120px; font-size: 0.78rem; line-height: 1.75;
+    font-size: 0.78rem; line-height: 1.75;
     color: var(--dim); position: relative;
     padding-right: 0.2rem;
+    min-height: auto;
 }
 #ai-text {
     white-space: pre-wrap;
     line-height: 1.8;
 }
 #ai-status {
-    margin-top: 1rem; font-size: 0.56rem; font-weight: 800;
+    font-size: 0.56rem; font-weight: 800;
     color: var(--accent); opacity: 0.6; letter-spacing: 1px;
     display: flex;
     align-items: center;
