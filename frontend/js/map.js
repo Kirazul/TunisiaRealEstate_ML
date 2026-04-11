@@ -372,21 +372,10 @@ function updateTooltip(feature, clientX, clientY) {
         tooltip.style.display = "none";
         return;
     }
-    const coverage = getCoverage(feature);
-    const profile = getActiveProfile(coverage);
     const delegation = getFeatureDelegation(feature);
+    const coverage = getCoverage(feature);
     const governorate = coverage?.governorate || feature.properties.governorate || "Tunisie";
-    let body = `<div class="tooltip-location"><span>${delegation}</span><small>${governorate} Governorate</small></div>`;
-    if (!coverage || !coverage.has_enough_data) {
-        body += `<div class="tooltip-meta tooltip-meta-alert">Insufficient data</div>`;
-    } else {
-        body += `<div class="tooltip-metrics">`;
-        body += `<div><label>Reference</label><strong>${Number(profile?.price_per_m2 ?? coverage.prediction).toLocaleString()} TND/m²</strong></div>`;
-        body += `<div><label>Support</label><strong>${Number(profile?.support_count ?? coverage.support_count ?? 0).toLocaleString()} obs</strong></div>`;
-        body += `</div>`;
-        body += `<div class="tooltip-tier">${formatCoverageLabel(profile?.coverage_level || coverage.coverage_level)}</div>`;
-    }
-    tooltip.innerHTML = `<div class="tooltip-kicker">Atlas Zone</div>${body}`;
+    tooltip.innerHTML = `<div class="tooltip-kicker">Atlas Zone</div><div class="tooltip-location"><span>${delegation}</span><small>${governorate} Governorate</small></div>`;
     tooltip.style.left = `${clientX + 16}px`;
     tooltip.style.top = `${clientY - 12}px`;
     tooltip.classList.remove("hidden");
