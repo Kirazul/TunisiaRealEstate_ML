@@ -8,5 +8,8 @@ services:
     envVars:
       - key: PYTHONUNBUFFERED
         value: "1"
+      - key: GROQ_API_KEY
+        generateValue: false
+        sync: false
     plan: free
     region: frankfurt

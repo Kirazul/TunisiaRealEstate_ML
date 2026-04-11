@@ -72,10 +72,22 @@
     </div>
 
     <div id="hud-ai-info" class="hud glass">
-        <span class="tag">AI NARRATOR</span>
+        <div class="ai-narrator-header">
+            <span class="tag">AI NARRATOR</span>
+            <div class="stream-toggle">
+                <button type="button" class="stream-btn" id="btn-stream-off" data-stream="off">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    STATIC
+                </button>
+                <button type="button" class="stream-btn active" id="btn-stream-on" data-stream="on">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    LIVE
+                </button>
+            </div>
+        </div>
         <h3 id="ai-title">GEOSPATIAL INSIGHTS</h3>
         <div id="ai-content">
-            <div class="cursor-typing"></div>
+            <div class="cursor-typing" id="ai-cursor"></div>
             <p id="ai-text"></p>
         </div>
         <div id="ai-status">ARTIFACT ANALYSIS · VERIFIED DATA</div>

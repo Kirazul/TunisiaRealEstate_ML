@@ -1,6 +1,8 @@
 const GEOJSON_PATH = "assets/data/atlas.geojson";
 const COVERAGE_PATH = "assets/data/zone_coverage.json";
 const SUMMARY_PATH = "/model_summary";
+const NARRATE_API = "/api/narrate";
+const NARRATE_SYNC_API = "/api/narrate/sync";
 const canvas = document.getElementById("atlas-canvas");
 const ctx = canvas.getContext("2d");
 const tooltip = document.getElementById("tooltip");
@@ -8,6 +10,7 @@ const landing = document.getElementById("hud-landing");
 const detail = document.getElementById("hud-detail");
 const aiPanel = document.getElementById("hud-ai-info");
 const aiText = document.getElementById("ai-text");
+const aiCursor = document.getElementById("ai-cursor");
 const cineOverlay = document.getElementById("cinematic-overlay");
 const fpsElem = document.getElementById("fps-counter");
 const zoneModal = document.getElementById("zone-modal");
@@ -42,6 +45,9 @@ let frameCount = 0;
 let predictionRefreshTimer = null;
 let activeMapMode = "support";
 let activeFamilyOverride = null;
+let streamingMode = true;
+let activeStreamController = null;
+let isStreaming = false;
 
 function getRegionCode(feature) {
     return String(feature.properties.region_code || feature.properties.delegation_key || "");
@@ -204,9 +210,10 @@ function renderFamilyProfiles(profiles) {
             if (familySelect) familySelect.value = familyName;
             activeFamilyOverride = familyName;
             if (selected) {
-                // Instantly update everything when switching family
                 refreshDetailView(selected);
                 loadPredictionForFeature(selected);
+                const requestData = buildNarratorRequest(selected);
+                streamAINarrator(requestData);
             }
         });
         container.appendChild(card);
@@ -417,6 +424,147 @@ function generateModelNarrative(feature) {
     aiText.textContent = `${locality} in ${delegation}, ${governorate} is currently analyzed via the ${enFamily} market profile. This selected family operates at the ${formatCoverageLabel(profile?.coverage_level || coverage.coverage_level)} tier with ${Number(profile?.support_count || coverage.support_count || 0).toLocaleString()} supporting observations. At the delegation level, this atlas currently classifies the zone as ${formatCoverageLabel(coverage.coverage_level)}. The deployed ${getSummaryModelName()} model achieved a validation R² of ${getSummaryAccuracyPct().toFixed(2)}%, and the selected-family benchmark is ${Number(profile?.price_per_m2 || coverage.prediction).toLocaleString()} TND per square meter.`;
 }
 
+function cancelActiveStream() {
+    if (activeStreamController) {
+        activeStreamController.abort();
+        activeStreamController = null;
+    }
+    isStreaming = false;
+}
+
+async function streamAINarrator(requestData) {
+    cancelActiveStream();
+    
+    if (!streamingMode) {
+        try {
+            const response = await fetch(NARRATE_SYNC_API, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestData)
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const result = await response.json();
+            aiText.textContent = result.narrative || aiText.textContent;
+        } catch (error) {
+            console.warn("Sync narrator failed, falling back to template:", error.message);
+            generateModelNarrative(selected);
+        }
+        return;
+    }
+    
+    isStreaming = true;
+    aiText.textContent = "";
+    if (aiCursor) {
+        aiCursor.style.display = "inline-block";
+        aiCursor.classList.add("streaming");
+    }
+    aiPanel.classList.add("stream-active");
+    updateAIStatus("GENERATING INSIGHTS...");
+    
+    const controller = new AbortController();
+    activeStreamController = controller;
+    
+    try {
+        const response = await fetch(NARRATE_API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData),
+            signal: controller.signal
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let fullText = "";
+        
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split("\n");
+            
+            for (const line of lines) {
+                if (!line.startsWith("data: ")) continue;
+                const data = line.slice(6);
+                if (data === "[DONE]") break;
+                
+                if (data.startsWith("[ERROR]")) {
+                    console.warn("Stream error:", data);
+                    break;
+                }
+                
+                try {
+                    fullText += data;
+                    aiText.textContent = fullText;
+                } catch (e) {
+                    console.warn("Parse error:", e);
+                }
+            }
+        }
+        
+        if (!fullText.trim()) {
+            generateModelNarrative(selected);
+        }
+    } catch (error) {
+        if (error.name === "AbortError") {
+            return;
+        }
+        console.warn("Streaming failed, using template:", error.message);
+        generateModelNarrative(selected);
+    } finally {
+        isStreaming = false;
+        activeStreamController = null;
+        if (aiCursor) {
+            aiCursor.style.display = "none";
+            aiCursor.classList.remove("streaming");
+        }
+        aiPanel.classList.remove("stream-active");
+        updateAIStatus("ARTIFACT ANALYSIS · VERIFIED DATA");
+    }
+}
+
+function updateAIStatus(status) {
+    const statusElem = document.getElementById("ai-status");
+    if (statusElem) statusElem.textContent = status;
+}
+
+function buildNarratorRequest(feature) {
+    const coverage = getCoverage(feature);
+    const selectedFamily = getSelectedFamily(coverage);
+    const profile = getActiveProfile(coverage);
+    const governorate = coverage?.governorate || feature.properties.governorate || "Tunisia";
+    const delegation = getFeatureDelegation(feature);
+    const locality = getFeatureName(feature);
+    const surface = Number(surfaceSlider ? surfaceSlider.value : 120);
+    const pricePerM2 = Number(profile?.price_per_m2 || coverage?.prediction || 0);
+    const totalPrice = pricePerM2 * surface;
+    const labels = { apartment: "Apartment", house: "House", land: "Land" };
+    const propertyType = labels[selectedFamily] || selectedFamily;
+    
+    let fallbackContext = "Standard market conditions.";
+    if (coverage?.coverage_level !== "exact_sector") {
+        const level = formatCoverageLabel(coverage?.coverage_level || "unknown");
+        fallbackContext = `This delegation uses ${level} data with limited local observations.`;
+    }
+    
+    return {
+        delegation: delegation,
+        governorate: governorate,
+        property_type: propertyType,
+        surface: surface,
+        price_per_m2: Math.round(pricePerM2),
+        total_price: Math.round(totalPrice),
+        coverage_level: coverage?.coverage_level || "unknown",
+        support_count: Number(profile?.support_count || coverage?.support_count || 0),
+        model_r2: getSummaryAccuracyPct(),
+        fallback_context: fallbackContext
+    };
+}
+
 function refreshDetailView(feature) {
     const coverage = getCoverage(feature);
     const governorate = coverage?.governorate || feature.properties.governorate || "Tunisia";
@@ -432,7 +580,11 @@ function refreshDetailView(feature) {
     document.getElementById("meta-model").textContent = summary ? getSummaryModelName() : "--";
     syncInteractiveControls(coverage, true);
     renderFamilyProfiles(coverage?.profiles || {});
-    generateModelNarrative(feature);
+    
+    if (selected) {
+        const requestData = buildNarratorRequest(feature);
+        streamAINarrator(requestData);
+    }
 }
 
 function getBestModelMetrics() {
@@ -666,7 +818,11 @@ if (surfaceSlider && surfaceSliderValue) {
         setSurfaceValue(surfaceSlider.value);
         if (selected) {
             clearTimeout(predictionRefreshTimer);
-            predictionRefreshTimer = setTimeout(() => loadPredictionForFeature(selected), 120);
+            predictionRefreshTimer = setTimeout(() => {
+                loadPredictionForFeature(selected);
+                const requestData = buildNarratorRequest(selected);
+                streamAINarrator(requestData);
+            }, 120);
         }
     });
 }
@@ -675,14 +831,22 @@ if (surfaceInput) {
     surfaceInput.addEventListener("input", () => { setSurfaceValue(surfaceInput.value); });
     surfaceInput.addEventListener("change", () => {
         setSurfaceValue(surfaceInput.value);
-        if (selected) loadPredictionForFeature(selected);
+        if (selected) {
+            loadPredictionForFeature(selected);
+            const requestData = buildNarratorRequest(selected);
+            streamAINarrator(requestData);
+        }
     });
 }
 
 document.querySelectorAll(".preset-btn").forEach((button) => {
     button.addEventListener("click", () => {
         setSurfaceValue(button.getAttribute("data-surface"));
-        if (selected) loadPredictionForFeature(selected);
+        if (selected) {
+            loadPredictionForFeature(selected);
+            const requestData = buildNarratorRequest(selected);
+            streamAINarrator(requestData);
+        }
     });
 });
 
@@ -701,6 +865,19 @@ if (familySelect) {
         }
     });
 }
+
+document.querySelectorAll(".stream-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+        const mode = button.dataset.stream;
+        streamingMode = mode === "on";
+        document.querySelectorAll(".stream-btn").forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+        if (selected) {
+            const requestData = buildNarratorRequest(selected);
+            streamAINarrator(requestData);
+        }
+    });
+});
 
 setSurfaceValue(surfaceSlider ? surfaceSlider.value : 120);
 resize();

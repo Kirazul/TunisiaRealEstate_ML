@@ -5,6 +5,7 @@ Production API with frontend for predicting property prices in Tunisia
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import html
 import json
@@ -22,15 +23,64 @@ import joblib
 import matplotlib
 import numpy as np
 import pandas as pd
+import httpx
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, HTMLResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 import markdown as markdown_lib
 from pydantic import BaseModel, Field
 
 
 matplotlib.use("Agg")
+
+
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+
+AI_NARRATOR_SYSTEM_PROMPT = """You are a world-class real estate data analyst and storyteller for Tunisia Real Estate AI.
+Your role is to generate compelling, data-driven narratives about property markets in Tunisia.
+
+When generating narration:
+1. Analyze the delegation data including coverage level, support count, price benchmarks, and model metrics
+2. Provide context about the local market characteristics
+3. Compare with regional and national benchmarks when relevant
+4. Use specific numbers and data points from the provided context
+5. Be concise but informative - aim for 2-3 sentences that convey key insights
+6. Use a confident, professional tone suitable for a premium real estate platform
+7. Never make up data - only use information provided in the context
+8. Highlight interesting patterns or notable market characteristics
+
+Format your response as a polished narrative suitable for display in a professional real estate application."""
+
+AI_NARRATOR_USER_TEMPLATE = """Generate a concise, compelling real estate market narration for the following location in Tunisia:
+
+**Location Details:**
+- Delegation: {delegation}
+- Governorate: {governorate}
+- Property Type: {property_type}
+- Surface: {surface} m²
+
+**Market Data:**
+- Price per m²: {price_per_m2} TND
+- Total Price: {total_price} TND
+- Coverage Level: {coverage_level}
+- Support Observations: {support_count}
+- Model R²: {model_r2}%
+
+**Context:**
+{fallback_context}
+
+Generate a 2-3 sentence market insight narrative that:
+- Identifies the location and property type
+- Highlights key market metrics and their significance
+- Provides relevant local/regional context
+- Maintains a professional, confident tone
+
+Respond ONLY with the narrative text, no preamble or formatting markers."""
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -604,6 +654,144 @@ async def predict_price(request: PredictionRequest) -> PredictionResponse:
 @app.get("/delegations")
 async def get_delegations():
     return {"delegations": list(delegation_coords.keys()) if delegation_coords else []}
+
+
+class NarratorRequest(BaseModel):
+    model_config = {"protected_namespaces": ()}
+    
+    delegation: str
+    governorate: str
+    property_type: str
+    surface: float
+    price_per_m2: float
+    total_price: float
+    coverage_level: str
+    support_count: int
+    model_r2: float
+    fallback_context: str = ""
+
+
+async def generate_narrator_stream(request: NarratorRequest):
+    api_key = os.environ.get("GROQ_API_KEY", "")
+    if not api_key:
+        yield "data: [ERROR] GROQ_API_KEY not configured\n\n"
+        return
+    
+    user_prompt = AI_NARRATOR_USER_TEMPLATE.format(
+        delegation=request.delegation,
+        governorate=request.governorate,
+        property_type=request.property_type,
+        surface=request.surface,
+        price_per_m2=request.price_per_m2,
+        total_price=request.total_price,
+        coverage_level=request.coverage_level.replace("_", " ").title(),
+        support_count=request.support_count,
+        model_r2=request.model_r2,
+        fallback_context=request.fallback_context or "Standard market conditions apply."
+    )
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": GROQ_MODEL,
+        "messages": [
+            {"role": "system", "content": AI_NARRATOR_SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt}
+        ],
+        "stream": True,
+        "max_tokens": 200,
+        "temperature": 0.7
+    }
+    
+    try:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            async with client.stream("POST", GROQ_API_URL, json=payload, headers=headers) as response:
+                if response.status_code != 200:
+                    error_text = await response.text()
+                    yield f"data: [ERROR] API error: {response.status_code}\n\n"
+                    return
+                
+                async for line in response.aiter_lines():
+                    if line.startswith("data: "):
+                        data_str = line[6:]
+                        if data_str == "[DONE]":
+                            yield "data: [DONE]\n\n"
+                            break
+                        try:
+                            chunk = json.loads(data_str)
+                            content = chunk.get("choices", [{}])[0].get("delta", {}).get("content", "")
+                            if content:
+                                safe_content = content.replace("\n", " ").replace("\r", "")
+                                yield f"data: {safe_content}\n\n"
+                        except json.JSONDecodeError:
+                            continue
+    except Exception as e:
+        yield f"data: [ERROR] {str(e)}\n\n"
+
+
+@app.post("/api/narrate")
+async def narrator_stream(request: NarratorRequest):
+    return StreamingResponse(
+        generate_narrator_stream(request),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"
+        }
+    )
+
+
+@app.post("/api/narrate/sync")
+async def narrator_sync(request: NarratorRequest):
+    api_key = os.environ.get("GROQ_API_KEY", "")
+    if not api_key:
+        raise HTTPException(status_code=503, detail="AI narrator not configured")
+    
+    user_prompt = AI_NARRATOR_USER_TEMPLATE.format(
+        delegation=request.delegation,
+        governorate=request.governorate,
+        property_type=request.property_type,
+        surface=request.surface,
+        price_per_m2=request.price_per_m2,
+        total_price=request.total_price,
+        coverage_level=request.coverage_level.replace("_", " ").title(),
+        support_count=request.support_count,
+        model_r2=request.model_r2,
+        fallback_context=request.fallback_context or "Standard market conditions apply."
+    )
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": GROQ_MODEL,
+        "messages": [
+            {"role": "system", "content": AI_NARRATOR_SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt}
+        ],
+        "max_tokens": 200,
+        "temperature": 0.7
+    }
+    
+    try:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.post(GROQ_API_URL, json=payload, headers=headers)
+            if response.status_code != 200:
+                raise HTTPException(status_code=502, detail=f"AI API error: {response.status_code}")
+            
+            result = response.json()
+            narrative = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+            return {"narrative": narrative.strip()}
+    except httpx.TimeoutException:
+        raise HTTPException(status_code=504, detail="AI narrator request timed out")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 app.mount("/", NoCacheStaticFiles(directory=FRONTEND_DIR, html=True), name="frontend-root")
