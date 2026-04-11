@@ -1,0 +1,16 @@
+{
+  "stage": "03_merge_preparation",
+  "input_rows": 13722,
+  "rows_removed_as_cross_source_duplicates": 3,
+  "final_rows": 13719,
+  "source_priority": {
+    "tunisia_real_estate": 1,
+    "property_prices_in_tunisia": 2,
+    "data_prices_cleaned": 3
+  },
+  "source_distribution": {
+    "tunisia_real_estate": 9038,
+    "property_prices_in_tunisia": 2920,
+    "data_prices_cleaned": 1761
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "stage": "02_dataset_cleaning",
+  "datasets": [
+    {
+      "dataset_name": "tunisia_real_estate",
+      "rows": 9166,
+      "all_empty_columns": [],
+      "duplicate_rows": 0,
+      "invalid_property_family_rows": 0,
+      "invalid_governorate_rows": 0,
+      "surface_non_positive_rows": 0,
+      "price_non_positive_rows": 0,
+      "rows_missing_core_fields": 0
+    },
+    {
+      "dataset_name": "property_prices_in_tunisia",
+      "rows": 2920,
+      "all_empty_columns": [],
+      "duplicate_rows": 0,
+      "invalid_property_family_rows": 0,
+      "invalid_governorate_rows": 0,
+      "surface_non_positive_rows": 0,
+      "price_non_positive_rows": 0,
+      "rows_missing_core_fields": 0
+    },
+    {
+      "dataset_name": "data_prices_cleaned",
+      "rows": 1745,
+      "all_empty_columns": [],
+      "duplicate_rows": 0,
+      "invalid_property_family_rows": 0,
+      "invalid_governorate_rows": 0,
+      "surface_non_positive_rows": 0,
+      "price_non_positive_rows": 0,
+      "rows_missing_core_fields": 0
+    }
+  ],
+  "status": "ready_for_merge_if_all_issue_counts_are_zero"
+}

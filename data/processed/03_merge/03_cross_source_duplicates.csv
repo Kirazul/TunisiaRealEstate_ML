@@ -1,0 +1,87 @@
+source_dataset,source_row_id,property_family,governorate,delegation,city,location,surface_m2,rooms,bathrooms,price_tnd,source_priority
+tunisia_real_estate,6765,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,,200000.0,1
+data_prices_cleaned,2728,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,1.0,200000.0,3
+tunisia_real_estate,8929,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,,265000.0,1
+property_prices_in_tunisia,667,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,1.0,265000.0,2
+tunisia_real_estate,24540,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,,300000.0,1
+property_prices_in_tunisia,621,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,100.0,3.0,1.0,300000.0,2
+tunisia_real_estate,15574,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,151.0,3.0,,400000.0,1
+data_prices_cleaned,2816,apartment,Ariana,Ariana Ville,Ariana Ville,Ariana Ville,151.0,3.0,3.0,400000.0,3
+tunisia_real_estate,1064,apartment,Ariana,La Soukra,La Soukra,La Soukra,80.0,3.0,,130000.0,1
+property_prices_in_tunisia,2035,apartment,Ariana,La Soukra,La Soukra,La Soukra,80.0,3.0,1.0,130000.0,2
+tunisia_real_estate,7355,apartment,Ariana,La Soukra,La Soukra,La Soukra,115.0,2.0,,380000.0,1
+data_prices_cleaned,2233,apartment,Ariana,La Soukra,La Soukra,La Soukra,115.0,2.0,1.0,380000.0,3
+tunisia_real_estate,280,apartment,Ariana,La Soukra,La Soukra,La Soukra,124.0,3.0,,250000.0,1
+property_prices_in_tunisia,2044,apartment,Ariana,La Soukra,La Soukra,La Soukra,124.0,3.0,1.0,250000.0,2
+tunisia_real_estate,8031,apartment,Ariana,La Soukra,La Soukra,La Soukra,130.0,4.0,,439000.0,1
+data_prices_cleaned,2155,apartment,Ariana,La Soukra,La Soukra,La Soukra,130.0,4.0,2.0,439000.0,3
+tunisia_real_estate,387,apartment,Ariana,La Soukra,La Soukra,La Soukra,150.0,4.0,,350000.0,1
+property_prices_in_tunisia,1445,apartment,Ariana,La Soukra,La Soukra,La Soukra,150.0,4.0,3.0,350000.0,2
+tunisia_real_estate,2824,apartment,Ariana,La Soukra,La Soukra,La Soukra,157.0,4.0,,525000.0,1
+data_prices_cleaned,2000,apartment,Ariana,La Soukra,La Soukra,La Soukra,157.0,4.0,3.0,525000.0,3
+tunisia_real_estate,8913,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,64.0,2.0,,85000.0,1
+property_prices_in_tunisia,2500,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,64.0,2.0,1.0,85000.0,2
+tunisia_real_estate,21906,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,70.0,3.0,,145000.0,1
+data_prices_cleaned,3804,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,70.0,3.0,1.0,145000.0,3
+tunisia_real_estate,13132,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,80.0,2.0,,110000.0,1
+property_prices_in_tunisia,2892,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,80.0,2.0,1.0,110000.0,2
+tunisia_real_estate,9448,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,110.0,4.0,,130000.0,1
+property_prices_in_tunisia,2613,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,110.0,4.0,2.0,130000.0,2
+tunisia_real_estate,22207,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,110.0,4.0,,155000.0,1
+property_prices_in_tunisia,3352,apartment,Ben Arous,El Mourouj,El Mourouj,El Mourouj,110.0,4.0,1.0,155000.0,2
+tunisia_real_estate,7959,apartment,Bizerte,Bizerte Nord,Bizerte Nord,Bizerte Nord,120.0,4.0,,270000.0,1
+property_prices_in_tunisia,3568,apartment,Bizerte,Bizerte Nord,Bizerte Nord,Bizerte Nord,120.0,4.0,1.0,270000.0,2
+tunisia_real_estate,15603,apartment,Mahdia,Mahdia,Mahdia,Mahdia,60.0,1.0,,160000.0,1
+data_prices_cleaned,2372,apartment,Mahdia,Mahdia,Mahdia,Mahdia,60.0,1.0,1.0,160000.0,3
+tunisia_real_estate,10682,apartment,Mahdia,Mahdia,Mahdia,Mahdia,81.0,2.0,,185000.0,1
+data_prices_cleaned,1672,apartment,Mahdia,Mahdia,Mahdia,Mahdia,81.0,2.0,1.0,185000.0,3
+tunisia_real_estate,7432,apartment,Mahdia,Mahdia,Mahdia,Mahdia,101.0,2.0,,285000.0,1
+data_prices_cleaned,2709,apartment,Mahdia,Mahdia,Mahdia,Mahdia,101.0,2.0,1.0,285000.0,3
+tunisia_real_estate,6880,apartment,Mahdia,Mahdia,Mahdia,Mahdia,122.0,2.0,,450000.0,1
+data_prices_cleaned,1977,apartment,Mahdia,Mahdia,Mahdia,Mahdia,122.0,2.0,1.0,450000.0,3
+tunisia_real_estate,14519,apartment,Monastir,Monastir,Monastir,Monastir,85.0,2.0,,160000.0,1
+data_prices_cleaned,1249,apartment,Monastir,Monastir,Monastir,Monastir,85.0,2.0,1.0,160000.0,3
+tunisia_real_estate,13650,apartment,Nabeul,Hammamet,Hammamet,Hammamet,130.0,2.0,,470000.0,1
+data_prices_cleaned,2687,apartment,Nabeul,Hammamet,Hammamet,Hammamet,130.0,2.0,1.0,470000.0,3
+tunisia_real_estate,3301,apartment,Nabeul,Kelibia,Kelibia,Kelibia,96.0,2.0,,145000.0,1
+data_prices_cleaned,84,apartment,Nabeul,Kelibia,Kelibia,Kelibia,96.0,2.0,1.0,145000.0,3
+tunisia_real_estate,7954,apartment,Nabeul,Kelibia,Kelibia,Kelibia,100.0,2.0,,60000.0,1
+data_prices_cleaned,1952,apartment,Nabeul,Kelibia,Kelibia,Kelibia,100.0,2.0,1.0,60000.0,3
+tunisia_real_estate,917,apartment,Nabeul,Kelibia,Kelibia,Kelibia,103.0,2.0,,150000.0,1
+data_prices_cleaned,2069,apartment,Nabeul,Kelibia,Kelibia,Kelibia,103.0,2.0,1.0,150000.0,3
+tunisia_real_estate,946,apartment,Nabeul,Kelibia,Kelibia,Kelibia,110.0,2.0,,170000.0,1
+data_prices_cleaned,3432,apartment,Nabeul,Kelibia,Kelibia,Kelibia,110.0,2.0,1.0,170000.0,3
+tunisia_real_estate,2762,apartment,Nabeul,Kelibia,Kelibia,Kelibia,120.0,2.0,,150000.0,1
+data_prices_cleaned,978,apartment,Nabeul,Kelibia,Kelibia,Kelibia,120.0,2.0,1.0,150000.0,3
+tunisia_real_estate,8099,apartment,Nabeul,Kelibia,Kelibia,Kelibia,140.0,2.0,,180000.0,1
+data_prices_cleaned,905,apartment,Nabeul,Kelibia,Kelibia,Kelibia,140.0,2.0,1.0,180000.0,3
+tunisia_real_estate,20623,apartment,Sousse,Hammam Sousse,Hammam Sousse,Hammam Sousse,85.0,2.0,,145000.0,1
+property_prices_in_tunisia,7886,apartment,Sousse,Hammam Sousse,Hammam Sousse,Hammam Sousse,85.0,2.0,1.0,145000.0,2
+tunisia_real_estate,24368,apartment,Sousse,Hergla,Hergla,Hergla,33.0,1.0,,122358.0,1
+data_prices_cleaned,1572,apartment,Sousse,Hergla,Hergla,Hergla,33.0,1.0,1.0,122358.0,3
+tunisia_real_estate,16800,apartment,Tunis,Carthage,Carthage,Carthage,100.0,3.0,,250000.0,1
+data_prices_cleaned,3613,apartment,Tunis,Carthage,Carthage,Carthage,100.0,3.0,1.0,250000.0,3
+tunisia_real_estate,1385,apartment,Tunis,Ettahrir,Ettahrir,Ettahrir,110.0,3.0,,210000.0,1
+property_prices_in_tunisia,12539,apartment,Tunis,Ettahrir,Ettahrir,Ettahrir,110.0,3.0,1.0,210000.0,2
+property_prices_in_tunisia,12124,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,60.0,1.0,1.0,120000.0,2
+data_prices_cleaned,2352,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,60.0,1.0,1.0,120000.0,3
+property_prices_in_tunisia,10861,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,68.0,1.0,1.0,180000.0,2
+data_prices_cleaned,360,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,68.0,1.0,1.0,180000.0,3
+property_prices_in_tunisia,10667,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,70.0,1.0,1.0,180000.0,2
+data_prices_cleaned,2599,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,70.0,1.0,1.0,180000.0,3
+property_prices_in_tunisia,10810,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,90.0,2.0,1.0,215000.0,2
+data_prices_cleaned,579,apartment,Tunis,L'Aouina,L'Aouina,L'Aouina,90.0,2.0,1.0,215000.0,3
+tunisia_real_estate,1992,apartment,Tunis,La Goulette,La Goulette,La Goulette,144.0,3.0,,550000.0,1
+data_prices_cleaned,469,apartment,Tunis,La Goulette,La Goulette,La Goulette,144.0,3.0,2.0,550000.0,3
+tunisia_real_estate,24118,apartment,Tunis,La Marsa,La Marsa,La Marsa,100.0,2.0,,460000.0,1
+data_prices_cleaned,3880,apartment,Tunis,La Marsa,La Marsa,La Marsa,100.0,2.0,1.0,460000.0,3
+tunisia_real_estate,8801,apartment,Tunis,La Marsa,La Marsa,La Marsa,130.0,3.0,,270000.0,1
+property_prices_in_tunisia,12116,apartment,Tunis,La Marsa,La Marsa,La Marsa,130.0,3.0,1.0,270000.0,2
+tunisia_real_estate,11610,apartment,Tunis,La Marsa,La Marsa,La Marsa,134.0,3.0,,280000.0,1
+property_prices_in_tunisia,11414,apartment,Tunis,La Marsa,La Marsa,La Marsa,134.0,3.0,1.0,280000.0,2
+property_prices_in_tunisia,11360,apartment,Tunis,La Marsa,La Marsa,La Marsa,160.0,3.0,1.0,450000.0,2
+data_prices_cleaned,39,apartment,Tunis,La Marsa,La Marsa,La Marsa,160.0,3.0,2.0,450000.0,3
+tunisia_real_estate,15922,house,Ariana,Raoued,Raoued,Raoued,250.0,,,350000.0,1
+data_prices_cleaned,3701,house,Ariana,Raoued,Raoued,Raoued,250.0,,1.0,350000.0,3
+tunisia_real_estate,3506,house,Tunis,La Marsa,La Marsa,La Marsa,344.0,,,590000.0,1
+data_prices_cleaned,517,house,Tunis,La Marsa,La Marsa,La Marsa,344.0,,1.0,590000.0,3

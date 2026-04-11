@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML LAB | Tunisia Real Estate Workflow</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=4.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="notebook-body">
+    <div id="bg-layer"></div>
+    <div id="vignette"></div>
+
+    <div class="top-nav">
+        <a href="/" class="nav-btn">BACK TO ATLAS</a>
+        <a href="#chapter-datasets" class="nav-btn primary">CODE FIRST</a>
+    </div>
+
+    <div class="book-shell">
+        <section class="book-hero glass">
+            <span class="tag">ML LAB</span>
+            <h1>Geo-ML Tunisia <span>Workflow Book</span></h1>
+            <p>This lab documents the complete reconstruction of a real estate production pipeline. It is organized as a formal workflow companion: source code, execution cells, analytical narrative and dashboard diagnostics are all connected to live project artifacts.</p>
+            <div class="hero-stats">
+                <div><strong id="hero-training">--</strong><span>Training Data</span></div>
+                <div><strong id="hero-direct">--</strong><span>Direct Support</span></div>
+                <div><strong id="hero-model">--</strong><span>Winning Model</span></div>
+                <div><strong id="hero-score">--</strong><span>Validation R²</span></div>
+            </div>
+        </section>
+
+        <div class="book-tabs">
+            <button class="book-tab active" data-target="code-tab-view">Code & Execution</button>
+            <button class="book-tab" data-target="qa-tab-view">Questions & Answers</button>
+        </div>
+
+        <div id="code-tab-view" class="tab-view active">
+            <div class="toolbar">
+                <button class="nav-btn primary" onclick="runAllCells()">RUN LAB</button>
+                <button class="nav-btn" onclick="resetKernel()">RESET KERNEL</button>
+            </div>
+
+            <div class="book-grid">
+                <aside class="book-sidebar glass">
+                    <span class="tag">PIPELINE CHAPTERS</span>
+                    <nav class="chapter-nav">
+                        <a href="#chapter-setup">Chapter 1: Environment Setup & Utilities</a>
+                        <a href="#chapter-discovery">Chapter 2: Dataset Discovery & Profiling</a>
+                        <a href="#chapter-cleaning">Chapter 3: Data Cleaning & Standardization</a>
+                        <a href="#chapter-merge">Chapter 4: Dataset Merging & Deduplication</a>
+                        <a href="#chapter-geography">Chapter 5: Geographic Name Alignment</a>
+                        <a href="#chapter-training-data">Chapter 6: Training Dataset Preparation</a>
+                        <a href="#chapter-features">Chapter 7: Feature Engineering</a>
+                        <a href="#chapter-modeling">Chapter 8: Model Training & Evaluation</a>
+                    </nav>
+                </aside>
+
+                <div>
+
+                    <section id="chapter-setup" class="chapter-card glass">
+                        <h2>Chapter 1: Environment Setup & Utilities</h2>
+                        <p>Initialize the project environment, import required libraries, configure paths, and define utility functions for data processing.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Libraries Import</h3>
+                            <p>Import all necessary libraries for data manipulation (pandas, numpy), machine learning (scikit-learn), and file handling (json, pathlib).</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [1]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 1</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Import libraries
+from __future__ import annotations
+import json, re, unicodedata
+from pathlib import Path
+from typing import Any
+from difflib import SequenceMatcher
+
+import numpy as np
+import pandas as pd
+import joblib
+
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+pd.set_option('display.max_columns', None)
+print("✓ Libraries imported")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Path Configuration</h3>
+                            <p>Set up all directory paths for the pipeline stages. Each stage has its own output directory to keep the workflow organized.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [2]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 2</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Configure paths
+PROJECT_ROOT = Path.cwd()
+RAW_DIR = PROJECT_ROOT / "data" / "raw"
+PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
+GEO_DIR = PROJECT_ROOT / "geo"
+ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
+
+# Stage directories
+DISCOVERY_DIR = PROCESSED_DIR / "01_discovery"
+CLEANING_DIR = PROCESSED_DIR / "02_cleaning"
+MERGE_DIR = PROCESSED_DIR / "03_merge"
+GEO_ALIGNMENT_DIR = PROCESSED_DIR / "04_geo_alignment"
+TRAINING_DATASET_DIR = PROCESSED_DIR / "05_training_dataset"
+FEATURE_ENGINEERING_DIR = PROCESSED_DIR / "06_feature_engineering"
+VISUAL_CHECK_DIR = PROCESSED_DIR / "07_visual_check"
+MODEL_TRAINING_DIR = PROCESSED_DIR / "08_model_training"
+
+# Create directories
+for d in [PROCESSED_DIR, DISCOVERY_DIR, CLEANING_DIR, MERGE_DIR, GEO_ALIGNMENT_DIR,
+          TRAINING_DATASET_DIR, FEATURE_ENGINEERING_DIR, VISUAL_CHECK_DIR, 
+          MODEL_TRAINING_DIR, ARTIFACTS_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
+
+RANDOM_STATE = 42
+print(f"✓ Paths configured (root: {PROJECT_ROOT})")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>CSV Reading Utility</h3>
+                            <p>The raw datasets have inconsistent encodings. This function tries multiple encodings until one works successfully.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [3]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 3</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># CSV reading with encoding fallback
+def read_csv_any(path: Path) -&gt; pd.DataFrame:
+    """Try multiple encodings to read CSV."""
+    for encoding in ("utf-8", "utf-8-sig", "latin-1", "cp1252"):
+        try:
+            return pd.read_csv(path, encoding=encoding, on_bad_lines="skip", engine="python")
+        except Exception:
+            continue
+    raise RuntimeError(f"Unable to read {path}")
+
+print("✓ read_csv_any defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Text Normalization Functions</h3>
+                            <p>These functions fix encoding corruption (mojibake), remove accents, and normalize text for consistent matching across datasets.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [4]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 4</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Text repair and normalization
+def repair_text(value: Any) -&gt; str:
+    """Fix encoding issues and normalize whitespace."""
+    if value is None or pd.isna(value):
+        return ""
+    text = str(value).strip()
+    if not text:
+        return ""
+    # Fix common encoding issues
+    if any(token in text for token in ("Ã", "Â", "â", "�")):
+        for enc in ("latin-1", "cp1252"):
+            try:
+                text = text.encode(enc).decode("utf-8")
+                break
+            except:
+                continue
+    return re.sub(r"\s+", " ", text.replace("\xa0", " ")).strip()
+
+def normalize_text(value: Any) -&gt; str:
+    """Normalize to lowercase, remove accents, keep alphanumeric."""
+    text = repair_text(value).lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+print("✓ Text functions defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>JSON Serialization</h3>
+                            <p>Convert numpy/pandas types to JSON-safe Python types for saving reports and metadata.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [5]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 5</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># JSON serialization
+def make_json_safe(value: Any) -&gt; Any:
+    """Convert numpy/pandas types to JSON-serializable types."""
+    if isinstance(value, dict):
+        return {str(k): make_json_safe(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [make_json_safe(v) for v in value]
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.floating):
+        return float(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if pd.isna(value):
+        return None
+    return value
+
+def write_json(path: Path, payload: dict) -&gt; None:
+    """Write JSON with proper encoding."""
+    path.write_text(json.dumps(make_json_safe(payload), indent=2, ensure_ascii=False), encoding="utf-8")
+
+print("✓ JSON functions defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Numeric Parsing</h3>
+                            <p>Parse numbers from various string formats (with currency symbols, commas, etc.) found in the raw data.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [6]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 6</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Numeric parsing
+def parse_float(value: Any) -&gt; float | None:
+    """Parse float from various formats."""
+    if value is None or pd.isna(value):
+        return None
+    if isinstance(value, (int, float)) and not pd.isna(value):
+        return float(value)
+    text = repair_text(value).replace("TND", "").replace("DT", "").replace("€", "").replace(",", ".")
+    matches = re.findall(r"-?\d+(?:\.\d+)?", text)
+    return float(matches[0]) if matches else None
+
+def parse_int(value: Any) -&gt; int | None:
+    """Parse integer from various formats."""
+    numeric = parse_float(value)
+    return int(round(numeric)) if numeric is not None else None
+
+print("✓ Numeric parsing functions defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                    <section id="chapter-discovery" class="chapter-card glass">
+                        <h2>Chapter 2: Dataset Discovery & Profiling</h2>
+                        <p>Profile raw datasets to understand their structure, identify quality issues, detect missing values, and analyze data distributions before cleaning.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Define Input Datasets</h3>
+                            <p>We're working with 3 different real estate listing sources, each with its own schema. The pipeline will standardize all three into one unified format.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [7]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 7</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Define input datasets
+DATASETS = {
+    "tunisia_real_estate": RAW_DIR / "tunisia-real-estate.csv",
+    "property_prices_in_tunisia": RAW_DIR / "Property Prices in Tunisia.csv",
+    "data_prices_cleaned": RAW_DIR / "data_prices_cleaned.csv",
+}
+
+# Check files exist
+for name, path in DATASETS.items():
+    exists = "✓" if path.exists() else "✗"
+    print(f"{exists} {name}: {path.name}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Column Detection Functions</h3>
+                            <p>Auto-detect key columns (price, surface, location) since each dataset uses different column names.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [8]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 8</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Column candidates for auto-detection
+PRICE_COLUMN_CANDIDATES = ["price", "Price"]
+SURFACE_COLUMN_CANDIDATES = ["size", "superficie", "Surface"]
+LOCATION_COLUMN_CANDIDATES = ["city", "City", "region", "Region", "location", "Locality", "Delegation", "Governorate"]
+
+def find_first_column(frame: pd.DataFrame, candidates: list[str]) -&gt; str | None:
+    """Find first matching column name."""
+    for name in candidates:
+        if name in frame.columns:
+            return name
+    return None
+
+print("✓ Column detection functions defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Dataset Profiling Function</h3>
+                            <p>Generate comprehensive profiles showing row counts, missing values, duplicates, and data quality issues for each dataset.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [9]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 9</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Profile a single dataset
+def profile_dataset(name: str, path: Path) -&gt; dict:
+    """Generate comprehensive dataset profile."""
+    frame = read_csv_any(path)
+    
+    # Detect key columns
+    price_col = find_first_column(frame, PRICE_COLUMN_CANDIDATES)
+    surface_col = find_first_column(frame, SURFACE_COLUMN_CANDIDATES)
+    location_col = find_first_column(frame, LOCATION_COLUMN_CANDIDATES)
+    
+    # Convert to numeric
+    price_series = pd.to_numeric(frame[price_col], errors="coerce") if price_col else pd.Series(dtype=float)
+    surface_series = pd.to_numeric(frame[surface_col], errors="coerce") if surface_col else pd.Series(dtype=float)
+    
+    # Detect empty columns
+    all_empty_columns = []
+    for col in frame.columns:
+        if frame[col].isna().all() or (frame[col].dtype == object and frame[col].fillna("").astype(str).str.strip().eq("").all()):
+            all_empty_columns.append(col)
+    
+    profile = {
+        "dataset_name": name,
+        "file_name": path.name,
+        "rows": int(len(frame)),
+        "columns": list(frame.columns),
+        "column_count": int(len(frame.columns)),
+        "all_empty_columns": all_empty_columns,
+        "duplicate_rows_exact": int(frame.duplicated().sum()),
+        "price_column": price_col,
+        "surface_column": surface_col,
+        "location_column": location_col,
+        "price_missing": int(price_series.isna().sum()) if not price_series.empty else None,
+        "surface_missing": int(surface_series.isna().sum()) if not surface_series.empty else None,
+        "price_non_positive": int(price_series.le(0).sum()) if not price_series.empty else None,
+        "surface_non_positive": int(surface_series.le(0).sum()) if not surface_series.empty else None,
+    }
+    return profile
+
+print("✓ profile_dataset function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Run Discovery on All Datasets</h3>
+                            <p>Profile each dataset and save individual discovery reports to understand what we're working with before cleaning.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [10]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 10</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Run discovery on all datasets
+print("Running dataset discovery...\n")
+
+profiles = []
+for dataset_name, path in DATASETS.items():
+    print(f"Profiling {dataset_name}...")
+    profile = profile_dataset(dataset_name, path)
+    profiles.append(profile)
+    output_path = DISCOVERY_DIR / f"01_{dataset_name}_discovery.json"
+    write_json(output_path, profile)
+    print(f"  Rows: {profile['rows']:,}")
+    print(f"  Columns: {profile['column_count']}")
+    print(f"  Empty columns: {len(profile['all_empty_columns'])}")
+    print(f"  Duplicates: {profile['duplicate_rows_exact']:,}")
+    print()
+
+print(f"✓ Discovery complete. Profiles saved to {DISCOVERY_DIR}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Discovery Summary Table</h3>
+                            <p>Display a summary table showing key statistics for all three datasets side by side.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [11]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 11</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Display discovery summary
+summary_df = pd.DataFrame([
+    {
+        "Dataset": p["dataset_name"],
+        "Rows": p["rows"],
+        "Columns": p["column_count"],
+        "Empty Cols": len(p["all_empty_columns"]),
+        "Duplicates": p["duplicate_rows_exact"],
+        "Price Missing": p["price_missing"],
+        "Surface Missing": p["surface_missing"],
+    }
+    for p in profiles
+])
+
+print("\n=== Dataset Discovery Summary ===")
+print(summary_df.to_string(index=False))</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Visualization: Dataset Overview</h3>
+                            <p>Visualize dataset sizes, missing values, duplicates, and column counts to understand data quality issues at a glance.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [12]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 12</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize dataset discovery results
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+dataset_names = [p['dataset_name'].replace('_', ' ').title() for p in profiles]
+dataset_rows = [p['rows'] for p in profiles]
+
+axes[0, 0].bar(range(len(dataset_names)), dataset_rows, color=['#3498db', '#e74c3c', '#2ecc71'])
+axes[0, 0].set_xticks(range(len(dataset_names)))
+axes[0, 0].set_xticklabels(dataset_names, rotation=45, ha='right')
+axes[0, 0].set_title('Dataset Sizes')
+axes[0, 0].grid(axis='y', alpha=0.3)
+
+missing_data = pd.DataFrame([
+    {
+        'Dataset': p['dataset_name'].replace('_', ' ').title(),
+        'Price Missing': p['price_missing'] or 0,
+        'Surface Missing': p['surface_missing'] or 0,
+    }
+    for p in profiles
+])
+x = range(len(missing_data))
+width = 0.35
+axes[0, 1].bar([i - width/2 for i in x], missing_data['Price Missing'], width, label='Price', color='#e74c3c', alpha=0.8)
+axes[0, 1].bar([i + width/2 for i in x], missing_data['Surface Missing'], width, label='Surface', color='#f39c12', alpha=0.8)
+axes[0, 1].set_xticks(x)
+axes[0, 1].set_xticklabels(missing_data['Dataset'], rotation=45, ha='right')
+axes[0, 1].legend()
+axes[0, 1].grid(axis='y', alpha=0.3)
+
+duplicates = [p['duplicate_rows_exact'] for p in profiles]
+axes[1, 0].bar(range(len(dataset_names)), duplicates, color=['#9b59b6', '#1abc9c', '#e67e22'])
+axes[1, 0].set_xticks(range(len(dataset_names)))
+axes[1, 0].set_xticklabels(dataset_names, rotation=45, ha='right')
+axes[1, 0].set_title('Duplicate Records')
+axes[1, 0].grid(axis='y', alpha=0.3)
+
+column_counts = [p['column_count'] for p in profiles]
+axes[1, 1].bar(range(len(dataset_names)), column_counts, color=['#34495e', '#16a085', '#c0392b'])
+axes[1, 1].set_xticks(range(len(dataset_names)))
+axes[1, 1].set_xticklabels(dataset_names, rotation=45, ha='right')
+axes[1, 1].set_title('Dataset Complexity')
+axes[1, 1].grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print('✓ Dataset discovery visualizations complete')</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/01_dataset_discovery.py"><summary class="source-header"><strong>Pipeline source: stage 01 discovery</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/01_discovery/01_merge_overview.json"><summary class="source-header"><strong>Generated asset: discovery report</strong></summary><pre class="source-code">Loading source...</pre></details>
+
+                    </section>
+
+                    <section id="chapter-cleaning" class="chapter-card glass">
+                        <h2>Chapter 3: Data Cleaning & Standardization</h2>
+                        <p>Standardize all datasets to a common schema, fix encoding issues, remove invalid records, and apply property-specific filters.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Define Canonical Schema</h3>
+                            <p>All datasets are transformed to a common schema with standardized columns for governorate, delegation, property family, surface, and price.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [13]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 13</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Canonical columns
+CANONICAL_COLUMNS = [
+    "source_dataset", "source_row_id", "property_family",
+    "governorate", "delegation", "city", "location",
+    "surface_m2", "rooms", "bathrooms", "price_tnd"
+]
+
+ALLOWED_FAMILIES = {"apartment", "house", "land"}
+
+# Governorate standardization
+CANONICAL_GOVERNORATES = {
+    "ariana": "Ariana", "beja": "Beja", "ben arous": "Ben Arous",
+    "bizerte": "Bizerte", "gabes": "Gabes", "gafsa": "Gafsa",
+    "jendouba": "Jendouba", "kairouan": "Kairouan", "kasserine": "Kasserine",
+    "kebili": "Kebili", "kef": "Le Kef", "le kef": "Le Kef",
+    "mahdia": "Mahdia", "manouba": "Manouba", "medenine": "Medenine",
+    "monastir": "Monastir", "nabeul": "Nabeul", "sfax": "Sfax",
+    "sidi bouzid": "Sidi Bouzid", "siliana": "Siliana", "sousse": "Sousse",
+    "tataouine": "Tataouine", "tozeur": "Tozeur", "tunis": "Tunis",
+    "zaghouan": "Zaghouan"
+}
+
+print("✓ Canonical schema and governorates defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Property Family Inference</h3>
+                            <p>Infer property type (apartment, house, land) from text fields using keyword matching.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [14]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 14</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Property family inference
+def infer_property_family(*values: Any) -&gt; str:
+    """Infer property type from text fields."""
+    blob = " ".join(normalize_text(v) for v in values if repair_text(v))
+    if any(token in blob for token in ("terrain", "land", "ferme", "vacant land", "lot")):
+        return "land"
+    if any(token in blob for token in ("villa", "maison", "house", "duplex", "immeuble")):
+        return "house"
+    if any(token in blob for token in ("appart", "apartment", "studio", "flat", "residence", "s 1", "s 2")):
+        return "apartment"
+    return "other"
+
+def clean_governorate(value: Any) -&gt; str:
+    """Standardize governorate name."""
+    key = normalize_text(value)
+    return CANONICAL_GOVERNORATES.get(key, repair_text(value)) if key else ""
+
+def title_case_text(value: Any) -&gt; str:
+    """Convert to title case."""
+    text = repair_text(value)
+    return " ".join(part.capitalize() for part in text.split()) if text else ""
+
+print("✓ Cleaning helper functions defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Finalize Cleaning Function</h3>
+                            <p>Apply final cleaning: convert numeric columns, fix invalid values, apply property-specific range filters, and deduplicate.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [15]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 15</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Finalize cleaned frame
+def finalize_clean_frame(name: str, frame: pd.DataFrame) -&gt; pd.DataFrame:
+    """Apply final cleaning and filtering."""
+    cleaned = frame.copy()
+    
+    # Ensure all canonical columns exist
+    for col in CANONICAL_COLUMNS:
+        if col not in cleaned.columns:
+            cleaned[col] = None
+    
+    cleaned = cleaned[CANONICAL_COLUMNS].copy()
+    
+    # Convert numeric columns
+    cleaned["surface_m2"] = pd.to_numeric(cleaned["surface_m2"], errors="coerce")
+    cleaned["rooms"] = pd.to_numeric(cleaned["rooms"], errors="coerce")
+    cleaned["bathrooms"] = pd.to_numeric(cleaned["bathrooms"], errors="coerce")
+    cleaned["price_tnd"] = pd.to_numeric(cleaned["price_tnd"], errors="coerce")
+    
+    # Fix invalid room/bathroom counts
+    cleaned.loc[(cleaned["rooms"] &lt; 0) | (cleaned["rooms"] &gt; 20), "rooms"] = np.nan
+    cleaned.loc[(cleaned["bathrooms"] &lt; 0) | (cleaned["bathrooms"] &gt; 10), "bathrooms"] = np.nan
+    
+    # Land has 0 rooms/bathrooms
+    cleaned.loc[cleaned["property_family"] == "land", "rooms"] = 0
+    cleaned.loc[cleaned["property_family"] == "land", "bathrooms"] = 0
+    
+    # Calculate price per m2 for filtering
+    cleaned["price_per_m2"] = cleaned["price_tnd"] / cleaned["surface_m2"]
+    
+    # Apply property-specific range filters
+    apartment_mask = cleaned["property_family"] == "apartment"
+    house_mask = cleaned["property_family"] == "house"
+    land_mask = cleaned["property_family"] == "land"
+    
+    cleaned = cleaned[
+        (~apartment_mask | (cleaned["surface_m2"].between(15, 500) &amp; cleaned["price_tnd"].between(30000, 5000000)))
+        &amp; (~house_mask | (cleaned["surface_m2"].between(40, 2000) &amp; cleaned["price_tnd"].between(50000, 30000000)))
+        &amp; (~land_mask | (cleaned["surface_m2"].between(50, 50000) &amp; cleaned["price_tnd"].between(2000, 50000000)))
+    ].copy()
+    
+    # Recompute masks after row filtering to avoid boolean index misalignment warnings
+    apartment_mask = cleaned["property_family"] == "apartment"
+    house_mask = cleaned["property_family"] == "house"
+    land_mask = cleaned["property_family"] == "land"
+
+    # Price per m2 filters
+    cleaned = cleaned[
+        (~apartment_mask | cleaned["price_per_m2"].between(300, 20000))
+        &amp; (~house_mask | cleaned["price_per_m2"].between(300, 20000))
+        &amp; (~land_mask | cleaned["price_per_m2"].between(10, 15000))
+    ].copy()
+    
+    # Keep only training-usable rows
+    cleaned = cleaned[
+        cleaned["property_family"].isin(ALLOWED_FAMILIES)
+        &amp; cleaned["governorate"].ne("")
+        &amp; cleaned["city"].ne("")
+        &amp; cleaned["surface_m2"].notna()
+        &amp; cleaned["price_tnd"].notna()
+        &amp; (cleaned["surface_m2"] &gt; 0)
+        &amp; (cleaned["price_tnd"] &gt; 0)
+    ].copy()
+    
+    # Deduplicate
+    cleaned = cleaned.drop_duplicates(subset=["property_family", "governorate", "city", "surface_m2", "price_tnd", "rooms"])
+    cleaned = cleaned.drop(columns=["price_per_m2"])
+    cleaned = cleaned.reset_index(drop=True)
+    cleaned["source_dataset"] = name
+    cleaned["source_row_id"] = cleaned["source_row_id"].astype(str)
+    
+    return cleaned
+
+print("✓ finalize_clean_frame function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Clean tunisia_real_estate Dataset</h3>
+                            <p>Clean the first dataset: standardize columns, filter for sale records only, and apply the finalization function.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [16]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 16</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Clean tunisia_real_estate dataset
+def clean_tunisia_real_estate(path: Path) -&gt; pd.DataFrame:
+    """Clean the tunisia-real-estate.csv dataset."""
+    raw = read_csv_any(path).reset_index().rename(columns={"index": "source_row_id"})
+    nature = raw["Nature"].map(repair_text)
+    family = raw.apply(lambda row: infer_property_family(row.get("Type of Real Estate"), row.get("Nature")), axis=1)
+    
+    cleaned = pd.DataFrame({
+        "source_row_id": raw["source_row_id"],
+        "property_family": family,
+        "governorate": raw["Governorate"].map(clean_governorate),
+        "delegation": raw["Delegation"].map(title_case_text),
+        "city": raw["Locality"].map(title_case_text),
+        "location": raw["Locality"].map(title_case_text),
+        "surface_m2": raw["Surface"].map(parse_float),
+        "rooms": None,
+        "bathrooms": None,
+        "price_tnd": raw["Price"].map(parse_float),
+    })
+    
+    # Keep only sale records
+    sale_like = nature.map(normalize_text).isin({"sale", "land"})
+    cleaned = cleaned[sale_like].copy()
+    
+    return finalize_clean_frame("tunisia_real_estate", cleaned)
+
+print("✓ clean_tunisia_real_estate function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Clean property_prices_in_tunisia Dataset</h3>
+                            <p>Clean the second dataset with its specific column mappings and filters.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [17]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 17</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Clean property_prices_in_tunisia dataset
+def clean_property_prices_in_tunisia(path: Path) -&gt; pd.DataFrame:
+    """Clean the Property Prices in Tunisia.csv dataset."""
+    raw = read_csv_any(path).reset_index().rename(columns={"index": "source_row_id"})
+    type_key = raw["type"].map(normalize_text)
+    category_key = raw["category"].map(normalize_text)
+    
+    allowed_categories = {
+        "appartements": "apartment",
+        "maisons et villas": "house",
+        "terrains et fermes": "land",
+    }
+    
+    cleaned = pd.DataFrame({
+        "source_row_id": raw["source_row_id"],
+        "property_family": category_key.map(allowed_categories).fillna("other"),
+        "governorate": raw["city"].map(clean_governorate),
+        "delegation": raw["region"].map(title_case_text),
+        "city": raw["region"].map(title_case_text),
+        "location": raw["region"].map(title_case_text),
+        "surface_m2": raw["size"].map(parse_float),
+        "rooms": raw["room_count"].map(parse_int),
+        "bathrooms": raw["bathroom_count"].map(parse_int),
+        "price_tnd": raw["price"].map(parse_float),
+    })
+    
+    # Filter for sale records only
+    sale_like = type_key.eq("a vendre")
+    wanted_family = cleaned["property_family"].isin(ALLOWED_FAMILIES)
+    valid_region = raw["region"].map(normalize_text).ne("autres villes")
+    cleaned = cleaned[sale_like &amp; wanted_family &amp; valid_region].copy()
+    
+    return finalize_clean_frame("property_prices_in_tunisia", cleaned)
+
+print("✓ clean_property_prices_in_tunisia function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Clean data_prices_cleaned Dataset</h3>
+                            <p>Clean the third dataset, which is already partially cleaned but still needs schema normalization and sale-only filtering.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [18]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 18</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Clean data_prices_cleaned dataset
+def clean_data_prices_cleaned(path: Path) -&gt; pd.DataFrame:
+    """Clean the data_prices_cleaned.csv dataset."""
+    raw = read_csv_any(path).reset_index().rename(columns={"index": "source_row_id"})
+    category_key = raw["category"].map(normalize_text)
+    
+    allowed_categories = {
+        "appartements": "apartment",
+        "maisons et villas": "house",
+        "terrains et fermes": "land",
+    }
+    
+    cleaned = pd.DataFrame({
+        "source_row_id": raw["source_row_id"],
+        "property_family": category_key.map(allowed_categories).fillna("other"),
+        "governorate": raw["state"].map(clean_governorate),
+        "delegation": raw["city"].map(title_case_text),
+        "city": raw["city"].map(title_case_text),
+        "location": raw["location"].map(repair_text),
+        "surface_m2": raw["superficie"].map(parse_float),
+        "rooms": raw["chambres"].map(parse_int),
+        "bathrooms": raw["salles_de_bains"].map(parse_int),
+        "price_tnd": raw["price"].map(parse_float),
+    })
+    
+    sale_like = raw["transaction"].map(normalize_text).eq("sale")
+    wanted_family = cleaned["property_family"].isin(ALLOWED_FAMILIES)
+    cleaned = cleaned[sale_like &amp; wanted_family].copy()
+    return finalize_clean_frame("data_prices_cleaned", cleaned)
+
+print("✓ clean_data_prices_cleaned function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Run Cleaning on All Datasets</h3>
+                            <p>Execute the cleaning pipeline on all three datasets and save the cleaned outputs.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [19]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 19</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Run cleaning on all datasets
+print("Running dataset cleaning...\n")
+
+cleaned_frames = {}
+for name, path in DATASETS.items():
+    print(f"Cleaning {name}...")
+    
+    if name == "tunisia_real_estate":
+        cleaned = clean_tunisia_real_estate(path)
+    elif name == "property_prices_in_tunisia":
+        cleaned = clean_property_prices_in_tunisia(path)
+    else:
+        cleaned = clean_data_prices_cleaned(path)
+    
+    cleaned_frames[name] = cleaned
+    output_path = CLEANING_DIR / f"02_{name}_clean.csv"
+    cleaned.to_csv(output_path, index=False)
+    
+    print(f"  Input rows: {pd.read_csv(path).shape[0]:,}")
+    print(f"  Output rows: {len(cleaned):,}")
+    print(f"  Saved to: {output_path.name}")
+    print()
+
+print(f"✓ Cleaning complete. Files saved to {CLEANING_DIR}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Cleaning Summary Table</h3>
+                            <p>Display summary statistics showing how many rows survived cleaning for each dataset.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [20]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 20</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Display cleaning summary
+cleaning_summary = pd.DataFrame([
+    {
+        "Dataset": name,
+        "Cleaned Rows": len(frame),
+        "Families": frame["property_family"].nunique(),
+        "Governorates": frame["governorate"].nunique(),
+        "Cities": frame["city"].nunique(),
+    }
+    for name, frame in cleaned_frames.items()
+])
+
+print("\n=== Dataset Cleaning Summary ===")
+print(cleaning_summary.to_string(index=False))</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Visualization: Cleaning Results</h3>
+                            <p>Visualize before/after row counts, retention rates, property family distribution, and governorate coverage.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [21]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 21</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize cleaning results
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+dataset_names_clean = list(cleaned_frames.keys())
+before_counts = [pd.read_csv(DATASETS[name]).shape[0] for name in dataset_names_clean]
+after_counts = [len(cleaned_frames[name]) for name in dataset_names_clean]
+
+x = range(len(dataset_names_clean))
+width = 0.35
+
+axes[0, 0].bar([i - width/2 for i in x], before_counts, width, label='Before', color='#e74c3c', alpha=0.7)
+axes[0, 0].bar([i + width/2 for i in x], after_counts, width, label='After', color='#2ecc71', alpha=0.7)
+axes[0, 0].set_xticks(x)
+axes[0, 0].set_xticklabels([n.replace('_', ' ').title() for n in dataset_names_clean], rotation=45, ha='right')
+axes[0, 0].set_ylabel('Number of Rows')
+axes[0, 0].set_title('Cleaning Impact: Before vs After')
+axes[0, 0].legend()
+axes[0, 0].grid(axis='y', alpha=0.3)
+
+retention_rates = [(after / before) * 100 for before, after in zip(before_counts, after_counts)]
+axes[0, 1].bar(x, retention_rates, color=['#3498db', '#9b59b6', '#1abc9c'])
+axes[0, 1].set_xticks(x)
+axes[0, 1].set_xticklabels([n.replace('_', ' ').title() for n in dataset_names_clean], rotation=45, ha='right')
+axes[0, 1].set_ylabel('Retention Rate (%)')
+axes[0, 1].set_title('Data Retention After Cleaning')
+axes[0, 1].grid(axis='y', alpha=0.3)
+
+all_families = pd.concat([df['property_family'] for df in cleaned_frames.values()])
+family_counts = all_families.value_counts()
+axes[1, 0].pie(family_counts.values, labels=family_counts.index, autopct='%1.1f%%', startangle=90)
+axes[1, 0].set_title('Property Family Distribution (All Datasets)')
+
+all_governorates = pd.concat([df['governorate'] for df in cleaned_frames.values()])
+gov_counts = all_governorates.value_counts().head(10)
+axes[1, 1].barh(range(len(gov_counts)), gov_counts.values, color='#16a085')
+axes[1, 1].set_yticks(range(len(gov_counts)))
+axes[1, 1].set_yticklabels(gov_counts.index)
+axes[1, 1].set_xlabel('Number of Properties')
+axes[1, 1].set_title('Top 10 Governorates (After Cleaning)')
+axes[1, 1].grid(axis='x', alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print("✓ Cleaning visualizations complete")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/02_dataset_cleaning.py"><summary class="source-header"><strong>Pipeline source: stage 02 cleaning</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/02_cleaning/02_merge_readiness.json"><summary class="source-header"><strong>Generated asset: cleaning readiness</strong></summary><pre class="source-code">Loading source...</pre></details>
+
+                    </section>
+
+                    <section id="chapter-merge" class="chapter-card glass">
+                        <h2>Chapter 4: Dataset Merging & Deduplication</h2>
+                        <p>Combine cleaned datasets from multiple sources, detect cross-source duplicates, and create a unified dataset with source priority handling.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Define Source Priority</h3>
+                            <p>Set priority order for deduplication: tunisia_real_estate (highest), property_prices_in_tunisia, data_prices_cleaned (lowest).</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [22]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 22</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Define source priority
+SOURCE_PRIORITY = {
+    "tunisia_real_estate": 1,
+    "property_prices_in_tunisia": 2,
+    "data_prices_cleaned": 3,
+}
+
+DEDUP_COLUMNS = ["property_family", "governorate", "city", "surface_m2", "price_tnd", "rooms"]
+print("✓ Merge configuration defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Define Source Priority</h3>
+                            <p>Define which source wins when duplicate listings appear across datasets.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [23]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 23</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Define source priority
+SOURCE_PRIORITY = {
+    "tunisia_real_estate": 1,
+    "property_prices_in_tunisia": 2,
+    "data_prices_cleaned": 3,
+}
+
+# Deduplication columns (defines what makes a "duplicate")
+DEDUP_COLUMNS = ["property_family", "governorate", "city", "surface_m2", "price_tnd", "rooms"]
+
+print("✓ Merge configuration defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Load and Merge Datasets</h3>
+                            <p>Load all cleaned datasets and concatenate them into one master dataframe.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [24]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 24</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load and merge cleaned datasets
+print("Merging cleaned datasets...\n")
+
+frames_to_merge = []
+for name in ["tunisia_real_estate", "property_prices_in_tunisia", "data_prices_cleaned"]:
+    path = CLEANING_DIR / f"02_{name}_clean.csv"
+    frame = pd.read_csv(path)
+    frame["source_dataset"] = name
+    frames_to_merge.append(frame)
+    print(f"Loaded {name}: {len(frame):,} rows")
+
+merged_raw = pd.concat(frames_to_merge, ignore_index=True)
+merged_raw["source_priority"] = merged_raw["source_dataset"].map(SOURCE_PRIORITY).fillna(999).astype(int)
+
+print(f"\nTotal rows before deduplication: {len(merged_raw):,}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Detect Cross-Source Duplicates</h3>
+                            <p>Find duplicate records that appear in multiple source datasets based on key columns.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [25]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 25</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Detect and remove cross-source duplicates
+duplicate_mask = merged_raw.duplicated(subset=DEDUP_COLUMNS, keep=False)
+num_duplicates = duplicate_mask.sum()
+
+print(f"Cross-source duplicate rows detected: {num_duplicates:,}")
+
+# Deduplicate: keep highest priority source
+merged_final = merged_raw.sort_values(DEDUP_COLUMNS + ["source_priority", "source_dataset", "source_row_id"])
+merged_final = merged_final.drop_duplicates(subset=DEDUP_COLUMNS, keep="first")
+merged_final = merged_final.drop(columns=["source_priority"]).reset_index(drop=True)
+
+print(f"Rows after deduplication: {len(merged_final):,}")
+print(f"Rows removed: {len(merged_raw) - len(merged_final):,}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Merge Summary</h3>
+                            <p>Display the source distribution in the final merged dataset.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [26]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 26</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Save merged dataset
+output_path = MERGE_DIR / "03_final_merge_ready.csv"
+merged_final.to_csv(output_path, index=False)
+
+# Generate merge report
+merge_report = {
+    "stage": "03_merge_preparation",
+    "input_rows": int(len(merged_raw)),
+    "rows_removed_as_cross_source_duplicates": int(len(merged_raw) - len(merged_final)),
+    "final_rows": int(len(merged_final)),
+    "source_priority": SOURCE_PRIORITY,
+    "source_distribution": merged_final["source_dataset"].value_counts().to_dict(),
+}
+
+write_json(MERGE_DIR / "03_merge_report.json", merge_report)
+
+print(f"\n✓ Merged dataset saved: {output_path}")
+print(f"✓ Report saved: {MERGE_DIR / '03_merge_report.json'}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/03_merge_preparation.py"><summary class="source-header"><strong>Pipeline source: stage 03 merge</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/03_merge/03_merge_report.json"><summary class="source-header"><strong>Generated asset: merge report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        
+                        <div class="cell-explainer">
+                            <h3>Visualization: Merge Results</h3>
+                            <p>Visualize source distribution, deduplication impact, property types by source, and price distributions.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [27]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 27</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize merge results
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+source_counts = merged_final['source_dataset'].value_counts()
+axes[0, 0].bar(source_counts.index, source_counts.values, color=['#3498db', '#9b59b6', '#1abc9c'])
+axes[0, 0].set_title('Merged Rows by Source')
+axes[0, 0].tick_params(axis='x', rotation=20)
+axes[0, 0].grid(axis='y', alpha=0.3)
+
+axes[0, 1].bar(['Before dedup', 'After dedup'], [len(merged_raw), len(merged_final)], color=['#ef4444', '#22c55e'])
+axes[0, 1].set_title('Deduplication Impact')
+axes[0, 1].grid(axis='y', alpha=0.3)
+
+family_counts = merged_final['property_family'].value_counts()
+axes[1, 0].pie(family_counts.values, labels=family_counts.index, autopct='%1.1f%%', startangle=90)
+axes[1, 0].set_title('Property Family Distribution')
+
+price_sample = merged_final['price_tnd'].dropna()
+axes[1, 1].hist(price_sample, bins=50, color='#f97316', alpha=0.8, edgecolor='black')
+axes[1, 1].set_title('Merged Price Distribution')
+axes[1, 1].set_xlabel('Price (TND)')
+axes[1, 1].grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print('✓ Merge visualizations complete')</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                    <section id="chapter-geography" class="chapter-card glass">
+                        <h2>Chapter 5: Geographic Name Alignment</h2>
+                        <p>Match location names from listings to official administrative boundaries using exact matching, fuzzy matching, and manual overrides.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Geographic Reference Data</h3>
+                            <p>Load the official GeoJSON file containing delegation boundaries and extract delegation records.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [28]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 28</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load geographic reference data
+print("Loading geographic reference data...\n")
+
+geojson_path = GEO_DIR / "delegations-full.geojson"
+with open(geojson_path, "r", encoding="utf-8") as f:
+    geojson_data = json.load(f)
+
+geo_rows = []
+for feature in geojson_data.get("features", []):
+    props = feature.get("properties", {})
+    feature_type = normalize_text(props.get("type_2") or props.get("engtype_2"))
+    if feature_type != "delegation":
+        continue
+    governorate = clean_governorate(props.get("gov_name_f") or props.get("name_1"))
+    delegation = title_case_text(props.get("deleg_na_1") or props.get("name_2"))
+    if governorate and delegation:
+        geo_rows.append({
+            "governorate": governorate,
+            "delegation": delegation,
+            "governorate_norm": normalize_text(governorate),
+            "delegation_norm": normalize_text(delegation),
+        })
+
+geo_frame = pd.DataFrame(geo_rows).drop_duplicates(subset=["governorate_norm", "delegation_norm"]).reset_index(drop=True)
+print(f"✓ Loaded {len(geo_frame)} official delegations")
+print(f"  Governorates: {geo_frame['governorate'].nunique()}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Build Lookup Dictionaries</h3>
+                            <p>Create lookup dictionaries for exact matching of delegation names before fuzzy fallback.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [29]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 29</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Build lookup dictionaries
+exact_delegations = {}
+for row in geo_frame.to_dict("records"):
+    exact_delegations.setdefault(row["delegation_norm"], []).append(row)
+
+print(f"✓ Built delegation lookup dictionary ({len(exact_delegations)} keys)")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Fuzzy Matching Function</h3>
+                            <p>Implement fuzzy string matching to handle spelling variations and typos in location names.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [30]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 30</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Build lookup dictionaries
+exact_delegations = {}
+for row in geo_frame.to_dict("records"):
+    exact_delegations.setdefault(row["delegation_norm"], []).append(row)
+
+print(f"✓ Built delegation lookup dictionary ({len(exact_delegations)} keys)")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Fuzzy Matching Function</h3>
+                            <p>Implement fuzzy string matching to handle spelling variation and minor noise in locality names.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [31]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 31</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Fuzzy matching function
+def best_fuzzy_delegation(term_norm: str, governorate_norm: str, geo_frame: pd.DataFrame) -&gt; dict | None:
+    """Find best fuzzy match for delegation name."""
+    candidates = geo_frame[geo_frame["governorate_norm"] == governorate_norm].copy()
+    if candidates.empty or not term_norm:
+        return None
+    candidates["score"] = candidates["delegation_norm"].map(lambda v: SequenceMatcher(None, term_norm, v).ratio())
+    best = candidates.sort_values("score", ascending=False).iloc[0]
+    if float(best["score"]) &lt; 0.88:
+        return None
+    return {
+        "governorate": str(best["governorate"]),
+        "delegation": str(best["delegation"]),
+        "governorate_norm": str(best["governorate_norm"]),
+        "delegation_norm": str(best["delegation_norm"]),
+    }
+
+print("✓ Fuzzy matching function defined")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Geographic Alignment Outputs</h3>
+                            <p>Load the stage 04 aligned dataset and report generated by the pipeline so the notebook reflects the real alignment workflow.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [32]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 32</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load geographic alignment outputs
+aligned_frame = pd.read_csv(GEO_ALIGNMENT_DIR / "04_geo_aligned_dataset.csv")
+alignment_report = json.loads((GEO_ALIGNMENT_DIR / "04_geo_alignment_report.json").read_text(encoding="utf-8"))
+unmatched = pd.read_csv(GEO_ALIGNMENT_DIR / "04_geo_unmatched_rows.csv")
+
+print("\n=== Alignment Summary ===")
+for status, count in alignment_report["match_status"].items():
+    print(f"{status}: {count:,}")
+print(f"\nUnique geo delegations covered: {alignment_report['unique_geo_delegations_covered']}")
+print(f"Unmatched rows: {alignment_report['unmatched_rows']:,}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Inspect Top Unmatched Pairs</h3>
+                            <p>Review the most frequent remaining unmatched governorate/locality pairs after the alias fixes.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [33]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 33</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Inspect top unmatched locality pairs
+top_unmatched = pd.DataFrame(alignment_report.get("top_unmatched_pairs", []))
+
+print("\n=== Top Unmatched Locality Pairs ===")
+if top_unmatched.empty:
+    print("No unmatched rows remaining.")
+else:
+    print(top_unmatched.head(20).to_string(index=False))</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Alignment Summary</h3>
+                            <p>Display statistics showing match success rates and unmatched locations.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [34]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 34</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Display alignment summary
+summary_rows = pd.DataFrame([
+    {"Match status": key, "Rows": value}
+    for key, value in alignment_report["match_status"].items()
+]).sort_values("Rows", ascending=False)
+
+print("\n=== Alignment Summary ===")
+print(summary_rows.to_string(index=False))
+print(f"\nUnique geo delegations covered: {alignment_report['unique_geo_delegations_covered']}")
+print(f"Unmatched rows: {alignment_report['unmatched_rows']:,}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/04_geo_name_alignment.py"><summary class="source-header"><strong>Pipeline source: stage 04 geo alignment</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/04_geo_alignment/04_geo_alignment_report.json"><summary class="source-header"><strong>Generated asset: geo alignment report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        
+                        <div class="cell-explainer">
+                            <h3>Visualization: Geographic Alignment</h3>
+                            <p>Visualize match status distribution, top matched delegations, governorate coverage, and match quality by source.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [35]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 35</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize geographic alignment
+fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+
+match_status_counts = aligned_frame['geo_match_status'].value_counts()
+axes[0, 0].pie(match_status_counts.values, labels=match_status_counts.index, autopct='%1.1f%%', startangle=90)
+axes[0, 0].set_title('Geographic Matching Success Rate')
+
+matched_data = aligned_frame[aligned_frame['geo_delegation'].ne('')]
+top_delegations = matched_data['geo_delegation'].value_counts().head(15)
+axes[0, 1].barh(range(len(top_delegations)), top_delegations.values, color='#16a085')
+axes[0, 1].set_yticks(range(len(top_delegations)))
+axes[0, 1].set_yticklabels(top_delegations.index, fontsize=9)
+axes[0, 1].set_title('Top 15 Delegations (After Alignment)')
+axes[0, 1].grid(axis='x', alpha=0.3)
+
+gov_coverage = matched_data.groupby('geo_governorate').size().sort_values(ascending=True)
+axes[1, 0].barh(range(len(gov_coverage)), gov_coverage.values, color='#3498db')
+axes[1, 0].set_yticks(range(len(gov_coverage)))
+axes[1, 0].set_yticklabels(gov_coverage.index, fontsize=8)
+axes[1, 0].set_title('Properties by Governorate')
+axes[1, 0].grid(axis='x', alpha=0.3)
+
+match_by_source = aligned_frame.groupby(['source_dataset', 'geo_match_status']).size().unstack(fill_value=0)
+match_by_source.plot(kind='bar', stacked=True, ax=axes[1, 1])
+axes[1, 1].set_title('Match Quality by Source')
+axes[1, 1].tick_params(axis='x', rotation=45)
+
+plt.tight_layout()
+plt.show()
+
+print('✓ Geographic alignment visualizations complete')</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                    <section id="chapter-training-data" class="chapter-card glass">
+                        <h2>Chapter 6: Training Dataset Preparation</h2>
+                        <p>Filter for model-ready records, add derived features (log transformations, price per m²), and create the final training dataset.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Filter for Training-Ready Records</h3>
+                            <p>Keep rows with valid core fields and a governorate/locality, even if delegation matching is still unresolved.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [36]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 36</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Prepare training dataset
+print("Preparing training dataset...\n")
+
+aligned_data = pd.read_csv(GEO_ALIGNMENT_DIR / "04_geo_aligned_dataset.csv")
+
+training = aligned_data.copy()
+
+# Convert numeric columns
+training["surface_m2"] = pd.to_numeric(training["surface_m2"], errors="coerce")
+training["rooms"] = pd.to_numeric(training["rooms"], errors="coerce")
+training["price_tnd"] = pd.to_numeric(training["price_tnd"], errors="coerce")
+
+print(f"Input rows: {len(training):,}")
+
+# Apply filters
+training = training[
+    training["property_family"].isin(["apartment", "house", "land"])
+    &amp; training["geo_governorate"].fillna("").astype(str).str.strip().ne("")
+    &amp; training["normalized_locality"].fillna("").astype(str).str.strip().ne("")
+    &amp; training["surface_m2"].notna()
+    &amp; training["price_tnd"].notna()
+    &amp; (training["surface_m2"] &gt; 0)
+    &amp; (training["price_tnd"] &gt; 0)
+].copy()
+
+print(f"After filtering: {len(training):,}")
+
+# Add derived features
+training["price_per_m2"] = training["price_tnd"] / training["surface_m2"]
+training["log_price_tnd"] = np.log(training["price_tnd"])
+training["log_price_per_m2"] = np.log(training["price_per_m2"])
+
+# Land has 0 rooms
+training.loc[training["property_family"] == "land", "rooms"] = 0
+
+# Select final columns
+TRAINING_COLUMNS = [
+    "source_dataset", "source_row_id", "property_family",
+    "surface_m2", "rooms", "price_tnd", "price_per_m2",
+    "log_price_tnd", "log_price_per_m2",
+    "normalized_locality", "geo_governorate", "geo_delegation"
+]
+
+training = training[TRAINING_COLUMNS].copy()
+training = training.drop_duplicates(subset=["source_dataset", "source_row_id"]).reset_index(drop=True)
+
+print(f"Final training rows: {len(training):,}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Add Derived Features</h3>
+                            <p>Create log-transformed price, price per m², and other derived features for modeling.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [37]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 37</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Save training dataset
+output_path = TRAINING_DATASET_DIR / "05_training_dataset.csv"
+training.to_csv(output_path, index=False)
+
+# Generate report
+training_report = {
+    "rows": int(len(training)),
+    "columns": list(training.columns),
+    "source_distribution": training["source_dataset"].value_counts().to_dict(),
+    "family_distribution": training["property_family"].value_counts().to_dict(),
+    "geo_governorate_count": int(training["geo_governorate"].nunique()),
+    "geo_delegation_count": int(training["geo_delegation"].nunique()),
+    "normalized_locality_count": int(training["normalized_locality"].nunique()),
+    "price_range": {
+        "min": float(training["price_tnd"].min()),
+        "median": float(training["price_tnd"].median()),
+        "max": float(training["price_tnd"].max()),
+    },
+}
+
+write_json(TRAINING_DATASET_DIR / "05_training_dataset_report.json", training_report)
+
+print(f"\n✓ Training dataset saved: {output_path}")
+print(f"✓ Governorates: {training_report['geo_governorate_count']}")
+print(f"✓ Delegations: {training_report['geo_delegation_count']}")
+print(f"✓ Localities: {training_report['normalized_locality_count']}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/05_training_dataset_preparation.py"><summary class="source-header"><strong>Pipeline source: stage 05 training dataset</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/05_training_dataset/05_training_dataset_report.json"><summary class="source-header"><strong>Generated asset: training dataset report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        
+                        <div class="cell-explainer">
+                            <h3>Save Training Dataset</h3>
+                            <p>Save the final training dataset and generate a preparation report.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [38]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 38</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Display training dataset summary
+print("\n=== Training Dataset Summary ===")
+print(f"Total rows: {len(training):,}")
+print(f"\nProperty families:")
+for family, count in training["property_family"].value_counts().items():
+    print(f"  {family}: {count:,}")
+print(f"\nPrice range: {training['price_tnd'].min():,.0f} - {training['price_tnd'].max():,.0f} TND")
+print(f"Price median: {training['price_tnd'].median():,.0f} TND")
+print(f"\nSurface range: {training['surface_m2'].min():.0f} - {training['surface_m2'].max():,.0f} m²")
+print(f"Surface median: {training['surface_m2'].median():.0f} m²")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Training Dataset Summary</h3>
+                            <p>Display summary statistics for the training dataset.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [39]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 39</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize training dataset
+fig, axes = plt.subplots(2, 3, figsize=(16, 10))
+
+axes[0, 0].hist(training['price_tnd'], bins=50, color='#3498db', alpha=0.7, edgecolor='black')
+axes[0, 0].set_title('Price Distribution')
+axes[0, 0].grid(axis='y', alpha=0.3)
+
+axes[0, 1].hist(training['log_price_tnd'], bins=50, color='#2ecc71', alpha=0.7, edgecolor='black')
+axes[0, 1].set_title('Log Price Distribution')
+axes[0, 1].grid(axis='y', alpha=0.3)
+
+axes[0, 2].hist(training['surface_m2'], bins=50, color='#e74c3c', alpha=0.7, edgecolor='black')
+axes[0, 2].set_title('Surface Distribution')
+axes[0, 2].grid(axis='y', alpha=0.3)
+
+for family in training['property_family'].unique():
+    family_data = training[training['property_family'] == family]['price_per_m2']
+    axes[1, 0].hist(family_data, bins=30, alpha=0.5, label=family.title())
+axes[1, 0].set_title('Price per m² by Family')
+axes[1, 0].legend()
+axes[1, 0].grid(axis='y', alpha=0.3)
+
+for family in training['property_family'].unique():
+    family_data = training[training['property_family'] == family]
+    axes[1, 1].scatter(family_data['surface_m2'], family_data['price_tnd'], alpha=0.3, s=10, label=family.title())
+axes[1, 1].set_title('Price vs Surface')
+axes[1, 1].set_yscale('log')
+axes[1, 1].grid(True, alpha=0.3)
+
+room_counts = training[training['property_family'] != 'land']['rooms'].value_counts().sort_index()
+axes[1, 2].bar(room_counts.index, room_counts.values, color='#9b59b6', alpha=0.7)
+axes[1, 2].set_title('Room Distribution')
+axes[1, 2].grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print('✓ Training dataset visualizations complete')</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Delegation Coordinates</h3>
+                            <p>Extract longitude and latitude centroids from the official delegation GeoJSON.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [40]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 40</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load delegation coordinates from GeoJSON
+print("Loading delegation coordinates...\n")
+
+with open(GEO_DIR / "delegations-full.geojson", "r", encoding="utf-8") as f:
+    geojson_data = json.load(f)
+
+delegation_coords = {}
+for feature in geojson_data.get("features", []):
+    props = feature.get("properties", {})
+    if props.get("engtype_2") != "Delegation" or not props.get("name_2"):
+        continue
+    geometry = feature.get("geometry", {})
+    geometry_type = geometry.get("type")
+    geometry_coords = geometry.get("coordinates") or []
+    if geometry_type == "Polygon":
+        rings = geometry_coords[:1]
+    elif geometry_type == "MultiPolygon":
+        rings = [polygon[0] for polygon in geometry_coords if polygon]
+    else:
+        rings = []
+    all_lons, all_lats = [], []
+    for ring in rings:
+        all_lons.extend(point[0] for point in ring)
+        all_lats.extend(point[1] for point in ring)
+    if all_lons and all_lats:
+        delegation_coords[props["name_2"]] = (sum(all_lons) / len(all_lons), sum(all_lats) / len(all_lats))
+
+print(f"✓ Loaded coordinates for {len(delegation_coords)} delegations")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                    <section id="chapter-features" class="chapter-card glass">
+                        <h2>Chapter 7: Feature Engineering</h2>
+                        <p>Attach geographic centroids, write the feature-engineered dataset, inspect samples, and prepare the modeling frame.</p>
+
+                        <div class="cell-explainer">
+                            <h3>Add Coordinate Features</h3>
+                            <p>Attach geographic centroids to the training dataset and check how many rows received coordinates.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [40]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 40</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Add coordinates to training dataset
+training_data = pd.read_csv(TRAINING_DATASET_DIR / "05_training_dataset.csv")
+
+print(f"\nAdding coordinates to {len(training_data):,} rows...")
+
+training_data["lon"] = training_data["geo_delegation"].map(
+    lambda v: delegation_coords.get(v, (None, None))[0]
+)
+training_data["lat"] = training_data["geo_delegation"].map(
+    lambda v: delegation_coords.get(v, (None, None))[1]
+)
+
+rows_with_coords = training_data["lon"].notna().sum()
+print(f"✓ Rows with coordinates: {rows_with_coords:,} ({rows_with_coords/len(training_data)*100:.1f}%)")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <div class="cell-explainer">
+                            <h3>Save Feature-Engineered Dataset</h3>
+                            <p>Persist the feature-engineered dataset and its stage report.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [41]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 41</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Save feature-engineered dataset
+OUTPUT_COLUMNS = [
+    "source_dataset", "source_row_id", "property_family",
+    "surface_m2", "rooms", "price_tnd", "price_per_m2",
+    "log_price_tnd", "log_price_per_m2",
+    "normalized_locality", "geo_governorate", "geo_delegation",
+    "lon", "lat"
+]
+
+feature_frame = training_data[OUTPUT_COLUMNS].copy()
+output_path = FEATURE_ENGINEERING_DIR / "06_feature_engineered_dataset.csv"
+feature_frame.to_csv(output_path, index=False)
+
+# Generate report
+feature_report = {
+    "rows": int(len(feature_frame)),
+    "columns": list(feature_frame.columns),
+    "feature_columns": ["surface_m2", "rooms", "lon", "lat"],
+    "geo_delegation_count": int(feature_frame["geo_delegation"].nunique()),
+    "delegations_with_coords": int(feature_frame["lon"].notna().sum()),
+}
+
+write_json(FEATURE_ENGINEERING_DIR / "06_feature_engineering_report.json", feature_report)
+
+print(f"\n✓ Feature-engineered dataset saved: {output_path}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/06_feature_engineering.py"><summary class="source-header"><strong>Pipeline source: stage 06 feature engineering</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/06_feature_engineering/06_feature_engineering_report.json"><summary class="source-header"><strong>Generated asset: feature report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        
+                        <div class="cell-explainer">
+                            <h3>Generate Visual Check Samples</h3>
+                            <p>Write representative sample rows for manual inspection of the feature-engineered dataset.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [42]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 42</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Generate visual check samples
+print("Generating visual check samples...\n")
+
+feature_data = pd.read_csv(FEATURE_ENGINEERING_DIR / "06_feature_engineered_dataset.csv")
+
+# Sample from each source
+samples = []
+for source_name, source_frame in feature_data.groupby("source_dataset", sort=True):
+    ordered = source_frame.sort_values(
+        ["geo_governorate", "geo_delegation", "property_family", "price_tnd", "surface_m2"]
+    )
+    
+    # Take samples from beginning, middle, and end
+    sample_size = 12
+    midpoint = len(ordered) // 2
+    picked = pd.concat([
+        ordered.head(sample_size // 3),
+        ordered.iloc[max(0, midpoint - sample_size // 6): midpoint + sample_size // 6],
+        ordered.tail(sample_size // 3),
+    ]).drop_duplicates().head(sample_size)
+    
+    samples.append(picked)
+    
+    print(f"{source_name}:")
+    print(f"  Total rows: {len(source_frame):,}")
+    print(f"  Median price: {source_frame['price_tnd'].median():,.0f} TND")
+    print(f"  Median surface: {source_frame['surface_m2'].median():.0f} m²")
+    print()
+
+samples_frame = pd.concat(samples, ignore_index=True)
+
+# Save samples
+output_path = VISUAL_CHECK_DIR / "07_training_dataset_samples.csv"
+samples_frame.to_csv(output_path, index=False)
+
+print(f"✓ Saved {len(samples_frame)} sample rows to {output_path}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/07_training_dataset_visual_check.py"><summary class="source-header"><strong>Pipeline source: stage 07 visual check</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/07_visual_check/07_training_dataset_visual_report.json"><summary class="source-header"><strong>Generated asset: visual check report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Modeling Frame</h3>
+                            <p>Load the feature-engineered dataset and apply the same final outlier trim used by the model-training stage.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [43]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 43</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load feature-engineered dataset
+print("Loading data for model training...\n")
+
+frame = pd.read_csv(FEATURE_ENGINEERING_DIR / "06_feature_engineered_dataset.csv")
+
+# Convert numeric columns
+frame["surface_m2"] = pd.to_numeric(frame["surface_m2"], errors="coerce")
+frame["rooms"] = pd.to_numeric(frame["rooms"], errors="coerce")
+frame["price_tnd"] = pd.to_numeric(frame["price_tnd"], errors="coerce")
+frame["price_per_m2"] = pd.to_numeric(frame["price_per_m2"], errors="coerce")
+frame["log_price_tnd"] = pd.to_numeric(frame["log_price_tnd"], errors="coerce")
+
+# Filter valid rows
+frame = frame[
+    frame["surface_m2"].notna()
+    &amp; frame["price_tnd"].notna()
+    &amp; frame["property_family"].isin(["apartment", "house", "land"])
+    &amp; frame["geo_governorate"].fillna("").astype(str).str.strip().ne("")
+].copy()
+
+print(f"Loaded {len(frame):,} rows")
+
+# Remove outliers (0.5% and 99.5% percentiles)
+lower = frame["price_tnd"].quantile(0.005)
+upper = frame["price_tnd"].quantile(0.995)
+frame = frame[(frame["price_tnd"] &gt;= lower) &amp; (frame["price_tnd"] &lt;= upper)]
+
+print(f"After outlier removal: {len(frame):,} rows")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Define Modeling Features</h3>
+                            <p>Assemble the core feature matrix and target used for train/test splitting.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [44]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 44</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Define features and target
+NUMERIC_FEATURES = ["surface_m2", "rooms"]
+CATEGORICAL_FEATURES = ["property_family", "geo_governorate", "geo_delegation"]
+ALL_FEATURES = NUMERIC_FEATURES + CATEGORICAL_FEATURES
+
+# Prepare feature matrix and target
+x = frame[ALL_FEATURES].copy()
+x["lon"] = frame["lon"].fillna(frame["lon"].median())
+x["lat"] = frame["lat"].fillna(frame["lat"].median())
+y = frame["log_price_tnd"]
+
+print(f"\nFeatures: {ALL_FEATURES + ['lon', 'lat']}")
+print(f"Target: log_price_tnd")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Train/Test Split</h3>
+                            <p>Split the filtered modeling frame into train and test partitions.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [45]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 45</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Train/test split
+x_train, x_test, y_train, y_test, idx_train, idx_test = train_test_split(
+    x, y, frame.index, test_size=0.2, random_state=RANDOM_STATE
+)
+
+frame_train = frame.loc[idx_train]
+frame_test = frame.loc[idx_test]
+
+print(f"\nTraining set: {len(x_train):,} rows")
+print(f"Test set: {len(x_test):,} rows")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Add Split-Dependent Features</h3>
+                            <p>Add target encodings and price-vs-local-median features using only the training split.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [46]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 46</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Add split-dependent features (target encoding)
+print("\nAdding target encoding features...")
+
+global_mean = frame_train["log_price_tnd"].mean()
+
+# Delegation target encoding
+delegation_target_mean = frame_train.groupby("geo_delegation")["log_price_tnd"].mean()
+x_train["geo_delegation_target_enc"] = frame_train["geo_delegation"].map(delegation_target_mean).fillna(global_mean)
+x_test["geo_delegation_target_enc"] = frame_test["geo_delegation"].map(delegation_target_mean).fillna(global_mean)
+
+# Governorate target encoding
+governorate_target_mean = frame_train.groupby("geo_governorate")["log_price_tnd"].mean()
+x_train["geo_governorate_target_enc"] = frame_train["geo_governorate"].map(governorate_target_mean).fillna(global_mean)
+x_test["geo_governorate_target_enc"] = frame_test["geo_governorate"].map(governorate_target_mean).fillna(global_mean)
+
+# Price vs local median
+delegation_price_median = frame_train.groupby("geo_delegation")["price_per_m2"].median()
+global_price_median = frame_train["price_per_m2"].median()
+
+x_train["price_vs_local_median"] = np.sqrt(
+    frame_train["price_per_m2"] / frame_train["geo_delegation"].map(delegation_price_median).fillna(global_price_median)
+)
+x_test["price_vs_local_median"] = np.sqrt(
+    frame_test["price_per_m2"] / frame_test["geo_delegation"].map(delegation_price_median).fillna(global_price_median)
+)
+
+x_train["price_vs_local_median"] = x_train["price_vs_local_median"].fillna(1.0).clip(0.5, 2.0)
+x_test["price_vs_local_median"] = x_test["price_vs_local_median"].fillna(1.0).clip(0.5, 2.0)
+
+# Final feature list
+NUMERIC_FINAL = NUMERIC_FEATURES + ["lon", "lat", "geo_delegation_target_enc", "geo_governorate_target_enc", "price_vs_local_median"]
+FINAL_FEATURES = NUMERIC_FINAL + CATEGORICAL_FEATURES
+
+x_train = x_train[FINAL_FEATURES]
+x_test = x_test[FINAL_FEATURES]
+
+print(f"✓ Final features: {FINAL_FEATURES}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                    <section id="chapter-modeling" class="chapter-card glass">
+                        <h2>Chapter 8: Model Training & Evaluation</h2>
+                        <p>Train ensemble models (GradientBoosting and RandomForest), compare performance, select the best model, and generate predictions.</p>
+
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Feature-Engineered Dataset</h3>
+                            <p>Load the dataset with all features ready for modeling.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [47]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 47</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Build preprocessing pipeline
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", Pipeline([("imputer", SimpleImputer(strategy="median"))]), NUMERIC_FINAL),
+        ("cat", Pipeline([
+            ("imputer", SimpleImputer(strategy="most_frequent")),
+            ("encoder", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
+        ]), CATEGORICAL_FEATURES),
+    ]
+)
+
+print("✓ Preprocessing pipeline created")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Train Gradient Boosting Model</h3>
+                            <p>Fit the GradientBoosting model and evaluate it on the holdout split.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [48]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 48</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Train Gradient Boosting model
+print("\n=== Training Gradient Boosting ===")
+
+gb_model = GradientBoostingRegressor(
+    n_estimators=500,
+    learning_rate=0.03,
+    max_depth=5,
+    min_samples_leaf=5,
+    subsample=0.8,
+    random_state=RANDOM_STATE,
+)
+
+gb_pipeline = Pipeline([("preprocessor", preprocessor), ("model", gb_model)])
+gb_pipeline.fit(x_train, y_train)
+
+# Evaluate
+gb_pred = np.expm1(gb_pipeline.predict(x_test))
+gb_true = np.expm1(y_test)
+gb_r2 = float(r2_score(gb_true, gb_pred))
+gb_mae = float(mean_absolute_error(gb_true, gb_pred))
+
+print(f"Test R²: {gb_r2:.4f}")
+print(f"Test MAE: {gb_mae:,.0f} TND")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Train Random Forest Model</h3>
+                            <p>Fit the RandomForest baseline and compare its holdout metrics against GradientBoosting.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [49]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 49</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Train Random Forest model
+print("\n=== Training Random Forest ===")
+
+rf_model = RandomForestRegressor(
+    n_estimators=500,
+    min_samples_leaf=2,
+    max_features=0.5,
+    max_depth=18,
+    random_state=RANDOM_STATE,
+    n_jobs=-1,
+)
+
+rf_pipeline = Pipeline([("preprocessor", preprocessor), ("model", rf_model)])
+rf_pipeline.fit(x_train, y_train)
+
+# Evaluate
+rf_pred = np.expm1(rf_pipeline.predict(x_test))
+rf_r2 = float(r2_score(gb_true, rf_pred))
+rf_mae = float(mean_absolute_error(gb_true, rf_pred))
+
+print(f"Test R²: {rf_r2:.4f}")
+print(f"Test MAE: {rf_mae:,.0f} TND")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Select Best Model</h3>
+                            <p>Choose the better-performing model based on holdout R² and MAE.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [50]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 50</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Select best model
+if gb_r2 &gt;= rf_r2:
+    best_name = "GradientBoosting"
+    best_pipeline = gb_pipeline
+    best_r2 = gb_r2
+    best_mae = gb_mae
+else:
+    best_name = "RandomForest"
+    best_pipeline = rf_pipeline
+    best_r2 = rf_r2
+    best_mae = rf_mae
+
+print(f"\n=== Best Model: {best_name} ===")
+print(f"R²: {best_r2:.4f}")
+print(f"MAE: {best_mae:,.0f} TND")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Cross-Validation</h3>
+                            <p>Measure model stability with 5-fold cross-validation on the training split.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [51]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 51</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Cross-validation
+print("\nRunning 5-fold cross-validation...")
+
+cv_scores = cross_val_score(best_pipeline, x_train, y_train, cv=5, scoring="r2", n_jobs=-1)
+
+print(f"CV R² scores: {[f'{s:.4f}' for s in cv_scores]}")
+print(f"CV R² mean: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Generate Holdout Predictions</h3>
+                            <p>Build the holdout prediction table used for diagnostics and export it to disk.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [52]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 52</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Generate holdout predictions
+holdout = frame.loc[idx_test, [
+    "source_dataset", "source_row_id", "property_family",
+    "normalized_locality", "geo_governorate", "geo_delegation",
+    "surface_m2", "price_tnd"
+]].copy()
+
+holdout["predicted_price_tnd"] = np.expm1(best_pipeline.predict(x_test))
+holdout["error_tnd"] = holdout["predicted_price_tnd"] - holdout["price_tnd"]
+holdout["error_pct"] = (holdout["error_tnd"] / holdout["price_tnd"] * 100).round(2)
+
+# Save predictions
+predictions_path = MODEL_TRAINING_DIR / "08_holdout_predictions.csv"
+holdout.to_csv(predictions_path, index=False)
+
+print(f"\n✓ Holdout predictions saved: {predictions_path}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Load Production Training Summary</h3>
+                            <p>Load the exported production summary so the notebook reflects the same values used by the frontend and API.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [53]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 53</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Load production training summary
+production_summary_path = PROJECT_ROOT / "frontend" / "model_summary.json"
+production_summary = json.loads(production_summary_path.read_text(encoding="utf-8"))
+
+print("\n=== Production Training Summary ===")
+print(f"Training rows: {production_summary['training_rows']:,}")
+print(f"Best model: {production_summary['best_model']}")
+print(f"Validation R²: {production_summary['validation_r2']:.4f}")
+print(f"Direct delegations: {production_summary['delegations_with_direct_support']} / {production_summary['total_delegations']}")
+print(f"Loaded from: {production_summary_path}")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                        <details class="source-panel" data-source-path="pipeline/08_model_training.py"><summary class="source-header"><strong>Pipeline source: stage 08 model training</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="data/processed/08_model_training/08_model_training_report.json"><summary class="source-header"><strong>Generated asset: model report</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="frontend/model_summary.json"><summary class="source-header"><strong>Frontend asset: model summary</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="frontend/assets/data/pipeline_assets_manifest.json"><summary class="source-header"><strong>Frontend asset: pipeline manifest</strong></summary><pre class="source-code">Loading source...</pre></details>
+                        <details class="source-panel" data-source-path="frontend/assets/data/zone_coverage.json"><summary class="source-header"><strong>Frontend asset: zone coverage</strong></summary><pre class="source-code">Loading source...</pre></details>
+
+                        <div class="cell-explainer">
+                            <h3>Inspect Frontend Exports</h3>
+                            <p>Show the frontend-facing assets produced by the pipeline instead of displaying sample predictions.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [54]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 54</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Inspect exported frontend assets
+manifest_path = PROJECT_ROOT / "frontend" / "assets" / "data" / "pipeline_assets_manifest.json"
+frontend_summary_path = PROJECT_ROOT / "frontend" / "model_summary.json"
+
+manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+frontend_summary = json.loads(frontend_summary_path.read_text(encoding="utf-8"))
+
+print("\n=== Frontend Exports ===")
+for label, path in manifest["core_assets"].items():
+    print(f"{label}: {path}")
+
+print("\n=== Frontend Summary Snapshot ===")
+print(f"Training rows: {frontend_summary['training_rows']:,}")
+print(f"Modeling rows: {frontend_summary['modeling_rows']:,}")
+print(f"Direct delegations: {frontend_summary['delegations_with_direct_support']} / {frontend_summary['total_delegations']}")
+print(f"Validation R²: {frontend_summary['validation_r2']:.4f}")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Visualization: Model Performance</h3>
+                            <p>Visualize model comparison, predicted vs actual prices, residuals, error distribution, and cross-validation scores.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [55]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 55</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Visualize model performance
+fig, axes = plt.subplots(2, 3, figsize=(16, 10))
+
+# 1. Model comparison
+model_names = ['GradientBoosting', 'RandomForest']
+train_scores = [gb_r2 if 'gb_r2' in dir() else 0, rf_r2 if 'rf_r2' in dir() else 0]
+test_scores = [gb_r2, rf_r2]
+
+x = range(len(model_names))
+width = 0.35
+
+axes[0, 0].bar([i - width/2 for i in x], train_scores, width, label='Train', color='#3498db', alpha=0.7)
+axes[0, 0].bar([i + width/2 for i in x], test_scores, width, label='Test', color='#2ecc71', alpha=0.7)
+axes[0, 0].set_xticks(x)
+axes[0, 0].set_xticklabels(model_names)
+axes[0, 0].set_ylabel('R² Score')
+axes[0, 0].set_title('Model Comparison: R² Scores')
+axes[0, 0].legend()
+axes[0, 0].set_ylim([0, 1])
+axes[0, 0].grid(axis='y', alpha=0.3)
+
+# 2. Predicted vs Actual
+axes[0, 1].scatter(holdout['price_tnd'], holdout['predicted_price_tnd'], 
+                  alpha=0.5, s=20, color='#3498db')
+axes[0, 1].plot([holdout['price_tnd'].min(), holdout['price_tnd'].max()], 
+               [holdout['price_tnd'].min(), holdout['price_tnd'].max()], 
+               'r--', lw=2, label='Perfect Prediction')
+axes[0, 1].set_xlabel('Actual Price (TND)')
+axes[0, 1].set_ylabel('Predicted Price (TND)')
+axes[0, 1].set_title('Predicted vs Actual Prices')
+axes[0, 1].legend()
+axes[0, 1].set_xscale('log')
+axes[0, 1].set_yscale('log')
+axes[0, 1].grid(True, alpha=0.3)
+
+# 3. Residuals distribution
+residuals = holdout['predicted_price_tnd'] - holdout['price_tnd']
+axes[0, 2].hist(residuals, bins=50, color='#e74c3c', alpha=0.7, edgecolor='black')
+axes[0, 2].axvline(0, color='black', linestyle='--', lw=2)
+axes[0, 2].set_xlabel('Residual (Predicted - Actual)')
+axes[0, 2].set_ylabel('Frequency')
+axes[0, 2].set_title('Prediction Residuals Distribution')
+axes[0, 2].grid(axis='y', alpha=0.3)
+
+# 4. Error by property family
+error_by_family = holdout.groupby('property_family')['error_tnd'].apply(lambda x: x.abs().mean())
+axes[1, 0].bar(range(len(error_by_family)), error_by_family.values, 
+              color=['#3498db', '#e74c3c', '#2ecc71'], alpha=0.7)
+axes[1, 0].set_xticks(range(len(error_by_family)))
+axes[1, 0].set_xticklabels([f.title() for f in error_by_family.index])
+axes[1, 0].set_ylabel('Mean Absolute Error (TND)')
+axes[1, 0].set_title('Prediction Error by Property Family')
+axes[1, 0].grid(axis='y', alpha=0.3)
+for i, v in enumerate(error_by_family.values):
+    axes[1, 0].text(i, v, f'{v:,.0f}', ha='center', va='bottom')
+
+# 5. Error percentage distribution
+axes[1, 1].hist(holdout['error_pct'].abs(), bins=50, color='#9b59b6', alpha=0.7, edgecolor='black')
+axes[1, 1].axvline(holdout['error_pct'].abs().median(), color='red', linestyle='--', 
+                  label=f'Median: {holdout["error_pct"].abs().median():.1f}%')
+axes[1, 1].set_xlabel('Absolute Error (%)')
+axes[1, 1].set_ylabel('Frequency')
+axes[1, 1].set_title('Prediction Error Percentage Distribution')
+axes[1, 1].legend()
+axes[1, 1].set_xlim(0, 100)
+axes[1, 1].grid(axis='y', alpha=0.3)
+
+# 6. Cross-validation scores
+if 'cv_scores' in dir():
+    axes[1, 2].bar(range(len(cv_scores)), cv_scores, color='#1abc9c', alpha=0.7)
+    axes[1, 2].axhline(cv_scores.mean(), color='red', linestyle='--', lw=2, 
+                      label=f'Mean: {cv_scores.mean():.4f}')
+    axes[1, 2].set_xlabel('Fold')
+    axes[1, 2].set_ylabel('R² Score')
+    axes[1, 2].set_title('Cross-Validation Scores (5-Fold)')
+    axes[1, 2].legend()
+    axes[1, 2].set_ylim([0, 1])
+    axes[1, 2].grid(axis='y', alpha=0.3)
+else:
+    axes[1, 2].text(0.5, 0.5, 'CV scores not available', 
+                   ha='center', va='center', transform=axes[1, 2].transAxes)
+    axes[1, 2].set_title('Cross-Validation Scores')
+
+plt.tight_layout()
+plt.show()
+
+print("✓ Model performance visualizations complete")</textarea>
+                            <div class="output"></div>
+                        </div>
+                        
+                        <div class="cell-explainer">
+                            <h3>Final Summary</h3>
+                            <p>Summarize the final model-training stage using the actual filtered modeling frame and exported artifacts.</p>
+                        </div>
+
+                        <div class="cell">
+                            <div class="cell-label">In [56]:</div>
+                            <div class="cell-header">
+                                <span class="cell-title">Cell 56</span>
+                                <button class="btn-run" onclick="runCell(this)">RUN</button>
+                            </div>
+                            <textarea class="code-editor"># Final summary
+print("=" * 60)
+print("PIPELINE EXECUTION COMPLETE")
+print("=" * 60)
+print(f"\nTraining dataset: {frontend_summary['training_rows']:,} rows")
+print(f"Modeling subset: {frontend_summary['modeling_rows']:,} rows")
+print(f"Best model: {frontend_summary['best_model']}")
+print(f"Validation R²: {frontend_summary['validation_r2']:.4f}")
+print(f"Direct delegations: {frontend_summary['delegations_with_direct_support']} / {frontend_summary['total_delegations']}")
+print(f"\nAll artifacts saved to:")
+for label, path in manifest["core_assets"].items():
+    print(f"  - {label}: {path}")
+print("\n✓ Pipeline notebook execution complete!")</textarea>
+                            <div class="output"></div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="qa-tab-view" class="tab-view">
+            <div class="book-grid">
+                <aside class="book-sidebar glass">
+                    <span class="tag">ORAL DEFENSE</span>
+                    <nav class="chapter-nav">
+                        <a href="#qa-1">01. Why 3 Datasets</a>
+                        <a href="#qa-2">02. Why Cleaning</a>
+                        <a href="#qa-3">03. Why Merge</a>
+                        <a href="#qa-4">04. Why Geo Alignment</a>
+                        <a href="#qa-5">05. Why So Many Aliases</a>
+                        <a href="#qa-6">06. Why Geo Repair Matters</a>
+                        <a href="#qa-7">07. Why Compare Training vs Modeling</a>
+                        <a href="#qa-8">08. Why Coordinates</a>
+                        <a href="#qa-9">09. Why Outlier Trim</a>
+                        <a href="#qa-10">10. Why Few Features</a>
+                        <a href="#qa-11">11. Why GradientBoosting</a>
+                        <a href="#qa-12">12. Why Cross Validation</a>
+                        <a href="#qa-13">13. Why Atlas Coverage 100%</a>
+                        <a href="#qa-14">14. What Is Direct Support</a>
+                        <a href="#qa-15">15. How Fallback Works</a>
+                        <a href="#qa-16">16. Why Use Target Encoding</a>
+                        <a href="#qa-17">17. Why Use Local Price Ratio</a>
+                        <a href="#qa-18">18. Why Keep Both Geo Levels</a>
+                        <a href="#qa-19">19. Current Limits</a>
+                        <a href="#qa-20">20. Best Next Step</a>
+                    </nav>
+                </aside>
+                <div class="qa-shell">
+                    <section id="qa-1" class="chapter-card glass qa-card">
+                        <h2>01. Why did we use three datasets instead of only one?</h2>
+                        <p class="qa-answer">Because one dataset gives volume, but the others add missing places and different listing patterns. If we use only one source, coverage becomes weaker in some areas. By combining the three cleaned sources, we keep more valid rows and a better national spread.</p>
+                    </section>
+                    <section id="qa-2" class="chapter-card glass qa-card">
+                        <h2>02. Why did we spend so much effort on cleaning first?</h2>
+                        <p class="qa-answer">Because the raw listings were not ready for modeling. They had bad surfaces, missing fields, duplicates, mixed naming styles, and some unrealistic prices. If we skip cleaning, the merge and alignment stages become noisy and the model learns wrong patterns.</p>
+                    </section>
+                    <section id="qa-3" class="chapter-card glass qa-card">
+                        <h2>03. Why did we merge the datasets instead of training them separately?</h2>
+                        <p class="qa-answer">The goal is one national pipeline, not three disconnected models. Merging lets us train one consistent model and build one atlas. We also remove cross-source duplicates during merge, so we keep the useful signal without counting the same listing many times.</p>
+                    </section>
+                    <section id="qa-4" class="chapter-card glass qa-card">
+                        <h2>04. Why was geographic alignment a major step in this project?</h2>
+                        <p class="qa-answer">Because location is one of the strongest signals in real estate pricing. The raw files use many different names for the same place, so we needed a canonical geography layer. Without alignment, the model and atlas would treat the same area as many unrelated places.</p>
+                    </section>
+                    <section id="qa-5" class="chapter-card glass qa-card">
+                        <h2>05. Why did we add so many locality aliases and manual mappings?</h2>
+                        <p class="qa-answer">Because many unmatched rows were not truly unknown places. They were common names written in a way that the base matcher could not connect directly, like `Ariana Ville`, `La Soukra`, `Le Bardo`, or `Sahloul`. The alias layer fixes these repeated real-world naming patterns.</p>
+                    </section>
+                    <section id="qa-6" class="chapter-card glass qa-card">
+                        <h2>06. Why was repairing geographic names so important for the dataset?</h2>
+                        <p class="qa-answer">Because many rows were not truly bad rows. They were valid listings with noisy place names. Once those names were repaired with aliases and manual mappings, a large number of rows became usable again for both training and geographic coverage.</p>
+                    </section>
+                    <section id="qa-7" class="chapter-card glass qa-card">
+                        <h2>07. Why do we compare training rows and modeling rows?</h2>
+                        <p class="qa-answer">Because it shows how much data is lost in the final modeling filter. The training rows tell us how much usable data we prepared, and the modeling rows tell us how much remains after the final outlier trim. This is a good sanity check for data efficiency.</p>
+                    </section>
+                    <section id="qa-8" class="chapter-card glass qa-card">
+                        <h2>08. Why did we keep longitude and latitude in the features?</h2>
+                        <p class="qa-answer">Because price is spatial. Two properties with the same size can still have very different prices if they are in different places. Coordinates help the model capture location structure more smoothly than using only category labels.</p>
+                    </section>
+                    <section id="qa-9" class="chapter-card glass qa-card">
+                        <h2>09. Why do we still trim outliers in stage 8 after cleaning?</h2>
+                        <p class="qa-answer">Cleaning removes obvious bad data, but some extreme prices still remain. Stage 8 trims the lowest and highest tails so the final model is not pulled by unusual rows. This makes the final price behavior more stable.</p>
+                    </section>
+                    <section id="qa-10" class="chapter-card glass qa-card">
+                        <h2>10. Why did we keep a relatively small feature set?</h2>
+                        <p class="qa-answer">Because we wanted features that are strong, available, and easy to reproduce in production. It is better to keep a compact set of reliable features than to add many weak or unstable ones that make deployment harder.</p>
+                    </section>
+                    <section id="qa-11" class="chapter-card glass qa-card">
+                        <h2>11. Why did GradientBoosting win instead of RandomForest?</h2>
+                        <p class="qa-answer">Because on this processed dataset it gave the better validation result. The model tournament is not based on opinion. Both models are trained on the same final dataset, then the pipeline keeps the one that performs better.</p>
+                    </section>
+                    <section id="qa-12" class="chapter-card glass qa-card">
+                        <h2>12. Why did we use cross-validation if we already have a test split?</h2>
+                        <p class="qa-answer">The test split gives one final check, but cross-validation shows whether the model is stable across different folds. That is useful because one lucky split can look strong even if the model is not consistently reliable.</p>
+                    </section>
+                    <section id="qa-13" class="chapter-card glass qa-card">
+                        <h2>13. Why is atlas coverage 100% if direct support is only around 39%?</h2>
+                        <p class="qa-answer">Because coverage and direct support mean different things. Coverage means the system can return a profile for the delegation. Direct support means the delegation has enough local examples to build that profile directly. The rest are handled through fallback logic.</p>
+                    </section>
+                    <section id="qa-14" class="chapter-card glass qa-card">
+                        <h2>14. What exactly is direct support in this project?</h2>
+                        <p class="qa-answer">Direct support means a delegation has enough rows in the support pool for at least one property family, so its profile can be built from local delegation data. It is the strongest support level because it uses the same area instead of borrowing from a wider region.</p>
+                    </section>
+                    <section id="qa-15" class="chapter-card glass qa-card">
+                        <h2>15. How does fallback work exactly?</h2>
+                        <p class="qa-answer">The fallback works in three levels. First, the system tries direct delegation support for the selected property family. If that delegation does not have enough local rows, it falls back to the governorate-level profile for the same family. If the governorate level is still not available, it falls back to the national profile for that family. This means the atlas can still answer everywhere, but it also keeps track of whether the answer came from exact local support, governorate fallback, or national fallback.</p>
+                    </section>
+                    <section id="qa-16" class="chapter-card glass qa-card">
+                        <h2>16. Why did we use target encoding for governorate and delegation?</h2>
+                        <p class="qa-answer">Because location is very important, but using only one-hot encoding for every place is not enough. Target encoding gives the model a compact numeric summary of local price behavior. It helps the model learn price differences between areas more directly.</p>
+                    </section>
+                    <section id="qa-17" class="chapter-card glass qa-card">
+                        <h2>17. Why did we add the local price ratio feature?</h2>
+                        <p class="qa-answer">Because it tells the model whether a property is cheaper or more expensive than the usual local level. This is useful because price per square meter can change a lot by area. The ratio gives a normalized local market signal instead of only raw price values.</p>
+                    </section>
+                    <section id="qa-18" class="chapter-card glass qa-card">
+                        <h2>18. Why did we keep both governorate and delegation in the model?</h2>
+                        <p class="qa-answer">Because they capture different geographic scales. Delegation gives a more local signal, while governorate gives a broader regional signal. Keeping both helps the model stay useful even when local information is weaker in some places.</p>
+                    </section>
+                    <section id="qa-19" class="chapter-card glass qa-card">
+                        <h2>19. What are the main limits of the current pipeline?</h2>
+                        <p class="qa-answer">The biggest limit is still the data source. These are listing prices, not official confirmed transactions. Also, a few locality names still need manual aliasing, and some geographic fallback is still necessary in weak areas.</p>
+                    </section>
+                    <section id="qa-20" class="chapter-card glass qa-card">
+                        <h2>20. What would improve the project the most next?</h2>
+                        <p class="qa-answer">The best next improvement would be better verified transaction data. After that, the next strong improvement would be expanding the locality reference layer and adding more structural property features. That would improve both geographic confidence and model quality.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="js/notebook.js?v=4.0"></script>
+</body>
+</html>
+
+

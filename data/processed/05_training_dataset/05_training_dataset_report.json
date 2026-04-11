@@ -1,0 +1,35 @@
+{
+  "rows": 13788,
+  "columns": [
+    "source_dataset",
+    "source_row_id",
+    "property_family",
+    "surface_m2",
+    "rooms",
+    "price_tnd",
+    "price_per_m2",
+    "log_price_tnd",
+    "log_price_per_m2",
+    "normalized_locality",
+    "geo_governorate",
+    "geo_delegation"
+  ],
+  "source_distribution": {
+    "tunisia_real_estate": 9166,
+    "property_prices_in_tunisia": 2906,
+    "data_prices_cleaned": 1716
+  },
+  "family_distribution": {
+    "apartment": 5459,
+    "house": 4944,
+    "land": 3385
+  },
+  "geo_governorate_count": 24,
+  "geo_delegation_count": 181,
+  "normalized_locality_count": 293,
+  "price_range": {
+    "min": 8400.0,
+    "median": 318000.0,
+    "max": 15600000.0
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "best_model": "GradientBoosting",
+  "training_rows": 13788,
+  "modeling_rows": 13651,
+  "test_r2": 0.8897046208778251,
+  "validation_r2": 0.8897046208778251,
+  "test_mae": 69940.67972547532,
+  "cv_r2_mean": 0.9282541297725373,
+  "cv_r2_std": 0.002934374325397725,
+  "accuracy_pct": 88.97,
+  "total_delegations": 264,
+  "covered_delegations": 264,
+  "delegations_with_direct_support": 103,
+  "direct_coverage_pct": 39.02,
+  "atlas_reach_pct": 100.0,
+  "fallback_support_pct": 60.98,
+  "tier_percentages": {
+    "exact_sector": 19.7,
+    "governorate_fallback": 61.74,
+    "national_fallback": 18.56
+  },
+  "benchmark_ppm2_range": {
+    "min": 20.0,
+    "max": 4285.71
+  },
+  "model_results": [
+    {
+      "model": "GradientBoosting",
+      "r2": 0.8897046208778251,
+      "mae": 69940.67972547532,
+      "rmse": null
+    },
+    {
+      "model": "RandomForest",
+      "r2": 0.8586288474306288,
+      "mae": 75906.17356436273,
+      "rmse": null
+    }
+  ],
+  "features": [
+    "surface_m2",
+    "rooms",
+    "lon",
+    "lat",
+    "geo_delegation_target_enc",
+    "geo_governorate_target_enc",
+    "price_vs_local_median",
+    "property_family",
+    "geo_governorate",
+    "geo_delegation"
+  ],
+  "feature_columns": [
+    "surface_m2",
+    "rooms",
+    "lon",
+    "lat",
+    "geo_delegation_target_enc",
+    "geo_governorate_target_enc",
+    "price_vs_local_median",
+    "property_family",
+    "geo_governorate",
+    "geo_delegation"
+  ],
+  "reports": {
+    "model_comparison": "data\\processed\\08_model_training\\08_model_comparison.png",
+    "holdout_scatter": "data\\processed\\08_model_training\\08_holdout_scatter.png"
+  },
+  "frontend_exports": {
+    "atlas_geojson": "frontend\\assets\\data\\atlas.geojson",
+    "zone_coverage": "frontend\\assets\\data\\zone_coverage.json",
+    "delegation_profiles": "frontend\\assets\\data\\delegation_profiles.json",
+    "model_summary": "frontend\\model_summary.json"
+  }
+}

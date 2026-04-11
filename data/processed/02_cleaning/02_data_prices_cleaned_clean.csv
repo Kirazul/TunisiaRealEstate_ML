@@ -1,0 +1,1765 @@
+source_dataset,source_row_id,property_family,governorate,delegation,city,location,surface_m2,rooms,bathrooms,price_tnd
+data_prices_cleaned,0,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",55.0,1.0,1.0,184998.0
+data_prices_cleaned,1,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",71.0,2.0,1.0,210000.0
+data_prices_cleaned,2,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",600.0,4.0,2.0,1300000.0
+data_prices_cleaned,4,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",85.0,2.0,0.0,175000.0
+data_prices_cleaned,5,house,Monastir,Monastir,Monastir,"Monastir,Monastir",405.0,4.0,3.0,670000.0
+data_prices_cleaned,6,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",45.0,1.0,1.0,130000.0
+data_prices_cleaned,7,house,Sousse,Sousse,Sousse,"Sousse,Sousse",409.0,5.0,3.0,715000.0
+data_prices_cleaned,9,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",230.0,3.0,2.0,390000.0
+data_prices_cleaned,10,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",120.0,3.0,1.0,250000.0
+data_prices_cleaned,14,house,Sousse,Khzema,Khzema,"Sousse,Khzema",400.0,3.0,4.0,1300000.0
+data_prices_cleaned,15,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",77.0,1.0,1.0,220000.0
+data_prices_cleaned,16,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",98.0,2.0,1.0,148000.0
+data_prices_cleaned,19,apartment,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",100.0,3.0,2.0,330000.0
+data_prices_cleaned,22,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",85.0,2.0,1.0,155000.0
+data_prices_cleaned,23,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",300.0,3.0,2.0,470000.0
+data_prices_cleaned,27,house,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",450.0,7.0,3.0,1190000.0
+data_prices_cleaned,29,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",180.0,5.0,3.0,270000.0
+data_prices_cleaned,30,house,La Manouba,Oued Ellil,Oued Ellil,"La Manouba,Oued Ellil",306.0,4.0,1.0,250000.0
+data_prices_cleaned,31,house,La Manouba,Djedeida,Djedeida,"La Manouba,Djedeida",130.0,3.0,1.0,190000.0
+data_prices_cleaned,33,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",170.0,3.0,2.0,740000.0
+data_prices_cleaned,34,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",62.0,1.0,0.0,185000.0
+data_prices_cleaned,35,house,Monastir,Monastir,Monastir,"Monastir,Monastir",102.0,2.0,1.0,165000.0
+data_prices_cleaned,36,house,Ariana,Jardins El Menzah,Jardins El Menzah,"Ariana,Jardins El Menzah",100.0,5.0,3.0,405000.0
+data_prices_cleaned,39,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",160.0,3.0,2.0,450000.0
+data_prices_cleaned,40,house,Sousse,Akouda,Akouda,"Sousse,Akouda",566.0,4.0,2.0,680000.0
+data_prices_cleaned,49,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",200.0,1.0,3.0,670000.0
+data_prices_cleaned,54,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",80.0,1.0,1.0,85000.0
+data_prices_cleaned,60,house,Monastir,Sahline,Sahline,"Monastir,Sahline",200.0,3.0,1.0,260000.0
+data_prices_cleaned,63,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",549.0,7.0,3.0,860000.0
+data_prices_cleaned,67,house,Sousse,Akouda,Akouda,"Sousse,Akouda",600.0,5.0,2.0,450000.0
+data_prices_cleaned,68,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",100.0,3.0,1.0,210000.0
+data_prices_cleaned,70,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",187.0,3.0,1.0,750000.0
+data_prices_cleaned,72,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",120.0,2.0,1.0,290000.0
+data_prices_cleaned,73,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",130.0,3.0,1.0,450000.0
+data_prices_cleaned,77,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",1000.0,5.0,5.0,1200000.0
+data_prices_cleaned,83,apartment,Sfax,Sfax,Sfax,"Sfax,Sfax",126.0,3.0,1.0,125000.0
+data_prices_cleaned,84,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",96.0,2.0,1.0,145000.0
+data_prices_cleaned,86,house,Nabeul,Korba,Korba,"Nabeul,Korba",400.0,6.0,1.0,230000.0
+data_prices_cleaned,90,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",433.0,3.0,1.0,1030000.0
+data_prices_cleaned,91,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",170.0,3.0,3.0,493000.0
+data_prices_cleaned,100,house,Sousse,Hergla,Hergla,"Sousse,Hergla",160.0,3.0,2.0,280000.0
+data_prices_cleaned,101,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",58.0,1.0,1.0,265000.0
+data_prices_cleaned,102,house,Sousse,Hergla,Hergla,"Sousse,Hergla",352.0,3.0,5.0,800000.0
+data_prices_cleaned,104,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",63.0,1.0,1.0,199000.0
+data_prices_cleaned,105,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",68.0,1.0,1.0,173000.0
+data_prices_cleaned,106,house,Sousse,Hergla,Hergla,"Sousse,Hergla",144.0,2.0,2.0,260000.0
+data_prices_cleaned,107,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",119.0,3.0,1.0,182000.0
+data_prices_cleaned,114,house,La Manouba,Mornaguia,Mornaguia,"La Manouba,Mornaguia",500.0,6.0,5.0,650000.0
+data_prices_cleaned,116,house,Ariana,Raoued,Raoued,"Ariana,Raoued",500.0,3.0,1.0,280000.0
+data_prices_cleaned,117,house,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",142.0,2.0,2.0,280000.0
+data_prices_cleaned,121,house,Ariana,Ariana,Ariana,"Ariana,Ariana",100.0,2.0,1.0,250000.0
+data_prices_cleaned,124,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",380.0,4.0,2.0,1050000.0
+data_prices_cleaned,127,house,Sousse,Hergla,Hergla,"Sousse,Hergla",200.0,5.0,2.0,445000.0
+data_prices_cleaned,129,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",111.0,2.0,2.0,285700.0
+data_prices_cleaned,132,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",108.0,2.0,2.0,265900.0
+data_prices_cleaned,135,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",85.0,2.0,1.0,77000.0
+data_prices_cleaned,136,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",116.0,2.0,3.0,230000.0
+data_prices_cleaned,138,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",434.0,4.0,3.0,1350000.0
+data_prices_cleaned,141,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",105.0,3.0,2.0,175000.0
+data_prices_cleaned,145,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",158.0,3.0,2.0,395000.0
+data_prices_cleaned,151,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",120.0,2.0,1.0,274997.0
+data_prices_cleaned,153,house,Tunis,El Omrane,El Omrane,"Tunis,El Omrane",290.0,5.0,2.0,980000.0
+data_prices_cleaned,156,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",142.0,3.0,2.0,300000.0
+data_prices_cleaned,157,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",275.0,3.0,2.0,230000.0
+data_prices_cleaned,158,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",414.0,3.0,1.0,560000.0
+data_prices_cleaned,159,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",96.0,2.0,1.0,190000.0
+data_prices_cleaned,160,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",82.0,1.0,1.0,145000.0
+data_prices_cleaned,161,apartment,Tunis,Bab Souika,Bab Souika,"Tunis,Bab Souika",111.0,3.0,1.0,140000.0
+data_prices_cleaned,166,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",125.0,2.0,1.0,250000.0
+data_prices_cleaned,169,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",60.0,1.0,1.0,300000.0
+data_prices_cleaned,170,house,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",1100.0,20.0,,1400000.0
+data_prices_cleaned,172,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",105.0,2.0,1.0,260000.0
+data_prices_cleaned,173,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",129.0,2.0,1.0,420000.0
+data_prices_cleaned,175,house,Sousse,Hergla,Hergla,"Sousse,Hergla",625.0,6.0,3.0,1200000.0
+data_prices_cleaned,179,house,Ariana,Ariana,Ariana,"Ariana,Ariana",90.0,6.0,2.0,450000.0
+data_prices_cleaned,180,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",100.0,2.0,1.0,240000.0
+data_prices_cleaned,182,house,Sousse,Hergla,Hergla,"Sousse,Hergla",200.0,1.0,3.0,500000.0
+data_prices_cleaned,183,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",1300.0,5.0,3.0,2600000.0
+data_prices_cleaned,185,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",310.0,18.0,,1100000.0
+data_prices_cleaned,186,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",130.0,2.0,1.0,190000.0
+data_prices_cleaned,187,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",165.0,3.0,1.0,220000.0
+data_prices_cleaned,193,house,Sfax,Route El Ain,Route El Ain,"Sfax,Route El Ain",406.0,3.0,1.0,180000.0
+data_prices_cleaned,194,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",281.0,6.0,5.0,490000.0
+data_prices_cleaned,197,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",160.0,3.0,2.0,360000.0
+data_prices_cleaned,198,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",100.0,2.0,1.0,160000.0
+data_prices_cleaned,200,house,Tunis,Menzah,Menzah,"Tunis,Menzah",530.0,3.0,1.0,1400000.0
+data_prices_cleaned,204,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",300.0,3.0,1.0,140000.0
+data_prices_cleaned,205,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",400.0,5.0,3.0,730000.0
+data_prices_cleaned,206,house,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",236.0,6.0,2.0,380000.0
+data_prices_cleaned,207,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",95.0,2.0,1.0,230000.0
+data_prices_cleaned,208,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",120.0,2.0,1.0,400000.0
+data_prices_cleaned,209,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",150.0,0.0,2.0,310000.0
+data_prices_cleaned,210,house,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",460.0,2.0,2.0,640000.0
+data_prices_cleaned,211,house,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",425.0,4.0,2.0,580000.0
+data_prices_cleaned,212,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",170.0,4.0,3.0,295000.0
+data_prices_cleaned,213,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",125.0,0.0,1.0,138000.0
+data_prices_cleaned,214,apartment,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",60.0,1.0,1.0,78000.0
+data_prices_cleaned,215,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",57.0,1.0,1.0,134200.0
+data_prices_cleaned,216,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",207.0,4.0,3.0,470000.0
+data_prices_cleaned,217,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",78.0,2.0,1.0,180400.0
+data_prices_cleaned,218,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",50.0,1.0,1.0,120000.0
+data_prices_cleaned,219,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",420.0,11.0,5.0,1500000.0
+data_prices_cleaned,223,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",90.0,2.0,1.0,220000.0
+data_prices_cleaned,227,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",112.0,1.0,0.0,570000.0
+data_prices_cleaned,231,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",433.0,5.0,2.0,390000.0
+data_prices_cleaned,233,apartment,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",100.0,3.0,2.0,120000.0
+data_prices_cleaned,236,house,Tunis,Mdina,Mdina,"Tunis,Mdina",167.0,6.0,2.0,150000.0
+data_prices_cleaned,238,house,Tunis,Sidi El Bchir,Sidi El Bchir,"Tunis,Sidi El Bchir",180.0,5.0,1.0,175000.0
+data_prices_cleaned,243,house,Tunis,Carthage,Carthage,"Tunis,Carthage",76.426,1.0,1.0,185000.0
+data_prices_cleaned,246,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",209.0,3.0,1.0,350000.0
+data_prices_cleaned,249,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",126.0,2.0,0.0,370000.0
+data_prices_cleaned,250,house,Ariana,Chotrana 2,Chotrana 2,"Ariana,Chotrana 2",400.0,4.0,0.0,850000.0
+data_prices_cleaned,251,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",218.0,4.0,0.0,1100000.0
+data_prices_cleaned,253,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",160.0,3.0,0.0,580000.0
+data_prices_cleaned,254,house,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",1500.0,4.0,0.0,1300000.0
+data_prices_cleaned,255,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",140.0,3.0,0.0,625000.0
+data_prices_cleaned,256,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",320.0,3.0,0.0,1100000.0
+data_prices_cleaned,257,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",96.0,1.0,1.0,480000.0
+data_prices_cleaned,259,apartment,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",190.0,3.0,3.0,1299999.0
+data_prices_cleaned,260,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",90.0,1.0,1.0,89999.0
+data_prices_cleaned,261,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",275.0,4.0,0.0,1140000.0
+data_prices_cleaned,262,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",172.0,4.0,2.0,350000.0
+data_prices_cleaned,264,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",331.2,4.0,1.0,2300000.0
+data_prices_cleaned,265,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",49.0,1.0,1.0,440000.0
+data_prices_cleaned,266,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",142.0,3.0,2.0,330000.0
+data_prices_cleaned,267,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",115.0,2.0,1.0,440000.0
+data_prices_cleaned,268,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",364.0,3.0,3.0,1600000.0
+data_prices_cleaned,269,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",221.0,3.0,2.0,800000.0
+data_prices_cleaned,270,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",145.0,3.0,2.0,527000.0
+data_prices_cleaned,271,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",143.0,3.0,2.0,295000.0
+data_prices_cleaned,273,house,Ariana,Chotrana 3,Chotrana 3,"Ariana,Chotrana 3",295.0,4.0,2.0,1100000.0
+data_prices_cleaned,274,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",210.0,4.0,2.0,420000.0
+data_prices_cleaned,275,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",372.0,4.0,4.0,1280000.0
+data_prices_cleaned,276,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",721.0,3.0,2.0,830000.0
+data_prices_cleaned,277,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",157.0,0.0,2.0,529998.0
+data_prices_cleaned,278,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",127.0,3.0,2.0,220000.0
+data_prices_cleaned,279,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",230.0,4.0,3.0,850000.0
+data_prices_cleaned,280,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",240.0,4.0,3.0,620000.0
+data_prices_cleaned,281,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",282.0,1.0,1.0,740000.0
+data_prices_cleaned,282,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",143.0,3.0,2.0,365000.0
+data_prices_cleaned,283,house,Sousse,Sousse,Sousse,"Sousse,Sousse",1414.0,,,1480000.0
+data_prices_cleaned,284,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,2.0,3.0,285000.0
+data_prices_cleaned,285,house,Sousse,Sousse,Sousse,"Sousse,Sousse",230.0,3.0,4.0,499000.0
+data_prices_cleaned,286,house,Sousse,Khzema,Khzema,"Sousse,Khzema",237.0,7.0,3.0,800000.0
+data_prices_cleaned,287,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",75.0,1.0,1.0,210000.0
+data_prices_cleaned,288,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",78.0,1.0,1.0,188000.0
+data_prices_cleaned,290,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",142.0,2.0,2.0,510000.0
+data_prices_cleaned,291,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",226.0,1.0,3.0,490000.0
+data_prices_cleaned,295,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",90.0,1.0,3.0,150000.0
+data_prices_cleaned,296,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",502.0,4.0,3.0,1300000.0
+data_prices_cleaned,299,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",450.0,5.0,2.0,1050000.0
+data_prices_cleaned,301,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",115.0,2.0,1.0,320000.0
+data_prices_cleaned,303,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",50.0,1.0,1.0,150000.0
+data_prices_cleaned,305,house,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",867.0,,1.0,890000.0
+data_prices_cleaned,308,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",150.0,2.0,2.0,430000.0
+data_prices_cleaned,309,apartment,Sousse,Sousse Sidi Abdelhamid,Sousse Sidi Abdelhamid,"Sousse,Sousse Sidi Abdelhamid",90.0,2.0,1.0,185000.0
+data_prices_cleaned,312,house,Tunis,Monfleury,Monfleury,"Tunis,Monfleury",280.0,7.0,3.0,490000.0
+data_prices_cleaned,313,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",160.0,5.0,1.0,168000.0
+data_prices_cleaned,314,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",85.0,2.0,1.0,460000.0
+data_prices_cleaned,316,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",324.0,6.0,4.0,690000.0
+data_prices_cleaned,318,house,Sousse,Khzema,Khzema,"Sousse,Khzema",231.0,2.0,1.0,365000.0
+data_prices_cleaned,320,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",140.0,2.0,1.0,780000.0
+data_prices_cleaned,322,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",370.0,3.0,1.0,850000.0
+data_prices_cleaned,332,house,Sousse,Khzema,Khzema,"Sousse,Khzema",526.0,5.0,3.0,1500000.0
+data_prices_cleaned,340,house,Jendouba,Tabarka,Tabarka,"Jendouba,Tabarka",300.0,2.0,1.0,135000.0
+data_prices_cleaned,344,house,Tunis,El Omrane,El Omrane,"Tunis,El Omrane",550.0,8.0,3.0,880000.0
+data_prices_cleaned,345,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",300.0,6.0,3.0,210000.0
+data_prices_cleaned,347,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",100.0,2.0,1.0,260000.0
+data_prices_cleaned,350,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",140.0,3.0,2.0,695000.0
+data_prices_cleaned,351,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",220.0,5.0,4.0,250000.0
+data_prices_cleaned,352,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",134.0,3.0,2.0,215000.0
+data_prices_cleaned,360,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",68.0,1.0,1.0,180000.0
+data_prices_cleaned,361,house,Tunis,Ezzouhour,Ezzouhour,"Tunis,Ezzouhour",270.0,2.0,1.0,320000.0
+data_prices_cleaned,362,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",130.0,3.0,3.0,340000.0
+data_prices_cleaned,363,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",134.0,3.0,2.0,225000.0
+data_prices_cleaned,365,house,Sfax,Sakiet Ezzit,Sakiet Ezzit,"Sfax,Sakiet Ezzit",155.0,6.0,2.0,272000.0
+data_prices_cleaned,366,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",150.0,3.0,2.0,370000.0
+data_prices_cleaned,370,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",840.0,3.0,2.0,290000.0
+data_prices_cleaned,372,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",442.0,4.0,2.0,645000.0
+data_prices_cleaned,373,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",110.0,2.0,1.0,195000.0
+data_prices_cleaned,375,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",75.0,2.0,,185000.0
+data_prices_cleaned,376,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",112.0,2.0,1.0,570000.0
+data_prices_cleaned,377,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",115.0,2.0,2.0,325000.0
+data_prices_cleaned,379,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",135.0,3.0,1.0,350000.0
+data_prices_cleaned,380,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",438.0,4.0,3.0,950000.0
+data_prices_cleaned,381,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",175.0,3.0,2.0,415000.0
+data_prices_cleaned,382,apartment,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",95.0,3.0,1.0,170000.0
+data_prices_cleaned,385,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",77.0,1.0,1.0,240000.0
+data_prices_cleaned,386,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",31.0,0.0,1.0,93000.0
+data_prices_cleaned,387,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",140.0,3.0,2.0,354500.0
+data_prices_cleaned,389,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",45.0,1.0,1.0,159000.0
+data_prices_cleaned,390,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",93.0,2.0,1.0,205000.0
+data_prices_cleaned,391,house,Sousse,Kala Sghira,Kala Sghira,"Sousse,Kala Sghira",412.0,8.0,,550000.0
+data_prices_cleaned,393,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",167.0,3.0,3.0,499000.0
+data_prices_cleaned,394,apartment,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",114.0,3.0,2.0,210000.0
+data_prices_cleaned,395,house,Ben Arous,El Mourouj 3,El Mourouj 3,"Ben Arous,El Mourouj 3",270.0,6.0,3.0,329000.0
+data_prices_cleaned,398,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",65.0,2.0,1.0,95000.0
+data_prices_cleaned,401,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",87.0,2.0,0.0,275000.0
+data_prices_cleaned,402,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",100.0,2.0,2.0,290000.0
+data_prices_cleaned,403,apartment,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",68.0,2.0,1.0,100000.0
+data_prices_cleaned,404,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",140.0,2.0,2.0,460000.0
+data_prices_cleaned,406,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",41.0,1.0,1.0,225000.0
+data_prices_cleaned,409,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",450.0,7.0,3.0,1650000.0
+data_prices_cleaned,410,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",85.0,2.0,2.0,259000.0
+data_prices_cleaned,412,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",130.0,3.0,1.0,155000.0
+data_prices_cleaned,414,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",100.0,2.0,1.0,285000.0
+data_prices_cleaned,415,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",350.0,6.0,3.0,820000.0
+data_prices_cleaned,416,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",300.0,0.0,3.0,1650000.0
+data_prices_cleaned,419,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",55.0,2.0,1.0,179999.0
+data_prices_cleaned,421,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",78.0,2.0,1.0,170000.0
+data_prices_cleaned,425,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",500.0,4.0,4.0,920000.0
+data_prices_cleaned,426,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",45.0,2.0,1.0,70000.0
+data_prices_cleaned,432,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",128.0,,,235000.0
+data_prices_cleaned,434,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",140.0,3.0,1.0,460000.0
+data_prices_cleaned,435,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",104.0,2.0,0.0,295000.0
+data_prices_cleaned,436,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",276.0,1.0,1.0,265000.0
+data_prices_cleaned,437,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",108.0,3.0,2.0,420000.0
+data_prices_cleaned,439,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",78.0,1.0,1.0,165000.0
+data_prices_cleaned,440,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",329.0,3.0,0.0,590000.0
+data_prices_cleaned,441,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",190.0,3.0,3.0,650000.0
+data_prices_cleaned,442,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",250.0,3.0,0.0,750000.0
+data_prices_cleaned,445,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",148.0,3.0,0.0,465000.0
+data_prices_cleaned,447,apartment,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",84.0,2.0,1.0,105000.0
+data_prices_cleaned,449,apartment,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",86.0,1.0,1.0,110000.0
+data_prices_cleaned,451,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",100.0,5.0,3.0,185000.0
+data_prices_cleaned,452,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",48.0,1.0,1.0,190000.0
+data_prices_cleaned,453,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",170.0,3.0,2.0,280000.0
+data_prices_cleaned,454,apartment,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",103.0,3.0,1.0,135000.0
+data_prices_cleaned,455,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",100.0,2.0,2.0,329000.0
+data_prices_cleaned,457,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",83.0,1.0,1.0,249000.0
+data_prices_cleaned,458,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",48.0,1.0,1.0,169000.0
+data_prices_cleaned,459,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",68.0,1.0,1.0,251599.0
+data_prices_cleaned,460,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,3.0,2.0,365000.0
+data_prices_cleaned,461,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",86.0,1.0,0.0,262000.0
+data_prices_cleaned,463,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",156.0,2.0,3.0,340000.0
+data_prices_cleaned,464,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",212.0,3.0,1.0,350000.0
+data_prices_cleaned,465,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",100.0,1.0,2.0,350000.0
+data_prices_cleaned,466,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",140.0,2.0,1.0,95000.0
+data_prices_cleaned,469,apartment,Tunis,La Goulette,La Goulette,"Tunis,La Goulette",144.0,3.0,2.0,550000.0
+data_prices_cleaned,470,house,Mdenine,Djerba Midoun,Djerba Midoun,"Mdenine,Djerba Midoun",600.0,3.0,3.0,570000.0
+data_prices_cleaned,474,apartment,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",84.0,3.0,1.0,105000.0
+data_prices_cleaned,476,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",183.0,2.0,1.0,290000.0
+data_prices_cleaned,479,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",163.0,2.0,2.0,510000.0
+data_prices_cleaned,480,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",76.0,2.0,1.0,130000.0
+data_prices_cleaned,481,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",62.0,2.0,1.0,150000.0
+data_prices_cleaned,483,apartment,Sfax,Route El Ain,Route El Ain,"Sfax,Route El Ain",64.0,3.0,1.0,75000.0
+data_prices_cleaned,484,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",50.0,2.0,1.0,106000.0
+data_prices_cleaned,486,house,Tunis,Agba,Agba,"Tunis,Agba",205.0,0.0,0.0,200000.0
+data_prices_cleaned,487,house,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",270.0,6.0,2.0,500000.0
+data_prices_cleaned,488,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",128.0,3.0,2.0,275000.0
+data_prices_cleaned,489,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",104.0,3.0,1.0,172000.0
+data_prices_cleaned,490,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",100.0,3.0,1.0,155000.0
+data_prices_cleaned,491,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",70.0,1.0,1.0,247000.0
+data_prices_cleaned,492,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",231.0,4.0,3.0,850000.0
+data_prices_cleaned,493,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",304.0,4.0,3.0,800000.0
+data_prices_cleaned,495,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",145.0,3.0,1.0,695000.0
+data_prices_cleaned,498,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",140.0,3.0,3.0,390000.0
+data_prices_cleaned,499,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",1300.0,10.0,4.0,1200000.0
+data_prices_cleaned,502,apartment,Ariana,Ariana,Ariana,"Ariana,Ariana",80.0,4.0,2.0,220000.0
+data_prices_cleaned,503,house,Tunis,Agba,Agba,"Tunis,Agba",180.0,3.0,2.0,370000.0
+data_prices_cleaned,504,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",115.0,2.0,1.0,380000.0
+data_prices_cleaned,505,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",38.0,1.0,1.0,140000.0
+data_prices_cleaned,506,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",115.0,2.0,1.0,330000.0
+data_prices_cleaned,510,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",197.0,1.0,1.0,445999.0
+data_prices_cleaned,511,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",350.0,4.0,3.0,850000.0
+data_prices_cleaned,512,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",130.0,3.0,1.0,360000.0
+data_prices_cleaned,514,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",750.0,4.0,2.0,830000.0
+data_prices_cleaned,515,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",327.0,2.0,1.0,650000.0
+data_prices_cleaned,517,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",344.0,,1.0,590000.0
+data_prices_cleaned,520,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",245.0,3.0,3.0,500000.0
+data_prices_cleaned,521,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",80.0,1.0,1.0,195000.0
+data_prices_cleaned,524,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",103.0,2.0,1.0,205000.0
+data_prices_cleaned,525,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",107.0,2.0,1.0,320000.0
+data_prices_cleaned,527,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",209.0,3.0,1.0,320000.0
+data_prices_cleaned,528,house,Tunis,Menzah,Menzah,"Tunis,Menzah",140.0,3.0,2.0,1400000.0
+data_prices_cleaned,529,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",122.0,1.0,1.0,309999.0
+data_prices_cleaned,534,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",500.0,2.0,4.0,1200000.0
+data_prices_cleaned,535,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",250.0,5.0,4.0,750000.0
+data_prices_cleaned,539,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",85.0,2.0,1.0,295000.0
+data_prices_cleaned,540,house,Ariana,Raoued,Raoued,"Ariana,Raoued",200.0,6.0,3.0,380000.0
+data_prices_cleaned,541,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",200.0,1.0,0.0,460000.0
+data_prices_cleaned,542,house,Tunis,Carthage,Carthage,"Tunis,Carthage",119.0,9.0,3.0,380000.0
+data_prices_cleaned,543,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",194.0,3.0,1.0,620000.0
+data_prices_cleaned,544,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",65.0,1.0,1.0,216000.0
+data_prices_cleaned,547,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",738.0,13.0,9.0,2100000.0
+data_prices_cleaned,549,house,Tunis,Mutuelleville,Mutuelleville,"Tunis,Mutuelleville",430.0,5.0,2.0,1250000.0
+data_prices_cleaned,551,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",400.0,4.0,2.0,1150000.0
+data_prices_cleaned,557,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",76.0,2.0,1.0,279000.0
+data_prices_cleaned,559,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",141.0,2.0,2.0,320000.0
+data_prices_cleaned,560,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",108.0,2.0,1.0,195000.0
+data_prices_cleaned,561,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",167.0,2.0,3.0,330000.0
+data_prices_cleaned,564,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",100.0,2.0,1.0,350000.0
+data_prices_cleaned,567,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",152.0,4.0,1.0,305000.0
+data_prices_cleaned,568,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",130.0,3.0,2.0,220000.0
+data_prices_cleaned,569,house,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",472.0,3.0,2.0,600000.0
+data_prices_cleaned,570,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",100.0,3.0,2.0,185000.0
+data_prices_cleaned,573,apartment,Ariana,Cit Hedi Nouira,Cit Hedi Nouira,"Ariana,Cit Hedi Nouira",100.0,0.0,2.0,183000.0
+data_prices_cleaned,574,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",56.0,1.0,1.0,180000.0
+data_prices_cleaned,575,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",150.0,2.0,1.0,145000.0
+data_prices_cleaned,579,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",90.0,2.0,1.0,215000.0
+data_prices_cleaned,580,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",106.0,1.0,1.0,249000.0
+data_prices_cleaned,581,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",116.0,2.0,0.0,255000.0
+data_prices_cleaned,582,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",152.0,3.0,2.0,379000.0
+data_prices_cleaned,583,apartment,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",100.0,2.0,2.0,540000.0
+data_prices_cleaned,585,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",106.0,2.0,1.0,265000.0
+data_prices_cleaned,586,apartment,Tunis,La Goulette,La Goulette,"Tunis,La Goulette",53.0,1.0,1.0,220000.0
+data_prices_cleaned,587,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",166.0,3.0,3.0,530000.0
+data_prices_cleaned,588,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",122.0,2.0,2.0,390000.0
+data_prices_cleaned,589,apartment,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",65.0,1.0,1.0,230000.0
+data_prices_cleaned,590,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",80.0,2.0,1.0,97000.0
+data_prices_cleaned,591,house,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",430.0,5.0,4.0,800000.0
+data_prices_cleaned,594,apartment,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",80.0,2.0,1.0,125000.0
+data_prices_cleaned,595,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",158.0,1.0,2.0,325000.0
+data_prices_cleaned,596,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",142.0,0.0,2.0,285000.0
+data_prices_cleaned,599,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",108.0,2.0,1.0,295000.0
+data_prices_cleaned,600,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",88.0,2.0,1.0,275000.0
+data_prices_cleaned,601,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",87.0,2.0,1.0,375000.0
+data_prices_cleaned,604,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",58.0,1.0,1.0,260000.0
+data_prices_cleaned,607,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",101.0,2.0,1.0,310000.0
+data_prices_cleaned,611,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",95.0,2.0,1.0,240000.0
+data_prices_cleaned,615,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",460.0,3.0,1.0,720000.0
+data_prices_cleaned,616,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",85.0,2.0,1.0,150000.0
+data_prices_cleaned,617,house,Sousse,Khzema,Khzema,"Sousse,Khzema",562.0,2.0,2.0,1300000.0
+data_prices_cleaned,627,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",355.0,12.0,6.0,920000.0
+data_prices_cleaned,628,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",74.0,1.0,1.0,220000.0
+data_prices_cleaned,629,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",200.0,3.0,1.0,220000.0
+data_prices_cleaned,630,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",122.0,1.0,1.0,384200.0
+data_prices_cleaned,631,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",142.0,3.0,2.0,315000.0
+data_prices_cleaned,633,house,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",370.0,4.0,1.0,400000.0
+data_prices_cleaned,636,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",135.0,3.0,2.0,275000.0
+data_prices_cleaned,637,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",109.0,2.0,2.0,230000.0
+data_prices_cleaned,638,apartment,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",98.0,3.0,1.0,160000.0
+data_prices_cleaned,643,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",108.0,2.0,1.0,260000.0
+data_prices_cleaned,644,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",142.0,3.0,2.0,295000.0
+data_prices_cleaned,646,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",90.0,1.0,1.0,90000.0
+data_prices_cleaned,647,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",69.0,0.0,1.0,255300.0
+data_prices_cleaned,649,apartment,Tunis,Cit Olympique,Cit Olympique,"Tunis,Cit Olympique",80.0,2.0,1.0,189000.0
+data_prices_cleaned,651,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",140.0,3.0,2.0,420000.0
+data_prices_cleaned,652,house,Gafsa,Belkhir,Belkhir,"Gafsa,Belkhir",500.0,3.0,1.0,270000.0
+data_prices_cleaned,653,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",100.0,3.0,2.0,319000.0
+data_prices_cleaned,657,apartment,Tunis,El Menzah 4,El Menzah 4,"Tunis,El Menzah 4",220.0,4.0,3.0,550000.0
+data_prices_cleaned,658,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",90.0,2.0,1.0,125000.0
+data_prices_cleaned,662,house,Tunis,Ezzouhour,Ezzouhour,"Tunis,Ezzouhour",90.0,2.0,1.0,140000.0
+data_prices_cleaned,663,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",400.0,3.0,1.0,185000.0
+data_prices_cleaned,664,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",58.0,1.0,1.0,200000.0
+data_prices_cleaned,668,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",95.0,1.0,1.0,360000.0
+data_prices_cleaned,669,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",100.0,3.0,1.0,290000.0
+data_prices_cleaned,670,house,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",700.0,4.0,4.0,2900000.0
+data_prices_cleaned,671,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",750.0,13.0,5.0,1550000.0
+data_prices_cleaned,672,house,La Manouba,Oued Ellil,Oued Ellil,"La Manouba,Oued Ellil",1000.0,4.0,2.0,580000.0
+data_prices_cleaned,673,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",84.0,2.0,1.0,411000.0
+data_prices_cleaned,674,house,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",240.0,6.0,3.0,570000.0
+data_prices_cleaned,675,apartment,La Manouba,Denden,Denden,"La Manouba,Denden",100.0,1.0,1.0,215000.0
+data_prices_cleaned,676,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",130.0,2.0,1.0,390000.0
+data_prices_cleaned,677,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",97.0,3.0,1.0,140000.0
+data_prices_cleaned,678,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",60.0,1.0,1.0,220000.0
+data_prices_cleaned,679,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",381.0,3.0,2.0,440000.0
+data_prices_cleaned,681,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",500.0,3.0,2.0,680000.0
+data_prices_cleaned,682,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",307.0,3.0,1.0,320000.0
+data_prices_cleaned,684,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",60.0,1.0,1.0,154000.0
+data_prices_cleaned,685,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",452.0,2.0,5.0,850000.0
+data_prices_cleaned,686,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",136.0,4.0,1.0,410000.0
+data_prices_cleaned,687,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",114.0,3.0,1.0,270000.0
+data_prices_cleaned,689,house,Sousse,Sousse,Sousse,"Sousse,Sousse",394.0,10.0,4.0,700000.0
+data_prices_cleaned,691,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",116.0,2.0,1.0,300000.0
+data_prices_cleaned,692,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",103.0,1.0,2.0,270000.0
+data_prices_cleaned,693,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",103.0,1.0,2.0,285000.0
+data_prices_cleaned,698,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",201.0,4.0,3.0,520000.0
+data_prices_cleaned,700,house,Tunis,Monfleury,Monfleury,"Tunis,Monfleury",420.0,8.0,2.0,640000.0
+data_prices_cleaned,701,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",130.0,3.0,1.0,185000.0
+data_prices_cleaned,702,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",45.0,1.0,1.0,225000.0
+data_prices_cleaned,704,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",118.0,2.0,2.0,390000.0
+data_prices_cleaned,705,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",75.0,2.0,1.0,135000.0
+data_prices_cleaned,707,house,Sousse,Kala Sghira,Kala Sghira,"Sousse,Kala Sghira",154.0,2.0,1.0,238000.0
+data_prices_cleaned,708,house,Tunis,Tunis,Tunis,"Tunis,Tunis",520.0,3.0,1.0,675000.0
+data_prices_cleaned,709,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",100.0,1.0,2.0,154999.0
+data_prices_cleaned,711,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",50.0,1.0,1.0,137000.0
+data_prices_cleaned,714,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",114.0,2.0,1.0,319000.0
+data_prices_cleaned,717,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",85.0,2.0,1.0,175000.0
+data_prices_cleaned,719,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",140.0,3.0,2.0,350000.0
+data_prices_cleaned,721,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",78.0,1.0,1.0,165000.0
+data_prices_cleaned,722,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",100.0,2.0,2.0,305000.0
+data_prices_cleaned,724,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",500.0,11.0,5.0,1800000.0
+data_prices_cleaned,725,house,Tunis,Mutuelleville,Mutuelleville,"Tunis,Mutuelleville",980.0,7.0,6.0,3500000.0
+data_prices_cleaned,726,house,Ariana,Ariana,Ariana,"Ariana,Ariana",500.0,5.0,3.0,1400000.0
+data_prices_cleaned,727,house,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",280.0,4.0,4.0,780000.0
+data_prices_cleaned,728,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",85.0,2.0,1.0,220000.0
+data_prices_cleaned,732,house,Ariana,Cite Ennkhilet,Cite Ennkhilet,"Ariana,Cite Ennkhilet",600.0,3.0,2.0,479000.0
+data_prices_cleaned,733,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",30.0,1.0,1.0,128999.0
+data_prices_cleaned,734,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",600.0,3.0,3.0,2200000.0
+data_prices_cleaned,737,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",154.0,3.0,2.0,430000.0
+data_prices_cleaned,738,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",136.0,4.0,2.0,365000.0
+data_prices_cleaned,739,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",65.0,1.0,1.0,188000.0
+data_prices_cleaned,740,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",115.0,2.0,2.0,315000.0
+data_prices_cleaned,743,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",136.0,4.0,2.0,380000.0
+data_prices_cleaned,748,house,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",220.0,4.0,3.0,330000.0
+data_prices_cleaned,750,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",413.0,5.0,3.0,725000.0
+data_prices_cleaned,751,house,Ben Arous,Mohamedia,Mohamedia,"Ben Arous,Mohamedia",151.0,3.0,1.0,250000.0
+data_prices_cleaned,752,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",200.0,4.0,2.0,220000.0
+data_prices_cleaned,756,house,Gabs,Gabs,Gabs,"Gabs,Gabs",200.0,4.0,2.0,300000.0
+data_prices_cleaned,762,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",100.0,3.0,1.0,275000.0
+data_prices_cleaned,767,apartment,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",110.0,3.0,1.0,210000.0
+data_prices_cleaned,769,apartment,Tunis,Centre Urbain Nord,Centre Urbain Nord,"Tunis,Centre Urbain Nord",125.0,2.0,1.0,420000.0
+data_prices_cleaned,774,house,Ariana,Ariana,Ariana,"Ariana,Ariana",210.0,3.0,1.0,185000.0
+data_prices_cleaned,779,house,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",505.0,3.0,2.0,1200000.0
+data_prices_cleaned,783,apartment,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",128.0,3.0,2.0,265000.0
+data_prices_cleaned,786,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",142.0,3.0,2.0,335000.0
+data_prices_cleaned,788,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",67.0,1.0,1.0,280000.0
+data_prices_cleaned,789,house,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",186.0,4.0,3.0,700000.0
+data_prices_cleaned,790,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",120.0,2.0,2.0,410000.0
+data_prices_cleaned,796,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",120.0,2.0,1.0,95000.0
+data_prices_cleaned,803,house,Sousse,Khzema,Khzema,"Sousse,Khzema",1006.0,4.0,2.0,2100000.0
+data_prices_cleaned,804,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",140.0,3.0,2.0,380000.0
+data_prices_cleaned,805,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",45.5,1.0,1.0,242000.0
+data_prices_cleaned,807,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",67.0,1.0,1.0,330000.0
+data_prices_cleaned,809,house,Tunis,Autres Villes,Autres Villes,"Tunis,Autres Villes",100.0,2.0,1.0,65000.0
+data_prices_cleaned,812,apartment,Tunis,Montplaisir,Montplaisir,"Tunis,Montplaisir",124.0,1.0,4.0,250000.0
+data_prices_cleaned,817,house,Sousse,Hergla,Hergla,"Sousse,Hergla",230.0,4.0,3.0,575000.0
+data_prices_cleaned,818,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",127.0,2.0,4.0,190000.0
+data_prices_cleaned,820,apartment,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",66.0,2.0,1.0,105000.0
+data_prices_cleaned,821,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",173.0,3.0,1.0,380000.0
+data_prices_cleaned,822,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",104.0,4.0,2.0,500000.0
+data_prices_cleaned,823,apartment,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",112.0,4.0,1.0,130000.0
+data_prices_cleaned,825,house,Tunis,Tunis,Tunis,"Tunis,Tunis",200.0,6.0,2.0,350000.0
+data_prices_cleaned,827,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",120.0,3.0,1.0,330000.0
+data_prices_cleaned,830,apartment,Tunis,Menzah,Menzah,"Tunis,Menzah",125.0,3.0,1.0,195000.0
+data_prices_cleaned,831,apartment,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",97.0,2.0,1.0,295000.0
+data_prices_cleaned,833,apartment,Tunis,Agba,Agba,"Tunis,Agba",73.5,3.0,1.0,125000.0
+data_prices_cleaned,834,apartment,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",104.0,3.0,1.0,185000.0
+data_prices_cleaned,837,house,Ariana,Raoued,Raoued,"Ariana,Raoued",365.0,4.0,2.0,240000.0
+data_prices_cleaned,839,house,Ben Arous,El Mourouj 4,El Mourouj 4,"Ben Arous,El Mourouj 4",300.0,3.0,1.0,530000.0
+data_prices_cleaned,841,house,Ben Arous,El Mourouj,El Mourouj,"Ben Arous,El Mourouj",300.0,1.0,3.0,539999.0
+data_prices_cleaned,843,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",230.0,4.0,2.0,224999.0
+data_prices_cleaned,849,apartment,Sfax,Sfax Ville,Sfax Ville,"Sfax,Sfax Ville",120.0,2.0,2.0,155000.0
+data_prices_cleaned,851,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",110.0,2.0,1.0,220000.0
+data_prices_cleaned,852,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",126.0,3.0,1.0,170000.0
+data_prices_cleaned,853,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",187.0,3.0,1.0,345000.0
+data_prices_cleaned,854,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",80.0,2.0,1.0,122000.0
+data_prices_cleaned,855,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",120.0,0.0,1.0,275000.0
+data_prices_cleaned,857,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",105.0,2.0,1.0,270000.0
+data_prices_cleaned,858,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",110.0,2.0,1.0,178000.0
+data_prices_cleaned,859,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",120.0,2.0,1.0,300000.0
+data_prices_cleaned,861,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",161.0,4.0,2.0,565000.0
+data_prices_cleaned,863,apartment,Tunis,Carthage,Carthage,"Tunis,Carthage",152.0,4.0,1.0,285000.0
+data_prices_cleaned,867,house,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",477.0,7.0,2.0,850000.0
+data_prices_cleaned,870,house,Bizerte,Menzel Jemil,Menzel Jemil,"Bizerte,Menzel Jemil",253.0,4.0,2.0,160000.0
+data_prices_cleaned,872,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",140.0,3.0,2.0,380000.0
+data_prices_cleaned,873,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",140.0,2.0,1.0,320000.0
+data_prices_cleaned,880,apartment,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",52.0,1.0,1.0,138000.0
+data_prices_cleaned,887,house,Sfax,Route Gremda,Route Gremda,"Sfax,Route GREMDA",1000.0,6.0,2.0,800000.0
+data_prices_cleaned,888,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",160.0,2.0,2.0,620000.0
+data_prices_cleaned,889,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",550.0,4.0,5.0,1300000.0
+data_prices_cleaned,890,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",99.0,2.0,2.0,450000.0
+data_prices_cleaned,895,house,Nabeul,El Haouaria,El Haouaria,"Nabeul,El Haouaria",305.0,4.0,1.0,300000.0
+data_prices_cleaned,897,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",500.0,5.0,2.0,650000.0
+data_prices_cleaned,898,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",157.0,3.0,3.0,580000.0
+data_prices_cleaned,902,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",150.0,2.0,1.0,90000.0
+data_prices_cleaned,905,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",140.0,2.0,1.0,180000.0
+data_prices_cleaned,906,house,Ariana,Raoued,Raoued,"Ariana,Raoued",219.0,6.0,2.0,195000.0
+data_prices_cleaned,909,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",110.0,3.0,1.0,280000.0
+data_prices_cleaned,910,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",52.0,1.0,1.0,243000.0
+data_prices_cleaned,911,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",160.0,4.0,2.0,345000.0
+data_prices_cleaned,912,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",140.0,3.0,2.0,340000.0
+data_prices_cleaned,913,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",60.0,2.0,1.0,255000.0
+data_prices_cleaned,914,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",126.0,2.0,1.0,180000.0
+data_prices_cleaned,917,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",260.0,1.0,1.0,320000.0
+data_prices_cleaned,918,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",125.0,2.0,1.0,350000.0
+data_prices_cleaned,922,house,Ariana,Mnihla,Mnihla,"Ariana,Mnihla",157.0,9.0,3.0,340000.0
+data_prices_cleaned,923,house,Sousse,Kala Kebira,Kala Kebira,"Sousse,Kala Kebira",492.0,3.0,4.0,780000.0
+data_prices_cleaned,927,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",260.0,2.0,2.0,389999.0
+data_prices_cleaned,928,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",140.0,3.0,1.0,175000.0
+data_prices_cleaned,930,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",76.0,2.0,1.0,214200.0
+data_prices_cleaned,931,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",60.0,1.0,1.0,170000.0
+data_prices_cleaned,933,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",150.0,1.0,3.0,299000.0
+data_prices_cleaned,934,house,Sousse,Zaouit Ksibat Thrayett,Zaouit Ksibat Thrayett,"Sousse,Zaouit Ksibat Thrayett",380.0,3.0,1.0,250000.0
+data_prices_cleaned,935,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",135.0,2.0,1.0,266000.0
+data_prices_cleaned,937,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",1220.0,7.0,2.0,1400000.0
+data_prices_cleaned,938,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",173.0,3.0,3.0,500000.0
+data_prices_cleaned,939,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",95.0,2.0,1.0,250000.0
+data_prices_cleaned,940,house,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",196.0,2.0,1.0,269998.0
+data_prices_cleaned,941,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",310.0,5.0,2.0,900000.0
+data_prices_cleaned,946,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",347.0,4.0,2.0,775000.0
+data_prices_cleaned,947,house,Monastir,Sayada Lamta Bou_hajar,Sayada Lamta Bou_hajar,"Monastir,Sayada Lamta Bou_Hajar",380.0,3.0,2.0,398000.0
+data_prices_cleaned,948,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",76.0,2.0,1.0,279000.0
+data_prices_cleaned,950,house,Sousse,Sousse,Sousse,"Sousse,Sousse",150.0,2.0,1.0,162000.0
+data_prices_cleaned,952,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",132.0,1.0,1.0,187000.0
+data_prices_cleaned,953,house,Sousse,Sousse,Sousse,"Sousse,Sousse",300.0,3.0,2.0,495000.0
+data_prices_cleaned,954,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",95.0,2.0,1.0,255000.0
+data_prices_cleaned,955,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",120.0,2.0,1.0,90000.0
+data_prices_cleaned,956,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",160.0,2.0,1.0,210000.0
+data_prices_cleaned,962,apartment,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",55.0,1.0,1.0,155000.0
+data_prices_cleaned,964,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",430.0,5.0,6.0,1600000.0
+data_prices_cleaned,966,house,Sousse,Khzema,Khzema,"Sousse,Khzema",450.0,5.0,5.0,1300000.0
+data_prices_cleaned,967,house,Sousse,Hergla,Hergla,"Sousse,Hergla",600.0,7.0,4.0,1420000.0
+data_prices_cleaned,968,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",120.0,2.0,1.0,500000.0
+data_prices_cleaned,973,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",192.0,2.0,1.0,198000.0
+data_prices_cleaned,974,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",243.0,6.0,3.0,950000.0
+data_prices_cleaned,975,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",160.0,3.0,2.0,499998.0
+data_prices_cleaned,978,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",120.0,2.0,1.0,150000.0
+data_prices_cleaned,979,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,250001.0
+data_prices_cleaned,980,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",120.0,3.0,1.0,350000.0
+data_prices_cleaned,982,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",700.0,8.0,3.0,1450000.0
+data_prices_cleaned,985,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",131.0,2.0,1.0,450000.0
+data_prices_cleaned,986,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",102.0,2.0,1.0,180000.0
+data_prices_cleaned,988,apartment,Ariana,Dar Fadhal,Dar Fadhal,"Ariana,Dar Fadhal",130.0,3.0,2.0,410000.0
+data_prices_cleaned,991,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",363.0,3.0,2.0,480000.0
+data_prices_cleaned,992,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",120.0,3.0,1.0,120000.0
+data_prices_cleaned,994,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",140.0,3.0,2.0,310000.0
+data_prices_cleaned,997,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",200.0,4.0,1.0,450000.0
+data_prices_cleaned,998,apartment,Sfax,Sakiet Eddaer,Sakiet Eddaer,"Sfax,Sakiet Eddaer",120.0,2.0,2.0,179000.0
+data_prices_cleaned,1000,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",130.0,3.0,3.0,700000.0
+data_prices_cleaned,1001,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",130.0,2.0,1.0,520000.0
+data_prices_cleaned,1003,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",256.0,3.0,2.0,480000.0
+data_prices_cleaned,1004,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",130.0,2.0,2.0,314000.0
+data_prices_cleaned,1005,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",95.0,2.0,2.0,240000.0
+data_prices_cleaned,1006,house,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",500.0,4.0,7.0,320000.0
+data_prices_cleaned,1007,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",90.0,2.0,1.0,235000.0
+data_prices_cleaned,1008,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",150.0,3.0,2.0,435000.0
+data_prices_cleaned,1009,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",107.0,3.0,2.0,581000.0
+data_prices_cleaned,1010,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",103.0,2.0,1.0,343999.0
+data_prices_cleaned,1011,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",86.0,2.0,1.0,255000.0
+data_prices_cleaned,1012,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",101.0,2.0,1.0,285000.0
+data_prices_cleaned,1015,house,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",155.0,3.0,1.0,400000.0
+data_prices_cleaned,1016,house,Sfax,Route Sokra,Route Sokra,"Sfax,Route SOKRA",401.0,4.0,1.0,330000.0
+data_prices_cleaned,1017,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",74.0,2.0,1.0,220000.0
+data_prices_cleaned,1018,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",76.0,0.0,1.0,210000.0
+data_prices_cleaned,1021,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",120.0,3.0,1.0,280000.0
+data_prices_cleaned,1022,apartment,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",54.76,1.0,1.0,195000.0
+data_prices_cleaned,1024,house,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",500.0,0.0,0.0,320000.0
+data_prices_cleaned,1025,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",140.0,3.0,2.0,750000.0
+data_prices_cleaned,1028,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",120.0,3.0,2.0,260000.0
+data_prices_cleaned,1031,house,Nabeul,Grombalia,Grombalia,"Nabeul,Grombalia",800.0,6.0,3.0,1300000.0
+data_prices_cleaned,1037,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",310.0,4.0,3.0,849997.0
+data_prices_cleaned,1038,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",89.0,2.0,1.0,165000.0
+data_prices_cleaned,1040,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",265.0,3.0,2.0,485000.0
+data_prices_cleaned,1044,house,Tunis,Mdina,Mdina,"Tunis,Mdina",150.0,4.0,2.0,280000.0
+data_prices_cleaned,1045,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",190.0,,1.0,370000.0
+data_prices_cleaned,1047,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",57.0,,1.0,205000.0
+data_prices_cleaned,1048,apartment,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",70.0,2.0,1.0,100000.0
+data_prices_cleaned,1049,apartment,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",50.0,2.0,1.0,90000.0
+data_prices_cleaned,1050,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",113.0,2.0,1.0,235000.0
+data_prices_cleaned,1051,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",70.0,1.0,1.0,170000.0
+data_prices_cleaned,1052,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",50.18,1.0,1.0,145522.0
+data_prices_cleaned,1054,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",143.0,1.0,3.0,380000.0
+data_prices_cleaned,1056,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",61.5,1.0,1.0,242925.0
+data_prices_cleaned,1058,house,Sousse,Sousse,Sousse,"Sousse,Sousse",100.0,2.0,4.0,290000.0
+data_prices_cleaned,1062,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",140.0,3.0,1.0,310000.0
+data_prices_cleaned,1063,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",74.0,2.0,1.0,150000.0
+data_prices_cleaned,1064,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",102.0,2.0,1.0,380000.0
+data_prices_cleaned,1065,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",92.0,2.0,1.0,125000.0
+data_prices_cleaned,1066,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",145.0,3.0,2.0,420000.0
+data_prices_cleaned,1069,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",80.0,2.0,2.0,165000.0
+data_prices_cleaned,1072,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",162.0,3.0,2.0,566000.0
+data_prices_cleaned,1073,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",80.0,2.0,1.0,220000.0
+data_prices_cleaned,1075,house,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",175.0,3.0,1.0,440000.0
+data_prices_cleaned,1076,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",97.0,3.0,2.0,284998.0
+data_prices_cleaned,1078,house,Ariana,Sidi Thabet,Sidi Thabet,"Ariana,Sidi Thabet",1624.0,3.0,4.0,1000000.0
+data_prices_cleaned,1079,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",272.0,3.0,3.0,435000.0
+data_prices_cleaned,1082,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",225.0,3.0,0.0,670000.0
+data_prices_cleaned,1084,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",450.0,3.0,3.0,950000.0
+data_prices_cleaned,1085,house,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",250.0,3.0,0.0,395000.0
+data_prices_cleaned,1086,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",150.0,1.0,0.0,340000.0
+data_prices_cleaned,1087,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",330.0,6.0,4.0,800000.0
+data_prices_cleaned,1088,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",269.0,2.0,0.0,620000.0
+data_prices_cleaned,1089,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",102.0,2.0,1.0,350000.0
+data_prices_cleaned,1091,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",115.0,2.0,1.0,379000.0
+data_prices_cleaned,1092,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",119.0,3.0,2.0,390000.0
+data_prices_cleaned,1093,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",225.0,3.0,3.0,660000.0
+data_prices_cleaned,1097,house,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",244.0,3.0,3.0,720000.0
+data_prices_cleaned,1098,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",157.0,3.0,2.0,360000.0
+data_prices_cleaned,1101,apartment,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",114.0,3.0,2.0,240000.0
+data_prices_cleaned,1103,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",474.0,3.0,1.0,1500000.0
+data_prices_cleaned,1111,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",78.0,2.0,1.0,111111.0
+data_prices_cleaned,1113,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",80.0,2.0,1.0,216000.0
+data_prices_cleaned,1119,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",81.0,2.0,1.0,227000.0
+data_prices_cleaned,1124,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",200.0,4.0,3.0,780000.0
+data_prices_cleaned,1133,house,Sidi Bouzid,Sidi Bouzid Ouest,Sidi Bouzid Ouest,"Sidi Bouzid,Sidi Bouzid Ouest",500.0,10.0,3.0,650000.0
+data_prices_cleaned,1141,apartment,Ben Arous,Mohamedia,Mohamedia,"Ben Arous,Mohamedia",255.0,6.0,3.0,179999.0
+data_prices_cleaned,1146,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",120.0,3.0,1.0,420000.0
+data_prices_cleaned,1148,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",77.0,1.0,1.0,188000.0
+data_prices_cleaned,1149,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",78.0,1.0,1.0,240000.0
+data_prices_cleaned,1150,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,3.0,2.0,285000.0
+data_prices_cleaned,1151,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",184.0,3.0,3.0,395000.0
+data_prices_cleaned,1152,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",154.0,3.0,2.0,330000.0
+data_prices_cleaned,1155,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",128.0,2.0,2.0,225000.0
+data_prices_cleaned,1157,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",86.0,2.0,1.0,280000.0
+data_prices_cleaned,1158,house,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",310.0,4.0,2.0,630000.0
+data_prices_cleaned,1161,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",250.0,5.0,3.0,420000.0
+data_prices_cleaned,1162,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",400.0,5.0,8.0,1250000.0
+data_prices_cleaned,1163,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",141.0,3.0,3.0,548000.0
+data_prices_cleaned,1165,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",630.0,4.0,3.0,2000000.0
+data_prices_cleaned,1166,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",102.0,2.0,1.0,180000.0
+data_prices_cleaned,1171,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",119.0,3.0,2.0,390000.0
+data_prices_cleaned,1172,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",400.0,4.0,2.0,580000.0
+data_prices_cleaned,1173,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",350.0,5.0,2.0,1500000.0
+data_prices_cleaned,1175,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",300.0,2.0,2.0,520000.0
+data_prices_cleaned,1177,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",57.0,0.0,1.0,160000.0
+data_prices_cleaned,1178,house,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",516.0,4.0,3.0,787000.0
+data_prices_cleaned,1179,house,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",373.0,4.0,2.0,780000.0
+data_prices_cleaned,1181,house,Monastir,Sahline,Sahline,"Monastir,Sahline",290.0,6.0,2.0,395000.0
+data_prices_cleaned,1182,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",110.0,2.0,2.0,420000.0
+data_prices_cleaned,1183,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",90.0,2.0,1.0,288000.0
+data_prices_cleaned,1191,apartment,Sousse,Akouda,Akouda,"Sousse,Akouda",100.0,3.0,2.0,300000.0
+data_prices_cleaned,1196,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",90.0,2.0,1.0,520000.0
+data_prices_cleaned,1197,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",680.0,3.0,2.0,720000.0
+data_prices_cleaned,1198,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",340.0,3.0,4.0,1100000.0
+data_prices_cleaned,1209,house,Ariana,Ettadhamen,Ettadhamen,"Ariana,Ettadhamen",70.0,3.0,2.0,140000.0
+data_prices_cleaned,1215,house,Sousse,Enfidha,Enfidha,"Sousse,Enfidha",360.0,3.0,5.0,520000.0
+data_prices_cleaned,1216,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",160.0,3.0,1.0,295000.0
+data_prices_cleaned,1218,apartment,Sousse,Sousse Sidi Abdelhamid,Sousse Sidi Abdelhamid,"Sousse,Sousse Sidi Abdelhamid",72.0,3.0,1.0,80000.0
+data_prices_cleaned,1219,house,Mdenine,Djerba Houmt Souk,Djerba Houmt Souk,"Mdenine,Djerba Houmt Souk",280.0,6.0,2.0,300000.0
+data_prices_cleaned,1221,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",100.0,2.0,1.0,170000.0
+data_prices_cleaned,1227,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",160.0,3.0,2.0,470000.0
+data_prices_cleaned,1231,house,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",450.0,5.0,2.0,419000.0
+data_prices_cleaned,1233,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",82.0,2.0,1.0,239997.0
+data_prices_cleaned,1234,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",115.0,0.0,1.0,190000.0
+data_prices_cleaned,1236,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",104.0,2.0,2.0,343000.0
+data_prices_cleaned,1237,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",108.0,3.0,2.0,385000.0
+data_prices_cleaned,1238,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",480.0,7.0,3.0,870000.0
+data_prices_cleaned,1239,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",418.0,5.0,0.0,1100000.0
+data_prices_cleaned,1241,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",267.0,3.0,3.0,600000.0
+data_prices_cleaned,1245,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",65.0,1.0,1.0,190000.0
+data_prices_cleaned,1246,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",36.0,1.0,1.0,130000.0
+data_prices_cleaned,1247,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",45.0,1.0,1.0,95000.0
+data_prices_cleaned,1248,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",108.0,2.0,1.0,215000.0
+data_prices_cleaned,1249,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",85.0,2.0,1.0,160000.0
+data_prices_cleaned,1251,house,Monastir,Monastir,Monastir,"Monastir,Monastir",360.0,3.0,2.0,355000.0
+data_prices_cleaned,1252,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",185.0,3.0,2.0,59931.0
+data_prices_cleaned,1258,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",120.0,0.0,0.0,320000.0
+data_prices_cleaned,1259,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",90.0,2.0,1.0,180000.0
+data_prices_cleaned,1261,apartment,Ariana,Jardins El Menzah,Jardins El Menzah,"Ariana,Jardins El Menzah",200.0,4.0,2.0,425000.0
+data_prices_cleaned,1262,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",522.0,0.0,0.0,550000.0
+data_prices_cleaned,1266,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",118.0,2.0,1.0,290000.0
+data_prices_cleaned,1268,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",172.0,2.0,1.0,750000.0
+data_prices_cleaned,1271,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",146.0,3.0,1.0,340000.0
+data_prices_cleaned,1272,house,Tunis,Khaznadar,Khaznadar,"Tunis,Khaznadar",90.0,4.0,1.0,195000.0
+data_prices_cleaned,1273,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",290.0,2.0,2.0,614500.0
+data_prices_cleaned,1274,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",63.0,,1.0,210000.0
+data_prices_cleaned,1276,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",130.0,3.0,2.0,360000.0
+data_prices_cleaned,1277,house,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",350.0,3.0,3.0,500000.0
+data_prices_cleaned,1278,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",230.0,3.0,2.0,880000.0
+data_prices_cleaned,1286,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",45.0,1.0,1.0,179999.0
+data_prices_cleaned,1287,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",100.0,2.0,2.0,292000.0
+data_prices_cleaned,1288,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",85.0,2.0,1.0,153000.0
+data_prices_cleaned,1290,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",730.0,3.0,3.0,1290000.0
+data_prices_cleaned,1291,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",64.0,1.0,1.0,322000.0
+data_prices_cleaned,1293,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",82.0,2.0,1.0,213000.0
+data_prices_cleaned,1295,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",368.0,2.0,4.0,900000.0
+data_prices_cleaned,1297,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",1164.0,5.0,3.0,909998.0
+data_prices_cleaned,1302,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",37.0,,1.0,180000.0
+data_prices_cleaned,1303,house,Sousse,Khzema,Khzema,"Sousse,Khzema",444.0,8.0,4.0,1050000.0
+data_prices_cleaned,1312,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",144.0,3.0,2.0,230000.0
+data_prices_cleaned,1313,house,Sousse,Kala Sghira,Kala Sghira,"Sousse,Kala Sghira",178.0,3.0,1.0,310000.0
+data_prices_cleaned,1314,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",103.0,2.0,1.0,299000.0
+data_prices_cleaned,1315,house,Sousse,Sousse,Sousse,"Sousse,Sousse",280.0,5.0,2.0,680000.0
+data_prices_cleaned,1316,apartment,Sousse,Sousse Sidi Abdelhamid,Sousse Sidi Abdelhamid,"Sousse,Sousse Sidi Abdelhamid",100.0,2.0,1.0,130000.0
+data_prices_cleaned,1317,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",85.0,2.0,1.0,470000.0
+data_prices_cleaned,1319,house,Tunis,Autres Villes,Autres Villes,"Tunis,Autres Villes",344.0,2.0,1.0,410000.0
+data_prices_cleaned,1321,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",110.0,2.0,1.0,265000.0
+data_prices_cleaned,1322,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",200.0,4.0,2.0,760000.0
+data_prices_cleaned,1325,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",95.0,3.0,1.0,480000.0
+data_prices_cleaned,1328,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",340.0,5.0,3.0,1270000.0
+data_prices_cleaned,1330,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",66.0,1.0,1.0,244200.0
+data_prices_cleaned,1332,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",95.0,2.0,1.0,265000.0
+data_prices_cleaned,1333,apartment,Ben Arous,El Mourouj,El Mourouj,"Ben Arous,El Mourouj",85.0,2.0,1.0,130000.0
+data_prices_cleaned,1334,house,Sousse,Akouda,Akouda,"Sousse,Akouda",500.0,4.0,3.0,440000.0
+data_prices_cleaned,1338,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",50.0,1.0,1.0,170000.0
+data_prices_cleaned,1339,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",70.0,1.0,1.0,350000.0
+data_prices_cleaned,1343,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",500.0,4.0,4.0,870000.0
+data_prices_cleaned,1344,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",500.0,4.0,3.0,930000.0
+data_prices_cleaned,1347,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",90.0,2.0,1.0,150000.0
+data_prices_cleaned,1359,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",130.0,3.0,1.0,220000.0
+data_prices_cleaned,1360,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",265.0,3.0,3.0,600000.0
+data_prices_cleaned,1362,apartment,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",85.0,2.0,1.0,125000.0
+data_prices_cleaned,1363,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",700.0,5.0,4.0,1600000.0
+data_prices_cleaned,1370,house,Kairouan,Kairouan Nord,Kairouan Nord,"Kairouan,Kairouan Nord",300.0,6.0,3.0,660000.0
+data_prices_cleaned,1371,house,Ariana,Chotrana 3,Chotrana 3,"Ariana,Chotrana 3",800.0,7.0,6.0,1050000.0
+data_prices_cleaned,1372,house,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",310.0,9.0,3.0,340000.0
+data_prices_cleaned,1373,house,Kairouan,Kairouan,Kairouan,"Kairouan,Kairouan",82.0,6.0,1.0,180000.0
+data_prices_cleaned,1374,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",220.0,4.0,1.0,450000.0
+data_prices_cleaned,1375,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",268.0,2.0,1.0,200000.0
+data_prices_cleaned,1377,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",160.0,1.0,2.0,400000.0
+data_prices_cleaned,1379,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",130.0,3.0,2.0,230000.0
+data_prices_cleaned,1380,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",122.0,2.0,1.0,210000.0
+data_prices_cleaned,1381,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",97.0,3.0,1.0,160000.0
+data_prices_cleaned,1382,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",129.4,2.0,2.0,240000.0
+data_prices_cleaned,1383,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",45.0,1.0,1.0,115000.0
+data_prices_cleaned,1384,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",200.0,3.0,2.0,340000.0
+data_prices_cleaned,1386,apartment,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",80.0,2.0,1.0,85000.0
+data_prices_cleaned,1387,house,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",654.0,6.0,2.0,590000.0
+data_prices_cleaned,1388,house,Nabeul,Menzel Temime,Menzel Temime,"Nabeul,Menzel Temime",1017.0,4.0,1.0,1000000.0
+data_prices_cleaned,1395,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",160.0,1.0,3.0,230000.0
+data_prices_cleaned,1396,house,Sousse,Hergla,Hergla,"Sousse,Hergla",570.0,8.0,4.0,1420000.0
+data_prices_cleaned,1399,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",105.0,3.0,2.0,265000.0
+data_prices_cleaned,1400,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",162.0,3.0,3.0,560000.0
+data_prices_cleaned,1401,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",180.0,3.0,2.0,365000.0
+data_prices_cleaned,1404,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",85.0,2.0,1.0,455000.0
+data_prices_cleaned,1406,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",90.0,2.0,1.0,240000.0
+data_prices_cleaned,1408,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",130.0,2.0,1.0,120000.0
+data_prices_cleaned,1409,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",750.0,9.0,3.0,1350000.0
+data_prices_cleaned,1412,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",50.0,2.0,1.0,148000.0
+data_prices_cleaned,1413,house,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",194.0,5.0,2.0,450000.0
+data_prices_cleaned,1414,house,Tunis,Menzah,Menzah,"Tunis,Menzah",509.0,3.0,1.0,990000.0
+data_prices_cleaned,1416,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",85.0,2.0,1.0,190000.0
+data_prices_cleaned,1419,apartment,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",320.0,4.0,2.0,400000.0
+data_prices_cleaned,1420,apartment,Ben Arous,El Mourouj 3,El Mourouj 3,"Ben Arous,El Mourouj 3",110.0,4.0,,120000.0
+data_prices_cleaned,1425,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",1085.0,3.0,2.0,600000.0
+data_prices_cleaned,1427,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",221.0,8.0,4.0,790000.0
+data_prices_cleaned,1428,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",70.0,1.0,1.0,205000.0
+data_prices_cleaned,1430,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",300.0,5.0,3.0,850000.0
+data_prices_cleaned,1432,house,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",420.0,5.0,3.0,820000.0
+data_prices_cleaned,1433,house,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",600.0,5.0,4.0,1320000.0
+data_prices_cleaned,1434,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",137.0,3.0,1.0,275000.0
+data_prices_cleaned,1440,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",115.0,1.0,1.0,270000.0
+data_prices_cleaned,1441,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",127.0,2.0,1.0,370000.0
+data_prices_cleaned,1442,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",140.0,3.0,2.0,280000.0
+data_prices_cleaned,1443,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",134.0,3.0,2.0,260000.0
+data_prices_cleaned,1445,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",315.0,4.0,5.0,1200000.0
+data_prices_cleaned,1451,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",74.0,3.0,1.0,250000.0
+data_prices_cleaned,1452,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",80.0,2.0,1.0,256000.0
+data_prices_cleaned,1455,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",110.0,3.0,2.0,300000.0
+data_prices_cleaned,1458,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",205.0,4.0,3.0,630000.0
+data_prices_cleaned,1459,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",300.0,3.0,2.0,289999.0
+data_prices_cleaned,1463,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",65.0,1.0,1.0,240500.0
+data_prices_cleaned,1470,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",271.0,4.0,0.0,850000.0
+data_prices_cleaned,1479,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",65.0,1.0,0.0,350000.0
+data_prices_cleaned,1482,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",200.0,0.0,1.0,80000.0
+data_prices_cleaned,1486,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",120.0,2.0,1.0,379200.0
+data_prices_cleaned,1487,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",95.0,2.0,2.0,290000.0
+data_prices_cleaned,1488,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",90.0,0.0,1.0,175000.0
+data_prices_cleaned,1489,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",95.0,2.0,1.0,165000.0
+data_prices_cleaned,1492,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",81.0,2.0,1.0,180000.0
+data_prices_cleaned,1493,house,Sousse,Khzema,Khzema,"Sousse,Khzema",309.0,7.0,5.0,700000.0
+data_prices_cleaned,1500,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",98.0,2.0,2.0,310000.0
+data_prices_cleaned,1502,house,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",240.0,4.0,0.0,630000.0
+data_prices_cleaned,1504,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",68.0,1.0,,251600.0
+data_prices_cleaned,1508,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",104.0,2.0,2.0,342000.0
+data_prices_cleaned,1511,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",118.0,2.0,2.0,272000.0
+data_prices_cleaned,1514,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",80.0,2.0,1.0,155000.0
+data_prices_cleaned,1517,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",242.0,4.0,5.0,1100000.0
+data_prices_cleaned,1520,apartment,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",50.0,1.0,1.0,195000.0
+data_prices_cleaned,1521,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",81.0,2.0,1.0,215000.0
+data_prices_cleaned,1525,house,Sfax,Route Soukra,Route Soukra,"Sfax,Route Soukra",714.0,5.0,2.0,680000.0
+data_prices_cleaned,1527,house,Ben Arous,Autres Villes,Autres Villes,"Ben Arous,Autres Villes",320.0,4.0,3.0,650000.0
+data_prices_cleaned,1528,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,115000.0
+data_prices_cleaned,1530,house,Tunis,El Kabaria,El Kabaria,"Tunis,El Kabaria",50.0,2.0,1.0,120000.0
+data_prices_cleaned,1532,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",522.0,5.0,3.0,550000.0
+data_prices_cleaned,1536,house,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",600.0,3.0,2.0,600000.0
+data_prices_cleaned,1537,house,Ariana,Ariana,Ariana,"Ariana,Ariana",604.0,3.0,1.0,650000.0
+data_prices_cleaned,1538,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",59.0,1.0,1.0,115000.0
+data_prices_cleaned,1540,house,Sousse,Hergla,Hergla,"Sousse,Hergla",194.0,4.0,3.0,500000.0
+data_prices_cleaned,1546,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",120.0,1.0,1.0,180000.0
+data_prices_cleaned,1548,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",55.0,2.0,1.0,185000.0
+data_prices_cleaned,1549,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",120.0,2.0,1.0,420000.0
+data_prices_cleaned,1552,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",115.0,2.0,1.0,340000.0
+data_prices_cleaned,1555,house,Sousse,Hergla,Hergla,"Sousse,Hergla",200.0,2.0,1.0,189999.0
+data_prices_cleaned,1557,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",113.0,2.0,1.0,234999.0
+data_prices_cleaned,1558,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",70.0,1.0,1.0,130000.0
+data_prices_cleaned,1560,house,Sousse,Hergla,Hergla,"Sousse,Hergla",100.0,3.0,1.0,155000.0
+data_prices_cleaned,1562,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",75.0,2.0,1.0,176000.0
+data_prices_cleaned,1563,house,Sousse,Hergla,Hergla,"Sousse,Hergla",250.0,2.0,2.0,350000.0
+data_prices_cleaned,1564,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",504.0,6.0,3.0,1100000.0
+data_prices_cleaned,1565,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",89.0,2.0,1.0,260000.0
+data_prices_cleaned,1566,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",114.0,1.0,1.0,185000.0
+data_prices_cleaned,1567,house,Sousse,Hergla,Hergla,"Sousse,Hergla",360.0,3.0,2.0,495000.0
+data_prices_cleaned,1571,apartment,Tunis,Cit El Khadra,Cit El Khadra,"Tunis,Cit El Khadra",120.0,3.0,1.0,170000.0
+data_prices_cleaned,1572,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",33.0,1.0,1.0,122358.0
+data_prices_cleaned,1574,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",212.0,3.0,2.0,310000.0
+data_prices_cleaned,1575,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",250.0,3.0,1.0,310000.0
+data_prices_cleaned,1577,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",560.0,3.0,2.0,490000.0
+data_prices_cleaned,1578,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",220.0,4.0,3.0,630000.0
+data_prices_cleaned,1580,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",170.0,4.0,1.0,260000.0
+data_prices_cleaned,1581,house,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",470.0,5.0,2.0,740000.0
+data_prices_cleaned,1583,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",220.0,3.0,2.0,489000.0
+data_prices_cleaned,1584,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",210.0,3.0,3.0,469000.0
+data_prices_cleaned,1587,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",140.0,3.0,1.0,390000.0
+data_prices_cleaned,1588,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",620.0,6.0,3.0,1200000.0
+data_prices_cleaned,1590,house,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",500.0,5.0,2.0,1250000.0
+data_prices_cleaned,1591,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",450.0,5.0,2.0,1049000.0
+data_prices_cleaned,1594,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",160.0,3.0,2.0,375000.0
+data_prices_cleaned,1601,house,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",203.0,2.0,5.0,219000.0
+data_prices_cleaned,1608,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",105.0,2.0,1.0,269999.0
+data_prices_cleaned,1610,house,Sousse,Sousse,Sousse,"Sousse,Sousse",144.0,3.0,1.0,335000.0
+data_prices_cleaned,1613,house,Nabeul,Menzel Temime,Menzel Temime,"Nabeul,Menzel Temime",399.0,4.0,2.0,550000.0
+data_prices_cleaned,1617,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",270.0,2.0,4.0,710000.0
+data_prices_cleaned,1618,house,Tunis,Carthage,Carthage,"Tunis,Carthage",214.0,2.0,2.0,390000.0
+data_prices_cleaned,1619,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",90.0,2.0,0.0,140000.0
+data_prices_cleaned,1622,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",77.3,2.0,1.0,170000.0
+data_prices_cleaned,1623,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",105.0,2.0,1.0,194000.0
+data_prices_cleaned,1624,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",128.0,3.0,1.0,315000.0
+data_prices_cleaned,1625,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",105.0,2.0,1.0,271000.0
+data_prices_cleaned,1631,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",250.0,6.0,2.0,565000.0
+data_prices_cleaned,1635,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",100.0,3.0,2.0,240000.0
+data_prices_cleaned,1639,house,Sousse,Sousse,Sousse,"Sousse,Sousse",71.0,2.0,5.0,220000.0
+data_prices_cleaned,1646,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",149.0,0.0,3.0,525000.0
+data_prices_cleaned,1649,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",220.0,4.0,2.0,420000.0
+data_prices_cleaned,1655,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",400.0,3.0,2.0,550000.0
+data_prices_cleaned,1657,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",350.0,5.0,3.0,1300000.0
+data_prices_cleaned,1658,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",450.0,6.0,3.0,1400000.0
+data_prices_cleaned,1660,house,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",834.0,5.0,2.0,3000000.0
+data_prices_cleaned,1662,house,Sfax,Route Mehdia,Route Mehdia,"Sfax,Route Mehdia",400.0,4.0,2.0,360000.0
+data_prices_cleaned,1665,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",420.0,3.0,2.0,485000.0
+data_prices_cleaned,1666,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",661.0,1.0,1.0,650000.0
+data_prices_cleaned,1669,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",90.0,2.0,1.0,279000.0
+data_prices_cleaned,1671,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",71.18,1.0,1.0,242000.0
+data_prices_cleaned,1672,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",81.0,2.0,1.0,185000.0
+data_prices_cleaned,1673,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",201.0,3.0,2.0,530000.0
+data_prices_cleaned,1674,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",110.0,,4.0,350000.0
+data_prices_cleaned,1676,house,Monastir,Sahline,Sahline,"Monastir,Sahline",127.0,3.0,1.0,285000.0
+data_prices_cleaned,1677,house,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",460.0,4.0,4.0,1090000.0
+data_prices_cleaned,1678,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",200.0,2.0,3.0,670000.0
+data_prices_cleaned,1680,apartment,Bizerte,Bizerte Nord,Bizerte Nord,"Bizerte,Bizerte Nord",102.0,5.0,1.0,350000.0
+data_prices_cleaned,1682,apartment,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",110.0,3.0,1.0,139000.0
+data_prices_cleaned,1683,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",400.0,5.0,2.0,945000.0
+data_prices_cleaned,1687,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",350.0,5.0,1.0,420000.0
+data_prices_cleaned,1690,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",111.0,2.0,2.0,400000.0
+data_prices_cleaned,1691,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",120.0,2.0,2.0,400000.0
+data_prices_cleaned,1694,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",126.0,2.0,2.0,370000.0
+data_prices_cleaned,1696,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",265.0,4.0,3.0,600000.0
+data_prices_cleaned,1699,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",140.0,2.0,2.0,420000.0
+data_prices_cleaned,1700,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",58.0,1.0,1.0,235000.0
+data_prices_cleaned,1711,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",400.0,4.0,1.0,500000.0
+data_prices_cleaned,1713,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",150.0,2.0,1.0,120000.0
+data_prices_cleaned,1714,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",431.0,9.0,5.0,900000.0
+data_prices_cleaned,1715,house,Sfax,Sakiet Ezzit,Sakiet Ezzit,"Sfax,Sakiet Ezzit",1921.0,5.0,3.0,850000.0
+data_prices_cleaned,1721,house,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",500.0,6.0,4.0,450000.0
+data_prices_cleaned,1723,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",60.0,1.0,1.0,150000.0
+data_prices_cleaned,1724,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",247.0,3.0,3.0,900000.0
+data_prices_cleaned,1726,house,Ben Arous,Hammam Chott,Hammam Chott,"Ben Arous,Hammam Chott",520.0,7.0,2.0,850000.0
+data_prices_cleaned,1727,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",305.0,4.0,1.0,210000.0
+data_prices_cleaned,1729,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",100.0,3.0,,240000.0
+data_prices_cleaned,1730,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",81.0,2.0,1.0,230000.0
+data_prices_cleaned,1731,apartment,Sfax,Route Gremda,Route Gremda,"Sfax,Route GREMDA",127.0,3.0,1.0,170000.0
+data_prices_cleaned,1733,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",75.0,1.0,2.0,260000.0
+data_prices_cleaned,1735,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,190000.0
+data_prices_cleaned,1736,house,Sousse,Sousse,Sousse,"Sousse,Sousse",367.0,6.0,2.0,710000.0
+data_prices_cleaned,1739,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",124.0,2.0,2.0,348000.0
+data_prices_cleaned,1740,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",113.3,1.0,2.0,298000.0
+data_prices_cleaned,1741,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",60.0,1.0,1.0,220000.0
+data_prices_cleaned,1742,apartment,Nabeul,Hammamet Centre,Hammamet Centre,"Nabeul,Hammamet Centre",65.0,1.0,1.0,170000.0
+data_prices_cleaned,1743,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",373.0,8.0,5.0,795000.0
+data_prices_cleaned,1747,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",260.0,3.0,2.0,330000.0
+data_prices_cleaned,1750,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",80.0,1.0,1.0,183000.0
+data_prices_cleaned,1755,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",165.0,3.0,2.0,420000.0
+data_prices_cleaned,1759,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",200.0,3.0,2.0,400000.0
+data_prices_cleaned,1763,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",303.0,0.0,0.0,300000.0
+data_prices_cleaned,1764,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",180.0,2.0,1.0,259000.0
+data_prices_cleaned,1767,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",94.0,2.0,1.0,270000.0
+data_prices_cleaned,1768,house,Tunis,Lac 2,Lac 2,"Tunis,Lac 2",540.0,4.0,4.0,3500000.0
+data_prices_cleaned,1770,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",128.0,2.0,2.0,390000.0
+data_prices_cleaned,1771,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",150.0,2.0,1.0,235000.0
+data_prices_cleaned,1773,house,Tunis,Sidi Bou Said,Sidi Bou Said,"Tunis,Sidi Bou Said",263.0,4.0,0.0,1200000.0
+data_prices_cleaned,1777,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",112.0,4.0,1.0,215000.0
+data_prices_cleaned,1779,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",73.0,1.0,1.0,239999.0
+data_prices_cleaned,1784,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",188.0,3.0,2.0,375000.0
+data_prices_cleaned,1786,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",303.0,3.0,3.0,690000.0
+data_prices_cleaned,1793,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",600.0,1.0,1.0,380000.0
+data_prices_cleaned,1795,apartment,Tunis,Sidi Daoud,Sidi Daoud,"Tunis,Sidi Daoud",136.0,3.0,3.0,535000.0
+data_prices_cleaned,1797,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",600.0,8.0,6.0,2200000.0
+data_prices_cleaned,1799,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",130.0,2.0,1.0,299000.0
+data_prices_cleaned,1800,house,Tunis,Mutuelleville,Mutuelleville,"Tunis,Mutuelleville",467.0,6.0,2.0,1550000.0
+data_prices_cleaned,1802,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",104.0,2.0,2.0,345000.0
+data_prices_cleaned,1807,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",124.0,3.0,1.0,295000.0
+data_prices_cleaned,1810,apartment,Ariana,Cite Ennkhilet,Cite Ennkhilet,"Ariana,Cite Ennkhilet",88.0,2.0,1.0,174000.0
+data_prices_cleaned,1813,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",230.0,3.0,1.0,240000.0
+data_prices_cleaned,1814,house,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",434.0,8.0,4.0,900000.0
+data_prices_cleaned,1815,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",105.0,2.0,1.0,235000.0
+data_prices_cleaned,1816,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",120.0,2.0,1.0,150000.0
+data_prices_cleaned,1817,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",500.0,4.0,2.0,1800000.0
+data_prices_cleaned,1819,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",88.5,2.0,1.0,177000.0
+data_prices_cleaned,1820,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",160.0,6.0,2.0,490000.0
+data_prices_cleaned,1823,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",400.0,1.0,2.0,410000.0
+data_prices_cleaned,1824,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",421.0,6.0,4.0,519000.0
+data_prices_cleaned,1825,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",464.0,4.0,2.0,630000.0
+data_prices_cleaned,1827,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",370.0,3.0,2.0,430000.0
+data_prices_cleaned,1828,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",349.0,8.0,4.0,948000.0
+data_prices_cleaned,1829,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",180.0,2.0,2.0,380000.0
+data_prices_cleaned,1833,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",467.0,3.0,2.0,490000.0
+data_prices_cleaned,1834,house,Gafsa,Sened,Sened,"Gafsa,Sened",240.0,4.0,2.0,250000.0
+data_prices_cleaned,1837,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",70.0,3.0,1.0,150000.0
+data_prices_cleaned,1838,apartment,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",90.0,2.0,1.0,145000.0
+data_prices_cleaned,1839,apartment,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",110.0,1.0,3.0,139000.0
+data_prices_cleaned,1841,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",96.0,1.0,1.0,329000.0
+data_prices_cleaned,1847,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",500.0,3.0,2.0,205000.0
+data_prices_cleaned,1849,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",115.0,3.0,2.0,150000.0
+data_prices_cleaned,1852,house,Ariana,Mnihla,Mnihla,"Ariana,Mnihla",126.0,4.0,1.0,210000.0
+data_prices_cleaned,1853,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",180.0,2.0,1.0,140000.0
+data_prices_cleaned,1855,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",470.0,5.0,3.0,1300000.0
+data_prices_cleaned,1860,apartment,Sfax,Route Mehdia,Route Mehdia,"Sfax,Route Mehdia",50.0,2.0,1.0,38000.0
+data_prices_cleaned,1872,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",242.0,3.0,4.0,1200000.0
+data_prices_cleaned,1875,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",130.0,2.0,1.0,719999.0
+data_prices_cleaned,1876,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",54.0,1.0,1.0,129000.0
+data_prices_cleaned,1877,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",63.0,1.0,1.0,175000.0
+data_prices_cleaned,1879,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",691.0,3.0,1.0,460000.0
+data_prices_cleaned,1880,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",200.0,4.0,1.0,780000.0
+data_prices_cleaned,1881,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",100.0,2.0,1.0,320000.0
+data_prices_cleaned,1882,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",60.0,2.0,1.0,154999.0
+data_prices_cleaned,1884,apartment,Tunis,Ain Zaghouan Sud,Ain Zaghouan Sud,"Tunis,Ain Zaghouan Sud",90.0,1.0,1.0,160000.0
+data_prices_cleaned,1885,house,Tunis,Mutuelleville,Mutuelleville,"Tunis,Mutuelleville",800.0,0.0,0.0,1950000.0
+data_prices_cleaned,1886,house,Sfax,Sfax Ville,Sfax Ville,"Sfax,Sfax Ville",650.0,3.0,1.0,600000.0
+data_prices_cleaned,1887,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",125.0,3.0,1.0,315000.0
+data_prices_cleaned,1888,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",150.0,3.0,1.0,350000.0
+data_prices_cleaned,1889,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",190.0,3.0,2.0,340000.0
+data_prices_cleaned,1890,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",85.0,1.0,2.0,129000.0
+data_prices_cleaned,1891,apartment,Sfax,Sfax,Sfax,"Sfax,Sfax",110.0,3.0,2.0,110000.0
+data_prices_cleaned,1892,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",85.0,2.0,1.0,135000.0
+data_prices_cleaned,1893,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",105.0,4.0,1.0,200000.0
+data_prices_cleaned,1895,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",157.0,2.0,3.0,430000.0
+data_prices_cleaned,1897,house,Gabs,Gabs,Gabs,"Gabs,Gabs",230.0,3.0,1.0,270000.0
+data_prices_cleaned,1900,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",100.0,1.0,2.0,220000.0
+data_prices_cleaned,1901,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",354.0,4.0,2.0,540000.0
+data_prices_cleaned,1902,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",367.0,3.0,1.0,295000.0
+data_prices_cleaned,1909,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",100.0,3.0,1.0,240000.0
+data_prices_cleaned,1910,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",76.0,1.0,1.0,190000.0
+data_prices_cleaned,1912,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",111.0,3.0,0.0,200000.0
+data_prices_cleaned,1913,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",100.0,2.0,1.0,160000.0
+data_prices_cleaned,1916,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",106.0,2.0,1.0,256000.0
+data_prices_cleaned,1917,house,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",467.0,3.0,2.0,660000.0
+data_prices_cleaned,1921,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",91.0,3.0,1.0,230000.0
+data_prices_cleaned,1923,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",140.0,2.0,2.0,470000.0
+data_prices_cleaned,1925,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",59.0,1.0,1.0,185000.0
+data_prices_cleaned,1926,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",220.0,6.0,2.0,130000.0
+data_prices_cleaned,1931,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",80.0,2.0,1.0,320000.0
+data_prices_cleaned,1932,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",90.0,2.0,1.0,310000.0
+data_prices_cleaned,1933,house,Monastir,Monastir,Monastir,"Monastir,Monastir",640.0,6.0,9.0,890000.0
+data_prices_cleaned,1951,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",64.0,1.0,1.0,225000.0
+data_prices_cleaned,1952,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,60000.0
+data_prices_cleaned,1953,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",120.0,2.0,0.0,450000.0
+data_prices_cleaned,1954,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",92.0,2.0,1.0,96000.0
+data_prices_cleaned,1957,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",414.0,2.0,4.0,460000.0
+data_prices_cleaned,1962,house,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",650.0,3.0,3.0,1200000.0
+data_prices_cleaned,1963,house,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",370.0,3.0,2.0,400000.0
+data_prices_cleaned,1965,house,Sousse,Hergla,Hergla,"Sousse,Hergla",430.0,4.0,2.0,950000.0
+data_prices_cleaned,1966,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",117.0,2.0,2.0,310000.0
+data_prices_cleaned,1969,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",168.0,3.0,2.0,325000.0
+data_prices_cleaned,1972,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",54.0,1.0,1.0,170000.0
+data_prices_cleaned,1973,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",100.0,3.0,1.0,140000.0
+data_prices_cleaned,1975,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",145.0,3.0,0.0,300000.0
+data_prices_cleaned,1976,house,Tunis,Ettahrir,Ettahrir,"Tunis,Ettahrir",120.0,4.0,2.0,750000.0
+data_prices_cleaned,1977,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",122.0,2.0,1.0,450000.0
+data_prices_cleaned,1978,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",115.0,2.0,2.0,517000.0
+data_prices_cleaned,1979,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",150.0,1.0,1.0,295001.0
+data_prices_cleaned,1980,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",101.3,2.0,1.0,344000.0
+data_prices_cleaned,1981,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",367.0,3.0,2.0,780000.0
+data_prices_cleaned,1985,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",76.0,1.0,0.0,120000.0
+data_prices_cleaned,1987,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",150.0,4.0,1.0,500000.0
+data_prices_cleaned,1988,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",447.0,2.0,1.0,950000.0
+data_prices_cleaned,1993,apartment,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",83.0,2.0,1.0,250000.0
+data_prices_cleaned,1996,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",130.0,2.0,1.0,280000.0
+data_prices_cleaned,2000,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",157.0,4.0,3.0,525000.0
+data_prices_cleaned,2001,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",234.0,4.0,3.0,1050000.0
+data_prices_cleaned,2005,apartment,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",147.0,3.0,2.0,240000.0
+data_prices_cleaned,2006,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",130.0,5.0,2.0,585000.0
+data_prices_cleaned,2009,apartment,Sfax,Sfax,Sfax,"Sfax,Sfax",125.0,4.0,2.0,190000.0
+data_prices_cleaned,2014,house,Ben Arous,Mohamedia,Mohamedia,"Ben Arous,Mohamedia",135.0,4.0,1.0,120000.0
+data_prices_cleaned,2017,house,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",200.0,5.0,2.0,720000.0
+data_prices_cleaned,2019,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",146.0,3.0,3.0,450000.0
+data_prices_cleaned,2020,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",143.0,3.0,2.0,297000.0
+data_prices_cleaned,2021,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",90.0,2.0,1.0,225000.0
+data_prices_cleaned,2022,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",183.0,1.0,3.0,290000.0
+data_prices_cleaned,2027,apartment,Bizerte,Bizerte Nord,Bizerte Nord,"Bizerte,Bizerte Nord",112.0,2.0,1.0,320000.0
+data_prices_cleaned,2028,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",183.0,3.0,3.0,650000.0
+data_prices_cleaned,2035,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",200.0,3.0,2.0,340000.0
+data_prices_cleaned,2037,house,Tunis,Sidi Hassine,Sidi Hassine,"Tunis,Sidi Hassine",214.0,5.0,2.0,240000.0
+data_prices_cleaned,2043,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",110.0,2.0,1.0,260000.0
+data_prices_cleaned,2048,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",224.0,5.0,3.0,400000.0
+data_prices_cleaned,2050,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",268.0,2.0,1.0,550000.0
+data_prices_cleaned,2053,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",73.0,2.0,1.0,220000.0
+data_prices_cleaned,2054,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",780.0,1.0,1.0,1150000.0
+data_prices_cleaned,2055,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",155.0,3.0,3.0,650000.0
+data_prices_cleaned,2056,apartment,Sousse,Autres Villes,Autres Villes,"Sousse,Autres Villes",94.0,2.0,1.0,210000.0
+data_prices_cleaned,2057,apartment,Tunis,Tunis Belvedere,Tunis Belvedere,"Tunis,Tunis Belvedere",140.0,3.0,2.0,260000.0
+data_prices_cleaned,2060,house,Sousse,Khzema,Khzema,"Sousse,Khzema",255.0,3.0,2.0,550000.0
+data_prices_cleaned,2061,house,Sousse,Khzema,Khzema,"Sousse,Khzema",550.0,4.0,4.0,1600000.0
+data_prices_cleaned,2062,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",165.0,3.0,2.0,430000.0
+data_prices_cleaned,2063,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",135.0,3.0,2.0,440000.0
+data_prices_cleaned,2066,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",197.0,3.0,4.0,580000.0
+data_prices_cleaned,2067,house,Sousse,Khzema,Khzema,"Sousse,Khzema",600.0,6.0,3.0,1100000.0
+data_prices_cleaned,2069,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",103.0,2.0,1.0,150000.0
+data_prices_cleaned,2070,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",77.0,1.0,1.0,220000.0
+data_prices_cleaned,2072,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",80.0,8.0,3.0,150000.0
+data_prices_cleaned,2074,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",170.0,3.0,1.0,470000.0
+data_prices_cleaned,2078,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",236.0,4.0,3.0,540000.0
+data_prices_cleaned,2081,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",147.0,4.0,1.0,260000.0
+data_prices_cleaned,2084,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",141.0,4.0,1.0,260000.0
+data_prices_cleaned,2086,apartment,Bizerte,Bizerte,Bizerte,"Bizerte,Bizerte",240.0,3.0,1.0,260000.0
+data_prices_cleaned,2087,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",220.0,7.0,2.0,500000.0
+data_prices_cleaned,2088,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",153.0,2.0,2.0,400000.0
+data_prices_cleaned,2091,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",615.0,3.0,2.0,520000.0
+data_prices_cleaned,2092,house,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",792.0,4.0,5.0,2200000.0
+data_prices_cleaned,2093,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",490.0,3.0,1.0,250000.0
+data_prices_cleaned,2096,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",200.0,4.0,2.0,270000.0
+data_prices_cleaned,2098,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",102.0,9.0,4.0,520000.0
+data_prices_cleaned,2107,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",280.0,4.0,3.0,440000.0
+data_prices_cleaned,2108,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",343.0,1.0,3.0,470000.0
+data_prices_cleaned,2109,house,Ariana,Raoued,Raoued,"Ariana,Raoued",90.0,7.0,1.0,78000.0
+data_prices_cleaned,2112,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",145.0,3.0,2.0,410000.0
+data_prices_cleaned,2113,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",133.0,5.0,0.0,226100.0
+data_prices_cleaned,2114,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",140.0,3.0,2.0,320000.0
+data_prices_cleaned,2115,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",1280.0,5.0,4.0,3000000.0
+data_prices_cleaned,2122,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",100.0,2.0,1.0,480000.0
+data_prices_cleaned,2128,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",72.0,1.0,1.0,216000.0
+data_prices_cleaned,2129,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",56.0,1.0,0.0,320000.0
+data_prices_cleaned,2130,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",184.0,3.0,5.0,320000.0
+data_prices_cleaned,2133,house,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",420.0,3.0,1.0,400000.0
+data_prices_cleaned,2134,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",97.0,2.0,1.0,382180.0
+data_prices_cleaned,2139,apartment,Tunis,Cit El Khadra,Cit El Khadra,"Tunis,Cit El Khadra",96.0,3.0,1.0,180000.0
+data_prices_cleaned,2140,house,Ariana,Ariana,Ariana,"Ariana,Ariana",250.0,6.0,4.0,730000.0
+data_prices_cleaned,2141,apartment,Tunis,Centre Urbain Nord,Centre Urbain Nord,"Tunis,Centre Urbain Nord",108.0,3.0,2.0,259000.0
+data_prices_cleaned,2142,apartment,Tunis,Cit El Khadra,Cit El Khadra,"Tunis,Cit El Khadra",110.0,4.0,2.0,209000.0
+data_prices_cleaned,2143,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",122.0,1.0,2.0,580000.0
+data_prices_cleaned,2149,apartment,Ariana,Chotrana,Chotrana,"Ariana,Chotrana",151.31,3.0,1.0,395000.0
+data_prices_cleaned,2150,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",160.0,4.0,2.0,530000.0
+data_prices_cleaned,2153,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",260.0,5.0,6.0,1250000.0
+data_prices_cleaned,2154,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",842.0,4.0,6.0,1600000.0
+data_prices_cleaned,2155,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",130.0,4.0,2.0,439000.0
+data_prices_cleaned,2156,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",423.0,5.0,8.0,1280000.0
+data_prices_cleaned,2157,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",430.0,4.0,3.0,1430000.0
+data_prices_cleaned,2160,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",519.0,7.0,4.0,720000.0
+data_prices_cleaned,2161,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",38.0,1.0,1.0,165000.0
+data_prices_cleaned,2163,apartment,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",80.0,3.0,1.0,106000.0
+data_prices_cleaned,2164,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",100.0,3.0,2.0,390000.0
+data_prices_cleaned,2166,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",280.0,5.0,1.0,900000.0
+data_prices_cleaned,2174,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",110.0,4.0,2.0,250000.0
+data_prices_cleaned,2176,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",95.0,2.0,2.0,215000.0
+data_prices_cleaned,2178,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",300.0,12.0,6.0,750000.0
+data_prices_cleaned,2179,house,Sousse,Kala Kebira,Kala Kebira,"Sousse,Kala Kebira",668.0,4.0,1.0,450000.0
+data_prices_cleaned,2181,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",304.0,3.0,1.0,290000.0
+data_prices_cleaned,2182,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",224.0,1.0,1.0,349000.0
+data_prices_cleaned,2184,house,Sfax,Sfax,Sfax,"Sfax,Sfax",430.0,7.0,2.0,160000.0
+data_prices_cleaned,2190,apartment,Tunis,Tunis Belvedere,Tunis Belvedere,"Tunis,Tunis Belvedere",100.0,2.0,1.0,260000.0
+data_prices_cleaned,2191,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,170000.0
+data_prices_cleaned,2193,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",67.0,1.0,1.0,135000.0
+data_prices_cleaned,2196,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",125.0,2.0,1.0,165000.0
+data_prices_cleaned,2198,house,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",300.0,4.0,2.0,650000.0
+data_prices_cleaned,2199,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",147.0,3.0,2.0,300000.0
+data_prices_cleaned,2201,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",117.0,3.0,1.0,280000.0
+data_prices_cleaned,2204,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",167.0,3.0,2.0,365000.0
+data_prices_cleaned,2206,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",76.0,1.0,1.0,275000.0
+data_prices_cleaned,2209,house,Tunis,Menzah,Menzah,"Tunis,Menzah",579.0,5.0,7.0,1400000.0
+data_prices_cleaned,2210,apartment,Tunis,Menzah,Menzah,"Tunis,Menzah",82.0,2.0,1.0,220000.0
+data_prices_cleaned,2211,apartment,Tunis,Menzah,Menzah,"Tunis,Menzah",128.0,2.0,2.0,350000.0
+data_prices_cleaned,2212,house,Tunis,Menzah,Menzah,"Tunis,Menzah",581.0,4.0,4.0,1150000.0
+data_prices_cleaned,2213,apartment,Tunis,Menzah,Menzah,"Tunis,Menzah",184.0,2.0,3.0,450000.0
+data_prices_cleaned,2215,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",369.0,2.0,1.0,200000.0
+data_prices_cleaned,2220,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,1.0,1.0,85000.0
+data_prices_cleaned,2223,apartment,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",117.0,2.0,1.0,435000.0
+data_prices_cleaned,2225,apartment,Tunis,Bab Souika,Bab Souika,"Tunis,Bab Souika",48.0,2.0,0.0,55000.0
+data_prices_cleaned,2227,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",221.0,5.0,3.0,950000.0
+data_prices_cleaned,2230,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",215.0,3.0,2.0,740000.0
+data_prices_cleaned,2231,house,Ariana,Raoued,Raoued,"Ariana,Raoued",300.0,6.0,5.0,650000.0
+data_prices_cleaned,2232,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",274.0,5.0,3.0,700000.0
+data_prices_cleaned,2233,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",115.0,2.0,1.0,380000.0
+data_prices_cleaned,2235,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",80.0,2.0,1.0,150000.0
+data_prices_cleaned,2236,apartment,Tunis,Ain Zaghouan Sud,Ain Zaghouan Sud,"Tunis,Ain Zaghouan Sud",139.0,3.0,1.0,453000.0
+data_prices_cleaned,2237,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",125.0,3.0,2.0,329000.0
+data_prices_cleaned,2238,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",65.0,2.0,1.0,205000.0
+data_prices_cleaned,2239,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",246.0,4.0,3.0,670000.0
+data_prices_cleaned,2240,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",125.0,3.0,2.0,384000.0
+data_prices_cleaned,2241,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",49.0,1.0,1.0,220000.0
+data_prices_cleaned,2242,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",257.0,4.0,4.0,879000.0
+data_prices_cleaned,2243,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",170.0,2.0,1.0,360000.0
+data_prices_cleaned,2244,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",248.0,5.0,4.0,1350000.0
+data_prices_cleaned,2245,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",162.0,4.0,3.0,470000.0
+data_prices_cleaned,2248,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",170.0,4.0,3.0,700000.0
+data_prices_cleaned,2249,apartment,Ariana,Chotrana,Chotrana,"Ariana,Chotrana",230.0,4.0,3.0,670000.0
+data_prices_cleaned,2250,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",162.0,4.0,3.0,795000.0
+data_prices_cleaned,2253,apartment,Ariana,Chotrana,Chotrana,"Ariana,Chotrana",165.0,,3.0,609000.0
+data_prices_cleaned,2255,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",118.0,3.0,2.0,410000.0
+data_prices_cleaned,2258,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",200.0,3.0,1.0,300000.0
+data_prices_cleaned,2260,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",78.0,2.0,1.0,150000.0
+data_prices_cleaned,2261,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",115.0,1.0,2.0,290000.0
+data_prices_cleaned,2262,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",140.0,2.0,2.0,350000.0
+data_prices_cleaned,2264,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",120.0,9.0,3.0,300000.0
+data_prices_cleaned,2265,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",130.0,2.0,1.0,265000.0
+data_prices_cleaned,2266,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",80.0,1.0,2.0,190000.0
+data_prices_cleaned,2267,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",100.0,2.0,1.0,265000.0
+data_prices_cleaned,2268,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",147.0,2.0,1.0,180000.0
+data_prices_cleaned,2269,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",88.0,2.0,1.0,169999.0
+data_prices_cleaned,2270,house,Monastir,Sahline,Sahline,"Monastir,Sahline",100.0,2.0,1.0,125000.0
+data_prices_cleaned,2277,house,Tunis,Bellevue,Bellevue,"Tunis,Bellevue",210.0,7.0,2.0,198500.0
+data_prices_cleaned,2284,house,Sfax,Sakiet Ezzit,Sakiet Ezzit,"Sfax,Sakiet Ezzit",240.0,5.0,1.0,800000.0
+data_prices_cleaned,2286,apartment,Sousse,Sousse Corniche,Sousse Corniche,"Sousse,Sousse corniche",130.0,2.0,1.0,430000.0
+data_prices_cleaned,2288,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",110.0,3.0,1.0,180000.0
+data_prices_cleaned,2289,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",300.0,6.0,2.0,790000.0
+data_prices_cleaned,2293,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",154.0,3.0,2.0,470000.0
+data_prices_cleaned,2294,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",55.0,1.0,1.0,185000.0
+data_prices_cleaned,2296,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",90.0,2.0,1.0,180000.0
+data_prices_cleaned,2304,house,Ben Arous,El Mourouj,El Mourouj,"Ben Arous,El Mourouj",400.0,8.0,2.0,570000.0
+data_prices_cleaned,2306,apartment,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",78.0,3.0,1.0,120000.0
+data_prices_cleaned,2307,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",86.5,1.0,1.0,250000.0
+data_prices_cleaned,2308,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",170.0,4.0,0.0,420000.0
+data_prices_cleaned,2310,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",70.0,1.0,1.0,280000.0
+data_prices_cleaned,2311,house,Mdenine,Djerba Midoun,Djerba Midoun,"Mdenine,Djerba Midoun",600.0,3.0,2.0,500000.0
+data_prices_cleaned,2312,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",120.0,2.0,1.0,275000.0
+data_prices_cleaned,2313,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",70.0,1.0,1.0,210000.0
+data_prices_cleaned,2314,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",48.0,1.0,1.0,170000.0
+data_prices_cleaned,2320,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",130.0,2.0,2.0,210000.0
+data_prices_cleaned,2322,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",191.0,3.0,3.0,598000.0
+data_prices_cleaned,2333,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",73.0,1.0,1.0,270100.0
+data_prices_cleaned,2334,apartment,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",95.0,0.0,1.0,230000.0
+data_prices_cleaned,2335,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",175.0,3.0,2.0,240000.0
+data_prices_cleaned,2339,apartment,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",75.0,2.0,2.0,140000.0
+data_prices_cleaned,2342,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",52.0,1.0,1.0,195000.0
+data_prices_cleaned,2343,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",160.0,3.0,0.0,490000.0
+data_prices_cleaned,2347,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",340.0,4.0,4.0,1120000.0
+data_prices_cleaned,2349,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",78.0,1.0,1.0,288600.0
+data_prices_cleaned,2352,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",60.0,1.0,1.0,120000.0
+data_prices_cleaned,2353,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",160.0,1.0,2.0,400000.0
+data_prices_cleaned,2354,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",640.0,2.0,2.0,1420000.0
+data_prices_cleaned,2359,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",130.0,1.0,2.0,500000.0
+data_prices_cleaned,2361,apartment,Tunis,Lac 1,Lac 1,"Tunis,Lac 1",253.0,3.0,3.0,1650000.0
+data_prices_cleaned,2363,house,Sfax,Route Taniour,Route Taniour,"Sfax,Route TANIOUR",1040.0,4.0,2.0,710000.0
+data_prices_cleaned,2364,house,Sfax,Route El Afrane,Route El Afrane,"Sfax,Route El Afrane",1245.0,1.0,4.0,650000.0
+data_prices_cleaned,2365,house,Tunis,Monfleury,Monfleury,"Tunis,Monfleury",450.0,5.0,2.0,600000.0
+data_prices_cleaned,2370,apartment,Mahdia,Autres Villes,Autres Villes,"Mahdia,Autres Villes",125.0,2.0,1.0,175000.0
+data_prices_cleaned,2371,house,Monastir,Monastir,Monastir,"Monastir,Monastir",144.0,3.0,1.0,335000.0
+data_prices_cleaned,2372,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",60.0,1.0,1.0,160000.0
+data_prices_cleaned,2374,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",71.18,1.0,1.0,242000.0
+data_prices_cleaned,2376,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",115.0,2.0,1.0,245000.0
+data_prices_cleaned,2381,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",140.0,3.0,2.0,330000.0
+data_prices_cleaned,2382,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,3.0,2.0,350000.0
+data_prices_cleaned,2389,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",130.0,4.0,2.0,220000.0
+data_prices_cleaned,2392,house,Sousse,Hergla,Hergla,"Sousse,Hergla",400.0,3.0,1.0,280000.0
+data_prices_cleaned,2395,house,Sidi Bouzid,Sidi Bouzid Ouest,Sidi Bouzid Ouest,"Sidi Bouzid,Sidi Bouzid Ouest",300.0,2.0,2.0,128000.0
+data_prices_cleaned,2397,apartment,Sfax,Sfax,Sfax,"Sfax,Sfax",120.0,2.0,2.0,185000.0
+data_prices_cleaned,2399,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",92.0,3.0,1.0,150000.0
+data_prices_cleaned,2405,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",95.0,2.0,1.0,315000.0
+data_prices_cleaned,2408,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",70.0,1.0,1.0,280000.0
+data_prices_cleaned,2410,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",390.0,4.0,2.0,389000.0
+data_prices_cleaned,2412,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",319.0,0.0,0.0,250000.0
+data_prices_cleaned,2414,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",512.0,4.0,2.0,500000.0
+data_prices_cleaned,2415,house,Ben Arous,El Mourouj 3,El Mourouj 3,"Ben Arous,El Mourouj 3",250.0,5.0,2.0,550000.0
+data_prices_cleaned,2417,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",116.0,2.0,2.0,270000.0
+data_prices_cleaned,2418,apartment,Tunis,Sidi Daoud,Sidi Daoud,"Tunis,Sidi Daoud",163.0,3.0,2.0,535000.0
+data_prices_cleaned,2420,house,Mahdia,Chebba,Chebba,"Mahdia,Chebba",421.0,2.0,1.0,220000.0
+data_prices_cleaned,2425,apartment,Mahdia,Chebba,Chebba,"Mahdia,Chebba",107.0,2.0,1.0,200000.0
+data_prices_cleaned,2426,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",400.0,4.0,2.0,890000.0
+data_prices_cleaned,2427,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",387.0,6.0,4.0,1180000.0
+data_prices_cleaned,2429,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",130.0,2.0,2.0,420000.0
+data_prices_cleaned,2430,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",182.0,3.0,3.0,400000.0
+data_prices_cleaned,2432,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",71.0,1.0,1.0,220000.0
+data_prices_cleaned,2433,apartment,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",52.0,1.0,1.0,135000.0
+data_prices_cleaned,2434,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",92.0,2.0,1.0,290000.0
+data_prices_cleaned,2435,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",70.0,1.0,1.0,260000.0
+data_prices_cleaned,2436,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",201.0,3.0,2.0,495000.0
+data_prices_cleaned,2438,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",117.0,2.0,1.0,368000.0
+data_prices_cleaned,2439,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",200.0,4.0,2.0,380000.0
+data_prices_cleaned,2441,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",146.0,3.0,2.0,440000.0
+data_prices_cleaned,2445,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",136.0,3.0,2.0,340000.0
+data_prices_cleaned,2450,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",140.0,4.0,1.0,250000.0
+data_prices_cleaned,2451,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",69.0,1.0,1.0,255300.0
+data_prices_cleaned,2453,house,Sousse,Sousse Mdina,Sousse Mdina,"Sousse,Sousse Mdina",178.0,6.0,3.0,200000.0
+data_prices_cleaned,2454,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",470.0,6.0,3.0,450000.0
+data_prices_cleaned,2455,house,Sousse,Hergla,Hergla,"Sousse,Hergla",230.0,4.0,3.0,550000.0
+data_prices_cleaned,2456,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",75.0,1.0,1.0,165000.0
+data_prices_cleaned,2457,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",160.0,2.0,1.0,550000.0
+data_prices_cleaned,2458,house,Tunis,Agba,Agba,"Tunis,Agba",285.0,4.0,1.0,440000.0
+data_prices_cleaned,2459,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",120.0,1.0,2.0,360000.0
+data_prices_cleaned,2464,apartment,Ariana,Ariana,Ariana,"Ariana,Ariana",90.0,3.0,1.0,90000.0
+data_prices_cleaned,2466,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",198.0,4.0,1.0,495000.0
+data_prices_cleaned,2468,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",163.0,3.0,1.0,950000.0
+data_prices_cleaned,2471,house,Sousse,Sousse,Sousse,"Sousse,Sousse",532.0,4.0,3.0,650000.0
+data_prices_cleaned,2472,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",105.0,2.0,1.0,270000.0
+data_prices_cleaned,2480,apartment,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",78.0,1.0,1.0,155000.0
+data_prices_cleaned,2483,house,Tunis,Sjoumi,Sjoumi,"Tunis,Sjoumi",150.0,0.0,0.0,150000.0
+data_prices_cleaned,2485,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",112.0,2.0,1.0,230000.0
+data_prices_cleaned,2489,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",85.0,3.0,1.0,115000.0
+data_prices_cleaned,2493,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",474.0,3.0,2.0,470000.0
+data_prices_cleaned,2496,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",320.0,1.0,2.0,739999.0
+data_prices_cleaned,2497,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",69.0,1.0,1.0,237000.0
+data_prices_cleaned,2499,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",90.0,1.0,1.0,168999.0
+data_prices_cleaned,2501,apartment,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",80.0,2.0,1.0,130000.0
+data_prices_cleaned,2505,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",106.0,2.0,1.0,200000.0
+data_prices_cleaned,2506,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",152.0,3.0,1.0,440000.0
+data_prices_cleaned,2510,apartment,Sfax,Route Mharza,Route Mharza,"Sfax,Route MHARZA",120.0,4.0,1.0,95000.0
+data_prices_cleaned,2512,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",200.0,3.0,1.0,320000.0
+data_prices_cleaned,2520,house,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",250.0,6.0,5.0,1100000.0
+data_prices_cleaned,2521,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",403.0,8.0,4.0,820000.0
+data_prices_cleaned,2524,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",187.0,4.0,2.0,300000.0
+data_prices_cleaned,2529,house,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",259.0,5.0,1.0,480000.0
+data_prices_cleaned,2530,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",157.0,0.0,2.0,410000.0
+data_prices_cleaned,2533,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",245.0,6.0,5.0,1080000.0
+data_prices_cleaned,2539,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",260.0,7.0,5.0,1250000.0
+data_prices_cleaned,2541,apartment,Sfax,Route Tunis,Route Tunis,"Sfax,Route Tunis",153.0,3.0,2.0,280000.0
+data_prices_cleaned,2542,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",147.0,3.0,3.0,338000.0
+data_prices_cleaned,2543,apartment,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",120.0,3.0,2.0,298000.0
+data_prices_cleaned,2548,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",80.0,2.0,1.0,460000.0
+data_prices_cleaned,2550,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",345.0,4.0,3.0,845000.0
+data_prices_cleaned,2552,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",170.0,4.0,3.0,255000.0
+data_prices_cleaned,2553,house,Tunis,Kheireddine Pacha,Kheireddine Pacha,"Tunis,Kheireddine Pacha",629.0,1.0,1.0,1600000.0
+data_prices_cleaned,2555,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",614.0,4.0,3.0,1000000.0
+data_prices_cleaned,2560,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,3.0,2.0,358000.0
+data_prices_cleaned,2561,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",400.0,6.0,5.0,1480000.0
+data_prices_cleaned,2562,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",1185.0,4.0,2.0,1550000.0
+data_prices_cleaned,2564,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",194.0,3.0,2.0,560000.0
+data_prices_cleaned,2567,house,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",317.0,2.0,2.0,500000.0
+data_prices_cleaned,2572,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",162.0,3.0,3.0,490000.0
+data_prices_cleaned,2575,house,Monastir,Sahline,Sahline,"Monastir,Sahline",164.0,3.0,2.0,190000.0
+data_prices_cleaned,2576,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",187.5,2.0,2.0,430000.0
+data_prices_cleaned,2580,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",100.0,2.0,1.0,300000.0
+data_prices_cleaned,2581,apartment,La Manouba,Denden,Denden,"La Manouba,Denden",97.0,2.0,1.0,1111111.111
+data_prices_cleaned,2584,apartment,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",120.0,3.0,1.0,380000.0
+data_prices_cleaned,2591,house,Sfax,Sakiet Eddaer,Sakiet Eddaer,"Sfax,Sakiet Eddaer",470.0,3.0,1.0,210000.0
+data_prices_cleaned,2599,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",70.0,1.0,1.0,180000.0
+data_prices_cleaned,2601,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",140.0,2.0,2.0,320000.0
+data_prices_cleaned,2602,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",70.0,1.0,1.0,129999.0
+data_prices_cleaned,2603,apartment,Monastir,Jemmal,Jemmal,"Monastir,Jemmal",300.0,3.0,2.0,225000.0
+data_prices_cleaned,2609,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",45.0,1.0,1.0,160000.0
+data_prices_cleaned,2610,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",300.0,4.0,3.0,310000.0
+data_prices_cleaned,2613,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",120.0,2.0,2.0,470000.0
+data_prices_cleaned,2616,apartment,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",93.0,2.0,1.0,135000.0
+data_prices_cleaned,2619,apartment,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",75.0,2.0,1.0,200000.0
+data_prices_cleaned,2620,house,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",126.0,2.0,1.0,310000.0
+data_prices_cleaned,2621,house,Tunis,Ksar Said,Ksar Said,"Tunis,Ksar Said",520.0,4.0,2.0,690000.0
+data_prices_cleaned,2623,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",154.0,3.0,2.0,430000.0
+data_prices_cleaned,2624,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",378.0,6.0,5.0,2100000.0
+data_prices_cleaned,2627,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",32.0,1.0,1.0,185000.0
+data_prices_cleaned,2629,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",87.0,2.0,1.0,280000.0
+data_prices_cleaned,2641,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",116.0,2.0,1.0,450000.0
+data_prices_cleaned,2647,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",56.0,1.0,1.0,180000.0
+data_prices_cleaned,2648,apartment,Ariana,Cite Ennkhilet,Cite Ennkhilet,"Ariana,Cite Ennkhilet",95.0,2.0,1.0,235000.0
+data_prices_cleaned,2649,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",118.0,2.0,1.0,400000.0
+data_prices_cleaned,2650,house,Tunis,El Omrane,El Omrane,"Tunis,El Omrane",145.0,7.0,3.0,550000.0
+data_prices_cleaned,2652,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",142.0,3.0,2.0,315000.0
+data_prices_cleaned,2653,house,Ariana,El Menzah 8,El Menzah 8,"Ariana,El Menzah 8",510.0,7.0,5.0,1000000.0
+data_prices_cleaned,2656,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",89.0,0.0,1.0,200000.0
+data_prices_cleaned,2659,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",108.0,2.0,1.0,259999.0
+data_prices_cleaned,2660,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",210.0,4.0,2.0,540000.0
+data_prices_cleaned,2662,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",56.0,0.0,1.0,180000.0
+data_prices_cleaned,2663,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",130.0,,2.0,245000.0
+data_prices_cleaned,2664,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",90.0,1.0,1.0,215000.0
+data_prices_cleaned,2665,apartment,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",130.0,2.0,1.0,265000.0
+data_prices_cleaned,2667,house,Ariana,Nouvelle Ariana,Nouvelle Ariana,"Ariana,Nouvelle Ariana",428.0,2.0,2.0,650000.0
+data_prices_cleaned,2669,house,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",200.0,5.0,2.0,198999.0
+data_prices_cleaned,2670,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",240.0,3.0,3.0,569000.0
+data_prices_cleaned,2672,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",602.0,7.0,1.0,1200000.0
+data_prices_cleaned,2674,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",666.0,4.0,4.0,1290000.0
+data_prices_cleaned,2675,apartment,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",90.0,3.0,1.0,120000.0
+data_prices_cleaned,2676,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",100.0,2.0,1.0,130000.0
+data_prices_cleaned,2679,house,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",704.0,6.0,4.0,1899999.0
+data_prices_cleaned,2680,apartment,Nabeul,Hammamet Centre,Hammamet Centre,"Nabeul,Hammamet Centre",120.0,2.0,2.0,430000.0
+data_prices_cleaned,2681,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",426.0,3.0,3.0,1000000.0
+data_prices_cleaned,2685,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",127.0,2.0,1.0,425450.0
+data_prices_cleaned,2687,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",130.0,2.0,1.0,470000.0
+data_prices_cleaned,2688,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",347.0,4.0,3.0,1100000.0
+data_prices_cleaned,2690,apartment,Nabeul,Hammamet Centre,Hammamet Centre,"Nabeul,Hammamet Centre",105.0,2.0,1.0,200000.0
+data_prices_cleaned,2691,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",377.0,4.0,4.0,790000.0
+data_prices_cleaned,2692,apartment,Nabeul,Hammamet Centre,Hammamet Centre,"Nabeul,Hammamet Centre",96.0,2.0,1.0,310000.0
+data_prices_cleaned,2693,apartment,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",116.0,2.0,1.0,355000.0
+data_prices_cleaned,2696,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",700.0,10.0,6.0,1500000.0
+data_prices_cleaned,2700,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",129.0,2.0,1.0,90000.0
+data_prices_cleaned,2701,house,Ariana,Ariana,Ariana,"Ariana,Ariana",420.0,6.0,4.0,1200000.0
+data_prices_cleaned,2703,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",157.0,2.0,2.0,492750.0
+data_prices_cleaned,2704,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",75.0,2.0,1.0,156000.0
+data_prices_cleaned,2705,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",119.0,2.0,2.0,440299.0
+data_prices_cleaned,2708,house,Ariana,Chotrana 3,Chotrana 3,"Ariana,Chotrana 3",330.0,4.0,3.0,820000.0
+data_prices_cleaned,2709,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",101.0,2.0,1.0,285000.0
+data_prices_cleaned,2712,house,Sousse,Akouda,Akouda,"Sousse,Akouda",144.0,3.0,1.0,335000.0
+data_prices_cleaned,2713,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",129.0,3.0,1.0,437000.0
+data_prices_cleaned,2714,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",200.0,3.0,2.0,390000.0
+data_prices_cleaned,2715,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",120.0,3.0,2.0,330000.0
+data_prices_cleaned,2716,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",503.0,6.0,2.0,1400000.0
+data_prices_cleaned,2719,apartment,Tunis,Hraria,Hraria,"Tunis,Hraria",65.0,2.0,1.0,49000.0
+data_prices_cleaned,2721,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",100.0,1.0,1.0,165000.0
+data_prices_cleaned,2726,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",200.0,3.0,1.0,610000.0
+data_prices_cleaned,2728,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",100.0,3.0,1.0,200000.0
+data_prices_cleaned,2729,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",105.0,3.0,1.0,435000.0
+data_prices_cleaned,2736,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",380.0,5.0,4.0,470000.0
+data_prices_cleaned,2737,house,Tunis,Cit Olympique,Cit Olympique,"Tunis,Cit Olympique",140.0,3.0,2.0,1800000.0
+data_prices_cleaned,2739,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",106.0,2.0,1.0,298000.0
+data_prices_cleaned,2742,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",366.0,6.0,5.0,1200000.0
+data_prices_cleaned,2745,apartment,Sfax,Menzel Chaker,Menzel Chaker,"Sfax,Menzel Chaker",83.0,2.0,1.0,75000.0
+data_prices_cleaned,2746,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",500.0,4.0,2.0,1200000.0
+data_prices_cleaned,2748,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",140.0,3.0,2.0,440000.0
+data_prices_cleaned,2749,house,Sousse,Khzema,Khzema,"Sousse,Khzema",413.0,3.0,1.0,670000.0
+data_prices_cleaned,2751,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",145.0,2.0,2.0,570000.0
+data_prices_cleaned,2752,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",330.0,3.0,2.0,550000.0
+data_prices_cleaned,2754,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",124.0,2.0,2.0,320000.0
+data_prices_cleaned,2755,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",145.0,3.0,2.0,450000.0
+data_prices_cleaned,2757,house,Tunis,Tunis Belvedere,Tunis Belvedere,"Tunis,Tunis Belvedere",368.0,5.0,2.0,1190000.0
+data_prices_cleaned,2759,house,Tunis,Tunis Belvedere,Tunis Belvedere,"Tunis,Tunis Belvedere",550.0,4.0,2.0,1800000.0
+data_prices_cleaned,2764,apartment,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",107.0,4.0,2.0,180000.0
+data_prices_cleaned,2765,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",670.0,6.0,3.0,1280000.0
+data_prices_cleaned,2767,house,Mdenine,Djerba Houmt Souk,Djerba Houmt Souk,"Mdenine,Djerba Houmt Souk",550.0,6.0,4.0,540000.0
+data_prices_cleaned,2768,house,Monastir,Monastir,Monastir,"Monastir,Monastir",180.0,3.0,2.0,400000.0
+data_prices_cleaned,2769,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",70.0,2.0,1.0,170000.0
+data_prices_cleaned,2771,house,Mdenine,Djerba Houmt Souk,Djerba Houmt Souk,"Mdenine,Djerba Houmt Souk",150.0,3.0,2.0,280000.0
+data_prices_cleaned,2777,apartment,Gabs,Gabs Mdina,Gabs Mdina,"Gabs,Gabs Mdina",450.0,3.0,1.0,220000.0
+data_prices_cleaned,2781,house,Tunis,Ain Zaghouan Sud,Ain Zaghouan Sud,"Tunis,Ain Zaghouan Sud",65.0,1.0,1.0,373250.0
+data_prices_cleaned,2782,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",156.0,3.0,1.0,420000.0
+data_prices_cleaned,2783,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",136.0,2.0,1.0,290000.0
+data_prices_cleaned,2784,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",121.91,2.0,1.0,500000.0
+data_prices_cleaned,2786,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",355.0,4.0,3.0,1600000.0
+data_prices_cleaned,2787,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",125.0,3.0,2.0,270000.0
+data_prices_cleaned,2789,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",114.0,2.0,1.0,290000.0
+data_prices_cleaned,2790,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",740.0,6.0,5.0,2000000.0
+data_prices_cleaned,2791,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",250.0,5.0,3.0,265000.0
+data_prices_cleaned,2793,house,Ben Arous,Hammam Chott,Hammam Chott,"Ben Arous,Hammam Chott",848.0,0.0,2.0,800000.0
+data_prices_cleaned,2798,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",64.0,2.0,1.0,178000.0
+data_prices_cleaned,2799,house,Nabeul,Hammamet Centre,Hammamet Centre,"Nabeul,Hammamet Centre",129.0,2.0,1.0,430000.0
+data_prices_cleaned,2800,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",95.0,2.0,1.0,265000.0
+data_prices_cleaned,2801,house,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",275.0,4.0,1.0,490000.0
+data_prices_cleaned,2802,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",115.0,2.0,1.0,350000.0
+data_prices_cleaned,2803,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",260.0,4.0,2.0,420000.0
+data_prices_cleaned,2804,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",170.0,3.0,1.0,250000.0
+data_prices_cleaned,2807,house,Ben Arous,Mohamedia,Mohamedia,"Ben Arous,Mohamedia",119.0,2.0,1.0,130000.0
+data_prices_cleaned,2811,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",177.5,3.0,2.0,675000.0
+data_prices_cleaned,2812,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",110.0,2.0,2.0,410000.0
+data_prices_cleaned,2816,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",151.0,3.0,3.0,400000.0
+data_prices_cleaned,2818,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",250.0,4.0,2.0,300000.0
+data_prices_cleaned,2825,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",85.0,1.0,0.0,130000.0
+data_prices_cleaned,2827,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",200.0,2.0,2.0,500000.0
+data_prices_cleaned,2829,house,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",328.0,3.0,1.0,450000.0
+data_prices_cleaned,2830,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",250.0,0.0,3.0,1100000.0
+data_prices_cleaned,2831,house,Tunis,El Menzah 4,El Menzah 4,"Tunis,El Menzah 4",200.0,5.0,3.0,2000000.0
+data_prices_cleaned,2832,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",80.0,2.0,1.0,200000.0
+data_prices_cleaned,2834,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",68.0,1.0,2.0,270000.0
+data_prices_cleaned,2836,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",147.0,3.0,2.0,600000.0
+data_prices_cleaned,2841,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",56.0,1.0,1.0,69000.0
+data_prices_cleaned,2844,house,Monastir,Monastir,Monastir,"Monastir,Monastir",116.0,3.0,1.0,195000.0
+data_prices_cleaned,2845,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",485.0,3.0,2.0,650000.0
+data_prices_cleaned,2855,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",225.0,0.0,1.0,450000.0
+data_prices_cleaned,2861,house,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",370.0,4.0,2.0,399999.0
+data_prices_cleaned,2863,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",170.0,3.0,2.0,541500.0
+data_prices_cleaned,2868,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",1050.0,6.0,4.0,3500000.0
+data_prices_cleaned,2869,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",116.0,2.0,2.0,269000.0
+data_prices_cleaned,2872,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",232.0,3.0,2.0,580000.0
+data_prices_cleaned,2873,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",170.0,3.0,2.0,520000.0
+data_prices_cleaned,2876,house,Ariana,Ariana,Ariana,"Ariana,Ariana",90.0,6.0,2.0,490000.0
+data_prices_cleaned,2880,house,Ben Arous,Sidi Rezig,Sidi Rezig,"Ben Arous,Sidi Rezig",463.0,6.0,3.0,1111111.0
+data_prices_cleaned,2888,apartment,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",73.0,1.0,1.0,145000.0
+data_prices_cleaned,2890,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",130.0,3.0,2.0,350000.0
+data_prices_cleaned,2891,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",470.0,4.0,2.0,850000.0
+data_prices_cleaned,2892,house,Ariana,Raoued,Raoued,"Ariana,Raoued",1000.0,4.0,2.0,750000.0
+data_prices_cleaned,2893,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",610.0,6.0,4.0,1400000.0
+data_prices_cleaned,2894,house,Ariana,El Menzah 8,El Menzah 8,"Ariana,El Menzah 8",500.0,5.0,2.0,1350000.0
+data_prices_cleaned,2900,apartment,Sfax,Sakiet Ezzit,Sakiet Ezzit,"Sfax,Sakiet Ezzit",65.0,2.0,1.0,100000.0
+data_prices_cleaned,2902,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",170.0,3.0,1.0,470000.0
+data_prices_cleaned,2905,house,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",85.0,6.0,2.0,140000.0
+data_prices_cleaned,2909,house,Ariana,Raoued,Raoued,"Ariana,Raoued",150.0,3.0,1.0,155000.0
+data_prices_cleaned,2910,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",136.0,3.0,2.0,530000.0
+data_prices_cleaned,2911,apartment,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",200.0,2.0,3.0,1200000.0
+data_prices_cleaned,2913,apartment,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",121.0,3.0,1.0,250000.0
+data_prices_cleaned,2915,apartment,Tunis,Lac 2,Lac 2,"Tunis,Lac 2",67.0,1.0,1.0,365000.0
+data_prices_cleaned,2916,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",157.0,3.0,0.0,320000.0
+data_prices_cleaned,2918,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",80.0,1.0,2.0,165000.0
+data_prices_cleaned,2919,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",137.0,5.0,2.0,345000.0
+data_prices_cleaned,2922,house,Tunis,El Menzah 4,El Menzah 4,"Tunis,El Menzah 4",460.0,6.0,1.0,1200000.0
+data_prices_cleaned,2923,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",590.0,5.0,1.0,1300000.0
+data_prices_cleaned,2924,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",237.0,4.0,2.0,290000.0
+data_prices_cleaned,2927,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",900.0,5.0,4.0,899000.0
+data_prices_cleaned,2928,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",180.0,0.0,2.0,415000.0
+data_prices_cleaned,2930,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",95.0,2.0,2.0,351500.0
+data_prices_cleaned,2935,house,Ariana,Chotrana 3,Chotrana 3,"Ariana,Chotrana 3",220.0,4.0,3.0,1020000.0
+data_prices_cleaned,2936,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",94.0,2.0,2.0,280000.0
+data_prices_cleaned,2937,house,Tunis,Le Kram,Le Kram,"Tunis,Le Kram",147.0,3.0,2.0,350000.0
+data_prices_cleaned,2939,apartment,Ariana,Ariana Ville,Ariana Ville,"Ariana,Ariana Ville",110.0,3.0,2.0,170000.0
+data_prices_cleaned,2940,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",160.0,2.0,2.0,436000.0
+data_prices_cleaned,2949,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",150.0,3.0,2.0,360000.0
+data_prices_cleaned,2950,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",143.0,3.0,2.0,294999.0
+data_prices_cleaned,2952,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",625.0,4.0,5.0,1200000.0
+data_prices_cleaned,2954,house,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",270.0,3.0,3.0,1050000.0
+data_prices_cleaned,2955,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",112.0,2.0,1.0,360000.0
+data_prices_cleaned,2958,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",165.0,3.0,2.0,700000.0
+data_prices_cleaned,2959,house,Sfax,Route Taniour,Route Taniour,"Sfax,Route TANIOUR",465.0,3.0,2.0,420000.0
+data_prices_cleaned,2961,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",106.0,3.0,2.0,225000.0
+data_prices_cleaned,2963,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",100.0,4.0,2.0,270000.0
+data_prices_cleaned,2964,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",80.0,1.0,1.0,195000.0
+data_prices_cleaned,2969,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",124.0,1.0,2.0,680000.0
+data_prices_cleaned,2970,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",200.0,4.0,2.0,298000.0
+data_prices_cleaned,2974,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",110.0,2.0,1.0,264999.0
+data_prices_cleaned,2975,house,Tunis,Bab Souika,Bab Souika,"Tunis,Bab Souika",77.0,2.0,1.0,85000.0
+data_prices_cleaned,2976,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",250.0,4.0,2.0,700000.0
+data_prices_cleaned,2977,house,Sfax,Route Mehdia,Route Mehdia,"Sfax,Route Mehdia",140.0,4.0,1.0,90000.0
+data_prices_cleaned,2980,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",159.0,8.0,3.0,360000.0
+data_prices_cleaned,2984,apartment,Sousse,Akouda,Akouda,"Sousse,Akouda",58.0,1.0,1.0,190000.0
+data_prices_cleaned,2985,house,Sousse,Hergla,Hergla,"Sousse,Hergla",500.0,4.0,4.0,790000.0
+data_prices_cleaned,2988,house,Sousse,Hergla,Hergla,"Sousse,Hergla",220.0,3.0,2.0,500000.0
+data_prices_cleaned,2990,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",196.0,5.0,3.0,500000.0
+data_prices_cleaned,2994,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",118.0,2.0,1.0,291000.0
+data_prices_cleaned,2995,house,Bizerte,Bizerte Nord,Bizerte Nord,"Bizerte,Bizerte Nord",350.0,4.0,2.0,350000.0
+data_prices_cleaned,2998,house,Bizerte,Menzel Jemil,Menzel Jemil,"Bizerte,Menzel Jemil",300.0,3.0,2.0,570000.0
+data_prices_cleaned,3000,house,Ariana,Raoued,Raoued,"Ariana,Raoued",477.0,4.0,2.0,310000.0
+data_prices_cleaned,3003,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",120.0,2.0,1.0,365000.0
+data_prices_cleaned,3004,house,Sousse,Khzema,Khzema,"Sousse,Khzema",462.0,9.0,3.0,1150000.0
+data_prices_cleaned,3005,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",347.0,4.0,1.0,750000.0
+data_prices_cleaned,3008,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",400.0,7.0,,650000.0
+data_prices_cleaned,3011,house,Tunis,Ezzouhour,Ezzouhour,"Tunis,Ezzouhour",100.0,3.0,1.0,179000.0
+data_prices_cleaned,3013,house,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",409.0,6.0,2.0,740000.0
+data_prices_cleaned,3014,apartment,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",125.0,2.0,3.0,310000.0
+data_prices_cleaned,3015,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",149.0,4.0,3.0,410000.0
+data_prices_cleaned,3018,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",180.0,3.0,1.0,195000.0
+data_prices_cleaned,3021,house,Sfax,Sakiet Ezzit,Sakiet Ezzit,"Sfax,Sakiet Ezzit",460.0,7.0,3.0,900000.0
+data_prices_cleaned,3022,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",163.0,3.0,2.0,310000.0
+data_prices_cleaned,3024,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",187.0,6.0,2.0,300000.0
+data_prices_cleaned,3028,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",26.0,0.0,1.0,135000.0
+data_prices_cleaned,3030,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",513.0,2.0,3.0,850000.0
+data_prices_cleaned,3031,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",63.0,1.0,1.0,139000.0
+data_prices_cleaned,3033,house,Gafsa,Autres Villes,Autres Villes,"Gafsa,Autres Villes",500.0,3.0,1.0,270000.0
+data_prices_cleaned,3037,house,Ariana,Raoued,Raoued,"Ariana,Raoued",300.0,3.0,1.0,260000.0
+data_prices_cleaned,3038,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",136.0,2.0,3.0,365000.0
+data_prices_cleaned,3039,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",103.0,2.0,1.0,240000.0
+data_prices_cleaned,3040,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",110.0,4.0,2.0,280000.0
+data_prices_cleaned,3041,apartment,Ariana,Ariana,Ariana,"Ariana,Ariana",140.0,5.0,2.0,162000.0
+data_prices_cleaned,3042,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",320.0,4.0,5.0,650000.0
+data_prices_cleaned,3043,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",117.0,2.0,1.0,265000.0
+data_prices_cleaned,3045,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",271.0,3.0,5.0,850000.0
+data_prices_cleaned,3046,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",133.0,2.0,2.0,380000.0
+data_prices_cleaned,3048,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",291.0,8.0,4.0,750000.0
+data_prices_cleaned,3054,apartment,Tunis,Ksar Said,Ksar Said,"Tunis,Ksar Said",75.0,2.0,1.0,80000.0
+data_prices_cleaned,3055,apartment,Tunis,Ksar Said,Ksar Said,"Tunis,Ksar Said",75.0,2.0,1.0,120000.0
+data_prices_cleaned,3056,apartment,Tunis,Ksar Said,Ksar Said,"Tunis,Ksar Said",70.0,2.0,2.0,78000.0
+data_prices_cleaned,3058,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",75.0,2.0,2.0,90000.0
+data_prices_cleaned,3059,apartment,Tunis,Ksar Said,Ksar Said,"Tunis,Ksar Said",80.0,2.0,2.0,85000.0
+data_prices_cleaned,3065,house,Monastir,Monastir,Monastir,"Monastir,Monastir",480.0,9.0,5.0,950000.0
+data_prices_cleaned,3068,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",167.0,3.0,3.0,520000.0
+data_prices_cleaned,3071,house,Nabeul,El Mida,El Mida,"Nabeul,El Mida",321.0,8.0,2.0,210000.0
+data_prices_cleaned,3072,house,Bizerte,Ras Jebel,Ras Jebel,"Bizerte,Ras Jebel",270.0,3.0,1.0,500000.0
+data_prices_cleaned,3076,apartment,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",105.0,2.0,1.0,137000.0
+data_prices_cleaned,3077,apartment,Ariana,Ariana Essoughra,Ariana Essoughra,"Ariana,Ariana Essoughra",70.0,3.0,1.0,130000.0
+data_prices_cleaned,3078,house,Sousse,Hergla,Hergla,"Sousse,Hergla",138.0,2.0,2.0,240000.0
+data_prices_cleaned,3081,house,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",449.0,4.0,2.0,1050000.0
+data_prices_cleaned,3082,house,Ben Arous,El Mourouj 6,El Mourouj 6,"Ben Arous,El Mourouj 6",380.0,5.0,2.0,700000.0
+data_prices_cleaned,3085,apartment,Ben Arous,Hammam Chott,Hammam Chott,"Ben Arous,Hammam Chott",126.0,2.0,1.0,280000.0
+data_prices_cleaned,3088,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",68.0,1.0,0.0,215000.0
+data_prices_cleaned,3090,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",100.0,1.0,1.0,295000.0
+data_prices_cleaned,3093,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",75.0,1.0,1.0,128000.0
+data_prices_cleaned,3094,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",70.0,0.0,1.0,259000.0
+data_prices_cleaned,3095,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",58.0,1.0,1.0,175000.0
+data_prices_cleaned,3099,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",230.0,6.0,2.0,400000.0
+data_prices_cleaned,3103,house,Sfax,Route Saltania,Route Saltania,"Sfax,ROUTE SALTANIA",80.0,2.0,1.0,55000.0
+data_prices_cleaned,3106,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",1000.0,4.0,3.0,800000.0
+data_prices_cleaned,3107,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",142.0,3.0,0.0,310000.0
+data_prices_cleaned,3112,house,Tunis,Ezzouhour,Ezzouhour,"Tunis,Ezzouhour",280.0,2.0,2.0,460000.0
+data_prices_cleaned,3119,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",85.0,2.0,1.0,95000.0
+data_prices_cleaned,3120,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",371.0,4.0,6.0,550000.0
+data_prices_cleaned,3123,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",120.0,3.0,1.0,150000.0
+data_prices_cleaned,3126,house,Monastir,Monastir,Monastir,"Monastir,Monastir",330.0,3.0,1.0,950000.0
+data_prices_cleaned,3128,apartment,Ariana,Chotrana 1,Chotrana 1,"Ariana,Chotrana 1",109.0,2.0,1.0,380000.0
+data_prices_cleaned,3131,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",92.0,2.0,2.0,220000.0
+data_prices_cleaned,3135,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",498.0,7.0,3.0,700000.0
+data_prices_cleaned,3136,apartment,Tunis,Sidi Daoud,Sidi Daoud,"Tunis,Sidi Daoud",122.0,2.0,2.0,580000.0
+data_prices_cleaned,3137,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",200.0,3.0,1.0,168000.0
+data_prices_cleaned,3138,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",505.0,7.0,3.0,850000.0
+data_prices_cleaned,3139,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",120.0,2.0,0.0,160000.0
+data_prices_cleaned,3140,apartment,Tunis,Sidi Daoud,Sidi Daoud,"Tunis,Sidi Daoud",156.0,2.0,2.0,220000.0
+data_prices_cleaned,3148,house,Sousse,Autres Villes,Autres Villes,"Sousse,Autres Villes",121.0,5.0,2.0,140000.0
+data_prices_cleaned,3149,apartment,Kairouan,Kairouan Sud,Kairouan Sud,"Kairouan,Kairouan Sud",128.0,4.0,1.0,79999.0
+data_prices_cleaned,3150,house,Ben Arous,Hammam Chott,Hammam Chott,"Ben Arous,Hammam Chott",440.0,2.0,7.0,850000.0
+data_prices_cleaned,3152,apartment,Ben Arous,El Mourouj 5,El Mourouj 5,"Ben Arous,El Mourouj 5",90.0,2.0,1.0,148000.0
+data_prices_cleaned,3155,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",120.0,3.0,2.0,300000.0
+data_prices_cleaned,3158,apartment,Tunis,Tunis,Tunis,"Tunis,Tunis",100.0,2.0,1.0,275000.0
+data_prices_cleaned,3159,apartment,Ariana,Cit Hedi Nouira,Cit Hedi Nouira,"Ariana,Cit Hedi Nouira",115.0,3.0,1.0,180000.0
+data_prices_cleaned,3163,house,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",200.0,3.0,2.0,550000.0
+data_prices_cleaned,3167,house,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",600.0,7.0,3.0,1800000.0
+data_prices_cleaned,3170,house,Bizerte,Ras Jebel,Ras Jebel,"Bizerte,Ras Jebel",1500.0,5.0,4.0,1200000.0
+data_prices_cleaned,3175,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",100.0,2.0,1.0,240000.0
+data_prices_cleaned,3178,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",85.0,1.0,1.0,210000.0
+data_prices_cleaned,3179,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",60.0,1.0,1.0,260000.0
+data_prices_cleaned,3180,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",113.0,3.0,0.0,280000.0
+data_prices_cleaned,3181,house,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",410.0,2.0,,1600000.0
+data_prices_cleaned,3183,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",133.0,2.0,1.0,520000.0
+data_prices_cleaned,3184,house,Ariana,Ariana,Ariana,"Ariana,Ariana",480.0,12.0,6.0,750000.0
+data_prices_cleaned,3186,house,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",600.0,5.0,4.0,1380000.0
+data_prices_cleaned,3190,house,La Manouba,Oued Ellil,Oued Ellil,"La Manouba,Oued Ellil",300.0,3.0,1.0,340000.0
+data_prices_cleaned,3191,apartment,Tunis,Montplaisir,Montplaisir,"Tunis,Montplaisir",60.0,1.0,1.0,190000.0
+data_prices_cleaned,3193,apartment,Tunis,Cit Olympique,Cit Olympique,"Tunis,Cit Olympique",165.0,3.0,1.0,450000.0
+data_prices_cleaned,3194,house,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",1600.0,3.0,1.0,700000.0
+data_prices_cleaned,3197,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",102.0,2.0,2.0,377400.0
+data_prices_cleaned,3199,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",96.0,2.0,2.0,310000.0
+data_prices_cleaned,3202,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",45.0,1.0,1.0,135000.0
+data_prices_cleaned,3205,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",127.0,2.0,2.0,405000.0
+data_prices_cleaned,3206,house,La Manouba,Denden,Denden,"La Manouba,Denden",260.0,8.0,3.0,680000.0
+data_prices_cleaned,3207,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",119.0,4.0,2.0,440300.0
+data_prices_cleaned,3208,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",50.0,1.0,1.0,169000.0
+data_prices_cleaned,3211,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",80.0,4.0,2.0,160000.0
+data_prices_cleaned,3212,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",80.0,3.0,1.0,180000.0
+data_prices_cleaned,3213,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",228.0,6.0,4.0,670000.0
+data_prices_cleaned,3216,house,Tunis,Ezzouhour,Ezzouhour,"Tunis,Ezzouhour",150.0,2.0,1.0,160000.0
+data_prices_cleaned,3217,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",300.0,3.0,0.0,780000.0
+data_prices_cleaned,3218,apartment,Tunis,Menzah,Menzah,"Tunis,Menzah",90.0,2.0,1.0,220000.0
+data_prices_cleaned,3221,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",50.0,1.0,1.0,180000.0
+data_prices_cleaned,3225,apartment,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",240.0,3.0,2.0,700000.0
+data_prices_cleaned,3227,house,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",180.0,7.0,3.0,700000.0
+data_prices_cleaned,3231,house,Tunis,Djebel Jelloud,Djebel Jelloud,"Tunis,Djebel Jelloud",230.0,5.0,1.0,105000.0
+data_prices_cleaned,3233,house,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",225.0,2.0,1.0,180000.0
+data_prices_cleaned,3235,house,Nabeul,Takelsa,Takelsa,"Nabeul,Takelsa",170.0,3.0,2.0,450000.0
+data_prices_cleaned,3240,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",130.0,2.0,1.0,350000.0
+data_prices_cleaned,3241,apartment,Tunis,Sidi Hassine,Sidi Hassine,"Tunis,Sidi Hassine",85.0,2.0,1.0,110000.0
+data_prices_cleaned,3242,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",220.0,3.0,2.0,510000.0
+data_prices_cleaned,3243,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",280.0,3.0,3.0,720000.0
+data_prices_cleaned,3245,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",92.0,2.0,1.0,200000.0
+data_prices_cleaned,3246,apartment,Sousse,Kantaoui,Kantaoui,"Sousse,Kantaoui",107.0,3.0,2.0,750000.0
+data_prices_cleaned,3250,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",140.0,3.0,2.0,215000.0
+data_prices_cleaned,3252,apartment,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",180.0,4.0,2.0,495000.0
+data_prices_cleaned,3253,house,Jendouba,Tabarka,Tabarka,"Jendouba,Tabarka",94.0,3.0,1.0,227000.0
+data_prices_cleaned,3255,apartment,Tunis,Hraria,Hraria,"Tunis,Hraria",91.0,3.0,2.0,180000.0
+data_prices_cleaned,3256,house,Jendouba,Tabarka,Tabarka,"Jendouba,Tabarka",450.0,3.0,2.0,337000.0
+data_prices_cleaned,3257,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",159.0,8.0,3.0,360000.0
+data_prices_cleaned,3260,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",127.0,3.0,2.0,220000.0
+data_prices_cleaned,3261,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",103.0,1.0,2.0,250000.0
+data_prices_cleaned,3262,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",153.0,2.0,2.0,320000.0
+data_prices_cleaned,3271,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",137.0,3.0,2.0,650000.0
+data_prices_cleaned,3272,house,Tunis,Tunis,Tunis,"Tunis,Tunis",240.0,6.0,4.0,699999.0
+data_prices_cleaned,3278,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",300.0,3.0,2.0,680000.0
+data_prices_cleaned,3281,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",300.0,4.0,1.0,739998.0
+data_prices_cleaned,3283,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",60.0,2.0,0.0,130000.0
+data_prices_cleaned,3286,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",140.0,1.0,1.0,249999.0
+data_prices_cleaned,3287,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",250.0,6.0,2.0,145000.0
+data_prices_cleaned,3288,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",85.0,2.0,1.0,146000.0
+data_prices_cleaned,3290,house,Tunis,Mutuelleville,Mutuelleville,"Tunis,Mutuelleville",1000.0,10.0,7.0,3500000.0
+data_prices_cleaned,3291,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",73.0,1.0,1.0,350000.0
+data_prices_cleaned,3292,house,Tunis,Ain Zaghouan Sud,Ain Zaghouan Sud,"Tunis,Ain Zaghouan Sud",240.0,4.0,2.0,480000.0
+data_prices_cleaned,3293,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",140.0,3.0,2.0,600000.0
+data_prices_cleaned,3295,apartment,Ariana,Ariana,Ariana,"Ariana,Ariana",100.0,3.0,1.0,220000.0
+data_prices_cleaned,3296,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",127.0,2.0,1.0,350000.0
+data_prices_cleaned,3310,apartment,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",120.0,2.0,1.0,195000.0
+data_prices_cleaned,3313,house,Tunis,Montplaisir,Montplaisir,"Tunis,Montplaisir",615.0,5.0,2.0,1537500.0
+data_prices_cleaned,3314,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",420.0,4.0,6.0,760000.0
+data_prices_cleaned,3316,apartment,Tunis,Cit El Khadra,Cit El Khadra,"Tunis,Cit El Khadra",108.0,2.0,1.0,175000.0
+data_prices_cleaned,3320,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",200.0,4.0,5.0,750000.0
+data_prices_cleaned,3322,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",111.0,3.0,1.0,230000.0
+data_prices_cleaned,3323,house,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",400.0,5.0,2.0,900000.0
+data_prices_cleaned,3324,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",299.0,2.0,2.0,550000.0
+data_prices_cleaned,3325,apartment,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",90.0,2.0,1.0,230000.0
+data_prices_cleaned,3326,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",550.0,,2.0,630000.0
+data_prices_cleaned,3328,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",1606.0,4.0,2.0,1500000.0
+data_prices_cleaned,3329,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",116.7,2.0,2.0,286000.0
+data_prices_cleaned,3332,house,Monastir,Monastir,Monastir,"Monastir,Monastir",660.0,7.0,6.0,1900000.0
+data_prices_cleaned,3333,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",185.0,4.0,3.0,520000.0
+data_prices_cleaned,3334,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",58.0,1.0,1.0,160000.0
+data_prices_cleaned,3335,apartment,Sfax,Route Gremda,Route Gremda,"Sfax,Route GREMDA",137.0,1.0,1.0,215000.0
+data_prices_cleaned,3336,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",140.0,2.0,1.0,455000.0
+data_prices_cleaned,3340,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",55.0,0.0,1.0,168999.0
+data_prices_cleaned,3342,house,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",530.0,6.0,5.0,1050000.0
+data_prices_cleaned,3343,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",325.0,4.0,2.0,1700000.0
+data_prices_cleaned,3346,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",120.0,3.0,1.0,260000.0
+data_prices_cleaned,3348,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",190.0,4.0,1.0,485000.0
+data_prices_cleaned,3349,apartment,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",122.0,2.0,1.0,280000.0
+data_prices_cleaned,3350,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",542.0,3.0,1.0,970000.0
+data_prices_cleaned,3351,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",474.0,5.0,1.0,1070000.0
+data_prices_cleaned,3352,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",533.0,8.0,2.0,1550000.0
+data_prices_cleaned,3354,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",180.0,2.0,1.0,485000.0
+data_prices_cleaned,3355,house,Ariana,El Menzah 5,El Menzah 5,"Ariana,El Menzah 5",602.0,7.0,3.0,1150000.0
+data_prices_cleaned,3356,house,Ariana,Nouvelle Ariana,Nouvelle Ariana,"Ariana,Nouvelle Ariana",418.0,4.0,2.0,900000.0
+data_prices_cleaned,3357,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",630.0,6.0,2.0,1150000.0
+data_prices_cleaned,3358,house,Ariana,El Menzah 6,El Menzah 6,"Ariana,El Menzah 6",230.0,4.0,1.0,570000.0
+data_prices_cleaned,3361,house,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",570.0,4.0,2.0,610000.0
+data_prices_cleaned,3364,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",288.0,4.0,2.0,850000.0
+data_prices_cleaned,3365,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",140.0,2.0,3.0,340000.0
+data_prices_cleaned,3367,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",116.0,1.0,1.0,317000.0
+data_prices_cleaned,3368,apartment,Tunis,Agba,Agba,"Tunis,Agba",111.0,3.0,2.0,185000.0
+data_prices_cleaned,3370,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",142.0,3.0,1.0,335000.0
+data_prices_cleaned,3371,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",165.0,3.0,2.0,620000.0
+data_prices_cleaned,3373,house,Ben Arous,El Mourouj 3,El Mourouj 3,"Ben Arous,El Mourouj 3",150.0,3.0,2.0,350000.0
+data_prices_cleaned,3374,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",500.0,4.0,1.0,650000.0
+data_prices_cleaned,3381,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",65.0,1.0,1.0,200000.0
+data_prices_cleaned,3384,house,Ben Arous,Fouchana,Fouchana,"Ben Arous,Fouchana",220.0,4.0,2.0,250000.0
+data_prices_cleaned,3387,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",100.0,1.0,1.0,329000.0
+data_prices_cleaned,3397,house,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",130.0,2.0,1.0,80000.0
+data_prices_cleaned,3398,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",2000.0,5.0,4.0,2400000.0
+data_prices_cleaned,3408,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",450.0,8.0,4.0,600000.0
+data_prices_cleaned,3409,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",400.0,4.0,3.0,775000.0
+data_prices_cleaned,3411,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",126.0,5.0,2.0,245000.0
+data_prices_cleaned,3414,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",50.0,1.0,1.0,240000.0
+data_prices_cleaned,3415,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",420.0,3.0,3.0,2500000.0
+data_prices_cleaned,3422,apartment,Ben Arous,Borj Cedria,Borj Cedria,"Ben Arous,Borj Cedria",135.0,3.0,2.0,170000.0
+data_prices_cleaned,3428,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",102.0,2.0,0.0,230000.0
+data_prices_cleaned,3430,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",100.0,1.0,2.0,335000.0
+data_prices_cleaned,3432,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",110.0,2.0,1.0,170000.0
+data_prices_cleaned,3434,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",122.0,3.0,2.0,280000.0
+data_prices_cleaned,3437,house,Gabs,Gabs,Gabs,"Gabs,Gabs",580.0,3.0,10.0,499000.0
+data_prices_cleaned,3442,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",133.0,3.0,1.0,250000.0
+data_prices_cleaned,3445,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",411.0,3.0,1.0,740000.0
+data_prices_cleaned,3446,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",400.0,5.0,2.0,225000.0
+data_prices_cleaned,3448,house,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",813.0,2.0,2.0,850000.0
+data_prices_cleaned,3451,house,Gabs,Gabs,Gabs,"Gabs,Gabs",650.0,5.0,2.0,510000.0
+data_prices_cleaned,3453,house,Ariana,Raoued,Raoued,"Ariana,Raoued",480.0,7.0,2.0,360000.0
+data_prices_cleaned,3454,house,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",115.0,2.0,2.0,190000.0
+data_prices_cleaned,3456,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",70.0,1.0,1.0,225000.0
+data_prices_cleaned,3458,house,Sousse,Sousse,Sousse,"Sousse,Sousse",300.0,5.0,3.0,386000.0
+data_prices_cleaned,3461,house,Tunis,Carthage,Carthage,"Tunis,Carthage",214.0,8.0,1.0,390000.0
+data_prices_cleaned,3462,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",163.0,4.0,2.0,410000.0
+data_prices_cleaned,3468,house,Ariana,Ariana,Ariana,"Ariana,Ariana",500.0,5.0,3.0,1350000.0
+data_prices_cleaned,3470,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",300.0,4.0,2.0,1150000.0
+data_prices_cleaned,3472,house,Nabeul,Nabeul,Nabeul,"Nabeul,Nabeul",400.0,3.0,2.0,790000.0
+data_prices_cleaned,3478,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",157.0,3.0,1.0,320000.0
+data_prices_cleaned,3480,apartment,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",114.0,2.0,1.0,230000.0
+data_prices_cleaned,3482,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",150.0,3.0,2.0,368000.0
+data_prices_cleaned,3485,apartment,Tunis,Agba,Agba,"Tunis,Agba",55.0,2.0,1.0,83000.0
+data_prices_cleaned,3488,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",144.0,3.0,1.0,335000.0
+data_prices_cleaned,3498,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",250.0,4.0,3.0,1200000.0
+data_prices_cleaned,3499,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",170.0,3.0,1.0,370000.0
+data_prices_cleaned,3501,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",36.0,2.0,1.0,430000.0
+data_prices_cleaned,3502,apartment,Sousse,Sousse Jawhara,Sousse Jawhara,"Sousse,Sousse Jawhara",70.0,1.0,1.0,140000.0
+data_prices_cleaned,3503,house,Ariana,Raoued,Raoued,"Ariana,Raoued",700.0,2.0,2.0,550000.0
+data_prices_cleaned,3510,house,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",501.0,6.0,2.0,1550004.0
+data_prices_cleaned,3512,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",171.0,3.0,2.0,1000000.0
+data_prices_cleaned,3514,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",70.0,0.0,1.0,258999.0
+data_prices_cleaned,3520,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",160.0,4.0,2.0,480000.0
+data_prices_cleaned,3522,apartment,Sousse,Khzema,Khzema,"Sousse,Khzema",84.0,2.0,1.0,275000.0
+data_prices_cleaned,3526,house,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",215.0,5.0,4.0,653000.0
+data_prices_cleaned,3529,house,Tunis,Sidi Bou Said,Sidi Bou Said,"Tunis,Sidi Bou Said",250.0,2.0,4.0,2400000.0
+data_prices_cleaned,3530,house,Tunis,Monfleury,Monfleury,"Tunis,Monfleury",376.0,3.0,2.0,750000.0
+data_prices_cleaned,3531,apartment,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",130.0,3.0,1.0,230000.0
+data_prices_cleaned,3533,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",500.0,3.0,4.0,750000.0
+data_prices_cleaned,3535,apartment,La Manouba,La Manouba,La Manouba,"La Manouba,La Manouba",112.0,3.0,1.0,260000.0
+data_prices_cleaned,3536,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",230.0,2.0,3.0,649999.0
+data_prices_cleaned,3538,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",1752.0,5.0,2.0,1200000.0
+data_prices_cleaned,3540,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",148.42,3.0,3.0,341000.0
+data_prices_cleaned,3541,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",289.0,4.0,2.0,694999.0
+data_prices_cleaned,3544,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",200.0,7.0,2.0,430000.0
+data_prices_cleaned,3552,house,Ariana,Ariana,Ariana,"Ariana,Ariana",500.0,4.0,3.0,380000.0
+data_prices_cleaned,3553,apartment,Ben Arous,Hammam Chott,Hammam Chott,"Ben Arous,Hammam Chott",85.0,2.0,1.0,169000.0
+data_prices_cleaned,3554,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",60.0,2.0,1.0,135000.0
+data_prices_cleaned,3555,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",426.0,5.0,2.0,360000.0
+data_prices_cleaned,3560,house,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",210.0,7.0,2.0,380000.0
+data_prices_cleaned,3562,house,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",301.0,2.0,1.0,280000.0
+data_prices_cleaned,3569,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",100.0,2.0,1.0,380000.0
+data_prices_cleaned,3570,apartment,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",94.0,2.0,1.0,285000.0
+data_prices_cleaned,3573,house,Sfax,Route Manzel Chaker,Route Manzel Chaker,"Sfax,Route MANZEL CHAKER",1624.0,6.0,3.0,860000.0
+data_prices_cleaned,3577,apartment,Sousse,Sousse Riadh,Sousse Riadh,"Sousse,Sousse Riadh",107.0,3.0,2.0,115000.0
+data_prices_cleaned,3579,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",150.0,3.0,1.0,260000.0
+data_prices_cleaned,3583,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",145.0,2.0,1.0,375000.0
+data_prices_cleaned,3584,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",120.0,2.0,1.0,280000.0
+data_prices_cleaned,3586,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",110.0,3.0,1.0,225000.0
+data_prices_cleaned,3587,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",90.0,2.0,2.0,205000.0
+data_prices_cleaned,3588,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",280.0,4.0,2.0,680000.0
+data_prices_cleaned,3590,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",95.0,1.0,2.0,351500.0
+data_prices_cleaned,3591,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",600.0,5.0,2.0,800000.0
+data_prices_cleaned,3592,house,Ben Arous,Mgrine,Mgrine,"Ben Arous,Mgrine",350.0,3.0,1.0,400000.0
+data_prices_cleaned,3594,house,Ben Arous,Rads,Rads,"Ben Arous,Rads",600.0,8.0,3.0,750000.0
+data_prices_cleaned,3595,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",432.0,3.0,2.0,720000.0
+data_prices_cleaned,3596,apartment,Ben Arous,El Mourouj 1,El Mourouj 1,"Ben Arous,El Mourouj 1",75.0,2.0,0.0,140000.0
+data_prices_cleaned,3597,house,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",210.0,5.0,1.0,800000.0
+data_prices_cleaned,3599,house,Tunis,El Ouardia,El Ouardia,"Tunis,El Ouardia",240.0,8.0,2.0,440000.0
+data_prices_cleaned,3600,house,Nabeul,Soliman,Soliman,"Nabeul,Soliman",650.0,6.0,4.0,320000.0
+data_prices_cleaned,3601,apartment,Ben Arous,Hammam Lif,Hammam Lif,"Ben Arous,Hammam Lif",65.0,2.0,1.0,185000.0
+data_prices_cleaned,3602,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",166.0,3.0,3.0,529998.0
+data_prices_cleaned,3605,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",78.0,1.0,1.0,150000.0
+data_prices_cleaned,3613,apartment,Tunis,Carthage,Carthage,"Tunis,Carthage",100.0,3.0,1.0,250000.0
+data_prices_cleaned,3615,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",58.0,1.0,1.0,180000.0
+data_prices_cleaned,3618,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",89.0,1.0,0.0,350000.0
+data_prices_cleaned,3619,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",147.0,3.0,1.0,180000.0
+data_prices_cleaned,3620,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",198.0,3.0,2.0,420000.0
+data_prices_cleaned,3622,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",65.0,1.0,1.0,130000.0
+data_prices_cleaned,3623,house,Ariana,Raoued,Raoued,"Ariana,Raoued",400.0,4.0,0.0,290000.0
+data_prices_cleaned,3624,house,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",492.0,3.0,3.0,900000.0
+data_prices_cleaned,3625,house,Tunis,El Manar 2,El Manar 2,"Tunis,El Manar 2",574.0,5.0,0.0,1599999.0
+data_prices_cleaned,3629,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",90.0,1.0,1.0,265000.0
+data_prices_cleaned,3630,apartment,Sousse,Akouda,Akouda,"Sousse,Akouda",35.0,1.0,0.0,140000.0
+data_prices_cleaned,3631,apartment,Nabeul,Klibia,Klibia,"Nabeul,Klibia",250.0,2.0,1.0,175000.0
+data_prices_cleaned,3633,apartment,Monastir,Monastir,Monastir,"Monastir,Monastir",95.0,2.0,1.0,310000.0
+data_prices_cleaned,3637,apartment,Tunis,Ain Zaghouen,Ain Zaghouen,"Tunis,Ain Zaghouen",250.0,5.0,3.0,495000.0
+data_prices_cleaned,3640,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",191.0,3.0,2.0,597999.0
+data_prices_cleaned,3641,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",320.0,5.0,2.0,250000.0
+data_prices_cleaned,3643,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",70.0,2.0,1.0,110000.0
+data_prices_cleaned,3648,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",117.0,3.0,1.0,470000.0
+data_prices_cleaned,3649,apartment,Ariana,Les Jardins El_menzah_2,Les Jardins El_menzah_2,"Ariana,Les Jardins El_Menzah_2",95.0,1.0,1.0,185000.0
+data_prices_cleaned,3651,apartment,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",160.0,2.0,1.0,400000.0
+data_prices_cleaned,3653,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",300.0,4.0,3.0,800000.0
+data_prices_cleaned,3654,house,Tunis,Ain Zaghouan Sud,Ain Zaghouan Sud,"Tunis,Ain Zaghouan Sud",60.0,1.0,1.0,190000.0
+data_prices_cleaned,3655,house,Tunis,Gammarth,Gammarth,"Tunis,Gammarth",250.0,3.0,2.0,749998.0
+data_prices_cleaned,3661,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",468.0,5.0,2.0,790000.0
+data_prices_cleaned,3662,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",125.0,1.0,2.0,220000.0
+data_prices_cleaned,3663,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",94.0,2.0,1.0,175000.0
+data_prices_cleaned,3666,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",100.0,3.0,1.0,190000.0
+data_prices_cleaned,3669,house,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",190.0,2.0,1.0,195000.0
+data_prices_cleaned,3671,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",185.0,3.0,1.0,220000.0
+data_prices_cleaned,3672,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",358.0,2.0,0.0,530000.0
+data_prices_cleaned,3677,apartment,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",80.0,2.0,1.0,120000.0
+data_prices_cleaned,3678,house,Bja,Bja Nord,Bja Nord,"Bja,Bja Nord",242.0,5.0,2.0,465000.0
+data_prices_cleaned,3681,house,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",505.0,2.0,4.0,710000.0
+data_prices_cleaned,3683,apartment,Sousse,Chatt Mariem,Chatt Mariem,"Sousse,Chatt mariem",49.0,1.0,1.0,190000.0
+data_prices_cleaned,3684,house,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",360.0,4.0,5.0,590000.0
+data_prices_cleaned,3687,apartment,Ariana,Les Jardins El_menzah_1,Les Jardins El_menzah_1,"Ariana,Les Jardins El_Menzah_1",320.0,5.0,3.0,780000.0
+data_prices_cleaned,3691,house,Zaghouan,Bir Mchergua,Bir Mchergua,"Zaghouan,Bir Mchergua",210.0,3.0,1.0,180000.0
+data_prices_cleaned,3701,house,Ariana,Raoued,Raoued,"Ariana,Raoued",250.0,,1.0,350000.0
+data_prices_cleaned,3706,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",71.0,2.0,2.0,220000.0
+data_prices_cleaned,3707,apartment,Ariana,Raoued,Raoued,"Ariana,Raoued",73.0,2.0,1.0,125000.0
+data_prices_cleaned,3714,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",86.0,1.0,1.0,235000.0
+data_prices_cleaned,3718,apartment,Ben Arous,Ben Arous,Ben Arous,"Ben Arous,Ben Arous",50.0,2.0,1.0,47000.0
+data_prices_cleaned,3723,house,La Manouba,Douar Hicher,Douar Hicher,"La Manouba,Douar Hicher",300.0,5.0,1.0,150000.0
+data_prices_cleaned,3724,house,Ariana,Autres Villes,Autres Villes,"Ariana,Autres Villes",1000.0,4.0,1.0,1600000.0
+data_prices_cleaned,3728,apartment,Tunis,Ettahrir,Ettahrir,"Tunis,Ettahrir",92.0,2.0,1.0,180000.0
+data_prices_cleaned,3729,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",113.0,3.0,1.0,320000.0
+data_prices_cleaned,3732,apartment,Sousse,Hammam Sousse,Hammam Sousse,"Sousse,Hammam Sousse",55.0,1.0,0.0,160000.0
+data_prices_cleaned,3733,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",130.0,0.0,1.0,500000.0
+data_prices_cleaned,3734,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",388.0,9.0,5.0,570000.0
+data_prices_cleaned,3735,house,Monastir,Ksar Hellal,Ksar Hellal,"Monastir,Ksar Hellal",120.0,3.0,1.0,160000.0
+data_prices_cleaned,3738,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",100.0,2.0,1.0,220000.0
+data_prices_cleaned,3748,house,Nabeul,Bni Khiar,Bni Khiar,"Nabeul,Bni Khiar",80.0,1.0,1.0,65001.0
+data_prices_cleaned,3749,apartment,Sousse,Sousse,Sousse,"Sousse,Sousse",140.0,4.0,2.0,125000.0
+data_prices_cleaned,3750,house,Ariana,La Soukra,La Soukra,"Ariana,La Soukra",1000.0,5.0,5.0,1100000.0
+data_prices_cleaned,3751,house,Tunis,El Omrane Suprieur,El Omrane Suprieur,"Tunis,El Omrane Suprieur",100.0,5.0,1.0,190000.0
+data_prices_cleaned,3752,apartment,Ben Arous,Rads,Rads,"Ben Arous,Rads",100.0,3.0,1.0,180000.0
+data_prices_cleaned,3753,house,Mahdia,Mahdia,Mahdia,"Mahdia,Mahdia",200.0,3.0,1.0,650000.0
+data_prices_cleaned,3754,house,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",86.0,2.0,1.0,95000.0
+data_prices_cleaned,3755,apartment,Tunis,Lac 1,Lac 1,"Tunis,Lac 1",125.0,3.0,1.0,410000.0
+data_prices_cleaned,3762,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",95.0,1.0,1.0,265000.0
+data_prices_cleaned,3763,house,Ben Arous,Boumhel,Boumhel,"Ben Arous,Boumhel",76.0,1.0,1.0,160000.0
+data_prices_cleaned,3764,house,Nabeul,Hammam Ghezze,Hammam Ghezze,"Nabeul,Hammam Ghezze",477.0,6.0,2.0,210000.0
+data_prices_cleaned,3765,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",508.0,6.0,2.0,725000.0
+data_prices_cleaned,3766,apartment,Tunis,El Manar 1,El Manar 1,"Tunis,El Manar 1",113.0,2.0,2.0,145000.0
+data_prices_cleaned,3771,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",99.0,2.0,1.0,366300.0
+data_prices_cleaned,3775,house,Ben Arous,El Mourouj,El Mourouj,"Ben Arous,El Mourouj",200.0,6.0,2.0,290000.0
+data_prices_cleaned,3777,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",118.0,2.0,2.0,299100.0
+data_prices_cleaned,3778,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",140.0,3.0,2.0,344600.0
+data_prices_cleaned,3779,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",73.0,1.0,1.0,208000.0
+data_prices_cleaned,3781,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",118.0,2.0,2.0,318000.0
+data_prices_cleaned,3782,house,Sousse,Khzema,Khzema,"Sousse,Khzema",737.0,6.0,2.0,840000.0
+data_prices_cleaned,3783,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",123.0,2.0,2.0,333000.0
+data_prices_cleaned,3784,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",104.0,2.0,2.0,320000.0
+data_prices_cleaned,3785,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",78.0,1.0,1.0,219000.0
+data_prices_cleaned,3786,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",105.0,2.0,2.0,320000.0
+data_prices_cleaned,3789,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",143.0,3.0,2.0,398000.0
+data_prices_cleaned,3790,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",175.0,3.0,3.0,450000.0
+data_prices_cleaned,3791,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",380.0,5.0,3.0,980000.0
+data_prices_cleaned,3792,house,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",470.0,4.0,3.0,1350000.0
+data_prices_cleaned,3793,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",119.0,2.0,1.0,340000.0
+data_prices_cleaned,3795,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",109.0,2.0,2.0,266000.0
+data_prices_cleaned,3796,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",70.0,1.0,1.0,199000.0
+data_prices_cleaned,3797,house,Sousse,Khzema,Khzema,"Sousse,Khzema",400.0,5.0,6.0,650000.0
+data_prices_cleaned,3798,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",151.0,3.0,2.0,408000.0
+data_prices_cleaned,3799,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",75.0,1.0,1.0,215000.0
+data_prices_cleaned,3800,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",104.0,2.0,1.0,285000.0
+data_prices_cleaned,3802,apartment,Ben Arous,Mornag,Mornag,"Ben Arous,Mornag",126.0,4.0,1.0,205000.0
+data_prices_cleaned,3804,apartment,Ben Arous,El Mourouj,El Mourouj,"Ben Arous,El Mourouj",70.0,3.0,1.0,145000.0
+data_prices_cleaned,3805,apartment,Sfax,Route El Ain,Route El Ain,"Sfax,Route El Ain",170.0,3.0,2.0,210000.0
+data_prices_cleaned,3807,house,Ben Arous,Ezzahra,Ezzahra,"Ben Arous,Ezzahra",363.0,4.0,2.0,750000.0
+data_prices_cleaned,3811,apartment,Tunis,Le Bardo,Le Bardo,"Tunis,Le Bardo",54.0,2.0,1.0,58000.0
+data_prices_cleaned,3813,apartment,Tunis,Centre Ville Lafayette,Centre Ville Lafayette,"Tunis,Centre Ville Lafayette",90.0,3.0,1.0,160000.0
+data_prices_cleaned,3814,house,La Manouba,Denden,Denden,"La Manouba,Denden",190.0,4.0,2.0,230000.0
+data_prices_cleaned,3815,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",113.4,2.0,1.0,600000.0
+data_prices_cleaned,3817,apartment,Sousse,Hergla,Hergla,"Sousse,Hergla",62.0,1.0,1.0,170000.0
+data_prices_cleaned,3818,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",65.0,2.0,1.0,240500.0
+data_prices_cleaned,3827,house,Nabeul,Hammamet,Hammamet,"Nabeul,Hammamet",500.0,4.0,3.0,830000.0
+data_prices_cleaned,3830,apartment,Tunis,Agba,Agba,"Tunis,Agba",89.0,2.0,1.0,160000.0
+data_prices_cleaned,3831,apartment,Ben Arous,El Mourouj 4,El Mourouj 4,"Ben Arous,El Mourouj 4",115.0,3.0,1.0,170000.0
+data_prices_cleaned,3833,house,La Manouba,Mornaguia,Mornaguia,"La Manouba,Mornaguia",150.0,4.0,1.0,260000.0
+data_prices_cleaned,3839,house,Tunis,El Menzah 1,El Menzah 1,"Tunis,El Menzah 1",458.0,5.0,3.0,1350000.0
+data_prices_cleaned,3840,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",70.0,1.0,1.0,200000.0
+data_prices_cleaned,3841,apartment,Tunis,L Aouina,L Aouina,"Tunis,L Aouina",136.0,3.0,2.0,290000.0
+data_prices_cleaned,3843,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",277.0,,2.0,750000.0
+data_prices_cleaned,3844,apartment,La Manouba,Manouba Ville,Manouba Ville,"La Manouba,Manouba Ville",120.0,3.0,2.0,295000.0
+data_prices_cleaned,3853,apartment,Ariana,El Menzah 7,El Menzah 7,"Ariana,El Menzah 7",100.0,2.0,1.0,208000.0
+data_prices_cleaned,3856,apartment,Ariana,Cit Ennasr 2,Cit Ennasr 2,"Ariana,Cit Ennasr 2",113.0,2.0,2.0,360000.0
+data_prices_cleaned,3857,house,Ariana,Borj Louzir,Borj Louzir,"Ariana,Borj Louzir",330.0,5.0,2.0,650000.0
+data_prices_cleaned,3859,house,Nabeul,Autres Villes,Autres Villes,"Nabeul,Autres Villes",105.0,4.0,2.0,170000.0
+data_prices_cleaned,3861,house,Nabeul,Klibia,Klibia,"Nabeul,Klibia",500.0,5.0,3.0,690000.0
+data_prices_cleaned,3862,house,Nabeul,Hammamet Nord,Hammamet Nord,"Nabeul,Hammamet Nord",400.0,3.0,2.0,1320000.0
+data_prices_cleaned,3863,apartment,Ben Arous,Medina Jedida,Medina Jedida,"Ben Arous,Medina Jedida",52.0,,1.0,155000.0
+data_prices_cleaned,3866,apartment,Nabeul,Mrezga,Mrezga,"Nabeul,Mrezga",126.0,2.0,1.0,411000.0
+data_prices_cleaned,3869,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",137.0,2.0,3.0,680000.0
+data_prices_cleaned,3872,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",100.0,3.0,1.0,400000.0
+data_prices_cleaned,3873,apartment,Tunis,Jardins De Carthage,Jardins De Carthage,"Tunis,Jardins De Carthage",100.0,3.0,1.0,380000.0
+data_prices_cleaned,3874,apartment,Sousse,Sahloul,Sahloul,"Sousse,Sahloul",100.0,1.0,2.0,290000.0
+data_prices_cleaned,3875,apartment,Ariana,Riadh Andalous,Riadh Andalous,"Ariana,Riadh Andalous",120.0,2.0,1.0,240000.0
+data_prices_cleaned,3878,apartment,Ariana,Ghazela,Ghazela,"Ariana,Ghazela",76.0,1.0,1.0,180000.0
+data_prices_cleaned,3879,apartment,Ariana,Ennasr,Ennasr,"Ariana,Ennasr",54.0,1.0,1.0,180000.0
+data_prices_cleaned,3880,apartment,Tunis,La Marsa,La Marsa,"Tunis,La Marsa",100.0,2.0,1.0,460000.0
+data_prices_cleaned,3881,apartment,Tunis,El Menzah 9,El Menzah 9,"Tunis,El Menzah 9",186.5,3.0,2.0,450000.0
+data_prices_cleaned,3886,apartment,Tunis,Ain Zaghouan Nord,Ain Zaghouan Nord,"Tunis,Ain Zaghouan Nord",190.0,3.0,3.0,839000.0

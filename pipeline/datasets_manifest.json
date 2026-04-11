@@ -1,0 +1,21 @@
+{
+  "project": "RealEstate_V2",
+  "stage": "step_1_dataset_foundation",
+  "datasets": [
+    {
+      "name": "tunisia-real-estate",
+      "file": "data/raw/tunisia-real-estate.csv",
+      "role": "primary structured listings"
+    },
+    {
+      "name": "property-prices-in-tunisia",
+      "file": "data/raw/Property Prices in Tunisia.csv",
+      "role": "secondary marketplace sale listings"
+    },
+    {
+      "name": "data-prices-cleaned",
+      "file": "data/raw/data_prices_cleaned.csv",
+      "role": "secondary cleaned marketplace listings"
+    }
+  ]
+}

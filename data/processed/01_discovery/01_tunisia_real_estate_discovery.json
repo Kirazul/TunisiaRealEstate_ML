@@ -1,0 +1,25 @@
+{
+  "dataset_name": "tunisia_real_estate",
+  "file_name": "tunisia-real-estate.csv",
+  "rows": 25317,
+  "columns": [
+    "Governorate",
+    "Delegation",
+    "Locality",
+    "Nature",
+    "Type of Real Estate",
+    "Surface",
+    "Price",
+    "Inserted On"
+  ],
+  "column_count": 8,
+  "all_empty_columns": [],
+  "duplicate_rows_exact": 0,
+  "price_column": "Price",
+  "surface_column": "Surface",
+  "location_column": "Locality",
+  "price_missing": 0,
+  "surface_missing": 0,
+  "price_non_positive": 0,
+  "surface_non_positive": 4
+}

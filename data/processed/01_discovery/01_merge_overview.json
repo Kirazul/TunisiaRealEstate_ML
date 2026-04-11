@@ -1,0 +1,51 @@
+{
+  "stage": "01_dataset_discovery",
+  "datasets": [
+    {
+      "dataset_name": "tunisia_real_estate",
+      "rows": 25317,
+      "column_count": 8,
+      "all_empty_columns": [],
+      "price_column": "Price",
+      "surface_column": "Surface",
+      "location_column": "Locality",
+      "price_missing": 0,
+      "surface_missing": 0,
+      "price_non_positive": 0,
+      "surface_non_positive": 4
+    },
+    {
+      "dataset_name": "property_prices_in_tunisia",
+      "rows": 12748,
+      "column_count": 9,
+      "all_empty_columns": [],
+      "price_column": "price",
+      "surface_column": "size",
+      "location_column": "city",
+      "price_missing": 0,
+      "surface_missing": 0,
+      "price_non_positive": 0,
+      "surface_non_positive": 3415
+    },
+    {
+      "dataset_name": "data_prices_cleaned",
+      "rows": 8336,
+      "column_count": 17,
+      "all_empty_columns": [],
+      "price_column": "price",
+      "surface_column": "superficie",
+      "location_column": "city",
+      "price_missing": 14,
+      "surface_missing": 1584,
+      "price_non_positive": 0,
+      "surface_non_positive": 128
+    }
+  ],
+  "merge_risks": [
+    "Column names and semantics differ across all three sources.",
+    "Sale, rent, and non-residential records are mixed in some raw datasets.",
+    "Some datasets use placeholder negatives like -1 for missing values.",
+    "Location granularity differs between governorate, delegation, city, and free-text location.",
+    "Empty-only columns should be dropped before dataset-specific cleaning outputs are saved."
+  ]
+}

@@ -1,0 +1,37 @@
+source_dataset,source_row_id,property_family,surface_m2,rooms,bathrooms,price_tnd,price_per_m2,normalized_locality,geo_governorate,geo_delegation
+data_prices_cleaned,2464,apartment,90.0,3.0,1.0,90000.0,1000.0,Ariana,Ariana,Ariana Medina
+data_prices_cleaned,733,apartment,30.0,1.0,1.0,128999.0,4299.966666666666,Ariana Ville,Ariana,Ariana Medina
+data_prices_cleaned,3202,apartment,45.0,1.0,1.0,135000.0,3000.0,Ariana Ville,Ariana,Ariana Medina
+data_prices_cleaned,3041,apartment,140.0,5.0,2.0,162000.0,1157.142857142857,Ariana,Ariana,Ariana Medina
+data_prices_cleaned,1037,house,310.0,4.0,3.0,849997.0,2741.925806451613,Kelibia,Nabeul,Kelibia
+data_prices_cleaned,1714,house,431.0,9.0,5.0,900000.0,2088.167053364269,Kelibia,Nabeul,Kelibia
+data_prices_cleaned,974,house,243.0,6.0,3.0,950000.0,3909.465020576132,Kelibia,Nabeul,Kelibia
+data_prices_cleaned,534,house,500.0,2.0,4.0,1200000.0,2400.0,Kelibia,Nabeul,Kelibia
+data_prices_cleaned,503,house,180.0,3.0,2.0,370000.0,2055.555555555556,Agba,Tunis,Sidi Hassine
+data_prices_cleaned,2458,house,285.0,4.0,1.0,440000.0,1543.859649122807,Agba,Tunis,Sidi Hassine
+data_prices_cleaned,2483,house,150.0,0.0,0.0,150000.0,1000.0,Sjoumi,Tunis,Sijoumi
+data_prices_cleaned,3691,house,210.0,3.0,1.0,180000.0,857.1428571428571,Bir Mchergua,Zaghouan,Bir Mchergua
+property_prices_in_tunisia,221,apartment,52.0,2.0,1.0,85000.0,1634.6153846153843,Ariana,Ariana,Ariana Medina
+property_prices_in_tunisia,1554,apartment,70.0,3.0,1.0,110000.0,1571.428571428571,Ariana,Ariana,Ariana Medina
+property_prices_in_tunisia,511,apartment,45.0,1.0,1.0,120000.0,2666.6666666666665,Ariana Ville,Ariana,Ariana Medina
+property_prices_in_tunisia,1750,apartment,70.0,1.0,1.0,120000.0,1714.2857142857142,Ariana Ville,Ariana,Ariana Medina
+property_prices_in_tunisia,9836,house,150.0,2.0,1.0,70000.0,466.6666666666667,Hammamet,Nabeul,Hammamet
+property_prices_in_tunisia,9858,house,90.0,2.0,1.0,80000.0,888.8888888888889,Hammamet,Nabeul,Hammamet
+property_prices_in_tunisia,9624,house,99.0,2.0,1.0,80000.0,808.0808080808081,Hammamet,Nabeul,Hammamet
+property_prices_in_tunisia,9900,house,110.0,3.0,2.0,80000.0,727.2727272727273,Hammamet,Nabeul,Hammamet
+property_prices_in_tunisia,8739,house,200.0,6.0,3.0,320000.0,1600.0,Zaghouan,Zaghouan,Zaghouan
+property_prices_in_tunisia,8799,house,150.0,2.0,1.0,75000.0,500.0,Ez-zeriba,Zaghouan,Zriba
+property_prices_in_tunisia,8816,house,120.0,4.0,1.0,120000.0,1000.0,Ez-zeriba,Zaghouan,Zriba
+property_prices_in_tunisia,8860,house,120.0,4.0,1.0,160000.0,1333.3333333333333,Ez-zeriba,Zaghouan,Zriba
+tunisia_real_estate,10719,apartment,90.0,2.0,,85000.0,944.4444444444443,Ettadhamen,Ariana,Ettadhamen
+tunisia_real_estate,22869,apartment,100.0,3.0,,420000.0,4200.0,Ettadhamen,Ariana,Ettadhamen
+tunisia_real_estate,18656,house,300.0,,,245000.0,816.6666666666666,Ettadhamen,Ariana,Ettadhamen
+tunisia_real_estate,8396,house,120.0,,,300000.0,2500.0,Ettadhamen,Ariana,Ettadhamen
+tunisia_real_estate,23208,land,400.0,0.0,0.0,200000.0,500.0,Hammamet,Nabeul,Hammamet
+tunisia_real_estate,19903,land,500.0,0.0,0.0,200000.0,400.0,Hammamet,Nabeul,Hammamet
+tunisia_real_estate,1928,land,800.0,0.0,0.0,200000.0,250.0,Hammamet,Nabeul,Hammamet
+tunisia_real_estate,10373,land,1000.0,0.0,0.0,200000.0,200.0,Hammamet,Nabeul,Hammamet
+tunisia_real_estate,2346,land,9127.0,0.0,0.0,105000.0,11.504327818560316,Hammam Zriba,Zaghouan,Zriba
+tunisia_real_estate,22892,land,5000.0,0.0,0.0,120000.0,24.0,Hammam Zriba,Zaghouan,Zriba
+tunisia_real_estate,20824,land,5000.0,0.0,0.0,130000.0,26.0,Hammam Zriba,Zaghouan,Zriba
+tunisia_real_estate,453,land,3000.0,0.0,0.0,165000.0,55.0,Hammam Zriba,Zaghouan,Zriba

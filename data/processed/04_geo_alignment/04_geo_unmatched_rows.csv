@@ -1,0 +1,33 @@
+source_dataset,source_row_id,property_family,governorate,delegation,city,location,surface_m2,rooms,bathrooms,price_tnd,normalized_locality,geo_governorate,geo_delegation,geo_match_status
+property_prices_in_tunisia,4302,house,Jendouba,Jendouba,Jendouba,Jendouba,130.0,2.0,1.0,170000.0,Jendouba,Jendouba,,unmatched
+property_prices_in_tunisia,4353,house,Jendouba,Jendouba,Jendouba,Jendouba,170.0,4.0,2.0,180000.0,Jendouba,Jendouba,,unmatched
+property_prices_in_tunisia,4357,house,Jendouba,Jendouba,Jendouba,Jendouba,332.0,6.0,2.0,764000.0,Jendouba,Jendouba,,unmatched
+tunisia_real_estate,10894,house,Jendouba,Jendouba,Jendouba,Jendouba,352.0,,,320000.0,Jendouba,Jendouba,,unmatched
+tunisia_real_estate,7860,house,Jendouba,Jendouba,Jendouba,Jendouba,520.0,,,820000.0,Jendouba,Jendouba,,unmatched
+tunisia_real_estate,3014,house,Jendouba,Jendouba,Jendouba,Jendouba,600.0,,,640000.0,Jendouba,Jendouba,,unmatched
+tunisia_real_estate,16103,house,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,180.0,,,280000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,9615,house,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,300.0,,,150000.0,Le Kef Ouest,Le Kef,,unmatched
+property_prices_in_tunisia,6326,house,Sidi Bouzid,Bir El Hafey,Bir El Hafey,Bir El Hafey,210.0,4.0,1.0,80000.0,Bir El Hafey,Sidi Bouzid,,unmatched
+tunisia_real_estate,4655,house,Tunis,Essijoumi,Essijoumi,Essijoumi,130.0,,,170000.0,Essijoumi,Tunis,,unmatched
+tunisia_real_estate,16009,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),80.0,,,170000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,19588,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),103.0,,,159000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,8549,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),130.0,,,280000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,9183,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),137.0,,,165000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,9785,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),140.0,,,125000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,24076,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),150.0,,,160000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,13745,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),150.0,,,170000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,5490,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),156.0,,,190000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,22362,house,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),336.0,,,350000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,2428,land,Jendouba,Jendouba,Jendouba,Jendouba,1000.0,0.0,0.0,320000.0,Jendouba,Jendouba,,unmatched
+tunisia_real_estate,1203,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,200.0,0.0,0.0,54000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,23185,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,216.0,0.0,0.0,64000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,9200,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,216.0,0.0,0.0,64800.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,1098,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,400.0,0.0,0.0,150000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,5687,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,600.0,0.0,0.0,150000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,18153,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,2000.0,0.0,0.0,70000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,2181,land,Le Kef,Le Kef Ouest,Le Kef Ouest,Le Kef Ouest,5000.0,0.0,0.0,275000.0,Le Kef Ouest,Le Kef,,unmatched
+tunisia_real_estate,1780,land,Tunis,Essijoumi,Essijoumi,Essijoumi,200.0,0.0,0.0,50000.0,Essijoumi,Tunis,,unmatched
+tunisia_real_estate,23489,land,Tunis,Essijoumi,Essijoumi,Essijoumi,12192.0,0.0,0.0,500000.0,Essijoumi,Tunis,,unmatched
+tunisia_real_estate,9582,land,Tunis,Essijoumi,Essijoumi,Essijoumi,25547.0,0.0,0.0,3065640.0,Essijoumi,Tunis,,unmatched
+tunisia_real_estate,25145,land,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),784.0,0.0,0.0,450000.0,Ezzouhour (tunis),Tunis,,unmatched
+tunisia_real_estate,4133,land,Tunis,Ezzouhour (tunis),Ezzouhour (tunis),Ezzouhour (tunis),800.0,0.0,0.0,450000.0,Ezzouhour (tunis),Tunis,,unmatched

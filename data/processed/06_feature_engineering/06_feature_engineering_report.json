@@ -1,0 +1,27 @@
+{
+  "rows": 13788,
+  "columns": [
+    "source_dataset",
+    "source_row_id",
+    "property_family",
+    "surface_m2",
+    "rooms",
+    "price_tnd",
+    "price_per_m2",
+    "log_price_tnd",
+    "log_price_per_m2",
+    "normalized_locality",
+    "geo_governorate",
+    "geo_delegation",
+    "lon",
+    "lat"
+  ],
+  "feature_columns": [
+    "surface_m2",
+    "rooms",
+    "lon",
+    "lat"
+  ],
+  "geo_delegation_count": 181,
+  "delegations_with_coords": 11654
+}

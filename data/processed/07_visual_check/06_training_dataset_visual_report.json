@@ -1,0 +1,82 @@
+{
+  "stage": "06_training_dataset_visual_check",
+  "dataset_rows": 12662,
+  "sources": {
+    "data_prices_cleaned": {
+      "rows": 1707,
+      "family_distribution": {
+        "apartment": 988,
+        "house": 719
+      },
+      "governorate_count": 18,
+      "delegation_count": 91,
+      "locality_count": 149,
+      "median_price_tnd": 338000.0,
+      "median_surface_m2": 142.0,
+      "median_price_per_m2": 2299.3197278911566,
+      "top_delegations": {
+        "La Marsa": 196,
+        "Hammamet": 158,
+        "Sousse Jaouhara": 135,
+        "Ariana Medina": 129,
+        "Soukra": 93,
+        "Hammam Sousse": 73,
+        "El Menzah": 71,
+        "Kelibia": 60,
+        "Akouda": 52,
+        "Sousse Medina": 51
+      }
+    },
+    "property_prices_in_tunisia": {
+      "rows": 2868,
+      "family_distribution": {
+        "apartment": 1442,
+        "house": 1426
+      },
+      "governorate_count": 23,
+      "delegation_count": 145,
+      "locality_count": 172,
+      "median_price_tnd": 244500.0,
+      "median_surface_m2": 144.0,
+      "median_price_per_m2": 1666.6666666666667,
+      "top_delegations": {
+        "Hammamet": 287,
+        "La Marsa": 235,
+        "Soukra": 212,
+        "Ariana Medina": 193,
+        "Sousse Jaouhara": 188,
+        "Hammam Sousse": 114,
+        "Raoued": 108,
+        "Sousse Medina": 102,
+        "El Menzah": 87,
+        "Manouba": 64
+      }
+    },
+    "tunisia_real_estate": {
+      "rows": 8087,
+      "family_distribution": {
+        "land": 3125,
+        "apartment": 2495,
+        "house": 2467
+      },
+      "governorate_count": 24,
+      "delegation_count": 153,
+      "locality_count": 154,
+      "median_price_tnd": 340000.0,
+      "median_surface_m2": 300.0,
+      "median_price_per_m2": 1483.5164835164835,
+      "top_delegations": {
+        "La Marsa": 1077,
+        "Hammamet": 1042,
+        "Soukra": 592,
+        "Kelibia": 408,
+        "Raoued": 339,
+        "El Mourouj": 234,
+        "El Menzah": 227,
+        "Akouda": 218,
+        "Hammam Sousse": 212,
+        "Mnihla": 155
+      }
+    }
+  }
+}

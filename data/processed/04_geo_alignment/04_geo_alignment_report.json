@@ -1,0 +1,69 @@
+{
+  "stage": "04_geo_name_alignment",
+  "geo_canonical_delegations": 264,
+  "geo_counts_by_governorate": {
+    "Ariana": 7,
+    "Beja": 9,
+    "Ben Arous": 12,
+    "Bizerte": 14,
+    "Gabes": 10,
+    "Gafsa": 11,
+    "Jendouba": 9,
+    "Kairouan": 11,
+    "Kasserine": 13,
+    "Kebili": 6,
+    "Le Kef": 11,
+    "Mahdia": 11,
+    "Manouba": 8,
+    "Medenine": 9,
+    "Monastir": 13,
+    "Nabeul": 16,
+    "Sfax": 16,
+    "Sidi Bouzid": 12,
+    "Siliana": 11,
+    "Sousse": 16,
+    "Tataouine": 7,
+    "Tozeur": 5,
+    "Tunis": 21,
+    "Zaghouan": 6
+  },
+  "dataset_rows": 13788,
+  "match_status": {
+    "exact_delegation": 7947,
+    "manual_override": 4684,
+    "exact_locality": 995,
+    "fuzzy_delegation": 92,
+    "substring_locality": 38,
+    "unmatched": 32
+  },
+  "matched_rows": 13756,
+  "unmatched_rows": 32,
+  "unique_geo_delegations_covered": 181,
+  "top_unmatched_pairs": [
+    {
+      "governorate": "Tunis",
+      "city": "Ezzouhour (tunis)",
+      "count": 11
+    },
+    {
+      "governorate": "Le Kef",
+      "city": "Le Kef Ouest",
+      "count": 9
+    },
+    {
+      "governorate": "Jendouba",
+      "city": "Jendouba",
+      "count": 7
+    },
+    {
+      "governorate": "Tunis",
+      "city": "Essijoumi",
+      "count": 4
+    },
+    {
+      "governorate": "Sidi Bouzid",
+      "city": "Bir El Hafey",
+      "count": 1
+    }
+  ]
+}

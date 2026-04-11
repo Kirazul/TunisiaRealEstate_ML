@@ -1,0 +1,6 @@
+{
+  "best_model": "GradientBoosting",
+  "training_rows": 12536,
+  "test_r2": 0.8658598145047731,
+  "cv_r2_mean": 0.9233375780351857
+}
