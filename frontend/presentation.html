@@ -11,147 +11,37 @@
             overflow: hidden;
             min-height: 100vh;
             background:
-                radial-gradient(circle at 14% 14%, rgba(239,68,68,0.18), transparent 20%),
-                radial-gradient(circle at 86% 80%, rgba(255,255,255,0.05), transparent 18%),
+                radial-gradient(circle at 18% 16%, rgba(239, 68, 68, 0.16), transparent 22%),
+                radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.06), transparent 20%),
                 #000;
         }
         .presentation-shell {
             position: relative;
             z-index: 10;
             min-height: 100vh;
-            padding: 6.1rem 3vw 1.6rem;
-            display: grid;
-            grid-template-columns: 300px minmax(0, 1fr);
-            gap: 1.15rem;
-        }
-        .presentation-sidebar,
-        .presentation-stage {
-            border: 1px solid rgba(255,255,255,0.08);
-            background:
-                radial-gradient(circle at top right, rgba(239,68,68,0.14), transparent 30%),
-                linear-gradient(180deg, rgba(13,13,18,0.94), rgba(4,4,8,0.98));
-            box-shadow: 0 24px 80px rgba(0,0,0,0.42);
-        }
-        .presentation-sidebar {
-            border-radius: 26px;
-            padding: 1.2rem;
-            display: grid;
-            align-content: start;
-            gap: 1rem;
-        }
-        .presentation-label {
-            color: #fca5a5;
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
-        .presentation-title {
-            color: #fff;
-            font-size: clamp(1.7rem, 2.4vw, 2.5rem);
-            line-height: 0.95;
-            font-weight: 800;
-        }
-        .presentation-title span {
-            color: var(--accent);
-        }
-        .presentation-sidebar p {
-            color: #cbd5e1;
-            font-size: 0.84rem;
-            line-height: 1.6;
-        }
-        .presentation-stats {
-            display: grid;
-            gap: 0.7rem;
-        }
-        .presentation-stat {
-            padding: 0.88rem 0.95rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.06);
-            background: rgba(255,255,255,0.03);
-        }
-        .presentation-stat span {
-            display: block;
-            color: #94a3b8;
-            font-size: 0.64rem;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        .presentation-stat strong {
-            display: block;
-            margin-top: 0.35rem;
-            color: #fff;
-            font-size: 1.05rem;
-        }
-        .presentation-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .presentation-actions .nav-btn {
-            flex: 1 1 120px;
-            justify-content: center;
-        }
-        .presentation-thumbs {
-            display: grid;
-            gap: 0.6rem;
-            max-height: 42vh;
-            overflow: auto;
-            padding-right: 0.2rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) transparent;
-        }
-        .presentation-thumb {
-            display: grid;
-            grid-template-columns: 54px 1fr;
-            gap: 0.75rem;
-            align-items: center;
-            padding: 0.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.06);
-            background: rgba(255,255,255,0.03);
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-        .presentation-thumb:hover,
-        .presentation-thumb.active {
-            transform: translateX(4px);
-            border-color: rgba(248,113,113,0.55);
-            background: rgba(239,68,68,0.08);
-        }
-        .presentation-thumb img {
-            width: 54px;
-            height: 30px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: block;
-        }
-        .presentation-thumb strong {
-            color: #fff;
-            font-size: 0.78rem;
-        }
-        .presentation-thumb span {
-            color: #94a3b8;
-            font-size: 0.64rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+            padding: 6.25rem 3vw 2rem;
         }
         .presentation-stage {
             position: relative;
+            width: 100%;
+            height: calc(100vh - 8.25rem);
             border-radius: 30px;
             overflow: hidden;
-            min-height: calc(100vh - 7.7rem);
+            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                radial-gradient(circle at top right, rgba(239,68,68,0.16), transparent 24%),
+                linear-gradient(180deg, rgba(15,15,20,0.96), rgba(5,5,8,0.98));
+            box-shadow: 0 28px 90px rgba(0,0,0,0.44);
         }
         .presentation-stage::before {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 3;
             pointer-events: none;
-            background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 20%, transparent 76%, rgba(239,68,68,0.08));
+            z-index: 3;
+            background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 20%, transparent 78%, rgba(239,68,68,0.08));
         }
-        .presentation-stage-top {
+        .presentation-topline {
             position: absolute;
             top: 1rem;
             left: 1rem;
@@ -161,15 +51,15 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
+            pointer-events: none;
         }
-        .presentation-badge,
-        .presentation-counter {
+        .presentation-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.55rem;
             padding: 0.58rem 0.84rem;
             border-radius: 999px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.52);
             border: 1px solid rgba(255,255,255,0.08);
             color: #fff;
             font-size: 0.63rem;
@@ -186,113 +76,64 @@
             background: var(--accent);
             box-shadow: 0 0 12px rgba(239,68,68,0.65);
         }
-        .presentation-slide-wrap {
+        .presentation-frame-wrap {
             position: absolute;
             inset: 0;
-            display: grid;
-            place-items: center;
-            padding: 4.5rem 1.2rem 5rem;
+            padding-top: 0;
         }
-        .presentation-slide {
-            max-width: min(92%, 1320px);
-            max-height: calc(100vh - 12rem);
-            width: auto;
-            height: auto;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.48);
-            background: #05070d;
-            opacity: 0;
-            transform: scale(0.985) translateY(10px);
-            transition: opacity 0.28s ease, transform 0.36s ease;
+        .presentation-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #0a0a0f;
         }
-        .presentation-slide.ready {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-        .presentation-controls {
+        .presentation-fallback {
             position: absolute;
-            left: 1rem;
-            right: 1rem;
-            bottom: 1rem;
+            left: 1.25rem;
+            right: 1.25rem;
+            bottom: 1.25rem;
             z-index: 4;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            padding: 0.85rem 1rem;
-            border-radius: 20px;
-            background: rgba(0,0,0,0.52);
+            padding: 0.95rem 1rem;
+            border-radius: 18px;
+            background: rgba(0,0,0,0.56);
             border: 1px solid rgba(255,255,255,0.08);
             backdrop-filter: blur(14px);
         }
-        .presentation-controls-left {
+        .presentation-fallback p {
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        .presentation-actions {
             display: flex;
-            align-items: center;
-            gap: 0.6rem;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        .presentation-ghost {
-            color: #94a3b8;
-            font-size: 0.78rem;
+        .presentation-actions .nav-btn {
+            justify-content: center;
         }
-        .presentation-nav {
-            display: flex;
-            gap: 0.65rem;
-        }
-        .presentation-nav button {
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.04);
-            color: #fff;
-            border-radius: 14px;
-            padding: 0.72rem 1rem;
-            font: inherit;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-        }
-        .presentation-nav button:hover {
-            transform: translateY(-2px);
-            border-color: rgba(248,113,113,0.5);
-            background: rgba(239,68,68,0.14);
-        }
-        @media (max-width: 1100px) {
+        @media (max-width: 860px) {
             .presentation-shell {
-                grid-template-columns: 1fr;
-                padding: 5.7rem 1rem 1rem;
-            }
-            .presentation-sidebar {
-                gap: 0.9rem;
-            }
-            .presentation-thumbs {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                max-height: none;
-            }
-            .presentation-thumb {
-                grid-template-columns: 44px 1fr;
-            }
-            .presentation-thumb img {
-                width: 44px;
-                height: 24px;
+                padding: 5.6rem 1rem 1rem;
             }
             .presentation-stage {
-                min-height: 72vh;
+                height: calc(100vh - 6.8rem);
+                border-radius: 22px;
             }
-            .presentation-slide {
-                max-width: 96%;
-                max-height: calc(72vh - 5.5rem);
-            }
-            .presentation-controls {
+            .presentation-fallback {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .presentation-nav {
-                width: 100%;
+            .presentation-actions {
+                justify-content: stretch;
             }
-            .presentation-nav button {
-                flex: 1 1 0;
+            .presentation-actions .nav-btn {
+                flex: 1 1 auto;
             }
         }
     </style>
@@ -313,118 +154,28 @@
     </div>
 
     <main class="presentation-shell">
-        <aside class="presentation-sidebar glass">
-            <div>
-                <div class="presentation-label">Presentation Deck</div>
-                <div class="presentation-title">TUNISIA<br><span>REAL ESTATE AI</span></div>
-            </div>
-            <p>Embedded directly inside the app as a true presentation viewer with local slides, cinematic stage styling, and zero third-party iframe failures.</p>
-            <div class="presentation-stats">
-                <div class="presentation-stat">
-                    <span>Slides</span>
-                    <strong>8 scenes</strong>
-                </div>
-                <div class="presentation-stat">
-                    <span>Mode</span>
-                    <strong>Local embedded viewer</strong>
-                </div>
-                <div class="presentation-stat">
-                    <span>Navigation</span>
-                    <strong>Keyboard, click, and controls</strong>
-                </div>
-            </div>
-            <div class="presentation-actions">
-                <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" class="nav-btn primary" download>Download PPTX</a>
-            </div>
-            <div class="presentation-thumbs" id="presentation-thumbs"></div>
-        </aside>
-
         <section class="presentation-stage glass">
-            <div class="presentation-stage-top">
-                <span class="presentation-badge">Embedded Presentation Mode</span>
-                <span class="presentation-counter" id="presentation-counter">Slide 1 / 8</span>
+            <div class="presentation-topline">
+                <span class="presentation-badge">Presentation Mode</span>
+                <span class="presentation-badge">Presentation Preview</span>
             </div>
-            <div class="presentation-slide-wrap">
-                <img id="presentation-slide" class="presentation-slide" src="assets/presentation/Diapositive1.JPG" alt="Presentation slide 1">
+            <div class="presentation-frame-wrap">
+                <iframe
+                    class="presentation-frame"
+                    src="https://onedrive.live.com/embed?cid=91A9FB7438EE9DC6&resid=91A9FB7438EE9DC6%21s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&wdWidth=1280&wdHeight=720"
+                    title="Tunisia Real Estate AI Presentation"
+                    loading="eager"
+                    allowfullscreen>
+                </iframe>
             </div>
-            <div class="presentation-controls">
-                <div class="presentation-controls-left">
-                    <span class="presentation-ghost">Use arrow keys, space, or thumbnails</span>
-                </div>
-                <div class="presentation-nav">
-                    <button type="button" id="presentation-prev">Previous</button>
-                    <button type="button" id="presentation-next">Next</button>
+            <div class="presentation-fallback">
+                <p>If the embedded preview is blocked by your browser or network, download the local PowerPoint file directly.</p>
+                <div class="presentation-actions">
+                    <a href="https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2" target="_blank" rel="noopener noreferrer" class="nav-btn primary">Open in OneDrive</a>
+                    <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" download class="nav-btn">Download</a>
                 </div>
             </div>
         </section>
     </main>
-
-    <script>
-        const slides = [
-            'assets/presentation/Diapositive1.JPG',
-            'assets/presentation/Diapositive2.JPG',
-            'assets/presentation/Diapositive3.JPG',
-            'assets/presentation/Diapositive4.JPG',
-            'assets/presentation/Diapositive5.JPG',
-            'assets/presentation/Diapositive6.JPG',
-            'assets/presentation/Diapositive7.JPG',
-            'assets/presentation/Diapositive8.JPG'
-        ];
-
-        const slideImage = document.getElementById('presentation-slide');
-        const slideCounter = document.getElementById('presentation-counter');
-        const thumbsContainer = document.getElementById('presentation-thumbs');
-        const prevButton = document.getElementById('presentation-prev');
-        const nextButton = document.getElementById('presentation-next');
-        let currentSlide = 0;
-
-        function renderThumbs() {
-            thumbsContainer.innerHTML = '';
-            slides.forEach((slide, index) => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = `presentation-thumb${index === currentSlide ? ' active' : ''}`;
-                button.innerHTML = `
-                    <img src="${slide}" alt="Thumbnail ${index + 1}">
-                    <div>
-                        <strong>Slide ${index + 1}</strong>
-                        <span>Presentation scene</span>
-                    </div>
-                `;
-                button.addEventListener('click', () => showSlide(index));
-                thumbsContainer.appendChild(button);
-            });
-        }
-
-        function showSlide(index) {
-            currentSlide = (index + slides.length) % slides.length;
-            slideImage.classList.remove('ready');
-            slideImage.src = slides[currentSlide];
-            slideImage.alt = `Presentation slide ${currentSlide + 1}`;
-            slideCounter.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
-            renderThumbs();
-        }
-
-        slideImage.addEventListener('load', () => {
-            requestAnimationFrame(() => slideImage.classList.add('ready'));
-        });
-
-        prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
-        nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'PageDown') {
-                event.preventDefault();
-                showSlide(currentSlide + 1);
-            }
-            if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
-                event.preventDefault();
-                showSlide(currentSlide - 1);
-            }
-        });
-
-        renderThumbs();
-        slideImage.classList.add('ready');
-    </script>
 </body>
 </html>
