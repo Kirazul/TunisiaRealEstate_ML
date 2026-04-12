@@ -139,22 +139,42 @@
                 <aside class="book-sidebar glass">
                     <span class="tag">PIPELINE CHAPTERS</span>
                     <nav class="chapter-nav">
-                        <a href="#chapter-setup">Chapter 1: Environment Setup & Utilities</a>
-                        <a href="#chapter-discovery">Chapter 2: Dataset Discovery & Profiling</a>
-                        <a href="#chapter-cleaning">Chapter 3: Data Cleaning & Standardization</a>
-                        <a href="#chapter-merge">Chapter 4: Dataset Merging & Deduplication</a>
-                        <a href="#chapter-geography">Chapter 5: Geographic Name Alignment</a>
-                        <a href="#chapter-training-data">Chapter 6: Training Dataset Preparation</a>
-                        <a href="#chapter-features">Chapter 7: Feature Engineering</a>
-                        <a href="#chapter-modeling">Chapter 8: Model Training & Evaluation</a>
+                        <a href="#chapter-overview">1. Project Overview</a>
+                        <a href="#chapter-environment">2. Environment Setup</a>
+                        <a href="#chapter-utilities">3. Utility Functions</a>
+                        <a href="#chapter-sources">4. Data Sources</a>
+                        <a href="#chapter-stage1">5. Stage 1: Dataset Discovery</a>
+                        <a href="#chapter-stage2">6. Stage 2: Dataset Cleaning</a>
+                        <a href="#chapter-stage3">7. Stage 3: Merge Preparation</a>
+                        <a href="#chapter-stage4">8. Stage 4: Geographic Name Alignment</a>
+                        <a href="#chapter-stage5">9. Stage 5: Training Dataset Preparation</a>
+                        <a href="#chapter-stage6">10. Stage 6: Feature Engineering</a>
+                        <a href="#chapter-stage7">11. Stage 7: Visual Check</a>
+                        <a href="#chapter-stage8">12. Stage 8: Model Training</a>
+                        <a href="#chapter-conclusion">13. Conclusion</a>
                     </nav>
                 </aside>
 
                 <div>
 
-                    <section id="chapter-setup" class="chapter-card glass">
-                        <h2>Chapter 1: Environment Setup & Utilities</h2>
-                        <p>Initialize the project environment, import required libraries, configure paths, and define utility functions for data processing.</p>
+                    <section id="chapter-overview" class="chapter-card glass">
+                        <h2>1. Project Overview</h2>
+                        <p>Build a machine learning model to predict Tunisian real estate prices by processing three raw datasets, standardizing listings, aligning geography, engineering features, and training ensemble models.</p>
+
+                        <div class="cell-explainer">
+                            <h3>Pipeline Architecture</h3>
+                            <p>The notebook follows eight sequential production stages: dataset discovery, dataset cleaning, merge preparation, geographic alignment, training dataset preparation, feature engineering, visual check, and model training.</p>
+                        </div>
+
+                        <div class="cell-explainer">
+                            <h3>Key Outputs</h3>
+                            <p>Main outputs include the training dataset, the feature-engineered dataset, the trained model artifact, the model report, and the frontend deployment assets.</p>
+                        </div>
+                    </section>
+
+                    <section id="chapter-environment" class="chapter-card glass">
+                        <h2>2. Environment Setup</h2>
+                        <p>Configure the notebook runtime, import required libraries, and initialize the project paths used by every pipeline stage.</p>
 
                         
                         <div class="cell-explainer">
@@ -231,6 +251,12 @@ print(f"✓ Paths configured (root: {PROJECT_ROOT})")</textarea>
                             <div class="output"></div>
                         </div>
                         
+                    </section>
+
+                    <section id="chapter-utilities" class="chapter-card glass">
+                        <h2>3. Utility Functions</h2>
+                        <p>These helper functions support the full pipeline by handling CSV encoding fallback, text repair, JSON-safe serialization, and numeric parsing.</p>
+
                         <div class="cell-explainer">
                             <h3>CSV Reading Utility</h3>
                             <p>The raw datasets have inconsistent encodings. This function tries multiple encodings until one works successfully.</p>
@@ -366,14 +392,14 @@ print("✓ Numeric parsing functions defined")</textarea>
 
                     </section>
 
-                    <section id="chapter-discovery" class="chapter-card glass">
-                        <h2>Chapter 2: Dataset Discovery & Profiling</h2>
-                        <p>Profile raw datasets to understand their structure, identify quality issues, detect missing values, and analyze data distributions before cleaning.</p>
+                    <section id="chapter-sources" class="chapter-card glass">
+                        <h2>4. Data Sources</h2>
+                        <p>Document the raw property datasets and the geographic reference assets used by the pipeline before any profiling or cleaning begins.</p>
 
                         
                         <div class="cell-explainer">
                             <h3>Define Input Datasets</h3>
-                            <p>We're working with 3 different real estate listing sources, each with its own schema. The pipeline will standardize all three into one unified format.</p>
+                            <p>The project uses three raw listing sources plus official geographic reference files that later support alignment and atlas generation.</p>
                         </div>
 
                         <div class="cell">
@@ -396,9 +422,15 @@ for name, path in DATASETS.items():
                             <div class="output"></div>
                         </div>
                         
+                    </section>
+
+                    <section id="chapter-stage1" class="chapter-card glass">
+                        <h2>5. Stage 1: Dataset Discovery</h2>
+                        <p>Profile raw datasets to understand their structure, identify quality issues, detect missing values, and analyze data distributions before cleaning.</p>
+
                         <div class="cell-explainer">
                             <h3>Column Detection Functions</h3>
-                            <p>Auto-detect key columns (price, surface, location) since each dataset uses different column names.</p>
+                            <p>Auto-detect key columns such as price, surface, and location because each dataset uses different raw column names.</p>
                         </div>
 
                         <div class="cell">
@@ -604,8 +636,8 @@ print('✓ Dataset discovery visualizations complete')</textarea>
 
                     </section>
 
-                    <section id="chapter-cleaning" class="chapter-card glass">
-                        <h2>Chapter 3: Data Cleaning & Standardization</h2>
+                    <section id="chapter-stage2" class="chapter-card glass">
+                        <h2>6. Stage 2: Dataset Cleaning</h2>
                         <p>Standardize all datasets to a common schema, fix encoding issues, remove invalid records, and apply property-specific filters.</p>
 
                         
@@ -1035,8 +1067,8 @@ print("✓ Cleaning visualizations complete")</textarea>
 
                     </section>
 
-                    <section id="chapter-merge" class="chapter-card glass">
-                        <h2>Chapter 4: Dataset Merging & Deduplication</h2>
+                    <section id="chapter-stage3" class="chapter-card glass">
+                        <h2>7. Stage 3: Merge Preparation</h2>
                         <p>Combine cleaned datasets from multiple sources, detect cross-source duplicates, and create a unified dataset with source priority handling.</p>
 
                         
@@ -1222,8 +1254,8 @@ print('✓ Merge visualizations complete')</textarea>
 
                     </section>
 
-                    <section id="chapter-geography" class="chapter-card glass">
-                        <h2>Chapter 5: Geographic Name Alignment</h2>
+                    <section id="chapter-stage4" class="chapter-card glass">
+                        <h2>8. Stage 4: Geographic Name Alignment</h2>
                         <p>Match location names from listings to official administrative boundaries using exact matching, fuzzy matching, and manual overrides.</p>
 
                         
@@ -1459,8 +1491,8 @@ print('✓ Geographic alignment visualizations complete')</textarea>
 
                     </section>
 
-                    <section id="chapter-training-data" class="chapter-card glass">
-                        <h2>Chapter 6: Training Dataset Preparation</h2>
+                    <section id="chapter-stage5" class="chapter-card glass">
+                        <h2>9. Stage 5: Training Dataset Preparation</h2>
                         <p>Filter for model-ready records, add derived features (log transformations, price per m²), and create the final training dataset.</p>
 
                         
@@ -1643,10 +1675,16 @@ plt.show()
 print('✓ Training dataset visualizations complete')</textarea>
                             <div class="output"></div>
                         </div>
-                        
+
+                    </section>
+
+                    <section id="chapter-stage6" class="chapter-card glass">
+                        <h2>10. Stage 6: Feature Engineering</h2>
+                        <p>Attach geographic centroids with canonical geo names, write the base feature-engineered dataset, and persist the Stage 6 outputs.</p>
+
                         <div class="cell-explainer">
                             <h3>Load Delegation Coordinates</h3>
-                            <p>Extract longitude and latitude centroids from the official delegation GeoJSON.</p>
+                            <p>Load delegation centroids using the same Stage 6 canonical naming logic as the pipeline script.</p>
                         </div>
 
                         <div class="cell">
@@ -1655,52 +1693,43 @@ print('✓ Training dataset visualizations complete')</textarea>
                                 <span class="cell-title">Cell 40</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
-                            <textarea class="code-editor"># Load delegation coordinates from GeoJSON
+                            <textarea class="code-editor"># Load delegation coordinates using the same Stage 6 logic as the pipeline script
 print("Loading delegation coordinates...\n")
 
-with open(GEO_DIR / "delegations-full.geojson", "r", encoding="utf-8") as f:
-    geojson_data = json.load(f)
+import importlib.util
+import sys
 
-delegation_coords = {}
-for feature in geojson_data.get("features", []):
-    props = feature.get("properties", {})
-    if props.get("engtype_2") != "Delegation" or not props.get("name_2"):
-        continue
-    geometry = feature.get("geometry", {})
-    geometry_type = geometry.get("type")
-    geometry_coords = geometry.get("coordinates") or []
-    if geometry_type == "Polygon":
-        rings = geometry_coords[:1]
-    elif geometry_type == "MultiPolygon":
-        rings = [polygon[0] for polygon in geometry_coords if polygon]
-    else:
-        rings = []
-    all_lons, all_lats = [], []
-    for ring in rings:
-        all_lons.extend(point[0] for point in ring)
-        all_lats.extend(point[1] for point in ring)
-    if all_lons and all_lats:
-        delegation_coords[props["name_2"]] = (sum(all_lons) / len(all_lons), sum(all_lats) / len(all_lats))
+pipeline_dir = PROJECT_ROOT / "pipeline"
+if str(pipeline_dir) not in sys.path:
+    sys.path.insert(0, str(pipeline_dir))
 
-print(f"✓ Loaded coordinates for {len(delegation_coords)} delegations")</textarea>
+spec = importlib.util.spec_from_file_location(
+    "pipeline_feature_engineering", PROJECT_ROOT / "pipeline" / "06_feature_engineering.py"
+)
+feature_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(feature_module)
+
+build_delegation_key = feature_module.build_delegation_key
+delegation_coords = feature_module.load_delegation_coords()
+
+print(f"✓ Loaded coordinates for {len(delegation_coords)} canonical delegations")</textarea>
                             <div class="output"></div>
                         </div>
 
-                    </section>
-
-                    <section id="chapter-features" class="chapter-card glass">
-                        <h2>Chapter 7: Feature Engineering</h2>
-                        <p>Attach geographic centroids, write the feature-engineered dataset, inspect samples, and prepare the modeling frame.</p>
+                        <div class="cell-explainer">
+                            <h3>Base Features Written In Stage 6</h3>
+                            <p>`surface_m2` stores property area, `rooms` stores room count when available, and `lon` / `lat` store the canonical delegation centroid coordinates.</p>
+                        </div>
 
                         <div class="cell-explainer">
                             <h3>Add Coordinate Features</h3>
-                            <p>Attach geographic centroids to the training dataset and check how many rows received coordinates.</p>
+                            <p>Attach geographic centroids using the same canonical governorate and delegation names as the pipeline, then check residual unmatched rows.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [40]:</div>
+                            <div class="cell-label">In [41]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 40</span>
+                                <span class="cell-title">Cell 41</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Add coordinates to training dataset
@@ -1708,27 +1737,40 @@ training_data = pd.read_csv(TRAINING_DATASET_DIR / "05_training_dataset.csv")
 
 print(f"\nAdding coordinates to {len(training_data):,} rows...")
 
-training_data["lon"] = training_data["geo_delegation"].map(
+training_data["delegation_key"] = training_data.apply(
+    lambda row: build_delegation_key(
+        str(row["geo_governorate"]).strip(),
+        str(row["geo_delegation"]).strip(),
+    )
+    if str(row["geo_governorate"]).strip() and str(row["geo_delegation"]).strip()
+    else "",
+    axis=1,
+)
+training_data["lon"] = training_data["delegation_key"].map(
     lambda v: delegation_coords.get(v, (None, None))[0]
 )
-training_data["lat"] = training_data["geo_delegation"].map(
+training_data["lat"] = training_data["delegation_key"].map(
     lambda v: delegation_coords.get(v, (None, None))[1]
 )
+training_data = training_data.drop(columns=["delegation_key"])
 
-rows_with_coords = training_data["lon"].notna().sum()
-print(f"✓ Rows with coordinates: {rows_with_coords:,} ({rows_with_coords/len(training_data)*100:.1f}%)")</textarea>
+rows_with_geo_delegation = training_data["geo_delegation"].fillna("").astype(str).str.strip().ne("").sum()
+rows_with_coords = (training_data["lon"].notna() &amp; training_data["lat"].notna()).sum()
+rows_missing_coords_despite_geo_match = rows_with_geo_delegation - rows_with_coords
+print(f"✓ Rows with coordinates: {rows_with_coords:,} ({rows_with_coords/len(training_data)*100:.1f}%)")
+print(f"✓ Rows missing coords despite geo match: {rows_missing_coords_despite_geo_match:,}")</textarea>
                             <div class="output"></div>
                         </div>
 
                         <div class="cell-explainer">
                             <h3>Save Feature-Engineered Dataset</h3>
-                            <p>Persist the feature-engineered dataset and its stage report.</p>
+                            <p>Persist the base engineered dataset and report only the Stage 6 base features written at this step.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [41]:</div>
+                            <div class="cell-label">In [42]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 41</span>
+                                <span class="cell-title">Cell 42</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Save feature-engineered dataset
@@ -1745,16 +1787,36 @@ output_path = FEATURE_ENGINEERING_DIR / "06_feature_engineered_dataset.csv"
 feature_frame.to_csv(output_path, index=False)
 
 # Generate report
+BASE_FEATURE_COLUMNS = ["surface_m2", "rooms", "lon", "lat"]
+FEATURE_DESCRIPTIONS = {
+    "surface_m2": "Property surface area in square meters.",
+    "rooms": "Reported room count when available.",
+    "lon": "Delegation centroid longitude from the canonical geo reference.",
+    "lat": "Delegation centroid latitude from the canonical geo reference.",
+}
+rows_with_geo_delegation = feature_frame["geo_delegation"].fillna("").astype(str).str.strip().ne("")
+rows_with_coords = feature_frame["lon"].notna() &amp; feature_frame["lat"].notna()
 feature_report = {
     "rows": int(len(feature_frame)),
     "columns": list(feature_frame.columns),
-    "feature_columns": ["surface_m2", "rooms", "lon", "lat"],
+    "base_feature_columns": BASE_FEATURE_COLUMNS,
+    "feature_groups": {
+        "base": BASE_FEATURE_COLUMNS,
+    },
+    "feature_descriptions": FEATURE_DESCRIPTIONS,
+    "feature_columns": BASE_FEATURE_COLUMNS,
+    "stage6_note": "Stage 6 writes the base engineered dataset with canonical geographic coordinates.",
     "geo_delegation_count": int(feature_frame["geo_delegation"].nunique()),
-    "delegations_with_coords": int(feature_frame["lon"].notna().sum()),
+    "rows_with_geo_delegation": int(rows_with_geo_delegation.sum()),
+    "rows_with_coords": int(rows_with_coords.sum()),
+    "rows_missing_coords": int((~rows_with_coords).sum()),
+    "rows_missing_coords_despite_geo_match": int((rows_with_geo_delegation &amp; ~rows_with_coords).sum()),
+    "delegations_with_coords": int(feature_frame.loc[rows_with_coords, "geo_delegation"].nunique()),
 }
 
 write_json(FEATURE_ENGINEERING_DIR / "06_feature_engineering_report.json", feature_report)
 
+print(f"\nBase features written in Stage 6: {BASE_FEATURE_COLUMNS}")
 print(f"\n✓ Feature-engineered dataset saved: {output_path}")</textarea>
                             <div class="output"></div>
                         </div>
@@ -1762,15 +1824,21 @@ print(f"\n✓ Feature-engineered dataset saved: {output_path}")</textarea>
                         <details class="source-panel" data-source-path="pipeline/06_feature_engineering.py"><summary class="source-header"><strong>Pipeline source: stage 06 feature engineering</strong></summary><pre class="source-code">Loading source...</pre></details>
                         <details class="source-panel" data-source-path="data/processed/06_feature_engineering/06_feature_engineering_report.json"><summary class="source-header"><strong>Generated asset: feature report</strong></summary><pre class="source-code">Loading source...</pre></details>
                         
+                    </section>
+
+                    <section id="chapter-stage7" class="chapter-card glass">
+                        <h2>11. Stage 7: Visual Check</h2>
+                        <p>Sample and validate the final dataset before model training.</p>
+
                         <div class="cell-explainer">
                             <h3>Generate Visual Check Samples</h3>
                             <p>Write representative sample rows for manual inspection of the feature-engineered dataset.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [42]:</div>
+                            <div class="cell-label">In [43]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 42</span>
+                                <span class="cell-title">Cell 43</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Generate visual check samples
@@ -1814,16 +1882,22 @@ print(f"✓ Saved {len(samples_frame)} sample rows to {output_path}")</textarea>
 
                         <details class="source-panel" data-source-path="pipeline/07_training_dataset_visual_check.py"><summary class="source-header"><strong>Pipeline source: stage 07 visual check</strong></summary><pre class="source-code">Loading source...</pre></details>
                         <details class="source-panel" data-source-path="data/processed/07_visual_check/07_training_dataset_visual_report.json"><summary class="source-header"><strong>Generated asset: visual check report</strong></summary><pre class="source-code">Loading source...</pre></details>
-                        
+
+                    </section>
+
+                    <section id="chapter-stage8" class="chapter-card glass">
+                        <h2>12. Stage 8: Model Training</h2>
+                        <p>Train machine learning models, create split-dependent features safely, evaluate performance, and export production-facing artifacts.</p>
+
                         <div class="cell-explainer">
                             <h3>Load Modeling Frame</h3>
                             <p>Load the feature-engineered dataset and apply the same final outlier trim used by the model-training stage.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [43]:</div>
+                            <div class="cell-label">In [44]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 43</span>
+                                <span class="cell-title">Cell 44</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Load feature-engineered dataset
@@ -1859,16 +1933,16 @@ print(f"After outlier removal: {len(frame):,} rows")</textarea>
                         
                         <div class="cell-explainer">
                             <h3>Define Modeling Features</h3>
-                            <p>Assemble the core feature matrix and target used for train/test splitting.</p>
+                            <p>Assemble the base feature matrix and make it explicit which extra features Stage 8 will still add before training.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [44]:</div>
+                            <div class="cell-label">In [45]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 44</span>
+                                <span class="cell-title">Cell 45</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
-                            <textarea class="code-editor"># Define features and target
+                            <textarea class="code-editor"># Define base features and target
 NUMERIC_FEATURES = ["surface_m2", "rooms"]
 CATEGORICAL_FEATURES = ["property_family", "geo_governorate", "geo_delegation"]
 ALL_FEATURES = NUMERIC_FEATURES + CATEGORICAL_FEATURES
@@ -1879,7 +1953,8 @@ x["lon"] = frame["lon"].fillna(frame["lon"].median())
 x["lat"] = frame["lat"].fillna(frame["lat"].median())
 y = frame["log_price_tnd"]
 
-print(f"\nFeatures: {ALL_FEATURES + ['lon', 'lat']}")
+print(f"\nBase features before split-dependent additions: {ALL_FEATURES + ['lon', 'lat']}")
+print(f"Stage 8 will still add: {['geo_delegation_target_enc', 'geo_governorate_target_enc', 'price_vs_local_median']}")
 print(f"Target: log_price_tnd")</textarea>
                             <div class="output"></div>
                         </div>
@@ -1890,9 +1965,9 @@ print(f"Target: log_price_tnd")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [45]:</div>
+                            <div class="cell-label">In [46]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 45</span>
+                                <span class="cell-title">Cell 46</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Train/test split
@@ -1914,9 +1989,9 @@ print(f"Test set: {len(x_test):,} rows")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [46]:</div>
+                            <div class="cell-label">In [47]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 46</span>
+                                <span class="cell-title">Cell 47</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Add split-dependent features (target encoding)
@@ -1959,11 +2034,12 @@ print(f"✓ Final features: {FINAL_FEATURES}")</textarea>
                             <div class="output"></div>
                         </div>
 
-                    </section>
+                    <div class="chapter-subsection">
 
-                    <section id="chapter-modeling" class="chapter-card glass">
-                        <h2>Chapter 8: Model Training & Evaluation</h2>
-                        <p>Train ensemble models (GradientBoosting and RandomForest), compare performance, select the best model, and generate predictions.</p>
+                        <div class="cell-explainer">
+                            <h3>Final Features Used By The Model</h3>
+                            <p>Base numeric features from Stage 6: `surface_m2`, `rooms`, `lon`, `lat`. Split-dependent numeric features added in Stage 8: `geo_delegation_target_enc`, `geo_governorate_target_enc`, `price_vs_local_median`. Categorical features used by the model: `property_family`, `geo_governorate`, `geo_delegation`.</p>
+                        </div>
 
                         
                         <div class="cell-explainer">
@@ -1972,9 +2048,9 @@ print(f"✓ Final features: {FINAL_FEATURES}")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [47]:</div>
+                            <div class="cell-label">In [48]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 47</span>
+                                <span class="cell-title">Cell 48</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Build preprocessing pipeline
@@ -1998,9 +2074,9 @@ print("✓ Preprocessing pipeline created")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [48]:</div>
+                            <div class="cell-label">In [49]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 48</span>
+                                <span class="cell-title">Cell 49</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Train Gradient Boosting model
@@ -2035,9 +2111,9 @@ print(f"Test MAE: {gb_mae:,.0f} TND")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [49]:</div>
+                            <div class="cell-label">In [50]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 49</span>
+                                <span class="cell-title">Cell 50</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Train Random Forest model
@@ -2071,9 +2147,9 @@ print(f"Test MAE: {rf_mae:,.0f} TND")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [50]:</div>
+                            <div class="cell-label">In [51]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 50</span>
+                                <span class="cell-title">Cell 51</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Select best model
@@ -2100,9 +2176,9 @@ print(f"MAE: {best_mae:,.0f} TND")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [51]:</div>
+                            <div class="cell-label">In [52]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 51</span>
+                                <span class="cell-title">Cell 52</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Cross-validation
@@ -2121,9 +2197,9 @@ print(f"CV R² mean: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")</textarea
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [52]:</div>
+                            <div class="cell-label">In [53]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 52</span>
+                                <span class="cell-title">Cell 53</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Generate holdout predictions
@@ -2151,9 +2227,9 @@ print(f"\n✓ Holdout predictions saved: {predictions_path}")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [53]:</div>
+                            <div class="cell-label">In [54]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 53</span>
+                                <span class="cell-title">Cell 54</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Load production training summary
@@ -2181,9 +2257,9 @@ print(f"Loaded from: {production_summary_path}")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [54]:</div>
+                            <div class="cell-label">In [55]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 54</span>
+                                <span class="cell-title">Cell 55</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Inspect exported frontend assets
@@ -2211,9 +2287,9 @@ print(f"Validation R²: {frontend_summary['validation_r2']:.4f}")</textarea>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [55]:</div>
+                            <div class="cell-label">In [56]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 55</span>
+                                <span class="cell-title">Cell 56</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Visualize model performance
@@ -2306,15 +2382,28 @@ print("✓ Model performance visualizations complete")</textarea>
                             <div class="output"></div>
                         </div>
                         
+                    </div>
+
+                    </section>
+
+                    <section id="chapter-conclusion" class="chapter-card glass">
+                        <h2>13. Conclusion</h2>
+                        <p>This notebook successfully implemented the complete RealEstate_V2 pipeline and closed with the final training summary and exported production assets.</p>
+
+                        <div class="cell-explainer">
+                            <h3>Pipeline Summary</h3>
+                            <p>Stages 1 through 8 cover dataset discovery, cleaning, merge preparation, geographic alignment, training dataset preparation, feature engineering, visual validation, and final model training.</p>
+                        </div>
+
                         <div class="cell-explainer">
                             <h3>Final Summary</h3>
-                            <p>Summarize the final model-training stage using the actual filtered modeling frame and exported artifacts.</p>
+                            <p>Summarize the final notebook run using the actual filtered modeling frame and exported assets.</p>
                         </div>
 
                         <div class="cell">
-                            <div class="cell-label">In [56]:</div>
+                            <div class="cell-label">In [57]:</div>
                             <div class="cell-header">
-                                <span class="cell-title">Cell 56</span>
+                                <span class="cell-title">Cell 57</span>
                                 <button class="btn-run" onclick="runCell(this)">RUN</button>
                             </div>
                             <textarea class="code-editor"># Final summary

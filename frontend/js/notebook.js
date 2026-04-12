@@ -376,6 +376,19 @@ function splitTableLine(line) {
     return line.trim().split(/\s{2,}/).map((part) => part.trim()).filter(Boolean);
 }
 
+function repairTableRowParts(parts, expectedColumns) {
+    const fixed = [...parts];
+    while (fixed.length < expectedColumns && fixed[0] && /\s/.test(fixed[0])) {
+        const splitIndex = fixed[0].lastIndexOf(' ');
+        if (splitIndex <= 0) break;
+        const left = fixed[0].slice(0, splitIndex).trim();
+        const right = fixed[0].slice(splitIndex + 1).trim();
+        if (!left || !right) break;
+        fixed.splice(0, 1, left, right);
+    }
+    return fixed;
+}
+
 function tryRenderTableBlock(lines) {
     if (lines.length < 2) return null;
     if (!lines.some((line) => /\s{2,}/.test(line.trim()))) return null;
@@ -383,7 +396,9 @@ function tryRenderTableBlock(lines) {
     const rowParts = splitTableLine(lines[1]);
     if (headerParts.length < 2 || rowParts.length < 2) return null;
 
-    const normalizedRows = lines.map(splitTableLine).filter((parts) => parts.length >= 2);
+    const normalizedRows = lines
+        .map((line) => repairTableRowParts(splitTableLine(line), headerParts.length))
+        .filter((parts) => parts.length >= 2);
     if (normalizedRows.length < 2) return null;
 
     let columns = headerParts;

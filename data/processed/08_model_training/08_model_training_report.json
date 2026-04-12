@@ -2,12 +2,12 @@
   "best_model": "GradientBoosting",
   "training_rows": 13788,
   "modeling_rows": 13651,
-  "test_r2": 0.8897046208778251,
-  "validation_r2": 0.8897046208778251,
-  "test_mae": 69940.67972547532,
-  "cv_r2_mean": 0.9282541297725373,
-  "cv_r2_std": 0.002934374325397725,
-  "accuracy_pct": 88.97,
+  "test_r2": 0.8868176803997242,
+  "validation_r2": 0.8868176803997242,
+  "test_mae": 70949.9833552898,
+  "cv_r2_mean": 0.9278765810802462,
+  "cv_r2_std": 0.003925435022856928,
+  "accuracy_pct": 88.68,
   "total_delegations": 264,
   "covered_delegations": 264,
   "delegations_with_direct_support": 103,
@@ -26,17 +26,72 @@
   "model_results": [
     {
       "model": "GradientBoosting",
-      "r2": 0.8897046208778251,
-      "mae": 69940.67972547532,
+      "r2": 0.8868176803997242,
+      "mae": 70949.9833552898,
       "rmse": null
     },
     {
       "model": "RandomForest",
-      "r2": 0.8586288474306288,
-      "mae": 75906.17356436273,
+      "r2": 0.8560477670736941,
+      "mae": 76495.28152816673,
       "rmse": null
     }
   ],
+  "base_feature_columns": [
+    "surface_m2",
+    "rooms",
+    "lon",
+    "lat"
+  ],
+  "split_dependent_feature_columns": [
+    "geo_delegation_target_enc",
+    "geo_governorate_target_enc",
+    "price_vs_local_median"
+  ],
+  "feature_groups": {
+    "base": [
+      "surface_m2",
+      "rooms",
+      "lon",
+      "lat"
+    ],
+    "split_dependent": [
+      "geo_delegation_target_enc",
+      "geo_governorate_target_enc",
+      "price_vs_local_median"
+    ],
+    "categorical": [
+      "property_family",
+      "geo_governorate",
+      "geo_delegation"
+    ],
+    "final_model": [
+      "surface_m2",
+      "rooms",
+      "lon",
+      "lat",
+      "geo_delegation_target_enc",
+      "geo_governorate_target_enc",
+      "price_vs_local_median",
+      "property_family",
+      "geo_governorate",
+      "geo_delegation"
+    ]
+  },
+  "feature_descriptions": {
+    "surface_m2": "Property surface area in square meters.",
+    "rooms": "Reported room count when available.",
+    "lon": "Delegation centroid longitude from the canonical geo reference.",
+    "lat": "Delegation centroid latitude from the canonical geo reference.",
+    "geo_delegation_target_enc": "Training-split mean log price for the matched delegation.",
+    "geo_governorate_target_enc": "Training-split mean log price for the matched governorate.",
+    "price_vs_local_median": "Relative price-per-m2 ratio versus the delegation median.",
+    "property_family": "Property type bucket used as a categorical model feature.",
+    "geo_governorate": "Canonical governorate name used as a categorical location feature.",
+    "geo_delegation": "Canonical delegation name used as a categorical location feature."
+  },
+  "stage6_note": "Stage 6 writes the base engineered dataset with canonical geographic coordinates.",
+  "stage8_note": "These are the final model features after Stage 8 augmentation and train/test-split-safe feature creation.",
   "features": [
     "surface_m2",
     "rooms",
@@ -61,9 +116,18 @@
     "geo_governorate",
     "geo_delegation"
   ],
+  "coord_coverage": {
+    "rows_with_geo_delegation_before_imputation": 13756,
+    "rows_with_coords_before_imputation": 13756,
+    "rows_missing_coords_despite_geo_match_before_imputation": 0,
+    "rows_with_geo_delegation_after_outlier_filter": 13619,
+    "rows_with_coords_after_outlier_filter": 13619,
+    "rows_missing_coords_despite_geo_match_after_outlier_filter": 0,
+    "numeric_coord_imputation_strategy": "median"
+  },
   "reports": {
-    "model_comparison": "data/processed/08_model_training/08_model_comparison.png",
-    "holdout_scatter": "data/processed/08_model_training/08_holdout_scatter.png"
+    "model_comparison": "data\\processed\\08_model_training\\08_model_comparison.png",
+    "holdout_scatter": "data\\processed\\08_model_training\\08_holdout_scatter.png"
   },
   "frontend_exports": {
     "atlas_geojson": "frontend\\assets\\data\\atlas.geojson",

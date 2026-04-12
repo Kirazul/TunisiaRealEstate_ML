@@ -483,6 +483,11 @@ def main() -> None:
         & support_frame["geo_governorate"].fillna("").astype(str).str.strip().ne("")
     ].copy()
 
+    coord_rows_before_imputation = int((support_frame["lon"].notna() & support_frame["lat"].notna()).sum())
+    geo_rows_before_imputation = int(
+        support_frame["geo_delegation"].fillna("").astype(str).str.strip().ne("").sum()
+    )
+
     frame = support_frame.copy()
     print(f"Loaded {len(frame)} valid rows")
 
@@ -490,6 +495,9 @@ def main() -> None:
     upper = frame["price_tnd"].quantile(0.995)
     frame = frame[(frame["price_tnd"] >= lower) & (frame["price_tnd"] <= upper)].copy()
     print(f"After outlier removal: {len(frame)} rows")
+
+    coord_rows_after_outlier_filter = int((frame["lon"].notna() & frame["lat"].notna()).sum())
+    geo_rows_after_outlier_filter = int(frame["geo_delegation"].fillna("").astype(str).str.strip().ne("").sum())
 
     numeric_features = ["surface_m2", "rooms"]
     categorical_features = ["property_family", "geo_governorate", "geo_delegation"]
@@ -646,8 +654,44 @@ def main() -> None:
             "max": round(float(max(benchmark_values)) if benchmark_values else 0.0, 2),
         },
         "model_results": results,
+        "base_feature_columns": list(getattr(feature_module, "BASE_FEATURE_COLUMNS", ["surface_m2", "rooms", "lon", "lat"])),
+        "split_dependent_feature_columns": list(
+            getattr(
+                feature_module,
+                "SPLIT_DEPENDENT_FEATURE_COLUMNS",
+                ["geo_delegation_target_enc", "geo_governorate_target_enc", "price_vs_local_median"],
+            )
+        ),
+        "feature_groups": dict(
+            getattr(
+                feature_module,
+                "FEATURE_GROUPS",
+                {
+                    "base": ["surface_m2", "rooms", "lon", "lat"],
+                    "split_dependent": ["geo_delegation_target_enc", "geo_governorate_target_enc", "price_vs_local_median"],
+                    "categorical": ["property_family", "geo_governorate", "geo_delegation"],
+                    "final_model": final_features,
+                },
+            )
+        ),
+        "feature_descriptions": dict(getattr(feature_module, "FEATURE_DESCRIPTIONS", {})),
+        "stage6_note": getattr(
+            feature_module,
+            "STAGE6_FEATURE_NOTE",
+            "Stage 6 writes the base engineered dataset with canonical geographic coordinates.",
+        ),
+        "stage8_note": "These are the final model features after Stage 8 augmentation and train/test-split-safe feature creation.",
         "features": final_features,
         "feature_columns": final_features,
+        "coord_coverage": {
+            "rows_with_geo_delegation_before_imputation": geo_rows_before_imputation,
+            "rows_with_coords_before_imputation": coord_rows_before_imputation,
+            "rows_missing_coords_despite_geo_match_before_imputation": geo_rows_before_imputation - coord_rows_before_imputation,
+            "rows_with_geo_delegation_after_outlier_filter": geo_rows_after_outlier_filter,
+            "rows_with_coords_after_outlier_filter": coord_rows_after_outlier_filter,
+            "rows_missing_coords_despite_geo_match_after_outlier_filter": geo_rows_after_outlier_filter - coord_rows_after_outlier_filter,
+            "numeric_coord_imputation_strategy": "median",
+        },
         "reports": plot_reports,
         "frontend_exports": {
             "atlas_geojson": str(FRONTEND_ATLAS_PATH.relative_to(PROJECT_ROOT)),

@@ -16,12 +16,37 @@
     "lon",
     "lat"
   ],
+  "base_feature_columns": [
+    "surface_m2",
+    "rooms",
+    "lon",
+    "lat"
+  ],
+  "feature_groups": {
+    "base": [
+      "surface_m2",
+      "rooms",
+      "lon",
+      "lat"
+    ]
+  },
+  "feature_descriptions": {
+    "surface_m2": "Property surface area in square meters.",
+    "rooms": "Reported room count when available.",
+    "lon": "Delegation centroid longitude from the canonical geo reference.",
+    "lat": "Delegation centroid latitude from the canonical geo reference."
+  },
   "feature_columns": [
     "surface_m2",
     "rooms",
     "lon",
     "lat"
   ],
+  "stage6_note": "Stage 6 writes the base engineered dataset with canonical geographic coordinates.",
   "geo_delegation_count": 181,
-  "delegations_with_coords": 11654
+  "rows_with_geo_delegation": 13756,
+  "rows_with_coords": 13756,
+  "rows_missing_coords": 32,
+  "rows_missing_coords_despite_geo_match": 0,
+  "delegations_with_coords": 181
 }
