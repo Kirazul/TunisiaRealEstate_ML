@@ -19,12 +19,12 @@
             position: relative;
             z-index: 10;
             min-height: 100vh;
-            padding: 6.25rem 3vw 2rem;
+            padding: 6.25rem 2.25vw 1.25rem;
         }
         .presentation-stage {
             position: relative;
             width: 100%;
-            height: calc(100vh - 8.25rem);
+            height: calc(100vh - 7.5rem);
             border-radius: 30px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.08);
@@ -79,7 +79,8 @@
         .presentation-frame-wrap {
             position: absolute;
             inset: 0;
-            padding-top: 0;
+            z-index: 1;
+            background: #07070b;
         }
         .presentation-frame {
             width: 100%;
@@ -87,17 +88,31 @@
             border: 0;
             background: #0a0a0f;
         }
-        .presentation-fallback {
+        .presentation-controls {
             position: absolute;
-            left: 1.25rem;
-            right: 1.25rem;
-            bottom: 1.25rem;
+            right: 1rem;
+            bottom: 1rem;
             z-index: 4;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .presentation-control-btn {
+            min-width: 142px;
+            justify-content: center;
+        }
+        .presentation-fallback {
+            position: absolute;
+            left: 1rem;
+            bottom: 1rem;
+            z-index: 4;
+            max-width: min(540px, calc(100% - 18rem));
+            display: flex;
+            align-items: center;
             gap: 1rem;
-            padding: 0.95rem 1rem;
+            padding: 0.9rem 1rem;
             border-radius: 18px;
             background: rgba(0,0,0,0.56);
             border: 1px solid rgba(255,255,255,0.08);
@@ -108,32 +123,54 @@
             font-size: 0.8rem;
             line-height: 1.5;
         }
-        .presentation-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        .presentation-stage.is-fullscreen {
+            border-radius: 0;
+            border: 0;
         }
-        .presentation-actions .nav-btn {
-            justify-content: center;
+        .presentation-stage.is-fullscreen .presentation-topline,
+        .presentation-stage.is-fullscreen .presentation-controls,
+        .presentation-stage.is-fullscreen .presentation-fallback {
+            display: none;
+        }
+        body.presentation-fullscreen .top-nav {
+            display: none;
+        }
+        .presentation-stage.is-fullscreen .presentation-topline {
+            top: 1.1rem;
+            left: 1.1rem;
+            right: 1.1rem;
+        }
+        .presentation-stage.is-fullscreen .presentation-controls {
+            right: 1.1rem;
+            bottom: 1.1rem;
+        }
+        .presentation-stage.is-fullscreen .presentation-fallback {
+            left: 1.1rem;
+            bottom: 1.1rem;
         }
         @media (max-width: 860px) {
             .presentation-shell {
-                padding: 5.6rem 1rem 1rem;
+                padding: 5.6rem 0.85rem 0.85rem;
             }
             .presentation-stage {
-                height: calc(100vh - 6.8rem);
+                height: calc(100vh - 6.45rem);
                 border-radius: 22px;
             }
             .presentation-fallback {
-                flex-direction: column;
-                align-items: stretch;
+                left: 0.85rem;
+                right: 0.85rem;
+                bottom: 4.8rem;
+                max-width: none;
             }
-            .presentation-actions {
+            .presentation-controls {
+                left: 0.85rem;
+                right: 0.85rem;
+                bottom: 0.85rem;
                 justify-content: stretch;
             }
-            .presentation-actions .nav-btn {
+            .presentation-control-btn {
                 flex: 1 1 auto;
+                min-width: 0;
             }
         }
     </style>
@@ -147,14 +184,10 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
             <span>ATLAS</span>
         </a>
-        <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" class="nav-btn" download>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>
-            <span>DOWNLOAD</span>
-        </a>
     </div>
 
     <main class="presentation-shell">
-        <section class="presentation-stage glass">
+        <section class="presentation-stage glass" id="presentation-stage">
             <div class="presentation-topline">
                 <span class="presentation-badge">Presentation Mode</span>
                 <span class="presentation-badge">Presentation Preview</span>
@@ -162,20 +195,54 @@
             <div class="presentation-frame-wrap">
                 <iframe
                     class="presentation-frame"
-                    src="https://onedrive.live.com/embed?cid=91A9FB7438EE9DC6&resid=91A9FB7438EE9DC6%21s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&wdWidth=1280&wdHeight=720"
-                    title="Tunisia Real Estate AI Presentation"
+                    src="https://1drv.ms/p/c/91a9fb7438ee9dc6/IQREokosXs_ASb1CPxTZrZ64AfSf4woxmg25ystH4H6RjlM?wdAr=1.7777777777777777&amp;wdEaaCheck=1"
+                    title="Visionneuse PowerPoint"
                     loading="eager"
                     allowfullscreen>
                 </iframe>
             </div>
             <div class="presentation-fallback">
-                <p>If the embedded preview is blocked by your browser or network, download the local PowerPoint file directly.</p>
-                <div class="presentation-actions">
-                    <a href="https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2" target="_blank" rel="noopener noreferrer" class="nav-btn primary">Open in OneDrive</a>
-                    <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" download class="nav-btn">Download</a>
-                </div>
+                <p>If the embed is blocked by your browser, use fullscreen or download the deck.</p>
+            </div>
+            <div class="presentation-controls">
+                <button type="button" class="nav-btn presentation-btn presentation-control-btn" id="btn-presentation-fullscreen">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
+                    <span>FULLSCREEN</span>
+                </button>
+                <a href="https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2" target="_blank" rel="noopener noreferrer" class="nav-btn primary presentation-control-btn">OPEN IN ONEDRIVE</a>
+                <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" download class="nav-btn presentation-control-btn">DOWNLOAD</a>
             </div>
         </section>
     </main>
+    <script>
+        const stage = document.getElementById('presentation-stage');
+        const fullscreenBtn = document.getElementById('btn-presentation-fullscreen');
+
+        async function togglePresentationFullscreen() {
+            if (!stage) return;
+            if (document.fullscreenElement === stage) {
+                await document.exitFullscreen();
+                return;
+            }
+            await stage.requestFullscreen();
+        }
+
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', () => {
+                togglePresentationFullscreen().catch(() => {
+                    window.open('https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2', '_blank', 'noopener,noreferrer');
+                });
+            });
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const isFullscreen = document.fullscreenElement === stage;
+            stage.classList.toggle('is-fullscreen', isFullscreen);
+            document.body.classList.toggle('presentation-fullscreen', isFullscreen);
+            if (fullscreenBtn) {
+                fullscreenBtn.querySelector('span').textContent = isFullscreen ? 'EXIT FULLSCREEN' : 'FULLSCREEN';
+            }
+        });
+    </script>
 </body>
 </html>
