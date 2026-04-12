@@ -144,6 +144,8 @@ NOTEBOOK_GLOBALS: dict[str, object] = {}
 
 
 def _init_notebook_globals() -> dict[str, object]:
+    import matplotlib.pyplot as plt
+
     frontend_summary_path = PROJECT_ROOT / "frontend" / "model_summary.json"
     manifest_path = PROJECT_ROOT / "frontend" / "assets" / "data" / "pipeline_assets_manifest.json"
     frontend_summary_data = json.loads(frontend_summary_path.read_text(encoding="utf-8")) if frontend_summary_path.exists() else {}
@@ -152,6 +154,9 @@ def _init_notebook_globals() -> dict[str, object]:
         "__name__": "__notebook__",
         "PROJECT_ROOT": PROJECT_ROOT,
         "project_root": PROJECT_ROOT,
+        "np": np,
+        "pd": pd,
+        "plt": plt,
         "frontend_summary": frontend_summary_data,
         "manifest": manifest_data,
     }
