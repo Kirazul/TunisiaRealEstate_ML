@@ -88,6 +88,7 @@ ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 GEO_DIR = PROJECT_ROOT / "geo"
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
+PRESENTATION_DIR = PROJECT_ROOT / "Presentation"
 
 MODEL_PATH = ARTIFACTS_DIR / "08_best_model.joblib"
 TRAINING_REPORT_PATH = DATA_DIR / "08_model_training" / "08_model_training_report.json"
@@ -398,6 +399,16 @@ async def root():
 @app.get("/notebook")
 async def notebook():
     return no_cache_file_response(FRONTEND_DIR / "notebook.html")
+
+
+@app.get("/presentation")
+async def presentation():
+    return no_cache_file_response(FRONTEND_DIR / "presentation.html")
+
+
+@app.get("/Presentation/TunisiaRealEstate_ML_Presentation.pptx")
+async def presentation_file():
+    return no_cache_file_response(PRESENTATION_DIR / "TunisiaRealEstate_ML_Presentation.pptx")
 
 
 @app.get("/health")
