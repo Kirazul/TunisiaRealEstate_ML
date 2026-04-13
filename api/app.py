@@ -40,6 +40,7 @@ GROQ_MODEL = "llama-3.3-70b-versatile"
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+NARRATOR_PROVIDER = "groq"
 
 AI_NARRATOR_SYSTEM_PROMPT = """You are a world-class real estate data analyst and storyteller for Tunisia Real Estate AI.
 Your role is to generate compelling, data-driven narratives about property markets in Tunisia.
@@ -687,10 +688,15 @@ class NarratorRequest(BaseModel):
     fallback_context: str = ""
 
 
+def make_sse_event(event: str, data: dict | str) -> str:
+    payload = data if isinstance(data, str) else json.dumps(data, ensure_ascii=False)
+    return f"event: {event}\ndata: {payload}\n\n"
+
+
 async def generate_narrator_stream(request: NarratorRequest):
     api_key = os.environ.get("GROQ_API_KEY", "")
     if not api_key:
-        yield "data: [ERROR] GROQ_API_KEY not configured\n\n"
+        yield make_sse_event("error", {"message": "GROQ_API_KEY not configured", "provider": NARRATOR_PROVIDER})
         return
     
     user_prompt = AI_NARRATOR_USER_TEMPLATE.format(
@@ -723,29 +729,36 @@ async def generate_narrator_stream(request: NarratorRequest):
     }
     
     try:
+        yield make_sse_event("start", {"provider": NARRATOR_PROVIDER, "model": GROQ_MODEL})
         async with httpx.AsyncClient(timeout=30.0) as client:
             async with client.stream("POST", GROQ_API_URL, json=payload, headers=headers) as response:
                 if response.status_code != 200:
                     error_text = await response.text()
-                    yield f"data: [ERROR] API error: {response.status_code}\n\n"
+                    yield make_sse_event(
+                        "error",
+                        {
+                            "message": f"AI API error: {response.status_code}",
+                            "provider": NARRATOR_PROVIDER,
+                            "details": error_text[:500],
+                        },
+                    )
                     return
                 
                 async for line in response.aiter_lines():
                     if line.startswith("data: "):
                         data_str = line[6:]
                         if data_str == "[DONE]":
-                            yield "data: [DONE]\n\n"
+                            yield make_sse_event("end", {"provider": NARRATOR_PROVIDER, "model": GROQ_MODEL})
                             break
                         try:
                             chunk = json.loads(data_str)
                             content = chunk.get("choices", [{}])[0].get("delta", {}).get("content", "")
                             if content:
-                                safe_content = content.replace("\n", " ").replace("\r", "")
-                                yield f"data: {safe_content}\n\n"
+                                yield make_sse_event("token", {"text": content})
                         except json.JSONDecodeError:
                             continue
     except Exception as e:
-        yield f"data: [ERROR] {str(e)}\n\n"
+        yield make_sse_event("error", {"message": str(e), "provider": NARRATOR_PROVIDER})
 
 
 @app.post("/api/narrate")
@@ -754,9 +767,9 @@ async def narrator_stream(request: NarratorRequest):
         generate_narrator_stream(request),
         media_type="text/event-stream",
         headers={
-            "Cache-Control": "no-cache",
+            "Cache-Control": "no-cache, no-transform",
             "Connection": "keep-alive",
-            "X-Accel-Buffering": "no"
+            "X-Accel-Buffering": "no",
         }
     )
 
@@ -803,7 +816,7 @@ async def narrator_sync(request: NarratorRequest):
             
             result = response.json()
             narrative = result.get("choices", [{}])[0].get("message", {}).get("content", "")
-            return {"narrative": narrative.strip()}
+            return {"narrative": narrative.strip(), "model": GROQ_MODEL, "provider": NARRATOR_PROVIDER}
     except httpx.TimeoutException:
         raise HTTPException(status_code=504, detail="AI narrator request timed out")
     except Exception as e:

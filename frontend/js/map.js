@@ -2,7 +2,6 @@ const GEOJSON_PATH = "assets/data/atlas.geojson";
 const COVERAGE_PATH = "assets/data/zone_coverage.json";
 const SUMMARY_PATH = "/model_summary";
 const NARRATE_API = "/api/narrate";
-const NARRATE_SYNC_API = "/api/narrate/sync";
 const canvas = document.getElementById("atlas-canvas");
 const ctx = canvas.getContext("2d");
 const tooltip = document.getElementById("tooltip");
@@ -45,7 +44,6 @@ let frameCount = 0;
 let predictionRefreshTimer = null;
 let activeMapMode = "support";
 let activeFamilyOverride = null;
-let streamingMode = true;
 let activeStreamController = null;
 let isStreaming = false;
 
@@ -407,23 +405,6 @@ function closeZoneModal() {
     zoneModal.classList.add("hidden");
 }
 
-function generateModelNarrative(feature) {
-    const coverage = getCoverage(feature);
-    const selectedFamily = getSelectedFamily(coverage);
-    const profile = getActiveProfile(coverage);
-    const governorate = coverage?.governorate || feature.properties.governorate || "Tunisie";
-    const delegation = getFeatureDelegation(feature);
-    const locality = getFeatureName(feature);
-    const labels = { apartment: "Apartment", house: "House", land: "Land" };
-    const enFamily = labels[selectedFamily] || selectedFamily;
-
-    if (!coverage || !coverage.has_enough_data) {
-        aiText.textContent = `${locality} in ${delegation}, ${governorate} is currently outside the reliable support envelope of the trained model.`;
-        return;
-    }
-    aiText.textContent = `${locality} in ${delegation}, ${governorate} is currently analyzed via the ${enFamily} market profile. This selected family operates at the ${formatCoverageLabel(profile?.coverage_level || coverage.coverage_level)} tier with ${Number(profile?.support_count || coverage.support_count || 0).toLocaleString()} supporting observations. At the delegation level, this atlas currently classifies the zone as ${formatCoverageLabel(coverage.coverage_level)}. The deployed ${getSummaryModelName()} model achieved a validation R² of ${getSummaryAccuracyPct().toFixed(2)}%, and the selected-family benchmark is ${Number(profile?.price_per_m2 || coverage.prediction).toLocaleString()} TND per square meter.`;
-}
-
 function cancelActiveStream() {
     if (activeStreamController) {
         activeStreamController.abort();
@@ -434,26 +415,11 @@ function cancelActiveStream() {
 
 async function streamAINarrator(requestData) {
     cancelActiveStream();
-    
-    if (!streamingMode) {
-        try {
-            const response = await fetch(NARRATE_SYNC_API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(requestData)
-            });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const result = await response.json();
-            aiText.textContent = result.narrative || aiText.textContent;
-        } catch (error) {
-            console.warn("Sync narrator failed, falling back to template:", error.message);
-            generateModelNarrative(selected);
-        }
-        return;
-    }
-    
+
     isStreaming = true;
     aiText.textContent = "";
+    updateAIModelLabel("MODEL · CONNECTING TO AI NARRATOR");
+    let streamFailed = false;
     if (aiCursor) {
         aiCursor.style.display = "inline-block";
         aiCursor.classList.add("streaming");
@@ -479,42 +445,64 @@ async function streamAINarrator(requestData) {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let fullText = "";
+        let pending = "";
+        let streamEnded = false;
         
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
             
-            const chunk = decoder.decode(value, { stream: true });
-            const lines = chunk.split("\n");
-            
-            for (const line of lines) {
-                if (!line.startsWith("data: ")) continue;
-                const data = line.slice(6);
-                if (data === "[DONE]") break;
-                
-                if (data.startsWith("[ERROR]")) {
-                    console.warn("Stream error:", data);
-                    break;
+            pending += decoder.decode(value, { stream: true });
+
+            const frames = pending.split("\n\n");
+            pending = frames.pop() || "";
+
+            for (const frame of frames) {
+                const event = parseSSEFrame(frame);
+                if (!event) continue;
+
+                if (event.event === "start") {
+                    updateAIModelLabel(formatNarratorModel(event.data));
+                    continue;
                 }
-                
-                try {
-                    fullText += data;
+
+                if (event.event === "token") {
+                    fullText += String(event.data?.text || "");
                     aiText.textContent = fullText;
-                } catch (e) {
-                    console.warn("Parse error:", e);
+                    continue;
+                }
+
+                if (event.event === "error") {
+                    throw new Error(event.data?.message || "AI narrator stream failed");
+                }
+
+                if (event.event === "end") {
+                    streamEnded = true;
+                    updateAIModelLabel(formatNarratorModel(event.data));
                 }
             }
         }
         
+        if (!streamEnded && pending.trim()) {
+            const trailingEvent = parseSSEFrame(pending);
+            if (trailingEvent?.event === "token") {
+                fullText += String(trailingEvent.data?.text || "");
+                aiText.textContent = fullText;
+            }
+        }
+
         if (!fullText.trim()) {
-            generateModelNarrative(selected);
+            throw new Error("AI narrator returned empty content");
         }
     } catch (error) {
         if (error.name === "AbortError") {
             return;
         }
-        console.warn("Streaming failed, using template:", error.message);
-        generateModelNarrative(selected);
+        streamFailed = true;
+        console.warn("Streaming failed:", error.message);
+        aiText.textContent = "AI narrator unavailable right now. No generated narrative was returned.";
+        updateAIModelLabel("MODEL · STREAM UNAVAILABLE");
+        updateAIStatus("AI NARRATOR · RETRY NEEDED");
     } finally {
         isStreaming = false;
         activeStreamController = null;
@@ -523,8 +511,47 @@ async function streamAINarrator(requestData) {
             aiCursor.classList.remove("streaming");
         }
         aiPanel.classList.remove("stream-active");
-        updateAIStatus("ARTIFACT ANALYSIS · VERIFIED DATA");
+        if (!streamFailed && aiText.textContent.trim()) {
+            updateAIStatus("AI NARRATOR · LIVE MODEL RESPONSE");
+        }
     }
+}
+
+function parseSSEFrame(frame) {
+    const lines = String(frame || "").split("\n");
+    let event = "message";
+    const dataLines = [];
+
+    for (const rawLine of lines) {
+        const line = rawLine.trimEnd();
+        if (!line || line.startsWith(":")) continue;
+        if (line.startsWith("event:")) {
+            event = line.slice(6).trim();
+            continue;
+        }
+        if (line.startsWith("data:")) {
+            dataLines.push(line.slice(5).trimStart());
+        }
+    }
+
+    if (!dataLines.length) return null;
+    const rawData = dataLines.join("\n");
+    try {
+        return { event, data: JSON.parse(rawData) };
+    } catch {
+        return { event, data: { text: rawData } };
+    }
+}
+
+function formatNarratorModel(payload) {
+    const provider = String(payload?.provider || "AI").toUpperCase();
+    const model = String(payload?.model || "UNKNOWN MODEL");
+    return `MODEL · ${provider} / ${model}`;
+}
+
+function updateAIModelLabel(text) {
+    const modelElem = document.getElementById("ai-model");
+    if (modelElem) modelElem.textContent = text;
 }
 
 function updateAIStatus(status) {
@@ -865,19 +892,6 @@ if (familySelect) {
         }
     });
 }
-
-document.querySelectorAll(".stream-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-        const mode = button.dataset.stream;
-        streamingMode = mode === "on";
-        document.querySelectorAll(".stream-btn").forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-        if (selected) {
-            const requestData = buildNarratorRequest(selected);
-            streamAINarrator(requestData);
-        }
-    });
-});
 
 setSurfaceValue(surfaceSlider ? surfaceSlider.value : 120);
 resize();

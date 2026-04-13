@@ -510,55 +510,25 @@ html { scroll-behavior: smooth; }
     gap: 0.5rem;
 }
 
-.stream-toggle {
-    display: flex;
-    gap: 0.25rem;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 0.25rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.stream-btn {
+.stream-pill {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.75rem;
-    border: none;
-    background: transparent;
-    color: var(--dim);
+    gap: 0.25rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--white);
     font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.stream-btn svg {
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
-}
-
-.stream-btn:hover {
-    color: var(--white);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.stream-btn:hover svg {
-    opacity: 1;
-}
-
-.stream-btn.active {
     background: linear-gradient(180deg, rgba(239, 68, 68, 0.3), rgba(153, 27, 27, 0.4));
-    color: var(--white);
     box-shadow: 0 2px 12px rgba(239, 68, 68, 0.25);
 }
 
-.stream-btn.active svg {
-    opacity: 1;
-    color: var(--white);
+.stream-pill svg {
+    opacity: 0.95;
 }
 
 #ai-title {
@@ -581,6 +551,15 @@ html { scroll-behavior: smooth; }
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+#ai-model {
+    margin-top: 0.4rem;
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.68);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 #ai-status::before {
