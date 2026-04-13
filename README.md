@@ -121,7 +121,8 @@ The system includes AI narrator that generates real-time market insights for sel
 ### Features ✨
 
 - **Live Streaming Mode**: Real-time AI-generated narration appears character-by-character
-- **Static Mode**: Fallback to pre-computed template narratives
+- **AI-Only Narration**: No static template fallback in the frontend narrator path
+- **Visible Model Metadata**: The UI shows which Groq model generated the response
 - **Automatic Updates**: Narrator regenerates when changing:
   - Selected delegation
   - Property family (apartment/house/land)
@@ -174,7 +175,15 @@ Features delegation search, selection detail panels, surface adjustment slider, 
 
 Location: `frontend/notebook.html`
 
-Static notebook artifact displaying the complete pipeline with explanations. Eight chapters corresponding to pipeline stages, with code cells, markdown documentation, and execution status.
+Interactive notebook companion displaying the complete pipeline with chapter-by-chapter explanations, runnable code cells, markdown documentation, and execution status.
+
+Notebook AI features:
+
+- **Per-Cell Ask AI Button**: Every code cell includes an inline AI copilot action
+- **Cell-Aware Chat**: Groq receives the exact chapter title, explainer text, code, output, and errors for that specific cell
+- **Streaming Explanations**: Responses stream live into a premium inline chat panel below the cell
+- **Model Visibility**: The notebook assistant shows the Groq provider/model used for each explanation
+- **Use Cases**: Ask the assistant to explain a cell, interpret output, debug a failure, or explain why a step exists in the pipeline
 
 ## Data Sources 📁
 

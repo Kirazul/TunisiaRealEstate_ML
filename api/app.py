@@ -83,6 +83,20 @@ Generate a 2-3 sentence market insight narrative that:
 
 Respond ONLY with the narrative text, no preamble or formatting markers."""
 
+NOTEBOOK_CELL_SYSTEM_PROMPT = """You are an elite notebook copilot embedded inside a premium machine learning workflow viewer.
+Your job is to explain one notebook cell with extreme clarity, accuracy, and practical insight.
+
+Rules:
+1. Only use the provided notebook context, code, output, and user question.
+2. Explain the cell in direct, concrete language.
+3. When useful, connect the code to the pipeline stage and the data flowing through it.
+4. If the user asks for debugging help, identify the likely cause from the provided context.
+5. Do not invent variables, files, outputs, or results that are not present in the context.
+6. Keep answers readable in a chat panel: short paragraphs, concise bullets when needed.
+7. If the output is missing or empty, say that clearly and explain the code itself.
+8. Respond as a high-end AI assistant, not as a generic tutorial bot.
+"""
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
@@ -688,9 +702,56 @@ class NarratorRequest(BaseModel):
     fallback_context: str = ""
 
 
+class NotebookCellChatRequest(BaseModel):
+    question: str
+    chapter_title: str = ""
+    cell_title: str = ""
+    explainer_title: str = ""
+    explainer_body: str = ""
+    code: str = ""
+    output: str = ""
+    errors: str = ""
+    messages: list[dict[str, str]] = Field(default_factory=list)
+
+
 def make_sse_event(event: str, data: dict | str) -> str:
     payload = data if isinstance(data, str) else json.dumps(data, ensure_ascii=False)
     return f"event: {event}\ndata: {payload}\n\n"
+
+
+def build_notebook_cell_prompt(request: NotebookCellChatRequest) -> str:
+    history_lines = []
+    for message in request.messages[-8:]:
+        role = str(message.get("role") or "user").upper()
+        content = str(message.get("content") or "").strip()
+        if content:
+            history_lines.append(f"{role}: {content}")
+
+    history_block = "\n".join(history_lines) if history_lines else "No previous conversation."
+    output_block = request.output.strip() or "No cell output captured yet."
+    error_block = request.errors.strip() or "No error output."
+
+    return f"""Notebook Chapter: {request.chapter_title or 'Unknown chapter'}
+Cell Title: {request.cell_title or 'Unknown cell'}
+Cell Explainer: {request.explainer_title or 'No explainer title'}
+Explainer Details: {request.explainer_body or 'No explainer body'}
+
+Code:
+{request.code or 'No code provided.'}
+
+Captured Output:
+{output_block}
+
+Captured Errors:
+{error_block}
+
+Conversation So Far:
+{history_block}
+
+User Question:
+{request.question}
+
+Answer the question about this exact notebook cell. If the question is broad, prioritize explaining what the code is doing, why it exists in this stage, and how to interpret the output or failure."""
 
 
 async def generate_narrator_stream(request: NarratorRequest):
@@ -761,6 +822,61 @@ async def generate_narrator_stream(request: NarratorRequest):
         yield make_sse_event("error", {"message": str(e), "provider": NARRATOR_PROVIDER})
 
 
+async def generate_notebook_cell_chat_stream(request: NotebookCellChatRequest):
+    api_key = os.environ.get("GROQ_API_KEY", "")
+    if not api_key:
+        yield make_sse_event("error", {"message": "GROQ_API_KEY not configured", "provider": NARRATOR_PROVIDER})
+        return
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": GROQ_MODEL,
+        "messages": [
+            {"role": "system", "content": NOTEBOOK_CELL_SYSTEM_PROMPT},
+            {"role": "user", "content": build_notebook_cell_prompt(request)},
+        ],
+        "stream": True,
+        "max_tokens": 700,
+        "temperature": 0.35,
+    }
+
+    try:
+        yield make_sse_event("start", {"provider": NARRATOR_PROVIDER, "model": GROQ_MODEL})
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            async with client.stream("POST", GROQ_API_URL, json=payload, headers=headers) as response:
+                if response.status_code != 200:
+                    error_text = await response.text()
+                    yield make_sse_event(
+                        "error",
+                        {
+                            "message": f"AI API error: {response.status_code}",
+                            "provider": NARRATOR_PROVIDER,
+                            "details": error_text[:500],
+                        },
+                    )
+                    return
+
+                async for line in response.aiter_lines():
+                    if not line.startswith("data: "):
+                        continue
+                    data_str = line[6:]
+                    if data_str == "[DONE]":
+                        yield make_sse_event("end", {"provider": NARRATOR_PROVIDER, "model": GROQ_MODEL})
+                        break
+                    try:
+                        chunk = json.loads(data_str)
+                    except json.JSONDecodeError:
+                        continue
+                    content = chunk.get("choices", [{}])[0].get("delta", {}).get("content", "")
+                    if content:
+                        yield make_sse_event("token", {"text": content})
+    except Exception as e:
+        yield make_sse_event("error", {"message": str(e), "provider": NARRATOR_PROVIDER})
+
+
 @app.post("/api/narrate")
 async def narrator_stream(request: NarratorRequest):
     return StreamingResponse(
@@ -771,6 +887,19 @@ async def narrator_stream(request: NarratorRequest):
             "Connection": "keep-alive",
             "X-Accel-Buffering": "no",
         }
+    )
+
+
+@app.post("/api/notebook/cell-chat")
+async def notebook_cell_chat_stream(request: NotebookCellChatRequest):
+    return StreamingResponse(
+        generate_notebook_cell_chat_stream(request),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache, no-transform",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
     )
 
 

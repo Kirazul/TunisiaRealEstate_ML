@@ -1,10 +1,12 @@
 const tabs = Array.from(document.querySelectorAll('.book-tab'));
 const editors = [];
 const charts = [];
+const NOTEBOOK_CELL_CHAT_API = '/api/notebook/cell-chat';
 const chapterCards = Array.from(document.querySelectorAll('#code-tab-view .chapter-card'));
 const workflowStages = Array.from(document.querySelectorAll('.workflow-stage'));
 const sourceEditors = [];
 const executedCellIndexes = new Set();
+const cellAssistantState = new Map();
 let dashboardLoaded = false;
 
 const CELL_DEPENDENCIES = {
@@ -768,6 +770,277 @@ function initEditors() {
     });
 }
 
+function createCellAIButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn-cell-ai';
+    button.innerHTML = '<span>Ask AI</span>';
+    return button;
+}
+
+function createCellAIShell(index) {
+    const shell = document.createElement('div');
+    shell.className = 'cell-ai-shell hidden';
+    shell.innerHTML = `
+        <div class="cell-ai-head">
+            <div>
+                <div class="cell-ai-kicker">Cell Copilot</div>
+                <h4 class="cell-ai-title">Ask about this cell</h4>
+                <div class="cell-ai-subtitle">Get a streamed explanation of the code, output, failure, or stage logic for Cell ${index + 1}.</div>
+            </div>
+            <div class="cell-ai-meta">
+                <div class="cell-ai-status">Ready</div>
+                <div class="cell-ai-model">Model · waiting</div>
+            </div>
+        </div>
+        <div class="cell-ai-prompts">
+            <button type="button" class="cell-ai-prompt" data-question="Explain what this cell does simply.">Explain simply</button>
+            <button type="button" class="cell-ai-prompt" data-question="Why is this cell needed in this pipeline stage?">Why this cell?</button>
+            <button type="button" class="cell-ai-prompt" data-question="Interpret the output of this cell for me.">Interpret output</button>
+            <button type="button" class="cell-ai-prompt" data-question="If this cell fails, what is the most likely cause?">Debug this cell</button>
+        </div>
+        <div class="cell-ai-messages"></div>
+        <div class="cell-ai-empty">Ask anything about this exact cell: what it does, why it exists, how to read the output, or how to fix the error.</div>
+        <div class="cell-ai-composer">
+            <textarea class="cell-ai-input" placeholder="Ask Groq to explain, debug, or interpret this cell..."></textarea>
+            <button type="button" class="cell-ai-send">Send</button>
+        </div>
+    `;
+    return shell;
+}
+
+function getCellContext(cell, index, question, history) {
+    const chapter = cell.closest('.chapter-card');
+    const explainer = cell.previousElementSibling && cell.previousElementSibling.classList.contains('cell-explainer')
+        ? cell.previousElementSibling
+        : null;
+    const output = cell.querySelector('.output');
+    const outputText = output ? output.innerText.trim() : '';
+    const errorText = output ? Array.from(output.querySelectorAll('.output-error')).map((node) => node.textContent.trim()).join('\n\n') : '';
+
+    return {
+        question,
+        chapter_title: chapter?.querySelector('h2')?.textContent?.trim() || '',
+        cell_title: cell.querySelector('.cell-title')?.textContent?.trim() || `Cell ${index + 1}`,
+        explainer_title: explainer?.querySelector('h3')?.textContent?.trim() || '',
+        explainer_body: explainer?.querySelector('p')?.textContent?.trim() || '',
+        code: editors[index] ? editors[index].getValue() : '',
+        output: outputText,
+        errors: errorText,
+        messages: history,
+    };
+}
+
+function parseNotebookSSEFrame(frame) {
+    const lines = String(frame || '').split('\n');
+    let event = 'message';
+    const dataLines = [];
+
+    for (const rawLine of lines) {
+        const line = rawLine.trimEnd();
+        if (!line || line.startsWith(':')) continue;
+        if (line.startsWith('event:')) {
+            event = line.slice(6).trim();
+            continue;
+        }
+        if (line.startsWith('data:')) {
+            dataLines.push(line.slice(5).trimStart());
+        }
+    }
+
+    if (!dataLines.length) return null;
+    const rawData = dataLines.join('\n');
+    try {
+        return { event, data: JSON.parse(rawData) };
+    } catch {
+        return { event, data: { text: rawData } };
+    }
+}
+
+function renderCellAIMessages(state) {
+    const messagesHost = state.shell.querySelector('.cell-ai-messages');
+    const emptyState = state.shell.querySelector('.cell-ai-empty');
+    messagesHost.innerHTML = '';
+
+    if (!state.messages.length) {
+        emptyState.style.display = 'block';
+        return;
+    }
+    emptyState.style.display = 'none';
+
+    state.messages.forEach((message) => {
+        const card = document.createElement('div');
+        card.className = `cell-ai-message ${message.role}`;
+        card.innerHTML = `
+            <div class="cell-ai-message-head">
+                <span class="cell-ai-role">${message.role === 'assistant' ? 'Groq Copilot' : 'You'}</span>
+            </div>
+            <div class="cell-ai-message-body"></div>
+        `;
+        card.querySelector('.cell-ai-message-body').textContent = message.content;
+        messagesHost.appendChild(card);
+    });
+    messagesHost.scrollTop = messagesHost.scrollHeight;
+}
+
+function updateCellAIStatus(state, text, statusClass = '') {
+    const status = state.shell.querySelector('.cell-ai-status');
+    status.textContent = text;
+    status.classList.remove('live', 'error');
+    if (statusClass) status.classList.add(statusClass);
+}
+
+function updateCellAIModel(state, text) {
+    state.shell.querySelector('.cell-ai-model').textContent = text;
+}
+
+async function askCellAI(index, question) {
+    const state = cellAssistantState.get(index);
+    if (!state || state.streaming) return;
+
+    const trimmed = String(question || '').trim();
+    if (!trimmed) return;
+
+    state.streaming = true;
+    state.sendBtn.disabled = true;
+    state.input.disabled = true;
+    state.promptButtons.forEach((btn) => { btn.disabled = true; });
+    updateCellAIStatus(state, 'Streaming answer...', 'live');
+    updateCellAIModel(state, 'Model · connecting');
+
+    const history = state.messages.map(({ role, content }) => ({ role, content }));
+    state.messages.push({ role: 'user', content: trimmed });
+    const assistantMessage = { role: 'assistant', content: '' };
+    state.messages.push(assistantMessage);
+    renderCellAIMessages(state);
+    state.input.value = '';
+
+    const payload = getCellContext(state.cell, index, trimmed, history);
+    const controller = new AbortController();
+    state.controller = controller;
+
+    try {
+        const response = await fetch(NOTEBOOK_CELL_CHAT_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let pending = '';
+        let streamEnded = false;
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            pending += decoder.decode(value, { stream: true });
+            const frames = pending.split('\n\n');
+            pending = frames.pop() || '';
+
+            for (const frame of frames) {
+                const event = parseNotebookSSEFrame(frame);
+                if (!event) continue;
+                if (event.event === 'start') {
+                    updateCellAIModel(state, `Model · ${(event.data?.provider || 'ai').toUpperCase()} / ${event.data?.model || 'unknown'}`);
+                    continue;
+                }
+                if (event.event === 'token') {
+                    assistantMessage.content += String(event.data?.text || '');
+                    renderCellAIMessages(state);
+                    continue;
+                }
+                if (event.event === 'error') {
+                    throw new Error(event.data?.message || 'Cell AI stream failed');
+                }
+                if (event.event === 'end') {
+                    streamEnded = true;
+                    updateCellAIModel(state, `Model · ${(event.data?.provider || 'ai').toUpperCase()} / ${event.data?.model || 'unknown'}`);
+                }
+            }
+        }
+
+        if (!streamEnded && pending.trim()) {
+            const trailing = parseNotebookSSEFrame(pending);
+            if (trailing?.event === 'token') {
+                assistantMessage.content += String(trailing.data?.text || '');
+            }
+        }
+
+        if (!assistantMessage.content.trim()) {
+            throw new Error('No explanation was returned');
+        }
+        renderCellAIMessages(state);
+        updateCellAIStatus(state, 'Live explanation ready', 'live');
+    } catch (error) {
+        if (error.name === 'AbortError') return;
+        assistantMessage.content = `AI explanation unavailable right now. ${error.message}`;
+        renderCellAIMessages(state);
+        updateCellAIStatus(state, 'Stream unavailable', 'error');
+        updateCellAIModel(state, 'Model · unavailable');
+    } finally {
+        state.streaming = false;
+        state.controller = null;
+        state.sendBtn.disabled = false;
+        state.input.disabled = false;
+        state.promptButtons.forEach((btn) => { btn.disabled = false; });
+    }
+}
+
+function initCellAssistants() {
+    document.querySelectorAll('.cell').forEach((cell, index) => {
+        const header = cell.querySelector('.cell-header');
+        if (!header) return;
+
+        const actions = document.createElement('div');
+        actions.className = 'cell-header-actions';
+        const runBtn = header.querySelector('.btn-run');
+        const aiBtn = createCellAIButton();
+        if (runBtn) runBtn.replaceWith(actions);
+        if (runBtn) actions.appendChild(runBtn);
+        actions.appendChild(aiBtn);
+        header.appendChild(actions);
+
+        const shell = createCellAIShell(index);
+        cell.appendChild(shell);
+
+        const state = {
+            cell,
+            shell,
+            button: aiBtn,
+            messages: [],
+            input: shell.querySelector('.cell-ai-input'),
+            sendBtn: shell.querySelector('.cell-ai-send'),
+            promptButtons: Array.from(shell.querySelectorAll('.cell-ai-prompt')),
+            streaming: false,
+            controller: null,
+        };
+        cellAssistantState.set(index, state);
+
+        aiBtn.addEventListener('click', () => {
+            const isHidden = shell.classList.contains('hidden');
+            shell.classList.toggle('hidden');
+            aiBtn.classList.toggle('active', isHidden);
+            if (isHidden) state.input.focus();
+        });
+
+        state.sendBtn.addEventListener('click', () => askCellAI(index, state.input.value));
+        state.input.addEventListener('keydown', (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+                event.preventDefault();
+                askCellAI(index, state.input.value);
+            }
+        });
+        state.promptButtons.forEach((btn) => {
+            btn.addEventListener('click', () => askCellAI(index, btn.dataset.question || 'Explain this cell.'));
+        });
+    });
+}
+
 function runCell(button) {
     const cell = button.closest('.cell');
     const allCells = Array.from(document.querySelectorAll('.cell'));
@@ -826,6 +1099,7 @@ window.runCell = runCell;
 window.openRawNotebook = openRawNotebook;
 
 initEditors();
+initCellAssistants();
 loadStoryAndDashboard();
 loadSources();
 setSceneStatus('Ready to run');
