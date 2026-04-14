@@ -104,6 +104,7 @@ GEO_DIR = PROJECT_ROOT / "geo"
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
 PRESENTATION_DIR = PROJECT_ROOT / "Presentation"
+RAPPORT_DIR = PROJECT_ROOT / "rapport"
 
 MODEL_PATH = ARTIFACTS_DIR / "08_best_model.joblib"
 TRAINING_REPORT_PATH = DATA_DIR / "08_model_training" / "08_model_training_report.json"
@@ -424,6 +425,16 @@ async def notebook():
 @app.get("/presentation")
 async def presentation():
     return no_cache_file_response(FRONTEND_DIR / "presentation.html")
+
+
+@app.get("/rapport")
+async def rapport_viewer():
+    return no_cache_file_response(FRONTEND_DIR / "rapport.html")
+
+
+@app.get("/rapport/pdf")
+async def rapport_pdf():
+    return no_cache_file_response(RAPPORT_DIR / "Rapport.pdf")
 
 
 @app.get("/Presentation/TunisiaRealEstate_ML_Presentation.pptx")

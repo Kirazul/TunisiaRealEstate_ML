@@ -1,0 +1,956 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{float}
+
+\definecolor{BrandRed}{HTML}{C1121F}
+\definecolor{BrandRedDark}{HTML}{7F1D1D}
+\definecolor{BrandRedSoft}{HTML}{FEE2E2}
+\definecolor{Ink}{HTML}{111827}
+\definecolor{Slate}{HTML}{475569}
+\definecolor{Line}{HTML}{E5E7EB}
+\definecolor{Panel}{HTML}{F8FAFC}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BrandRedDark,
+  urlcolor=BrandRed,
+  citecolor=BrandRedDark,
+  pdftitle={Tunisia Real Estate AI - Final Report},
+  pdfauthor={OpenCode x Kira},
+  pdfsubject={End-to-end machine learning project report},
+  pdfkeywords={Tunisia, real estate, machine learning, geospatial, FastAPI, Groq}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{BrandRedDark}{\textbf{Tunisia Real Estate AI}}}
+\fancyhead[R]{\textcolor{Slate}{Final Report}}
+\fancyfoot[C]{\textcolor{Slate}{\thepage}}
+\setlength{\headheight}{14pt}
+
+\titleformat{\section}{\Large\bfseries\color{BrandRedDark}}{\thesection}{0.75em}{}
+\titleformat{\subsection}{\large\bfseries\color{Ink}}{\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{BrandRedDark}}{\thesubsubsection}{0.75em}{}
+
+\setlist[itemize]{itemsep=0.35em, topsep=0.45em}
+\setlist[enumerate]{itemsep=0.35em, topsep=0.45em}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\highlight}[1]{\textcolor{BrandRedDark}{\textbf{#1}}}
+\newcommand{\metric}[2]{\textbf{#1}: #2}
+
+\begin{document}
+
+\begin{titlepage}
+\color{Ink}
+\centering
+\vspace*{0.7cm}
+
+\colorbox{BrandRedDark}{\parbox{0.94\textwidth}{\centering\color{white}\vspace{0.35cm}{\large\bfseries WORLD-CLASS FINAL REPORT}\vspace{0.35cm}}}
+
+\vspace{1.0cm}
+
+{\fontsize{30}{34}\selectfont\bfseries\textcolor{BrandRedDark}{Tunisia Real Estate AI} \par}
+\vspace{0.2cm}
+{\LARGE\bfseries Final Technical Report \par}
+\vspace{0.45cm}
+{\large End-to-end machine learning pipeline, geospatial pricing system, interactive atlas, and AI-assisted technical workflow for Tunisia real estate intelligence \par}
+
+\vspace{0.9cm}
+
+\fcolorbox{BrandRedDark}{BrandRedSoft}{
+\parbox{0.92\textwidth}{
+\vspace{0.45cm}
+\centering
+{\Large\bfseries Project Scope}\par
+\vspace{0.25cm}
+This report documents the complete \code{RealEstate\_V2} system from raw dataset discovery to production-facing APIs, nationwide delegation coverage, model training, AI narration, notebook copilot assistance, and deployment-ready frontend exports.
+\vspace{0.45cm}
+}}
+
+\vspace{0.9cm}
+
+\rowcolors{2}{white}{Panel}
+\begin{tabular}{>{\bfseries}p{0.3\textwidth}p{0.56\textwidth}}
+\rowcolor{BrandRedSoft}
+Project & Tunisia Real Estate Price Prediction System \\
+Repository structure & Pipeline + FastAPI + Interactive Atlas + Notebook UI \\
+Primary task & Predict property prices with full delegation-level geographic reach \\
+Best model & Gradient Boosting Regressor \\
+Final feature count & 10 model features in 3 groups \\
+Coverage objective & 264 / 264 delegations across Tunisia \\
+Deployment style & Production API with frontend and AI-enhanced notebook experience \\
+\end{tabular}
+
+\vfill
+
+\fcolorbox{BrandRedDark}{white}{
+\parbox{0.86\textwidth}{
+\centering
+\vspace{0.3cm}
+{\large\bfseries\textcolor{BrandRedDark}{Realised by}}\par
+\vspace{0.35cm}
+{\large Mohamed Aziz Mansour \quad $\bullet$ \quad Rimel Zouari \quad $\bullet$ \quad Mohamed Ncib\par}
+\vspace{0.3cm}
+}}
+
+\vspace{0.7cm}
+
+{\large\textcolor{BrandRedDark}{Prepared from the implemented codebase, generated reports, notebook chapters, and deployed interface artifacts}}\par
+\vspace{0.18cm}
+{\large \today \par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+This project builds a full machine learning system for Tunisian real estate pricing. The final platform does not stop at model training: it integrates structured data engineering, geographic normalization, model evaluation, fallback coverage logic, deployment APIs, a visual atlas, a chapter-based notebook interface, and Groq-powered AI assistance.
+
+The core business problem is geographic heterogeneity. A property of the same size can vary significantly in value between Tunis, Ariana, Nabeul, Sousse, Sfax, or lower-density interior governorates. A direct regression model trained only on high-density delegations would leave large parts of the country unsupported. The implemented system addresses this through a hybrid strategy: direct model support where training data is strong, and hierarchical fallback benchmarks where local evidence is limited.
+
+The final production model is a \highlight{Gradient Boosting Regressor} trained on \highlight{13,651 modeling rows} after final outlier filtering. It reaches a \highlight{test $R^2$ of 0.8868}, a \highlight{cross-validation $R^2$ of 0.9279 $\pm$ 0.0039}, and a \highlight{test MAE of 70,949.98 TND}. Most importantly, the prediction and atlas logic reach \highlight{100\% national delegation coverage} across \highlight{264 delegations}.
+
+The system is also notable for its presentation layer. The frontend atlas exposes direct versus fallback support, model metrics, benchmark-driven scenario pricing, and a Groq-based AI narrator. The notebook companion provides runnable cells, project diagnostics, and a per-cell Groq copilot that can explain code, outputs, and errors with full contextual grounding.
+
+\section{Problem Statement and Objectives}
+
+\subsection{Why the Problem Matters}
+
+Real estate valuation is deeply spatial. In Tunisia, prices depend not only on intrinsic variables such as surface area and room count, but also on governorate, delegation, neighborhood structure, market depth, and the amount of historical evidence available in a given area. This creates several practical challenges:
+
+\begin{itemize}
+\item the same property profile can have radically different prices depending on location,
+\item raw listing data arrives from heterogeneous sources with inconsistent schema and quality,
+\item locality names are noisy, multilingual, and often misspelled,
+\item many zones do not have strong direct training support,
+\item a user-facing system must still offer coherent estimates across all delegations.
+\end{itemize}
+
+\subsection{Project Objectives}
+
+The project therefore had five concrete objectives:
+
+\begin{enumerate}
+\item build a reliable multi-stage data pipeline from raw property listings to model-ready data,
+\item normalize location names against official Tunisia geography,
+\item train a strong regression model while preserving interpretability of coverage and support,
+\item provide complete atlas-level coverage through fallback benchmarks,
+\item expose the result through a production-style API and polished frontend interfaces.
+\end{enumerate}
+
+\section{System Architecture}
+
+The implemented solution is organized around three tightly connected layers:
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.22\textwidth}X}
+\toprule
+Layer & Description \\
+\midrule
+Data Pipeline & Eight sequential stages transform raw listings into cleaned, merged, geo-aligned, feature-engineered, and model-ready artifacts. \\
+Prediction API & FastAPI serves prediction requests, model summaries, delegation coverage, notebook execution, source rendering, and Groq-backed AI endpoints. \\
+Geographic Atlas and Notebook UI & The frontend includes an atlas for market exploration and a notebook companion for chapter-by-chapter technical walkthrough. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The architecture is artifact-centered rather than purely code-centered. Each pipeline stage writes files under \code{data/processed/}, and those files are then reused by the model, the API, the atlas, and the notebook dashboard. This design keeps the project consistent across training and serving.
+
+\subsection{Primary Components}
+
+\begin{itemize}
+\item \code{pipeline/}: numbered Python stages from discovery to model training,
+\item \code{data/processed/}: reports and generated datasets per stage,
+\item \code{artifacts/08\_best\_model.joblib}: deployed trained model,
+\item \code{api/app.py}: serving layer and AI endpoints,
+\item \code{frontend/index.html}: atlas interface,
+\item \code{frontend/notebook.html}: workflow notebook UI,
+\item \code{frontend/model\_summary.json}: frontend metrics snapshot.
+\end{itemize}
+
+\section{Data Sources and Geographic Reference}
+
+\subsection{Raw Property Sources}
+
+The system uses three listing datasets located in \code{data/raw/}:
+
+\begin{itemize}
+\item \code{tunisia-real-estate.csv}: the largest source and the only one with strong land coverage,
+\item \code{Property Prices in Tunisia.csv}: a secondary source with strong apartment and house signal,
+\item \code{data\_prices\_cleaned.csv}: a pre-cleaned subset with useful high-density zone coverage.
+\end{itemize}
+
+These datasets use different schemas, naming conventions, and quality profiles. The pipeline standardizes them into a unified representation before merging.
+
+\subsection{Discovery Snapshot of the Raw Sources}
+
+The three input files are not equivalent. Stage 1 reveals major differences in row count, schema width, duplicates, and missingness.
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabularx}{\textwidth}{lrrrrr}
+\toprule
+Dataset & Rows & Columns & Exact duplicates & Price missing & Surface missing \\
+\midrule
+tunisia\_real\_estate & 25,317 & 8 & 0 & 0 & 0 \\
+property\_prices\_in\_tunisia & 12,748 & 9 & 1,613 & 0 & 0 \\
+data\_prices\_cleaned & 8,336 & 17 & 0 & 14 & 1,584 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Additional discovery observations are important for understanding later cleaning choices:
+
+\begin{itemize}
+\item \code{tunisia\_real\_estate} has the largest raw footprint and includes strong land representation, but some room and bathroom values are naturally sparse for land listings.
+\item \code{property\_prices\_in\_tunisia} contains a significant duplicate burden and many non-positive surface values at discovery time, indicating the need for aggressive filtering.
+\item \code{data\_prices\_cleaned} is structurally richer, but it contains meaningful missingness in price and especially surface area, which makes quality control essential before merge.
+\end{itemize}
+
+The discovery stage therefore does more than summarize data. It tells the engineering team where reliability is high, where cleaning effort must be concentrated, and which source-specific assumptions are safe.
+
+\subsection{Geographic Reference Assets}
+
+The project also relies on official or semi-official geographic reference files under \code{geo/}, including delegation boundaries and administrative naming resources. These files are essential for:
+
+\begin{itemize}
+\item canonical governorate and delegation naming,
+\item centroid extraction for coordinates,
+\item atlas rendering,
+\item delegation-level support and fallback coverage exports.
+\end{itemize}
+
+\section{Pipeline Methodology}
+
+The complete workflow is implemented as eight sequential stages. The notebook companion mirrors the same stages with explicit chapter boundaries and runnable cells.
+
+\subsection{Stage 1: Dataset Discovery}
+
+Stage 1 profiles the three raw datasets to understand schema, counts, missingness, and detection of core fields such as price, surface, location, and property type. This stage establishes the data quality baseline and reveals heterogeneity across sources.
+
+The discovery stage matters because every downstream assumption depends on what was observed here. If one dataset stores price as text with currency suffixes while another stores it numerically, that difference has to be normalized before any meaningful merge or model training can happen.
+
+\subsection{Stage 2: Dataset Cleaning}
+
+Stage 2 standardizes text, strips noise, repairs encoding corruption, coerces numeric fields, filters obviously invalid rows, and prepares the datasets for merge-readiness. This is the stage where the project converts raw listings into structured rows that can participate in a common pipeline.
+
+The cleaning logic is especially important because this project uses mixed sources. Without aggressive normalization, the downstream merge and alignment stages would amplify noise rather than reduce it.
+
+\subsubsection{Cleaning Results and Merge Readiness}
+
+By the end of Stage 2, the datasets are reduced to merge-ready subsets with all critical issue counts driven to zero.
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lrrrr}
+\toprule
+Dataset & Clean rows & Duplicate rows & Invalid family rows & Missing core fields \\
+\midrule
+tunisia\_real\_estate & 9,166 & 0 & 0 & 0 \\
+property\_prices\_in\_tunisia & 2,920 & 0 & 0 & 0 \\
+data\_prices\_cleaned & 1,745 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is a strong indicator of pipeline quality. It means Stage 3 can assume a stable unified schema instead of repeatedly defending itself against missing or malformed rows.
+
+\subsubsection{What Cleaning Removed in Practice}
+
+The drop from raw to clean rows is not accidental. It reflects a deliberate set of quality rules:
+
+\begin{itemize}
+\item removal of duplicate listings,
+\item elimination of invalid surface values,
+\item normalization of property family labels,
+\item filtering of rows missing required fields for later geospatial and modeling steps,
+\item text normalization across governorate, delegation, city, and location fields.
+\end{itemize}
+
+This decision is important from a modeling perspective. A smaller but trustworthy dataset is far more useful than a larger noisy dataset when target encodings, fallback support, and geographic benchmarks are all downstream consumers of the same records.
+
+\subsection{Stage 3: Merge Preparation}
+
+Stage 3 unifies the cleaned datasets into one training corpus with consistent columns and source priority. The generated merge report shows:
+
+\begin{itemize}
+\item input rows: 13,722,
+\item rows removed as cross-source duplicates: 3,
+\item final merged rows: 13,719.
+\end{itemize}
+
+The source distribution after merge is shown below.
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lrr}
+\toprule
+Source & Rows & Share \\
+\midrule
+tunisia\_real\_estate & 9,038 & 65.88\% \\
+property\_prices\_in\_tunisia & 2,920 & 21.29\% \\
+data\_prices\_cleaned & 1,761 & 12.83\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The small number of cross-source duplicates is a good signal: it means the merge stage preserved most rows while still performing useful de-duplication.
+
+\subsubsection{Why Merge Preparation Is Its Own Stage}
+
+Separating merge preparation from cleaning is a good architectural decision. Cleaning solves source-local issues, while merge preparation solves cross-source issues. This distinction improves maintainability because:
+
+\begin{itemize}
+\item source-specific transformations remain localized,
+\item merge-time logic can focus on schema unification and source priority,
+\item duplicate handling across sources can be inspected independently,
+\item stage reports remain interpretable instead of mixing unrelated concerns.
+\end{itemize}
+
+\subsection{Stage 4: Geographic Name Alignment}
+
+Stage 4 maps listing geography to canonical Tunisia governorate and delegation names. This stage is one of the most important in the entire pipeline because geography is the strongest signal in the final model.
+
+The alignment report gives the following breakdown:
+
+\begin{itemize}
+\item canonical delegations in reference geography: 264,
+\item dataset rows entering alignment: 13,788,
+\item matched rows: 13,756,
+\item unmatched rows: 32,
+\item unique covered delegations in the dataset: 181.
+\end{itemize}
+
+Matching happened through several strategies:
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lr}
+\toprule
+Match status & Rows \\
+\midrule
+exact\_delegation & 7,947 \\
+manual\_override & 4,684 \\
+exact\_locality & 995 \\
+fuzzy\_delegation & 92 \\
+substring\_locality & 38 \\
+unmatched & 32 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This stage demonstrates a practical engineering mindset: the project does not rely on one matching strategy. Instead, it layers exact matching, fuzzy matching, locality clues, and manual overrides to maximize geographic resolution while preserving correctness.
+
+\subsubsection{Examples of Geographic Difficulty}
+
+The unmatched list shows why this stage is non-trivial. Remaining unresolved cases include values like \code{Ezzouhour (tunis)}, \code{Le Kef Ouest}, \code{Jendouba}, \code{Essijoumi}, and \code{Bir El Hafey}. These examples reflect a mix of alternate administrative naming, locality/delegation ambiguity, and spelling variants.
+
+In practice, this confirms that geographic alignment is not merely string cleaning. It is a semantic normalization problem that requires domain-aware aliasing and structured fallback logic.
+
+\subsection{Stage 5: Training Dataset Preparation}
+
+Stage 5 converts the aligned dataset into the training-ready table used for model construction. It filters rows with valid core fields and creates derived price fields such as:
+
+\begin{itemize}
+\item \code{price\_per\_m2},
+\item \code{log\_price\_tnd},
+\item \code{log\_price\_per\_m2}.
+\end{itemize}
+
+The resulting training dataset contains:
+
+\begin{itemize}
+\item rows: 13,788,
+\item governorates: 24,
+\item delegations: 181,
+\item normalized localities: 293.
+\end{itemize}
+
+Property family distribution in the final Stage 5 dataset:
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lr}
+\toprule
+Property family & Rows \\
+\midrule
+apartment & 5,459 \\
+house & 4,944 \\
+land & 3,385 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Observed price range:
+
+\begin{itemize}
+\item minimum: 8,400 TND,
+\item median: 318,000 TND,
+\item maximum: 15,600,000 TND.
+\end{itemize}
+
+\subsubsection{Why Log Transformations Matter}
+
+The project computes both \code{log\_price\_tnd} and \code{log\_price\_per\_m2}. This is an important modeling choice because real estate prices usually exhibit a long-tailed distribution. A small number of expensive listings can dominate the scale if the target is left in raw form.
+
+Using log-space has two concrete benefits:
+
+\begin{itemize}
+\item it reduces the skew of the target distribution,
+\item it helps tree-based models learn smoother price relationships across very different market segments.
+\end{itemize}
+
+The notebook visualizations confirm this logic by explicitly comparing raw price distribution against log-price distribution.
+
+\subsection{Stage 6: Feature Engineering}
+
+Stage 6 writes the base engineered dataset and attaches canonical geographic coordinates. After the recent synchronization fixes, Stage 6 is intentionally limited to the features that truly belong to this stage:
+
+\begin{itemize}
+\item \code{surface\_m2},
+\item \code{rooms},
+\item \code{lon},
+\item \code{lat}.
+\end{itemize}
+
+The project originally had a coordinate coverage issue caused by mismatch between canonical delegation names and raw GeoJSON naming. That problem was fixed by aligning coordinate generation with canonical delegation keys. The final Stage 6 report confirms:
+
+\begin{itemize}
+\item rows with geo delegation: 13,756,
+\item rows with coordinates: 13,756,
+\item rows missing coordinates despite geo match: 0,
+\item remaining missing coordinates: 32, corresponding to truly unmatched geography rows.
+\end{itemize}
+
+This fix is important because the atlas and model both depend on accurate geographic coordinate attribution.
+
+\subsubsection{Stage 6 Design Principle}
+
+The final version of the project deliberately keeps Stage 6 narrow in scope. It writes only the base engineered dataset and does not pretend to include split-dependent features that only become valid during model training.
+
+This separation is a strong engineering improvement because it avoids a common reporting mistake: claiming that the feature-engineered dataset already contains target encodings when in reality those encodings must be created after the train/test split.
+
+\subsection{Stage 7: Visual Check}
+
+Stage 7 performs a diagnostic quality pass on the training dataset. It summarizes each source contribution after the structured pipeline has already standardized and aligned the data.
+
+Examples from the visual check report:
+
+\begin{itemize}
+\item \code{tunisia\_real\_estate}: 9,166 rows, 24 governorates, 159 delegations,
+\item \code{property\_prices\_in\_tunisia}: 2,906 rows, 23 governorates, 145 delegations,
+\item \code{data\_prices\_cleaned}: 1,716 rows, 18 governorates, 91 delegations.
+\end{itemize}
+
+This stage is not model training. It is a quality assurance checkpoint designed to catch imbalances or suspicious source behavior before fitting the final estimator.
+
+\subsubsection{Why This Stage Matters}
+
+Many pipelines skip this kind of intermediate validation and move directly from feature engineering to model training. This project does not. That is valuable because visual QA provides a human-readable sanity layer between technical transformation and statistical fitting. It helps answer practical questions such as:
+
+\begin{itemize}
+\item Which source dominates a given delegation?
+\item Are median prices consistent with expectations?
+\item Is a given source over-concentrated in a small number of coastal zones?
+\item Are property family distributions plausible after cleaning and merge? 
+\end{itemize}
+
+\subsection{Stage 8: Model Training}
+
+Stage 8 introduces the final split-dependent features and trains the actual regressors. The final feature groups are:
+
+\begin{itemize}
+\item base numeric: \code{surface\_m2}, \code{rooms}, \code{lon}, \code{lat},
+\item split-dependent numeric: \code{geo\_delegation\_target\_enc}, \code{geo\_governorate\_target\_enc}, \code{price\_vs\_local\_median},
+\item categorical: \code{property\_family}, \code{geo\_governorate}, \code{geo\_delegation}.
+\end{itemize}
+
+The project compares at least two models:
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lrr}
+\toprule
+Model & Test $R^2$ & Test MAE (TND) \\
+\midrule
+GradientBoosting & 0.8868 & 70,949.98 \\
+RandomForest & 0.8560 & 76,495.28 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The winning model is therefore \highlight{GradientBoosting}. This final stage also writes the model artifact, holdout predictions, plots, coverage exports, and frontend summary assets.
+
+\subsubsection{Why Gradient Boosting Won}
+
+The final comparison suggests that Gradient Boosting captures the relationship between structural and geographic features more effectively than the Random Forest baseline in this project. A likely reason is that the final feature space includes a mixture of:
+
+\begin{itemize}
+\item smooth numeric variables,
+\item split-dependent encoded geographic priors,
+\item categorical identity features,
+\item fallback-sensitive geographic context.
+\end{itemize}
+
+Gradient Boosting often performs particularly well in this kind of structured tabular setting where a relatively compact feature set contains strong, non-linear interactions.
+
+\section{Fallback Coverage Strategy}
+
+One of the strongest design choices in the project is the separation between \highlight{model quality} and \highlight{national usability}. Even with a strong model, some delegations do not have enough direct support to justify a purely local estimate. The project addresses this using hierarchical fallback tiers.
+
+The final production summary reports:
+
+\begin{itemize}
+\item total delegations: 264,
+\item covered delegations: 264,
+\item delegations with direct support: 103,
+\item direct coverage: 39.02\%,
+\item fallback coverage: 60.98\%,
+\item atlas reach: 100\%.
+\end{itemize}
+
+Tier percentages:
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabular}{lr}
+\toprule
+Coverage tier & Share \\
+\midrule
+exact\_sector & 19.70\% \\
+governorate\_fallback & 61.74\% \\
+national\_fallback & 18.56\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This architecture gives the system a practical advantage over many purely local regressors: it can still produce a coherent market benchmark everywhere, while transparently distinguishing zones with direct evidence from zones using broader fallback support.
+
+\subsection{Operational Interpretation of Coverage}
+
+Coverage is not just a reporting metric. It affects how the atlas should be interpreted by end users:
+
+\begin{itemize}
+\item direct support means the selected area is backed by strong local evidence,
+\item fallback support means the estimate is still usable but is more benchmark-driven,
+\item national fallback should be interpreted as a broad market proxy rather than a precise local estimate.
+\end{itemize}
+
+This explicit separation improves trust because the system does not present all predictions with equal implied certainty.
+
+\section{Model Performance and Interpretation}
+
+\subsection{Core Metrics}
+
+Final production metrics from the current artifacts are:
+
+\begin{itemize}
+\item training rows: 13,788,
+\item modeling rows after final trim: 13,651,
+\item test $R^2$: 0.8868176804,
+\item validation $R^2$: 0.8868176804,
+\item 5-fold CV mean $R^2$: 0.9278765811,
+\item 5-fold CV standard deviation: 0.0039254350,
+\item test MAE: 70,949.98 TND.
+\end{itemize}
+
+These numbers suggest a model that is both strong and stable. The cross-validation variance is low, which indicates that the learned structure generalizes well across training folds.
+
+\subsection{What the Metrics Mean}
+
+The test $R^2$ of roughly 0.887 means the model explains a large proportion of variance in property prices on holdout data. In a noisy real estate environment with heterogeneous source quality, this is a strong result.
+
+The MAE of approximately 71k TND must be interpreted relative to the data range. Since prices span from 8.4k TND to 15.6M TND, the absolute error is not negligible but remains reasonable for a national-scale pricing system with fallback coverage and mixed source quality.
+
+\subsection{Feature Design Logic}
+
+The final feature set is carefully engineered to combine structural and geographic signals.
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.28\textwidth}X}
+\toprule
+Feature group & Role \\
+\midrule
+Base numeric features & Capture property size and geographic centroid position. \\
+Split-dependent numeric features & Capture local price priors without leaking test information into training. \\
+Categorial geographic features & Preserve delegation and governorate identity as explicit model inputs. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The use of split-dependent target encodings is especially important. The project correctly distinguishes Stage 6 base features from Stage 8 train-split-safe features, preventing leakage while preserving strong local pricing signal.
+
+\subsection{Coordinate and Geographic Signal Quality}
+
+The final model report confirms that geographic coordinates are now fully synchronized with the matched geography rows before imputation:
+
+\begin{itemize}
+\item rows with geo delegation before imputation: 13,756,
+\item rows with coordinates before imputation: 13,756,
+\item rows missing coordinates despite geo match before imputation: 0.
+\end{itemize}
+
+This matters because poor coordinate attribution would silently weaken one of the strongest spatial signals in the model.
+
+\section{Frontend and User Experience Layer}
+
+\subsection{Geographic Atlas}
+
+The atlas frontend is not just a static map. It is a decision interface that exposes:
+
+\begin{itemize}
+\item delegation selection,
+\item support versus fallback map modes,
+\item family-specific scenario pricing,
+\item confidence and coverage metadata,
+\item AI-generated narration for the selected area.
+\end{itemize}
+
+The atlas is backed by generated frontend exports:
+
+\begin{itemize}
+\item \code{frontend/assets/data/atlas.geojson},
+\item \code{frontend/assets/data/zone\_coverage.json},
+\item \code{frontend/assets/data/delegation\_profiles.json},
+\item \code{frontend/model\_summary.json}.
+\end{itemize}
+
+This export strategy is excellent for deployment because the API, the UI, and the model report all read from a consistent artifact set.
+
+\subsection{Notebook Companion}
+
+The notebook UI has evolved into a complete technical companion rather than a static notebook dump. It now provides:
+
+\begin{itemize}
+\item 13 visible sections aligned with the notebook chapters,
+\item runnable code cells,
+\item dashboard diagnostics,
+\item source viewers,
+\item per-cell Groq copilot assistance.
+\end{itemize}
+
+This is a major strength of the project. It bridges the gap between a data science notebook and a production-grade workflow viewer.
+
+\subsection{Notebook Chapter Structure}
+
+The notebook workflow is organized into 13 visible sections:
+
+\begin{enumerate}
+\item Project Overview,
+\item Environment Setup,
+\item Utility Functions,
+\item Data Sources,
+\item Stage 1: Dataset Discovery,
+\item Stage 2: Dataset Cleaning,
+\item Stage 3: Merge Preparation,
+\item Stage 4: Geographic Name Alignment,
+\item Stage 5: Training Dataset Preparation,
+\item Stage 6: Feature Engineering,
+\item Stage 7: Visual Check,
+\item Stage 8: Model Training,
+\item Conclusion.
+\end{enumerate}
+
+That structure is important because it keeps the technical narrative aligned with the actual pipeline boundaries. It also helps learners and reviewers understand not just what the final model is, but how the project arrives there.
+
+\section{AI Features Integrated into the Project}
+
+\subsection{AI Narrator}
+
+The atlas includes a Groq-powered AI narrator that generates delegation-aware market insight. Important implementation characteristics include:
+
+\begin{itemize}
+\item AI-only frontend narration path,
+\item structured SSE streaming,
+\item visible provider/model metadata,
+\item no static frontend fallback templates,
+\item automatic regeneration when the user changes zone or scenario.
+\end{itemize}
+
+Current narrator model:
+
+\begin{itemize}
+\item provider: Groq,
+\item model: \code{llama-3.3-70b-versatile}.
+\end{itemize}
+
+The streaming logic was improved to use explicit SSE events for stream start, token delivery, completion, and error handling. This makes the frontend narrator more reliable and more transparent than a naive chunk-concatenation implementation.
+
+\subsection{Notebook Cell Copilot}
+
+The notebook now includes a premium per-cell AI assistant. Each cell can open an inline AI panel that sends:
+
+\begin{itemize}
+\item chapter title,
+\item explainer text,
+\item exact code,
+\item current output,
+\item current error state,
+\item local message history.
+\end{itemize}
+
+This makes the notebook not only inspectable but conversational. It can explain, debug, and interpret pipeline logic at cell granularity, which is highly valuable for learning, demonstrations, and maintenance.
+
+The design quality of this feature comes from grounding. The model is not asked vague questions about the project in general. It is asked about a specific cell with its surrounding context, which greatly improves answer precision.
+
+\section{API Layer}
+
+The FastAPI backend serves as the operational bridge between model artifacts and user interfaces. It provides endpoints for:
+
+\begin{itemize}
+\item property price prediction,
+\item model summary retrieval,
+\item delegation coverage access,
+\item notebook source rendering,
+\item notebook cell execution,
+\item atlas AI narration,
+\item notebook cell AI chat.
+\end{itemize}
+
+This unified API design is strategically sound because it keeps all interfaces grounded in the same project files and metrics.
+
+\subsection{Notable API Responsibilities}
+
+The API is responsible for more than prediction. It also acts as a runtime bridge between offline pipeline artifacts and interactive frontend experiences. In effect, it supports three distinct workloads:
+
+\begin{itemize}
+\item numerical prediction and coverage lookup,
+\item notebook execution and source inspection,
+\item AI-assisted explanation through Groq-backed streams.
+\end{itemize}
+
+This multifunction role makes the API a central orchestration layer rather than a thin model wrapper.
+
+\section{Deployment-Ready Artifacts}
+
+The project writes a rich set of outputs that support not only training but also deployment and explanation.
+
+\subsection{Processed Data Artifacts}
+
+\begin{itemize}
+\item discovery profiles under \code{data/processed/01\_discovery/},
+\item cleaned datasets under \code{data/processed/02\_cleaning/},
+\item merge report and dataset under \code{data/processed/03\_merge/},
+\item alignment outputs under \code{data/processed/04\_geo\_alignment/},
+\item training dataset outputs under \code{data/processed/05\_training\_dataset/},
+\item feature engineering outputs under \code{data/processed/06\_feature\_engineering/},
+\item visual check outputs under \code{data/processed/07\_visual\_check/},
+\item model reports and figures under \code{data/processed/08\_model\_training/}.
+\end{itemize}
+
+\subsection{Model and Frontend Artifacts}
+
+\begin{itemize}
+\item trained model: \code{artifacts/08\_best\_model.joblib},
+\item frontend metrics: \code{frontend/model\_summary.json},
+\item atlas support file: \code{frontend/assets/data/zone\_coverage.json},
+\item delegation profiles: \code{frontend/assets/data/delegation\_profiles.json}.
+\end{itemize}
+
+This makes the project easy to reason about operationally: there is a clear chain from raw data to processed data to model artifact to deployed UI asset.
+
+\subsection{Why Artifact Discipline Matters}
+
+The project benefits from writing reports at every stage. This has several practical advantages:
+
+\begin{itemize}
+\item debugging becomes easier because intermediate failures are inspectable,
+\item frontend metrics can be grounded in generated JSON rather than duplicated logic,
+\item notebook explanations can cite real artifacts rather than hand-written summaries,
+\item final reporting becomes much more reliable because the evidence already exists on disk.
+\end{itemize}
+
+\section{Visual Diagnostics}
+
+The model training stage exports visual diagnostics such as model comparison and holdout scatter plots. If the files are present at compile time, they are included below.
+
+\IfFileExists{data/processed/08_model_training/08_model_comparison.png}{
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{data/processed/08_model_training/08_model_comparison.png}
+\caption{Model comparison generated by Stage 8.}
+\end{figure}
+}{
+\textit{Model comparison figure not found at compile time.}
+}
+
+\IfFileExists{data/processed/08_model_training/08_holdout_scatter.png}{
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{data/processed/08_model_training/08_holdout_scatter.png}
+\caption{Holdout predicted-versus-actual scatter generated by Stage 8.}
+\end{figure}
+}{
+\textit{Holdout scatter figure not found at compile time.}
+}
+
+These visual exports strengthen the credibility of the project because they move evaluation beyond a single scalar metric. They show the model comparison process and the shape of holdout behavior.
+
+\section{Engineering Improvements Completed During Finalization}
+
+The project was not frozen as a simple pipeline run; several quality improvements were completed during final synchronization:
+
+\begin{itemize}
+\item Stage 6 coordinate assignment was fixed by using canonical delegation keys instead of raw GeoJSON names.
+\item The feature story was synchronized across pipeline scripts, notebook source, notebook HTML, and generated reports.
+\item \code{frontend/notebook.html} was restructured to follow the notebook chapter map more closely.
+\item The notebook table parser was improved so structured discovery outputs render correctly in the frontend.
+\item The AI narrator was upgraded to true SSE event streaming with explicit model metadata.
+\item A per-cell Groq notebook copilot was added with inline streamed explanations.
+\end{itemize}
+
+These changes matter because they raise the project from a strong ML pipeline to a polished product-quality experience.
+
+\subsection{Representative Fixes}
+
+The finalization phase is worth documenting because it reflects real engineering practice. Some key improvements include:
+
+\begin{itemize}
+\item synchronizing the notebook source, notebook HTML, and pipeline feature reports,
+\item correcting chapter boundaries in \code{notebook.html} so they match the true notebook stages,
+\item improving the notebook renderer so printed structured outputs are parsed correctly,
+\item making the AI narrator fully model-driven in the frontend path,
+\item exposing the actual Groq model metadata directly in the interface.
+\end{itemize}
+
+\section{Strengths of the Final System}
+
+The project has several strong qualities:
+
+\begin{enumerate}
+\item \highlight{End-to-end completeness}. The system includes pipeline, model, API, atlas, notebook, and AI assistance.
+\item \highlight{Artifact consistency}. Frontend and backend both consume generated reports rather than disconnected hand-written summaries.
+\item \highlight{Geographic realism}. Delegation support and fallback logic are explicit and operational.
+\item \highlight{High usability}. Users can inspect both model outputs and pipeline internals.
+\item \highlight{Good engineering recovery}. Important issues such as coordinate mismatch and notebook drift were identified and corrected.
+\end{enumerate}
+
+\section{Limitations and Future Work}
+
+No production system is perfect, and there are still useful next steps:
+
+\begin{itemize}
+\item improve support depth in low-data delegations,
+\item enrich locality-level market features beyond current fallback tiers,
+\item add explicit uncertainty estimation rather than confidence labels tied mainly to coverage support,
+\item extend model explainability with prediction-level AI rationales,
+\item add pairwise delegation comparison and dashboard AI analyst capabilities,
+\item package the report and notebook pipeline into reproducible CI checks.
+\end{itemize}
+
+An especially strong next feature would be a Groq-powered \emph{Why this prediction?} explainer on the atlas, grounded in the exact benchmark, coverage tier, selected family, and scenario surface.
+
+Other strong future extensions include:
+
+\begin{itemize}
+\item pairwise delegation comparison using AI-generated market contrast narratives,
+\item chapter-level notebook summaries generated from stage reports,
+\item richer uncertainty quantification for benchmark fallback predictions,
+\item CI-based regression checks on generated reports and frontend exports,
+\item packaged PDF report generation from the final artifacts.
+\end{itemize}
+
+\section{Conclusion}
+
+This project successfully delivers a complete Tunisia real estate pricing system with national delegation coverage, strong model accuracy, structured geospatial alignment, deployment-ready artifacts, and polished user-facing interfaces.
+
+From a technical perspective, the project demonstrates more than regression modeling. It shows practical ML engineering: data cleaning, schema unification, geospatial normalization, coordinate repair, split-safe feature engineering, artifact export design, API serving, and UI-grounded AI assistance.
+
+From a product perspective, the final result is compelling because it combines:
+
+\begin{itemize}
+\item a strong prediction engine,
+\item transparent geographic support logic,
+\item interactive atlas exploration,
+\item explainable notebook workflow,
+\item premium Groq-powered AI assistance.
+\end{itemize}
+
+In short, the final system is not just a trained model. It is a coherent machine learning product for Tunisia real estate intelligence.
+
+\appendix
+
+\section{Key Final Metrics Snapshot}
+
+\begin{center}
+\rowcolors{2}{Panel}{white}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{0.42\textwidth}X}
+\toprule
+Metric & Value \\
+\midrule
+Best model & GradientBoosting \\
+Training rows & 13,788 \\
+Modeling rows & 13,651 \\
+Test $R^2$ & 0.8868 \\
+Cross-validation $R^2$ mean & 0.9279 \\
+Cross-validation $R^2$ std & 0.0039 \\
+Test MAE & 70,949.98 TND \\
+Total delegations & 264 \\
+Covered delegations & 264 \\
+Delegations with direct support & 103 \\
+Direct coverage & 39.02\% \\
+Fallback coverage & 60.98\% \\
+Atlas reach & 100\% \\
+Final feature count & 10 \\
+AI narrator model & Groq / \code{llama-3.3-70b-versatile} \\
+Notebook copilot model & Groq / \code{llama-3.3-70b-versatile} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Project File Highlights}
+
+\begin{itemize}
+\item \code{pipeline/01\_dataset\_discovery.py}
+\item \code{pipeline/02\_dataset\_cleaning.py}
+\item \code{pipeline/03\_merge\_preparation.py}
+\item \code{pipeline/04\_geo\_name\_alignment.py}
+\item \code{pipeline/05\_training\_dataset\_preparation.py}
+\item \code{pipeline/06\_feature\_engineering.py}
+\item \code{pipeline/07\_training\_dataset\_visual\_check.py}
+\item \code{pipeline/08\_model\_training.py}
+\item \code{api/app.py}
+\item \code{frontend/index.html}
+\item \code{frontend/notebook.html}
+\item \code{frontend/js/map.js}
+\item \code{frontend/js/notebook.js}
+\end{itemize}
+
+\section{Suggested Compilation Workflow}
+
+For a final deliverable, the recommended workflow is:
+
+\begin{enumerate}
+\item compile \code{rapport.tex} in Overleaf or a local TeX distribution,
+\item verify that the generated plots are found under \code{data/processed/08\_model\_training/},
+\item export the PDF alongside the code repository as the final written report,
+\item optionally add institutional branding or supervisor metadata on the title page.
+\end{enumerate}
+
+\section{Compilation Note}
+
+This report is designed as a single-file LaTeX document named \code{rapport.tex}. It can be compiled with a standard PDF LaTeX toolchain or on Overleaf. Figures are included conditionally, so missing image files will not break compilation.
+
+\end{document}

@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tunisia Real Estate AI Presentation</title>
+    <title>Tunisia Real Estate AI Rapport</title>
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="stylesheet" href="css/style.css?v=4.0">
     <style>
-        body.presentation-body {
+        body.rapport-body {
             overflow: hidden;
             min-height: 100vh;
             background:
                 radial-gradient(circle at 18% 16%, rgba(239, 68, 68, 0.16), transparent 22%),
-                radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.06), transparent 20%),
+                radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.05), transparent 20%),
                 #000;
         }
-        .presentation-shell {
+        .rapport-shell {
             position: relative;
             z-index: 10;
             min-height: 100vh;
             padding: 6.25rem 2.25vw 1.25rem;
         }
-        .presentation-stage {
+        .rapport-stage {
             position: relative;
             width: 100%;
             height: calc(100vh - 7.5rem);
@@ -33,7 +33,7 @@
                 linear-gradient(180deg, rgba(15,15,20,0.96), rgba(5,5,8,0.98));
             box-shadow: 0 28px 90px rgba(0,0,0,0.44);
         }
-        .presentation-stage::before {
+        .rapport-stage::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -41,7 +41,7 @@
             z-index: 3;
             background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 20%, transparent 78%, rgba(239,68,68,0.08));
         }
-        .presentation-topline {
+        .rapport-topline {
             position: absolute;
             top: 1rem;
             left: 1rem;
@@ -53,7 +53,7 @@
             gap: 1rem;
             pointer-events: none;
         }
-        .presentation-badge {
+        .rapport-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.55rem;
@@ -68,7 +68,7 @@
             text-transform: uppercase;
             backdrop-filter: blur(12px);
         }
-        .presentation-badge::before {
+        .rapport-badge::before {
             content: "";
             width: 7px;
             height: 7px;
@@ -76,19 +76,19 @@
             background: var(--accent);
             box-shadow: 0 0 12px rgba(239,68,68,0.65);
         }
-        .presentation-frame-wrap {
+        .rapport-frame-wrap {
             position: absolute;
             inset: 0;
             z-index: 1;
             background: #07070b;
         }
-        .presentation-frame {
+        .rapport-frame {
             width: 100%;
             height: 100%;
             border: 0;
             background: #0a0a0f;
         }
-        .presentation-controls {
+        .rapport-controls {
             position: absolute;
             right: 1rem;
             bottom: 1rem;
@@ -99,16 +99,16 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-        .presentation-control-btn {
+        .rapport-control-btn {
             min-width: 142px;
             justify-content: center;
         }
-        .presentation-fallback {
+        .rapport-fallback {
             position: absolute;
             left: 1rem;
             bottom: 1rem;
             z-index: 4;
-            max-width: min(540px, calc(100% - 18rem));
+            max-width: min(560px, calc(100% - 18rem));
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -118,64 +118,45 @@
             border: 1px solid rgba(255,255,255,0.08);
             backdrop-filter: blur(14px);
         }
-        .presentation-fallback p {
-            color: #cbd5e1;
-            font-size: 0.8rem;
+        .rapport-fallback p {
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.82rem;
             line-height: 1.5;
         }
-        .presentation-stage.is-fullscreen {
+        .rapport-stage.is-fullscreen {
+            width: 100vw;
+            height: 100vh;
             border-radius: 0;
-            border: 0;
         }
-        .presentation-stage.is-fullscreen .presentation-topline,
-        .presentation-stage.is-fullscreen .presentation-controls,
-        .presentation-stage.is-fullscreen .presentation-fallback {
+        body.rapport-fullscreen .top-nav {
             display: none;
         }
-        body.presentation-fullscreen .top-nav {
-            display: none;
-        }
-        .presentation-stage.is-fullscreen .presentation-topline {
-            top: 1.1rem;
-            left: 1.1rem;
-            right: 1.1rem;
-        }
-        .presentation-stage.is-fullscreen .presentation-controls {
-            right: 1.1rem;
-            bottom: 1.1rem;
-        }
-        .presentation-stage.is-fullscreen .presentation-fallback {
-            left: 1.1rem;
-            bottom: 1.1rem;
-        }
-        @media (max-width: 860px) {
-            .presentation-shell {
-                padding: 5.6rem 0.85rem 0.85rem;
+        @media (max-width: 900px) {
+            .rapport-shell {
+                padding: 5.5rem 1rem 1rem;
             }
-            .presentation-stage {
-                height: calc(100vh - 6.45rem);
-                border-radius: 22px;
+            .rapport-stage {
+                height: calc(100vh - 6.5rem);
+                border-radius: 20px;
             }
-            .presentation-fallback {
-                left: 0.85rem;
-                right: 0.85rem;
-                bottom: 4.8rem;
-                max-width: none;
+            .rapport-fallback {
+                max-width: calc(100% - 2rem);
+                right: 1rem;
             }
-            .presentation-controls {
-                left: 0.85rem;
-                right: 0.85rem;
-                bottom: 0.85rem;
+            .rapport-controls {
+                left: 1rem;
+                right: 1rem;
                 justify-content: stretch;
             }
-            .presentation-control-btn {
-                flex: 1 1 auto;
+            .rapport-control-btn {
                 min-width: 0;
+                flex: 1 1 180px;
             }
         }
     </style>
 </head>
-<body class="presentation-body">
+<body class="rapport-body">
     <div id="bg-layer"></div>
     <div id="vignette"></div>
 
@@ -184,45 +165,45 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
             <span>ATLAS</span>
         </a>
-        <a href="/rapport" class="nav-btn presentation-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
-            <span>RAPPORT</span>
+        <a href="/presentation" class="nav-btn presentation-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v12H3z"></path><path d="M8 20h8"></path><path d="M12 16v4"></path></svg>
+            <span>PRESENTATION</span>
+        </a>
+        <a href="/notebook" class="nav-btn primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <span>ML LAB</span>
         </a>
     </div>
 
-    <main class="presentation-shell">
-        <section class="presentation-stage glass" id="presentation-stage">
-            <div class="presentation-topline">
-                <span class="presentation-badge">Presentation Mode</span>
-                <span class="presentation-badge">Presentation Preview</span>
+    <main class="rapport-shell">
+        <section class="rapport-stage glass" id="rapport-stage">
+            <div class="rapport-topline">
+                <span class="rapport-badge">Technical Report</span>
+                <span class="rapport-badge">Embedded PDF Viewer</span>
             </div>
-            <div class="presentation-frame-wrap">
+            <div class="rapport-frame-wrap">
                 <iframe
-                    class="presentation-frame"
-                    src="https://1drv.ms/p/c/91a9fb7438ee9dc6/IQREokosXs_ASb1CPxTZrZ64AfSf4woxmg25ystH4H6RjlM?wdAr=1.7777777777777777&amp;wdEaaCheck=1"
-                    title="Visionneuse PowerPoint"
-                    loading="eager"
-                    allowfullscreen>
+                    class="rapport-frame"
+                    src="/rapport/pdf#zoom=100"
+                    title="Tunisia Real Estate AI Rapport"
+                    loading="eager">
                 </iframe>
             </div>
-            <div class="presentation-fallback">
-                <p>If the embed is blocked by your browser, use fullscreen or download the deck.</p>
-            </div>
-            <div class="presentation-controls">
-                <button type="button" class="nav-btn presentation-btn presentation-control-btn" id="btn-presentation-fullscreen">
+            <div class="rapport-controls">
+                <button type="button" class="nav-btn presentation-btn rapport-control-btn" id="btn-rapport-fullscreen">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
                     <span>FULLSCREEN</span>
                 </button>
-                <a href="https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2" target="_blank" rel="noopener noreferrer" class="nav-btn primary presentation-control-btn">OPEN IN ONEDRIVE</a>
-                <a href="/Presentation/TunisiaRealEstate_ML_Presentation.pptx" download class="nav-btn presentation-control-btn">DOWNLOAD</a>
+                <a href="/rapport/pdf" target="_blank" rel="noopener noreferrer" class="nav-btn primary rapport-control-btn">OPEN PDF</a>
+                <a href="/rapport/pdf" download class="nav-btn rapport-control-btn">DOWNLOAD</a>
             </div>
         </section>
     </main>
     <script>
-        const stage = document.getElementById('presentation-stage');
-        const fullscreenBtn = document.getElementById('btn-presentation-fullscreen');
+        const stage = document.getElementById('rapport-stage');
+        const fullscreenBtn = document.getElementById('btn-rapport-fullscreen');
 
-        async function togglePresentationFullscreen() {
+        async function toggleRapportFullscreen() {
             if (!stage) return;
             if (document.fullscreenElement === stage) {
                 await document.exitFullscreen();
@@ -233,8 +214,8 @@
 
         if (fullscreenBtn) {
             fullscreenBtn.addEventListener('click', () => {
-                togglePresentationFullscreen().catch(() => {
-                    window.open('https://onedrive.live.com/:p:/g/personal/91A9FB7438EE9DC6/IQBEokosXs_ASb1CPxTZrZ64Ae1zkY8ANKDGD37cCW3JYfw?resid=91A9FB7438EE9DC6!s2c4aa244cf5e49c0bd423f14d9ad9eb8&ithint=file%2Cpptx&e=fuUOZ6&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy85MWE5ZmI3NDM4ZWU5ZGM2L0lRQkVva29zWHNfQVNiMUNQeFRaclo2NEFlMXprWThBTktER0QzN2NDVzNKWWZ3P2U9ZnVVT1o2', '_blank', 'noopener,noreferrer');
+                toggleRapportFullscreen().catch(() => {
+                    window.open('/rapport/pdf', '_blank', 'noopener,noreferrer');
                 });
             });
         }
@@ -242,7 +223,7 @@
         document.addEventListener('fullscreenchange', () => {
             const isFullscreen = document.fullscreenElement === stage;
             stage.classList.toggle('is-fullscreen', isFullscreen);
-            document.body.classList.toggle('presentation-fullscreen', isFullscreen);
+            document.body.classList.toggle('rapport-fullscreen', isFullscreen);
             if (fullscreenBtn) {
                 fullscreenBtn.querySelector('span').textContent = isFullscreen ? 'EXIT FULLSCREEN' : 'FULLSCREEN';
             }
