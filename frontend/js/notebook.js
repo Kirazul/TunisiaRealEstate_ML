@@ -2,12 +2,19 @@ const tabs = Array.from(document.querySelectorAll('.book-tab'));
 const editors = [];
 const charts = [];
 const NOTEBOOK_CELL_CHAT_API = '/api/notebook/cell-chat';
+const TRAINING_DATASET_PATH = 'data/processed/06_feature_engineering/06_feature_engineered_dataset.csv';
+const DATASET_PAGE_SIZE = 100;
 const chapterCards = Array.from(document.querySelectorAll('#code-tab-view .chapter-card'));
 const workflowStages = Array.from(document.querySelectorAll('.workflow-stage'));
 const sourceEditors = [];
 const executedCellIndexes = new Set();
 const cellAssistantState = new Map();
 let dashboardLoaded = false;
+let trainingDatasetLoaded = false;
+let trainingDatasetRows = [];
+let trainingDatasetFilteredRows = [];
+let trainingDatasetColumns = [];
+let trainingDatasetPage = 1;
 
 const CELL_DEPENDENCIES = {
     18: [17],
@@ -74,6 +81,9 @@ tabs.forEach((button) => {
         if (button.dataset.target === 'dashboard-tab-view') {
             loadDashboard();
         }
+        if (button.dataset.target === 'training-dataset-tab-view') {
+            loadTrainingDataset();
+        }
         requestAnimationFrame(() => {
             editors.forEach((editor) => tuneEditorLayout(editor));
             sourceEditors.forEach((editor) => tuneEditorLayout(editor));
@@ -106,6 +116,220 @@ async function loadProjectJson(path) {
     }
     const payload = await response.json();
     return JSON.parse(payload.content);
+}
+
+function parseCsv(text) {
+    const rows = [];
+    let current = [];
+    let cell = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+            if (inQuotes && next === '"') {
+                cell += '"';
+                i += 1;
+            } else {
+                inQuotes = !inQuotes;
+            }
+            continue;
+        }
+
+        if (char === ',' && !inQuotes) {
+            current.push(cell);
+            cell = '';
+            continue;
+        }
+
+        if ((char === '\n' || char === '\r') && !inQuotes) {
+            if (char === '\r' && next === '\n') i += 1;
+            current.push(cell);
+            cell = '';
+            if (current.some((value) => value !== '')) rows.push(current);
+            current = [];
+            continue;
+        }
+
+        cell += char;
+    }
+
+    if (cell.length || current.length) {
+        current.push(cell);
+        if (current.some((value) => value !== '')) rows.push(current);
+    }
+
+    if (!rows.length) return { columns: [], rows: [] };
+    const columns = rows[0].map((value) => String(value || '').trim());
+    const records = rows.slice(1).map((values) => {
+        const record = {};
+        columns.forEach((column, index) => {
+            record[column] = String(values[index] ?? '').trim();
+        });
+        return record;
+    });
+    return { columns, rows: records };
+}
+
+async function loadTrainingDataset() {
+    if (trainingDatasetLoaded) {
+        applyTrainingDatasetFilters();
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/source?path=${encodeURIComponent(TRAINING_DATASET_PATH)}`);
+        if (!response.ok) throw new Error(`Failed to load training dataset (${response.status})`);
+        const payload = await response.json();
+        const parsed = parseCsv(payload.content || '');
+        trainingDatasetColumns = parsed.columns;
+        trainingDatasetRows = parsed.rows;
+        trainingDatasetLoaded = true;
+        populateTrainingDatasetFilters();
+        applyTrainingDatasetFilters();
+    } catch (error) {
+        const note = document.getElementById('dataset-result-note');
+        if (note) note.textContent = `Unable to load training dataset: ${error.message}`;
+        renderTrainingDatasetTable([]);
+    }
+}
+
+function populateSelectOptions(selectId, values, placeholder) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    select.innerHTML = `<option value="">${placeholder}</option>`;
+    values.forEach((value) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        select.appendChild(option);
+    });
+}
+
+function populateTrainingDatasetFilters() {
+    populateSelectOptions('dataset-family-filter', [...new Set(trainingDatasetRows.map((row) => row.property_family).filter(Boolean))].sort(), 'All families');
+    populateSelectOptions('dataset-source-filter', [...new Set(trainingDatasetRows.map((row) => row.source_dataset).filter(Boolean))].sort(), 'All sources');
+    populateSelectOptions('dataset-governorate-filter', [...new Set(trainingDatasetRows.map((row) => row.geo_governorate).filter(Boolean))].sort(), 'All governorates');
+}
+
+function applyTrainingDatasetFilters() {
+    const search = (document.getElementById('dataset-search')?.value || '').trim().toLowerCase();
+    const family = document.getElementById('dataset-family-filter')?.value || '';
+    const source = document.getElementById('dataset-source-filter')?.value || '';
+    const governorate = document.getElementById('dataset-governorate-filter')?.value || '';
+
+    trainingDatasetFilteredRows = trainingDatasetRows.filter((row) => {
+        if (family && row.property_family !== family) return false;
+        if (source && row.source_dataset !== source) return false;
+        if (governorate && row.geo_governorate !== governorate) return false;
+        if (search) {
+            const blob = trainingDatasetColumns.map((column) => row[column] || '').join(' ').toLowerCase();
+            if (!blob.includes(search)) return false;
+        }
+        return true;
+    });
+
+    trainingDatasetPage = 1;
+    updateTrainingDatasetMetrics();
+    renderTrainingDatasetPage();
+}
+
+function updateTrainingDatasetMetrics() {
+    setNodeText('dataset-total-rows', formatCompactNumber(trainingDatasetRows.length));
+    setNodeText('dataset-visible-rows', formatCompactNumber(trainingDatasetFilteredRows.length));
+    setNodeText('dataset-column-count', formatCompactNumber(trainingDatasetColumns.length));
+    setNodeText('dataset-family-count', formatCompactNumber(new Set(trainingDatasetFilteredRows.map((row) => row.property_family).filter(Boolean)).size));
+    setNodeText('dataset-governorate-count', formatCompactNumber(new Set(trainingDatasetFilteredRows.map((row) => row.geo_governorate).filter(Boolean)).size));
+}
+
+function renderTrainingDatasetTable(rows) {
+    const head = document.getElementById('training-dataset-head');
+    const body = document.getElementById('training-dataset-body');
+    if (!head || !body) return;
+
+    head.innerHTML = '';
+    body.innerHTML = '';
+
+    if (!trainingDatasetColumns.length) {
+        body.innerHTML = '<tr><td class="dataset-empty">No dataset columns available.</td></tr>';
+        return;
+    }
+
+    const headRow = document.createElement('tr');
+    trainingDatasetColumns.forEach((column) => {
+        const th = document.createElement('th');
+        th.textContent = column;
+        headRow.appendChild(th);
+    });
+    head.appendChild(headRow);
+
+    if (!rows.length) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.className = 'dataset-empty';
+        td.colSpan = trainingDatasetColumns.length;
+        td.textContent = 'No rows match the current search and filters.';
+        tr.appendChild(td);
+        body.appendChild(tr);
+        return;
+    }
+
+    rows.forEach((row) => {
+        const tr = document.createElement('tr');
+        trainingDatasetColumns.forEach((column) => {
+            const td = document.createElement('td');
+            td.textContent = row[column] || '—';
+            tr.appendChild(td);
+        });
+        body.appendChild(tr);
+    });
+}
+
+function renderTrainingDatasetPage() {
+    const totalPages = Math.max(1, Math.ceil(trainingDatasetFilteredRows.length / DATASET_PAGE_SIZE));
+    trainingDatasetPage = Math.min(trainingDatasetPage, totalPages);
+    const start = (trainingDatasetPage - 1) * DATASET_PAGE_SIZE;
+    const pageRows = trainingDatasetFilteredRows.slice(start, start + DATASET_PAGE_SIZE);
+    renderTrainingDatasetTable(pageRows);
+
+    const visibleStart = trainingDatasetFilteredRows.length ? start + 1 : 0;
+    const visibleEnd = Math.min(start + DATASET_PAGE_SIZE, trainingDatasetFilteredRows.length);
+    setNodeText('dataset-page-indicator', `${trainingDatasetPage}/${totalPages}`);
+    setNodeText('dataset-page-text', `Page ${trainingDatasetPage} of ${totalPages}`);
+    setNodeText('dataset-result-note', `${formatCompactNumber(trainingDatasetFilteredRows.length)} matching rows · showing ${formatCompactNumber(visibleStart)}-${formatCompactNumber(visibleEnd)}`);
+
+    const prev = document.getElementById('dataset-prev-page');
+    const next = document.getElementById('dataset-next-page');
+    if (prev) prev.disabled = trainingDatasetPage <= 1;
+    if (next) next.disabled = trainingDatasetPage >= totalPages;
+}
+
+function initTrainingDatasetControls() {
+    const search = document.getElementById('dataset-search');
+    const family = document.getElementById('dataset-family-filter');
+    const source = document.getElementById('dataset-source-filter');
+    const governorate = document.getElementById('dataset-governorate-filter');
+    const prev = document.getElementById('dataset-prev-page');
+    const next = document.getElementById('dataset-next-page');
+
+    [search, family, source, governorate].forEach((node) => {
+        if (!node) return;
+        node.addEventListener('input', applyTrainingDatasetFilters);
+        node.addEventListener('change', applyTrainingDatasetFilters);
+    });
+
+    if (prev) prev.addEventListener('click', () => {
+        trainingDatasetPage = Math.max(1, trainingDatasetPage - 1);
+        renderTrainingDatasetPage();
+    });
+
+    if (next) next.addEventListener('click', () => {
+        const totalPages = Math.max(1, Math.ceil(trainingDatasetFilteredRows.length / DATASET_PAGE_SIZE));
+        trainingDatasetPage = Math.min(totalPages, trainingDatasetPage + 1);
+        renderTrainingDatasetPage();
+    });
 }
 
 function buildChart(canvasId, labels, data, label, color) {
@@ -1100,6 +1324,7 @@ window.openRawNotebook = openRawNotebook;
 
 initEditors();
 initCellAssistants();
+initTrainingDatasetControls();
 loadStoryAndDashboard();
 loadSources();
 setSceneStatus('Ready to run');

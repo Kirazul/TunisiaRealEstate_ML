@@ -36,6 +36,7 @@
         <div class="book-tabs">
             <button class="book-tab" data-target="dashboard-tab-view">Dashboard</button>
             <button class="book-tab active" data-target="code-tab-view">Code & Execution</button>
+            <button class="book-tab" data-target="training-dataset-tab-view">Training Dataset</button>
             <button class="book-tab" data-target="qa-tab-view">Questions & Answers</button>
         </div>
 
@@ -2427,6 +2428,56 @@ print("\n✓ Pipeline notebook execution complete!")</textarea>
 
                 </div>
             </div>
+        </div>
+
+
+        <div id="training-dataset-tab-view" class="tab-view">
+            <section class="chapter-card glass dataset-simple-card">
+                <span class="tag">TRAINING DATASET</span>
+                <h2>Latest Training Dataset <span>Explorer</span></h2>
+                <p>Browse the latest persisted training dataset with fast search, clean filters, and pagination capped at 100 rows per page.</p>
+
+                <div class="dataset-toolbar">
+                    <div class="dataset-search-wrap dataset-search-main">
+                        <label for="dataset-search">Search</label>
+                        <input id="dataset-search" type="text" placeholder="Search any column value...">
+                    </div>
+                    <div class="dataset-filter-wrap">
+                        <label for="dataset-family-filter">Property Family</label>
+                        <select id="dataset-family-filter">
+                            <option value="">All families</option>
+                        </select>
+                    </div>
+                    <div class="dataset-filter-wrap">
+                        <label for="dataset-source-filter">Source Dataset</label>
+                        <select id="dataset-source-filter">
+                            <option value="">All sources</option>
+                        </select>
+                    </div>
+                    <div class="dataset-filter-wrap">
+                        <label for="dataset-governorate-filter">Governorate</label>
+                        <select id="dataset-governorate-filter">
+                            <option value="">All governorates</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="dataset-toolbar dataset-toolbar-bottom">
+                    <div class="dataset-result-note" id="dataset-result-note">Loading latest training dataset...</div>
+                    <div class="dataset-pager">
+                        <button type="button" class="nav-btn dataset-page-btn" id="dataset-prev-page">Prev</button>
+                        <span class="dataset-page-text" id="dataset-page-text">Page -- of --</span>
+                        <button type="button" class="nav-btn dataset-page-btn primary" id="dataset-next-page">Next</button>
+                    </div>
+                </div>
+
+                <div class="dataset-table-wrap">
+                    <table class="dataset-table" id="training-dataset-table">
+                        <thead id="training-dataset-head"></thead>
+                        <tbody id="training-dataset-body"></tbody>
+                    </table>
+                </div>
+            </section>
         </div>
 
 

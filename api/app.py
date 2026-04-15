@@ -191,7 +191,7 @@ def _resolve_source_path(relative_path: str) -> Path:
     candidate = (PROJECT_ROOT / relative_path).resolve()
     if PROJECT_ROOT not in candidate.parents and candidate != PROJECT_ROOT:
         raise HTTPException(status_code=400, detail="Path escapes project root")
-    if candidate.suffix.lower() not in {".py", ".html", ".js", ".css", ".json", ".md", ".ipynb"}:
+    if candidate.suffix.lower() not in {".py", ".html", ".js", ".css", ".json", ".md", ".ipynb", ".csv"}:
         raise HTTPException(status_code=400, detail="Unsupported source file type")
     if not candidate.exists() or not candidate.is_file():
         raise HTTPException(status_code=404, detail="Source file not found")
